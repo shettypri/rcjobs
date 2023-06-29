@@ -1,0 +1,52 @@
+.react-tel-input{
+    display: flex;
+    flex-direction: row
+}
+.special-label {
+    margin-top: 28px;
+    font-weight: bolder;
+    font-size: 22px;
+}
+.form-control {
+    margin-top: 25px;
+    margin-left: 10px;
+    border: 1px solid black;
+    width: 250px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.otp-input input{
+    border: 1px solid black;
+    color: black;
+    height: 50px !important;
+    width: 50px !important;
+    font-size: 15px;
+}
+@media only screen and (max-width: 600px) {
+    .special-label {
+        margin-top: 35px;
+        font-weight: bolder;
+        font-size: 15px !important;
+    }
+
+    .form-control {
+        margin-top: 25px;
+        margin-left: 10px;
+        border: 0.5px solid black !important;
+        width: 185px;
+        height: 45px;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .otp-input input{
+        border: 1px solid black;
+        color: black;
+        height: 40px !important;
+        width: 32px !important;
+        font-size: 15px;
+
+    }
+
+}
