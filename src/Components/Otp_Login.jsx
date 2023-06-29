@@ -6,15 +6,22 @@ import OTPInput from "otp-input-react"
 const Otp_Login = () => {
     const [mobileNumber, setMobileNumber] = useState("");
     const [otp, setOtp] = useState("");
-
-    const handleNumber = () => {
-
+    const [otpVerify, setOtpVerify] = useState(true);
+    const [addedNumber, setAddedNumber] = useState("");
+    const handleNumber = (e) => {
+        setMobileNumber(e)
     }
 
     const handleOtpChange = (e) => {
         setOtp(e)
         console.log(otp)
     };
+
+    const numberVerify = ()=>{
+        console.log("number")
+        setOtpVerify(false)
+        setAddedNumber(mobileNumber)
+    }
     return (
         <>
             <div
@@ -28,44 +35,58 @@ const Otp_Login = () => {
                 <h1 className="capitalize font-bold text-3xl max-sm:text-2xl">
                     Login
                 </h1>
-                <div className="mt-2 flex flex-col mb-3 ">
-                    <PhoneInput
-                        className={"font-mono  w-[350px] text-[18px] bg-white max-sm:w-[250px] max-sm:text-[17px]"}
-                        country={"in"}
-                        onChange={handleNumber}
-                        value={mobileNumber}
-                    />
-                    <div className=" group mt-2 mx-auto">
-                        <button
-                            className="w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2
+                {
+                    otpVerify ?(
+                        <div className="mt-2 flex flex-col mb-3 ">
+                            <PhoneInput
+                                className={"font-mono  w-[350px] text-[18px] bg-white max-sm:w-[250px] max-sm:text-[17px]"}
+                                country={"in"}
+                                onChange={handleNumber}
+                                value={mobileNumber}
+                            />
+                            <div className=" group mt-2 mx-auto">
+                                <button
+                                    className="w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2
                             "
+                                    onClick={numberVerify}
+                                >
+                                    Send OTP
+                                </button>
+                            </div>
+                        </div>
+                    ):(
+                        <div className="">
+                            <OTPInput
+                                className=" mt-4 otp-input"
+                                value={otp}
+                                onChange={handleOtpChange}
+                                OTPLength={6}
+                                otpType="number"
+                                disabled={false}
+                                inputClassName="otp-input"
+                            />
+                            <div className="mt-2 flex flex-col mb-3 items-center">
 
-                        >
-                            Send OTP
-                        </button>
-                    </div>
-                </div>
+                                <button
+                                    className=" w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2"
+                                >
+                                    Verify OTP
+                                </button>
+                            </div>
+                            <div>
+                                <button className="text-blue-500 underline-offset-1 "
+                                        onClick={()=>setOtpVerify(true)}
+                                >
+                                    change this number <section className="text-black inline">{addedNumber} </section>?
+                                </button>
+                            </div>
+                        </div>
+                    )
+                }
 
 
-                <div className="">
-                    <OTPInput
-                        className=" mt-4 otp-input"
-                        value={otp}
-                        onChange={handleOtpChange}
-                        OTPLength={6}
-                        otpType="number"
-                        disabled={false}
-                        inputClassName="otp-input"
-                    />
-                    <div className="mt-2 flex flex-col mb-3 items-center">
 
-                        <button
-                            className=" w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2"
-                        >
-                            Verify OTP
-                        </button>
-                    </div>
-                </div>
+
             </div>
         </>
     )
