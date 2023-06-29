@@ -1,14 +1,13 @@
 
 import './App.css'
+import Navbar from "./Components/Navbar.jsx";
 
 function App() {
 
 
   return (
     <>
-      <h1>
-          Hello
-      </h1>
+      <Navbar />
     </>
   )
 }
