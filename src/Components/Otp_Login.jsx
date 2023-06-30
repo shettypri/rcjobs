@@ -14,7 +14,6 @@ const Otp_Login = () => {
 
     const handleOtpChange = (e) => {
         setOtp(e)
-        console.log(otp)
     };
 
     const numberVerify = ()=>{
