@@ -12,7 +12,7 @@ function App() {
     return (
         <>
             <Navbar/>
-            <New_Request />
+            <Otp_Login />
 
 
         </>
