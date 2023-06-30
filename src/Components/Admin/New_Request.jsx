@@ -1,6 +1,10 @@
 const New_Request = () => {
     return (
-        <div>New_Request</div>
+        <>
+            <div className="">
+
+            </div>
+        </>
     )
 }
 
