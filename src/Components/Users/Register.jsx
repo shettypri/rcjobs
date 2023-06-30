@@ -14,6 +14,13 @@ const Register = () => {
                </div>
 
                <div className={" flex flex-col text-black p-4"}>
+                   <label className={"font-bold"}>Enter phone number</label>
+                   <input
+                       type=""
+                       className=" mt-1 border-2 border-black h-6  "/>
+               </div>
+
+               <div className={" flex flex-col text-black p-4"}>
                <label className={"font-bold"}>Enter payment proof </label>
                <div className="">
                    <input
@@ -29,7 +36,7 @@ const Register = () => {
                </div>
 
                <div className={"flex justify-center p-6 "}>
-                   <button className={"text-center font-semibold border-1  text-white border-black rounded-3xl w-[165px] bg-orange-600 hover:bg-orange-400  " }>
+                   <button className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[130px] h-[35px] bg-gray-600 hover:bg-orange-400  " }>
                        Register
                    </button>
                </div>
