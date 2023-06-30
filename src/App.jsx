@@ -40,7 +40,7 @@ function App() {
                     {/*user*/}
                     <Route exact path ='/user/profile' element={<Profile/>}/>
                     <Route exact path ='/user/register' element={<Register/>}/>
-                    <Route exact path ='/user/dashboard' element={<User_dashboard/>}/>
+                    <Route exact path ='/user/userdashboard' element={<User_dashboard/>}/>
                     <Route exact path ='/user/waiting' element={<Waiting/>}/>
 
 

@@ -1,10 +1,10 @@
 const Register = () => {
   return (
     <>
-        <div className={"flex flex-wrap justify-center mt-4"}>
+        <div className={"flex flex-wrap justify-center mt-4 "}>
 
-           <div className={"flex flex-col space-y-3 p-0  bg-white rounded-lg shadow-xl border-2 border-black"}>
-               <div className={" text-3xl font-semibold bg-[#FD7F2C] text-white w-full uppercase m-[0px] rounded  h-12"}>Registration Form</div>
+           <div className={"flex flex-col space-y-3 p-0  bg-white rounded-lg shadow-xl border-2 border-black w-[450px]"}>
+               <div className={" text-3xl font-semibold bg-[#FD7F2C] text-white  text-center w-full uppercase m-[0px] rounded  h-12"}>Registration Form</div>
 
                <div className={" flex flex-col text-black p-4"}>
                <label className={"font-bold"}>Enter Full Name</label>
