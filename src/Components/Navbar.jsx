@@ -3,7 +3,7 @@ import logo from "../assets/Logo/rc-jobs-test-logo.png"
 
 const Navbar = () => {
     return ( 
-       <nav className="w-full h-14 bg-slate-400 flex justify-between px-4 md:px-4 items-center">
+       <nav className="w-full h-14 bg-white flex justify-between px-4 md:px-4 items-center">
         <div>
            <img className="h-12 w-25 " src={logo} alt="" />
         </div>
