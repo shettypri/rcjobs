@@ -10,10 +10,11 @@ const Navbar = () => {
            <img className="h-12 w-25 cursor-pointer" src={logo} alt=""  />
         </div>
         <ul className={" hidden md:flex dspace-x-5 font-bold"}>
-            <li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> Login </Link> </li>
+
             <li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/dashboard"> dashboard</Link>  </li>
             <li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/profile"> profile </Link></li>
-            <li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>
+            <li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> Login/logout</Link> </li>
+            {/*<li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>*/}
         </ul>
            <div className={"md:hidden"}>
                <a className={"text-4xl"} href={"&"}>&#8801;
