@@ -4,8 +4,8 @@ import payment from "../../assets/Images/payment.png"
 const Dashboard = () => {
     return (
         <>
-            <div className="flex flex-col flex items-center justify-center max-sm:mb-9">
-                <h1 className="w-1/2 m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold uppercase max-sm:w-full max-sm:my-[20px] ">
+            <div className="flex flex-col flex items-center justify-center max-sm:mb-9 border-2 border-orange-500 sm:w-1/2 m-auto pb-8">
+                <h1 className="w-1/2 m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold uppercase w-full max-sm:my-[20px] ">
                     Admin dashboard
                 </h1>
 

@@ -11,7 +11,7 @@ function App() {
     return (
         <>
             <Navbar/>
-            <Add_ads></Add_ads>
+            <Dashboard/>
 
 
         </>
