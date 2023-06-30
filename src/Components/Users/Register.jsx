@@ -5,6 +5,8 @@ const Register = () => {
 
            <div className={"flex flex-col space-y-3 p-6 bg-white rounded-lg shadow-xl"}>
                <div className={"  text-2xl font-semibold"}>Registration Form</div>
+
+
                <div className={"text-black "}>Enter Full Name</div>
                <input
                    type="text"
