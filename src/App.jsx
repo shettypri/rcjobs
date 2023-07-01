@@ -33,7 +33,7 @@ function App() {
                     <Route exact path='/admin/adds' element={<Add_ads/>}></Route>
                     <Route exact path='/admin/dashboard' element={<Dashboard/>}></Route>
                     <Route exact path='/admin/newrequest' element={<New_Request/>}></Route>
-                    <Route exact path='/admin/newuser' element={<New_user/>}></Route>
+                    {/*<Route exact path='/admin/newuser' element={<New_user/>}></Route>*/}
                     <Route exact path='/admin/paymentrequest' element={<Payment_request/>}></Route>
 
 

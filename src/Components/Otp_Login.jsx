@@ -2,22 +2,69 @@ import LoginAvatar from "../assets/Images/user.png"
 import {useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import OTPInput from "otp-input-react"
+import {RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
+import {auth} from "../config/firebase.config.js";
+import {useDispatch, useSelector} from "react-redux";
+import {isLoginReducers} from "../App/Slice/userSlice.js";
+import {useNavigate} from "react-router-dom";
 
 const Otp_Login = () => {
+
+    const dispatch = useDispatch()
     const [mobileNumber, setMobileNumber] = useState("");
     const [otp, setOtp] = useState("");
     const [otpVerify, setOtpVerify] = useState(true);
     const [addedNumber, setAddedNumber] = useState("");
+    const [captchaResult, setCaptchaResult] = useState({})
     const handleNumber = (e) => {
         setMobileNumber(e)
     }
 
+    const { error, isLoggedIn, newUser} = useSelector(
+        state => state.userReducer
+    )
     const handleOtpChange = (e) => {
         setOtp(e)
     };
+    const verifyOtp = async ()=>{
+        try {
+            const finalResult = await captchaResult.confirm(otp)
+            sessionStorage.setItem("key", finalResult.user.uid)
+            console.log("result iis", finalResult.user.uid)
+            if (finalResult) {
 
-    const numberVerify = ()=>{
-        console.log("number")
+                dispatch(isLoginReducers(finalResult.user.uid))
+            }
+            console.log(error, isLoggedIn,  newUser)
+        } catch (error) {
+            console.log("Entered otp => \n\n\n\n", error);
+        }
+    }
+    const navigate = useNavigate()
+    if(isLoggedIn){
+
+        if(newUser){
+            navigate("/user/register")
+        }else{
+            navigate("/user/dashboard")
+        }
+    }
+
+    const getOtpByNumber = async ()=>{
+        // console.log("number")
+        const numberMobile = "+" + mobileNumber
+        console.log("the number is",numberMobile)
+        sessionStorage.setItem("mobileNumber",numberMobile)
+        try {
+            const captchaResult = await new RecaptchaVerifier('recaptcha-container', {}, auth);
+            console.log("capthcha result")
+            const captchVeryfied = await signInWithPhoneNumber(auth, numberMobile, captchaResult)
+            if (captchVeryfied) {
+                setCaptchaResult(captchVeryfied)
+            }
+        } catch (error) {
+            console.log("Login otp Error => ", error);
+        }
         setOtpVerify(false)
         setAddedNumber(mobileNumber)
     }
@@ -47,7 +94,7 @@ const Otp_Login = () => {
                                 <button
                                     className="w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2
                             "
-                                    onClick={numberVerify}
+                                    onClick={getOtpByNumber}
                                 >
                                     Send OTP
                                 </button>
@@ -68,6 +115,7 @@ const Otp_Login = () => {
 
                                 <button
                                     className=" w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2"
+                                onClick={verifyOtp}
                                 >
                                     Verify OTP
                                 </button>
@@ -76,12 +124,18 @@ const Otp_Login = () => {
                                 <button className="text-blue-500 underline-offset-1 "
                                         onClick={()=>setOtpVerify(true)}
                                 >
-                                    change this number <section className="text-black inline">{addedNumber} </section>?
+                                    change this number <section className="text-black inline">+{addedNumber} </section>?
                                 </button>
                             </div>
                         </div>
                     )
                 }
+                {
+                    otpVerify &&(
+                        <div id="recaptcha-container"/>
+                    )
+                }
+
 
 
 
