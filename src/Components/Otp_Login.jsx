@@ -32,7 +32,6 @@ const Otp_Login = () => {
             sessionStorage.setItem("key", finalResult.user.uid)
             console.log("result iis", finalResult.user.uid)
             if (finalResult) {
-
                 dispatch(isLoginReducers(finalResult.user.uid))
             }
             console.log(error, isLoggedIn,  newUser)
