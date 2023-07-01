@@ -23,9 +23,7 @@ const Register = () => {
 
     });
     const Navigate = useNavigate()
-    // useEffect(() => {
-    //     sessionStorage && setUserDetails({...userDetails,["id"]:}
-    // }, []);
+
     const handleRegister = async ()=>{
         console.log(uploadImage.name)
         const imageFile = uploadImage.name
