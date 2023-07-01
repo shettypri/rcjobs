@@ -26,7 +26,7 @@ function App() {
                 <Routes>
 
                     {/*otp_login*/}
-                    <Route exact path='/otplogin' element={<Otp_Login/>}/>
+                    <Route exact path='/' element={<Otp_Login/>}/>
 
 
                     {/*admin*/}

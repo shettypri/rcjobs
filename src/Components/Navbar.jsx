@@ -10,7 +10,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         Dispatch(isLogOutReducers())
         sessionStorage && sessionStorage.clear()
-        navigate("/otplogin")
+        navigate("/")
     }
     const {isLoggedIn} = useSelector(state => state.userReducer)
     return (

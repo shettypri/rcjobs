@@ -41,8 +41,6 @@ const New_Request = () => {
                                     return (<>
                                             <New_user userData={userList} indexValue={index} key={index}/>
                                         </>
-
-
                                     )
                                 })
                             )

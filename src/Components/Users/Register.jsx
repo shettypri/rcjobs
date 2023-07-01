@@ -13,6 +13,7 @@ const Register = () => {
         phone: sessionStorage.getItem("mobileNumber"),
         limit: 25,
         referred: 0,
+        wallet:0,
         isWithdrawing: false,
         isAdmin: false,
         isUserAuthorized:false,

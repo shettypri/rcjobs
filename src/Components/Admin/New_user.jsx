@@ -41,6 +41,7 @@ const New_user = (props) => {
                                 <button className="bg-green-600 text-white font-bold uppercase p-3 rounded-full px-5"
                                         onClick={() => {
                                             console.log(props.userData.id)
+                                            setShowImage(false)
                                             dispatch(acceptRequestReducers(props.userData.id))
                                             dispatch(newUserReducers())
                                         }

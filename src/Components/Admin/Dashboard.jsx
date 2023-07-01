@@ -2,6 +2,7 @@ import addUser from "../../assets/Images/add_user.png"
 import ads from "../../assets/Images/ads.png"
 import payment from "../../assets/Images/payment.png"
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 const Dashboard = () => {
     const navigate = useNavigate()
     return (
