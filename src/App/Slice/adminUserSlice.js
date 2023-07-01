@@ -21,6 +21,22 @@ export const newUserReducers = createAsyncThunk(
     }
 )
 
+export const acceptRequestReducers = createAsyncThunk(
+    "acceptRequestReducers",
+    async(id)=>{
+        const doctorCollection = doc(db, "users", id)
+
+        try {
+            await updateDoc(doctorCollection, {
+                isUserAuthorized: true
+            })
+            return `Accepted Sucessfully of ${id}`
+        } catch (e) {
+            return e
+        }
+    }
+)
+
 const adminUserSlice = createSlice({
     name: "adminUserSlice",
     initialState: {
@@ -29,8 +45,12 @@ const adminUserSlice = createSlice({
             Error: false,
             Success: false,
             data: ""
-
         },
+        acceptRequest:{
+            loading: false,
+            Error: false,
+            Success: false,
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -48,6 +68,17 @@ const adminUserSlice = createSlice({
             .addCase(newUserReducers.rejected, (state, action) => {
                 state.newUsers.loading = false;
                 state.newUsers.Error = action.payload;
+            })
+            .addCase(acceptRequestReducers.pending,(state)=>{
+                state.acceptRequest.loading =true
+            })
+            .addCase(acceptRequestReducers.fulfilled,(state,action)=>{
+                state.acceptRequest.loading = false
+                state.acceptRequest.Success = true;
+            })
+            .addCase(acceptRequestReducers.rejected,(state,action)=>{
+                state.acceptRequest.loading = false;
+                state.acceptRequest.Error = action.payload;
             })
 
     }
