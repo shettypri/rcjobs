@@ -1,7 +1,9 @@
 import addUser from "../../assets/Images/add_user.png"
 import ads from "../../assets/Images/ads.png"
 import payment from "../../assets/Images/payment.png"
+import {useNavigate} from "react-router-dom";
 const Dashboard = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className="flex flex-col flex items-center justify-center max-sm:mb-9 border-2 border-orange-500 sm:w-1/2 m-auto pb-8">
@@ -18,6 +20,7 @@ const Dashboard = () => {
                     <img src={addUser} height={80} width={80}
                          className="border-[3px] border-black rounded-full m-[10px] h-[130px] w-[130px] p-4 bg-gray-200 cursor-pointer group-hover:bg-white group-hover:border-blue-800 max-sm:h-[90px] max-sm:w-[90px] max-sm:m-auto"
                          alt={"error"}
+                         onClick={()=>navigate("/admin/newrequest")}
                     />
                     <p className="m-auto font-bold text-[20px] group-hover:text-blue-700
                     max-sm:text-[17px]
@@ -35,6 +38,7 @@ const Dashboard = () => {
                         <img src={payment} height={80} width={80}
                              className="border-[3px] border-black rounded-full m-[10px] h-[130px] w-[130px] p-4 bg-gray-200 cursor-pointer group-hover:bg-white group-hover:border-blue-800 max-sm:h-[90px] max-sm:w-[90px] max-sm:m-auto"
                              alt={"error"}
+                             onClick={()=>navigate("/admin/paymentrequest")}
                         />
                         <p className="m-auto font-bold text-[20px] group-hover:text-blue-700
                         max-sm:text-[17px]  max-sm:w-[180px]
@@ -52,6 +56,7 @@ const Dashboard = () => {
                              className="border-[3px] border-black rounded-full m-[10px] h-[130px] w-[130px] p-4 bg-gray-200 cursor-pointer group-hover:bg-white group-hover:border-blue-800
                              max-sm:h-[90px] max-sm:w-[90px] max-sm:m-auto"
                              alt={"error"}
+                             onClick={()=>navigate("/admin/adds")}
                         />
                         <p className="m-auto font-bold text-[20px] group-hover:text-blue-700
                         max-sm:text-[17px]
