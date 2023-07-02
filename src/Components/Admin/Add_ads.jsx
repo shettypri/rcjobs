@@ -27,6 +27,9 @@ const Add_ads = () => {
             <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100
             w-1/3
             max-sm:w-64 max-sm:p-3">
+                <div className="text-right w-full text-red-700 block">
+
+                </div>
                 <div className="m-auto flex flex-col">
                     <label className="font-bold my-5 uppercase">
                         Upload the add below
