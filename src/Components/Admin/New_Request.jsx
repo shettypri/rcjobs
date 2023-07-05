@@ -14,25 +14,36 @@ const New_Request = () => {
     // console.log(newUsers.data)
     return (
         <>
-            <div className="flex flex-col m-auto items-center">
+            <div className="mt-5 flex flex-col w-1/2
+            border-2 border-black shadow-gray-600 shadow-xl
+            max-sm:w-full mb-3 justify-center mx-auto
+            ">
                 {/*Heading*/}
-                <div className="bg-gray-500 flex flex-row w-1/2 items-center m-auto mt-8 rounded p-3 ">
-                    <p className="bg-gray-700 inline text-5xl font-bold text-white w-[80px] rounded-2xl px-4 pb-2 cursor-pointer rotate-180 hover:bg-gray-950"
+                <div className="flex justify-between py-4 border-2 border-black rounded
+                bg-gray-300 shadow-xl shadow-blue-100
+
+                ">
+                    <p className="rotate-180 text-4xl font-bold text-black ml-4
+                    cursor-pointer border-2 border-black px-10 py-2 rounded-full
+                    max-sm:text-2xl max-sm:px-4 max-sm:py-0 max-sm:h-10
+                    "
                        onClick={() => navigate("/admin/dashboard")}
                     >
                         &#10132;
                     </p>
-                    <p className="inline text-white font-bold uppercase m-auto text-xl">
+                    <p className="text-2xl font-bold text-black mr-48
+                    max-sm:mr-10
+                    ">
                         New Request
                     </p>
                 </div>
 
                 <div>
-                    <table className="w-[450px] border border-gray-700 mt-8">
-                        <tr className="m-auto w-full items-center border border-gray-700">
-                            <th className="m-auto items-center border border-gray-700 bg-amber-200">sl no</th>
-                            <th className="m-auto items-center border border-gray-700 bg-amber-200">Name</th>
-                            <th className="m-auto items-center border border-gray-700 bg-amber-200">Response</th>
+                    <table className="w-full mt-4 border">
+                        <tr className="border-2 border-black">
+                            <th className=" h-10 max-sm:w-[50px]">sl no</th>
+                            <th className="border-2 border-black w-1/3 h-10">Name</th>
+                            <th className="border-2 border-black w-1/3 h-10">Response</th>
                         </tr>
                         {
                             newUsers.data.length !== 0 && (

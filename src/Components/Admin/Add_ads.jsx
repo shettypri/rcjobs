@@ -1,67 +1,208 @@
 import {useState} from "react";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
-import { storage,db} from "../../config/firebase.config.js";
-import {addDoc,collection} from "firebase/firestore";
+import {storage, db} from "../../config/firebase.config.js";
+import {addDoc, collection} from "firebase/firestore";
+import PhoneInput from "react-phone-input-2";
 
 const Add_ads = () => {
     const [uploadAds, setUploadAds] = useState("");
-    const handleAds = async ()=>{
-        console.log(uploadAds.name)
-        const imageFile = uploadAds.name
-        const imageFolder = "ADS_FOLDER"
-        const textV4 = v4()
-        //     image uploade code to firebase:
-        const fileFolderRef = ref(storage,`${imageFolder}/${imageFile + textV4}`)
-        const collectionList=collection(db,'ADS_DATA')
-        try {
-            await uploadBytes(fileFolderRef,uploadAds)
-            const imageUrl = await getDownloadURL(ref(storage,`${imageFolder}/${imageFile + textV4}`))
-            const dataStored=await addDoc(collectionList, {"imageURL":imageUrl});
-        } catch (error) {
-            console.error(error);
-        }
+    const [loading, setLoading] = useState(false);
+    const [success, setSucess] = useState(false);
+    const [clientDetails, setClientDetails] = useState({
+        name: "",
+        isAdsShow: true,
+        Phone: ""
+    });
+    const [showUploadBtn, setShowUploadBtn] = useState(false);
+    const handleChange = (event) => {
+            if (event.target.validity.valid) {
+                setClientDetails({...clientDetails, [event.target.name]: event.target.value.replace(/[^a-z]/gi, '')})
+            }
     }
-    return (
-        <>
-            <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100
+
+const handleAds = async () => {
+    setLoading(loading)
+    clientDetails["adsName"]= uploadAds.name
+    const imageFile = uploadAds.name
+    const imageFolder = "ADS_FOLDER"
+    const textV4 = v4()
+
+    //     image uploade code to firebase:
+    const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
+    const collectionList = collection(db, 'ADS_DATA')
+    try {
+        await uploadBytes(fileFolderRef, uploadAds)
+        const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
+        clientDetails['imageURL']=imageUrl
+        await addDoc(collectionList, clientDetails);
+        console.log(clientDetails)
+        setLoading(false)
+        setSucess(true)
+    } catch (error) {
+        console.error(error);
+    }
+}
+return (
+    <>
+        {
+            showUploadBtn ?
+                (
+                    <div className="">
+
+
+
+                        <div className="flex justify-end  mt-4 mr-44
+            max-sm:mr-4
+            ">
+                            <button className="bg-gradient-to-r from-orange-600 px-8 py-3  border-2 border-black font-bold uppercase rounded-full
+                shadow-xl shadow-gray-500 hover:bg-gradient-to-r hover:from-orange-800
+                "
+                                    onClick={
+                                        ()=>
+                                            setShowUploadBtn(false)
+                                    }
+                            >
+
+                                Show list
+                            </button>
+                        </div>
+                        <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100
             w-1/3
             max-sm:w-64 max-sm:p-3">
-                <div className="m-auto flex flex-col">
-                    <label className="font-bold my-5 uppercase">
-                        Upload the add below
-                    </label>
 
-                    <input type={"file"} accept={"image/*"}
-                           className="border border-blue-100
-                    w-full
+                            <div className="m-auto flex flex-col">
+                                <label className="font-bold my-5 uppercase">
+                                    Upload the add below
+                                </label>
+                            </div>
+
+                            <div>
+
+                                <div className="flex flex-col max-sm:block">
+                                    <label className="font-bold mx-2 uppercase mb-4">
+                                        Client Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={clientDetails.name}
+                                        onChange={handleChange}
+                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-2
+                        max-sm:w-full max-sm:m-0
+                        "
+                                    />
+                                </div>
+
+                                <div>
+
+                                    <PhoneInput
+                                        className="flex flex-row w-full  mb-4"
+                                        country={"in"}
+                                        value={clientDetails.Phone}
+                                        name={"Phone"}
+                                        onChange={(event) => {
+                                            const regex = /^[0-9\b]+$/;
+                                            if (regex.test(event)) {
+                                                setClientDetails({...clientDetails, ["Phone"]: event})
+                                            }
+                                            console.log(clientDetails.Phone)
+                                        }
+                                        }
+
+                                    />
+                                </div>
+
+                            </div>
+
+                            <div className="m-auto flex flex-col">
+
+
+                                <input type={"file"} accept={"image/*"}
+                                       className="border border-blue-100
+                    w-full uppercase italic font-bold
                     "
-                           onChange={(event) => {
-                               setUploadAds(event.target.files[0])
-                           }
-                           }
-                    />
-                </div>
+                                       onChange={(event) => {
+                                           setUploadAds(event.target.files[0])
+                                       }
+                                       }
+                                />
+                            </div>
 
-                <div className="flex flex-col">
-                    <label className="text-green-500 font-bold uppercase mt-6">
-                        Adds is Updated
-                    </label>
 
-                    <button className="border-2 border-indigo-900 rounded-full bg-orange-400 text-white font-bold uppercase my-8
+                            <div className="flex flex-col">
+                                {
+                                    loading && success(
+                                        <h1>
+                                            loading
+                                        </h1>
+                                    )
+                                }
+                                {
+                                    success && (
+                                        <label className="text-green-500 font-bold uppercase mt-6">
+                                            Adds is Updated
+                                        </label>
+                                    )
+                                }
+
+
+                                <button className="border-2 border-indigo-900 rounded-full bg-orange-400 text-white font-bold uppercase my-8
                     w-[250px] h-[50px] hover:bg-orange-600 transition
                     max-sm:h-9 max-sm:w-[150px]
                     "
-                    onClick={handleAds}
-                    >
-                        upload ADDS
-                    </button>
-                </div>
+                                        onClick={handleAds}
+                                >
+                                    upload ADDS
+                                </button>
+                            </div>
 
-            </div>
+                        </div>
 
-        </>
-    )
+                    </div>
+                ):(
+                    <div>
+                        <div>
+                            <div className="flex justify-end  mt-4 mr-44
+            max-sm:mr-4
+            ">
+                                <button className="bg-gradient-to-r from-orange-600 px-8 py-3  border-2 border-black font-bold uppercase rounded-full
+                shadow-xl shadow-gray-500 hover:bg-gradient-to-r hover:from-orange-800
+                "
+                                        onClick={
+                                            ()=>
+                                                setShowUploadBtn(true)
+                                        }
+                                >
+
+                                    Upload form
+                                </button>
+                            </div>
+
+                            <div className="max-sm:mt-4">
+                                <table className="flex justify-center items-center
+
+                                ">
+                                    <tr>
+                                        <th className="px-2 uppercase border border-black ">sl no</th>
+                                        <th className="px-2 uppercase border border-black ">Client Name</th>
+                                        <th className="px-2 uppercase border border-black ">ads name</th>
+                                        <th className="px-2 uppercase border border-black ">Contact</th>
+                                        <th className="px-2 uppercase border border-black ">Delete ads</th>
+                                    </tr>
+
+                                    {
+
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                )
+        }
+
+    </>
+)
 }
 
 export default Add_ads

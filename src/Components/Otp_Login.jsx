@@ -20,13 +20,13 @@ const Otp_Login = () => {
         setMobileNumber(e)
     }
 
-    const { error, isLoggedIn, newUser} = useSelector(
+    const {error, isLoggedIn, newUser, data} = useSelector(
         state => state.userReducer
     )
     const handleOtpChange = (e) => {
         setOtp(e)
     };
-    const verifyOtp = async ()=>{
+    const verifyOtp = async () => {
         try {
             const finalResult = await captchaResult.confirm(otp)
             sessionStorage.setItem("key", finalResult.user.uid)
@@ -34,26 +34,29 @@ const Otp_Login = () => {
             if (finalResult) {
                 dispatch(isLoginReducers(finalResult.user.uid))
             }
-            console.log(error, isLoggedIn,  newUser)
+            console.log(error, isLoggedIn, newUser)
         } catch (error) {
             console.log("Entered otp => \n\n\n\n", error);
         }
     }
     const navigate = useNavigate()
-    if(isLoggedIn){
-
-        if(newUser){
+    if (isLoggedIn) {
+        if (newUser) {
             navigate("/user/register")
-        }else{
-            navigate("/user/dashboard")
+        } else {
+            if (data.isAdmin) {
+                navigate("/admin/dashboard")
+            } else {
+                navigate("/user/userdashboard")
+            }
         }
     }
 
-    const getOtpByNumber = async ()=>{
+    const getOtpByNumber = async () => {
         // console.log("number")
         const numberMobile = "+" + mobileNumber
-        console.log("the number is",numberMobile)
-        sessionStorage.setItem("mobileNumber",numberMobile)
+        console.log("the number is", numberMobile)
+        sessionStorage.setItem("mobileNumber", numberMobile)
         try {
             const captchaResult = await new RecaptchaVerifier('recaptcha-container', {}, auth);
             console.log("capthcha result")
@@ -81,7 +84,7 @@ const Otp_Login = () => {
                     Login
                 </h1>
                 {
-                    otpVerify ?(
+                    otpVerify ? (
                         <div className="mt-2 flex flex-col mb-3 ">
                             <PhoneInput
                                 className={"font-mono  w-[350px] text-[18px] bg-white max-sm:w-[250px] max-sm:text-[17px]"}
@@ -99,7 +102,7 @@ const Otp_Login = () => {
                                 </button>
                             </div>
                         </div>
-                    ):(
+                    ) : (
                         <div className="">
                             <OTPInput
                                 className=" mt-4 otp-input"
@@ -114,14 +117,14 @@ const Otp_Login = () => {
 
                                 <button
                                     className=" w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2"
-                                onClick={verifyOtp}
+                                    onClick={verifyOtp}
                                 >
                                     Verify OTP
                                 </button>
                             </div>
                             <div>
                                 <button className="text-blue-500 underline-offset-1 "
-                                        onClick={()=>setOtpVerify(true)}
+                                        onClick={() => setOtpVerify(true)}
                                 >
                                     change this number <section className="text-black inline">+{addedNumber} </section>?
                                 </button>
@@ -130,13 +133,10 @@ const Otp_Login = () => {
                     )
                 }
                 {
-                    otpVerify &&(
+                    otpVerify && (
                         <div id="recaptcha-container"/>
                     )
                 }
-
-
-
 
 
             </div>

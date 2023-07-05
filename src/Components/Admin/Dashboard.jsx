@@ -12,7 +12,9 @@ const Dashboard = () => {
                     Admin dashboard
                 </h1>
 
-                <div className="flex flex-row max-sm:flex-col">
+                <div className="flex flex-row
+                max-sm:flex-col
+                ">
                 <div
                     className="flex flex-col border-[2px] border-black p-7 mt-[10px] group mx-2 hover:bg-amber-200 rounded transition
                     max-sm:w-[170px] max-sm:h-[170px]
@@ -59,10 +61,10 @@ const Dashboard = () => {
                              alt={"error"}
                              onClick={()=>navigate("/admin/adds")}
                         />
-                        <p className="m-auto font-bold text-[20px] group-hover:text-blue-700
+                        <p className="m-auto font-bold text-[20px] group-hover:text-blue-700 uppercase
                         max-sm:text-[17px]
                     ">
-                            Add ads
+                            ads
                         </p>
                     </div>
                 </div>
