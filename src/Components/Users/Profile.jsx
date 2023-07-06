@@ -1,6 +1,6 @@
-import wallet from "../../../src/assets/Images/wallet.png"
+// import wallet from "../../../src/assets/Images/wallet.png"
  import profile from "../../../src/assets/Images/profile.png"
- import reference from "../../../src/assets/Images/reference.png"
+ // import reference from "../../../src/assets/Images/reference.png"
 import {useState} from "react";
 const Profile = () => {
     const [withdraw, setWithdraw] = useState(true);
@@ -47,37 +47,6 @@ const Profile = () => {
                    {/*{right}*/}
 
                    <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start "}>
-
-                       {/*<div className={" space-x-1 flex-row"}>*/}
-                       {/*    <label>Name:</label>*/}
-                       {/*    <input*/}
-                       {/*        type={"text" }*/}
-                       {/*        className={"border"}*/}
-                       {/*    />*/}
-                       {/*</div>*/}
-                       {/*<div className={" space-x-1 "}>*/}
-                       {/*    <label>Phone:</label>*/}
-                       {/*    <input*/}
-                       {/*        type={"text" }*/}
-                       {/*        className={"border"}*/}
-                       {/*    />*/}
-                       {/*</div>*/}
-
-                       {/*<div className={" space-x-1 "}>*/}
-                       {/*    <label>Address:</label>*/}
-                       {/*    <input*/}
-                       {/*        type={"text" }*/}
-                       {/*        className={"border"}*/}
-                       {/*    />*/}
-                       {/*</div>*/}
-                       {/*<div className={" space-x-1 "}>*/}
-                       {/*    <label>enter withdraw  amount:</label>*/}
-                       {/*    <input*/}
-                       {/*        type={"text" }*/}
-                       {/*        className={"border"}*/}
-                       {/*        onChange={handleChange}*/}
-                       {/*    />*/}
-                       {/*</div>*/}
                        <table>
                            <tbody>
                            <tr>
@@ -118,7 +87,7 @@ const Profile = () => {
 
                        <div className={"flex flex-row space-x-3 p-4"}>
                            <button className={"disabled:bg-white enabled:bg-orange-600  enabled:text-white md:h-9  w-[150px] rounded-2xl md:w-[155px] h-9 "} disabled={withdraw}> Withdraw</button>
-                           <button className={"bg-white hover:bg-red-700 md:h-9 rounded-2xl md:w-[155px] w-[100px]"} >cancel</button>
+                           <button className={"bg-white hover:bg-red-700 md:h-9 rounded-2xl md:w-[155px] w-[100px]"} >Cancel</button>
 
                        </div>
                    </div>
