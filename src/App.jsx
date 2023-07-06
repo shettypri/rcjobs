@@ -17,6 +17,7 @@ import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {isLoginReducers} from "./App/Slice/userSlice.js";
+import Buy_List from "./Components/Admin/Buy_List.jsx";
 
 function App() {
     const locationPath = window.location.pathname
@@ -48,7 +49,9 @@ function App() {
                     <Route exact path='/admin/dashboard' element={<Dashboard/>}></Route>
                     <Route exact path='/admin/newrequest' element={<New_Request/>}></Route>
                     {/*<Route exact path='/admin/newuser' element={<New_user/>}></Route>*/}
-                    <Route exact path='/admin/paymentrequest' element={<Payment_request/>}></Route>
+                    <Route exact path='/admin/paymentrequest' element={<Payment_request/>}>
+                    </Route>
+                    <Route exact path='/admin/order' element={<Buy_List />} />
 
 
                     {/*user*/}

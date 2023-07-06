@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {adsRewardREducers, fetchAdsReducers} from "../../App/Slice/userDashBoardSlice.js";
 import ReactSwipe from "react-swipe"
+import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 
 const User_dashboard = () => {
 
@@ -12,6 +13,7 @@ const User_dashboard = () => {
     }, []);
     const {fetchAds, Ads_Reward} = useSelector(state => state.userDashBoardReducers)
     const {isLoggedIn, data} = useSelector(state => state.userReducer)
+
     const handleNext = () => {
         isLoggedIn
         && (dispatch(adsRewardREducers(
@@ -26,7 +28,7 @@ const User_dashboard = () => {
     }
     return (
         <>
-            <div className="flex flex-col border border-orange-500 m-auto w-1/2
+            <div className=" border border-orange-500 m-auto w-1/2
           max-sm:w-full
             ">
                 <h1 className="w-full m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold
@@ -40,13 +42,12 @@ const User_dashboard = () => {
                     ">
                         {
                             fetchAds.loading && <h1> loading</h1>
-
                         }
                         {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-full h-[400px] bg-red-100 pl-10 pt-4
+                                    className="carousel w-[410px] h-[500px] bg-red-100 pl-10 pt-4
 
                                     "
                                     swipeOptions={{continuous: false}}
@@ -56,17 +57,37 @@ const User_dashboard = () => {
                                     {
                                         fetchAds.data.map((ads, index) => {
                                             return (
-                                                <div className="w-1/2  m-auto
+                                                    <div className="w-full  m-auto
                                                     max-sm:bg-red-900 max-sm:w-full
                                                 "
-                                                     key={index}>
-                                                    <img src={ads.imageURL} alt="Error"
-                                                         height={15} width={10}
-                                                         className="w-[300px] h-[370px] border-4 border-orange-500 object-cover
+                                                         key={index}>
+                                                        <img src={ads.imageURL} alt="Error"
+                                                             height={15} width={10}
+                                                             className="w-[350px] h-[390px] border-4 border-orange-500 object-cover
                                                         max-sm:
                                                          "
-                                                    />
-                                                </div>
+                                                        />
+                                                        <button
+                                                            className="border-2 border-black
+                                                            mx-10  px-24 mt-4 py-3 rounded-full
+                                                             font-extrabold uppercase bg-red-600 text-white
+                                                            "
+                                                        onClick={
+                                                            ()=>{
+                                                                dispatch(addProductReducers({
+                                                                    userName: data.name,
+                                                                    adsName: ads.adsName,
+                                                                    clientName: ads.name,
+                                                                    Phone: ads.Phone,
+                                                                    isOrderPlaced:false
+                                                                }))
+                                                            }
+                                                        }>
+                                                            buy
+                                                        </button>
+                                                    </div>
+
+
                                             )
                                         })}
                                 </ReactSwipe>
