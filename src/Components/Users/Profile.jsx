@@ -1,5 +1,6 @@
 import wallet from "../../../src/assets/Images/wallet.png"
  import profile from "../../../src/assets/Images/profile.png"
+ import reference from "../../../src/assets/Images/reference.png"
 import {useState} from "react";
 const Profile = () => {
     const [withdraw, setWithdraw] = useState(true);
@@ -18,55 +19,113 @@ const Profile = () => {
 
     return (
         <>
+            <div className={"flex md:flex-col  justify-center text-center p-4 border-gray-800 border-1 rounded-2xl shadow-2xl  0 mt-14 w-[360px] ml-[30px] md:h-15 md:w-[550px] md:ml-[400px] space-y-4 space-x-7"}>
+               <div className={"flex  md:flex-row  flex-col p-2 space-x-6"}>
+                   {/*{left}*/}
+
+                   <div className={" flex md:flex-col  flex-row  justify-around space-x-3 "}>
+                       <div className={"flex flex-col  "}>
+                           <img src={profile} className={"w-[50px]" } alt={""}/>
+                           <label className={""}>Name</label>
+                       </div>
+
+                       <div className={"flex md:flex-col flex-row  space-x-2 md:space-y-3 mt-6 ]"}>
+                           <div>
+                               <label>Wallet</label>
+
+                           </div>
+
+                           <div><label
+                           className={"space-y-3"}>reference</label></div>
+
+                       </div>
 
 
-
-                <div className={"  flex flex-col justify-center text-center p-4  rounded-2xl  shadow-xl border-2 border-gray-700 mt-10 w-[200px] ml-[100px] md:h-15 md:w-[250px] md:ml-[520px] space-y-11"}>
-
-                        <div className={" space-y-3"}>
-
-                            <div className={"flex flex-row justify-evenly space-x-3 "}>
-                                <div className={"border-white border w-9/12 text-center "}>
-                                    <img src={profile} height={"90px"} width={"70px"}
-                                         className={""}
-                                    />
-                                    Name
-                                </div>
-                                <div className={"border-white border w-9/12 "}>
-                                    <img src={wallet} height={"90px"} width={"70px"}
-                                         className={"flex flex-col align-middle"}
-                                    />
-
-                                    balance amount
-                                </div>
-                            </div>
-                            <div className={"flex flex-col justify-center"}>
-                                <label>enter the amount</label>
-                                <input type={"text"}
-                                       className={"md:w-[220px] rounded-2xl border border-black"}
-                                       onChange={handleChange}/>
-
-                            </div>
-
-                            {/*{}*/}
-
-                        </div>
+                   </div>
 
 
-                    <div className={"flex flex-row p-4 justify-evenly   space-x-3"}>
-                            <button className={"disabled:bg-yellow-100 enabled:bg-orange-600 md:h-9  w-[150px] rounded-2xl md:w-[155px] h-9 "} disabled={withdraw}> Withdraw</button>
-                            <button className={"bg-yellow-100 hover:bg-red-700 md:h-9 rounded-2xl md:w-[155px] w-[100px]"}>cancel</button>
+                   {/*{right}*/}
 
-                        </div>
+                   <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start "}>
 
+                       {/*<div className={" space-x-1 flex-row"}>*/}
+                       {/*    <label>Name:</label>*/}
+                       {/*    <input*/}
+                       {/*        type={"text" }*/}
+                       {/*        className={"border"}*/}
+                       {/*    />*/}
+                       {/*</div>*/}
+                       {/*<div className={" space-x-1 "}>*/}
+                       {/*    <label>Phone:</label>*/}
+                       {/*    <input*/}
+                       {/*        type={"text" }*/}
+                       {/*        className={"border"}*/}
+                       {/*    />*/}
+                       {/*</div>*/}
 
+                       {/*<div className={" space-x-1 "}>*/}
+                       {/*    <label>Address:</label>*/}
+                       {/*    <input*/}
+                       {/*        type={"text" }*/}
+                       {/*        className={"border"}*/}
+                       {/*    />*/}
+                       {/*</div>*/}
+                       {/*<div className={" space-x-1 "}>*/}
+                       {/*    <label>enter withdraw  amount:</label>*/}
+                       {/*    <input*/}
+                       {/*        type={"text" }*/}
+                       {/*        className={"border"}*/}
+                       {/*        onChange={handleChange}*/}
+                       {/*    />*/}
+                       {/*</div>*/}
+                       <table>
+                           <tbody>
+                           <tr>
+                               <th>Name</th>
+                               <th>:</th>
+                               <th> <input
+                                   type={"text" }
+                                   className={"border"}
+                               /></th>
+                           </tr>
+                           <tr>
+                               <th>phone</th>
+                               <th>:</th>
+                               <th> <input
+                                   type={"text" }
+                                   className={"border"}
+                               /></th>
+                           </tr>
+                           <tr>
+                               <th>Address</th>
+                               <th>:</th>
+                               <th> <input
+                                   type={"text" }
+                                   className={"border"}
+                               /></th>
+                           </tr>
+                           <tr>
+                               <th>amount</th>
+                               <th>:</th>
+                               <th> <input
+                                   type={"text" }
+                                   className={"border"}
+                                   onChange={handleChange}
+                               /></th>
+                           </tr>
+                           </tbody>
+                       </table>
 
+                       <div className={"flex flex-row space-x-3 p-4"}>
+                           <button className={"disabled:bg-white enabled:bg-orange-600  enabled:text-white md:h-9  w-[150px] rounded-2xl md:w-[155px] h-9 "} disabled={withdraw}> Withdraw</button>
+                           <button className={"bg-white hover:bg-red-700 md:h-9 rounded-2xl md:w-[155px] w-[100px]"} >cancel</button>
 
+                       </div>
+                   </div>
 
+               </div>
 
-
-                </div>
-
+            </div>
 
         </>
     )
