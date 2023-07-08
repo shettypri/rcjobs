@@ -1,7 +1,7 @@
 import logo from "../assets/Logo/rc-jobs-test-logo.png"
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {isLogOutReducers} from "../App/Slice/userSlice.js";
+import {isLoginReducers, isLogOutReducers} from "../App/Slice/userSlice.js";
 import {useEffect} from "react";
 
 
