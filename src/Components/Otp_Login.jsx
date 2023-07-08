@@ -7,6 +7,7 @@ import {auth} from "../config/firebase.config.js";
 import {useDispatch, useSelector} from "react-redux";
 import {isLoginReducers} from "../App/Slice/userSlice.js";
 import {useNavigate} from "react-router-dom";
+import Loader from "./Global/Loader.jsx";
 
 const Otp_Login = () => {
 
@@ -73,6 +74,7 @@ const Otp_Login = () => {
     }
     return (
         <>
+            {Loader && (<Loader/>)}
             <div
                 className={"max-sm:w-[340px] lg:w-1/3 m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center "}>
                 <img src={LoginAvatar}
@@ -141,6 +143,8 @@ const Otp_Login = () => {
 
 
             </div>
+
+
         </>
     )
 }

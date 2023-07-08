@@ -3,11 +3,14 @@ import ads from "../../assets/Images/ads.png"
 import payment from "../../assets/Images/payment.png"
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+
 const Dashboard = () => {
     const navigate = useNavigate()
     const {getProduct} = useSelector(state => state.ProductReducer)
     return (
         <>
+
+
             <div className="flex flex-col flex items-center justify-center max-sm:mb-9 border-2 border-orange-500 sm:w-1/2 m-auto pb-8">
                 <h1 className="w-1/2 m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold uppercase w-full max-sm:my-[20px] ">
                     Admin dashboard
@@ -81,6 +84,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

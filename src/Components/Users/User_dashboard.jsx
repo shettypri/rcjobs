@@ -4,6 +4,8 @@ import {adsRewardREducers, fetchAdsReducers} from "../../App/Slice/userDashBoard
 import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 import ShareLink from "./ShareLink.jsx";
+import Loader from "../Global/Loader.jsx";
+
 
 const User_dashboard = () => {
 
@@ -29,6 +31,8 @@ const User_dashboard = () => {
     }
     return (
         <>
+
+
             <div className=" border border-orange-500 m-auto w-1/2
           max-sm:w-full
             ">

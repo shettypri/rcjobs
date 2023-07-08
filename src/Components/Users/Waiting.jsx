@@ -1,3 +1,4 @@
+
 const Waiting = () => {
     return (
         <>
@@ -6,6 +7,7 @@ const Waiting = () => {
                     please wait till registration process is completed
                 </p>
             </div>
+
 
         </>
     )
