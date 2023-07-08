@@ -1,19 +1,36 @@
-// import {Navigate, Outlet} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
 
-const ProtectedRoute = 44
-//     ({
-//     isLogedIn,children,isAdmin,isUserAuthrized
-// })=>{
-//     if(!(isLogedIn)){
-//         return <Navigate to={"/"}/>
-//     }
-//     if(!isAdmin){
-//         return  <Navigate to={"/user/userdashboard"}/>
-//     }
-//     if(!(isUserAuthrized)){
-//         return  <Navigate to={"/user/waiting"}/>
-//     }
-//     return children ? children : <Outlet />;
-// }
 
-export default ProtectedRoute;
+export const ProtectedLoginRoute = ({isLoggedIn}) => {
+    console.log("public route", isLoggedIn)
+    if (isLoggedIn === false || isLoggedIn === undefined)
+        return (<Navigate to={"/"}/>)
+    // return children?children:<Outlet/>
+    return <Outlet/>
+}
+export const AdminRoute = ({isAdmin}) => {
+    console.log("admin Route", isAdmin)
+    if (isAdmin === false) {
+        return (<Navigate to={"/"}/>)
+    }
+    return <Outlet/>
+
+}
+export const UserRoute = ({isAdmin, newUser}) => {
+    console.log("user route", isAdmin)
+    console.log("==> new user in user route", newUser)
+
+    if (isAdmin === false || newUser === true)
+        return <Outlet/>
+    if (isAdmin === undefined)
+        return (<Navigate to={"/"}/>)
+
+}
+export const AuthUserRoute = ({isAuthorised})=>{
+    console.log("Exppriment Route")
+    if(isAuthorised === true){
+        return <Outlet />
+    }
+    return (<Navigate to={'/user/waiting'}/>)
+}
+export default {ProtectedLoginRoute, AdminRoute, UserRoute};

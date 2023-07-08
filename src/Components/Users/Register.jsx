@@ -5,11 +5,13 @@ import {storage} from "../../config/firebase.config.js";
 import {setDoc, doc} from "firebase/firestore"
 import {db} from "../../config/firebase.config.js"
 import {useNavigate} from "react-router-dom";
+import referralCodeGenerator from 'referral-code-generator'
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");
     const [personDetails, setPersonalDetails] = useState(true);
     const [final, setFinal] = useState(true);
+    const referCode = sessionStorage.getItem("referCode")
 
     const [userDetails, setUserDetails] = useState({
         id: sessionStorage.getItem("key"),
@@ -22,21 +24,19 @@ const Register = () => {
         isAdmin: false,
         isUserAuthorized: false,
         withdrawalAmount: 0,
-        joining_code: "jguygu",
-        Referral_Code: "admin001",
+        joining_code: (referCode? referCode:null),
+        Referral_Code: "RCJOBS-"+referralCodeGenerator.alphaNumeric('uppercase', 4, 3),
         Account_name: "",
         Account_no: "",
         Bank_name: "",
         Branch: "",
         ifsc_code: "",
         Address: ""
-
-
     });
     const Navigate = useNavigate()
-    const uservalues = (e) => {
-        userDetails({
-            ...userDetails, [e.target.name]: e.target.value
+    const userValues = (event) => {
+        setUserDetails({
+            ...userDetails, [event.target.name]: event.target.value
         })
     }
 
@@ -54,7 +54,7 @@ const Register = () => {
             userDetails["JoiningFee"] = imageUrl
             const isDataInserted = await setDoc(doc(db, "users", `${userDetails.id}`)
                 , userDetails)
-            Navigate("/user/dashboard")
+            Navigate("/user/userdashboard")
             //     storing into fire store data
 
         } catch (error) {
@@ -72,27 +72,21 @@ const Register = () => {
                 ">
 
                     {personDetails ?(
-                        <div>
+                        <div className="px-4">
                             <div
-                                className={" text-3xl font-semibold bg-[#FD7F2C] text-white w-full uppercase m-[0px] mt-[0px] rounded  h-15"}>Registration
-                                Form
+                                className={" text-3xl font-semibold bg-[#FD7F2C] text-white w-full uppercase m-[0px] mt-[0px] rounded  h-15"}>
+                                Registration Form
                             </div>
 
-                            <div className={" flex flex-col text-black p-4"}>
+                            <div className={" flex flex-col text-black p-4 px-0"}>
                                 <label className={"font-bold"}>Enter Full Name</label>
-                                <input
-                                    type="text"
-                                    className=" mt-1 border-2 border-black h-10 rounded
-                    font-bold   shadow-xl
+                                <input type="text" value={userDetails.name}
+                                    className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
                     "
-                                    name={"name"} onChange={(event) => {
-                                    setUserDetails({
-                                        ...userDetails, ["name"]: event.target.value
-                                    })
-                                }}/>
+                                    name={"name"} onChange={userValues}/>
                             </div>
 
-                            <div className={" flex flex-col text-black p-4"}>
+                            <div className={" flex flex-col text-black p-4 px-0"}>
                                 <label className={"font-bold"}> phone number</label>
                                 <input
                                     type="text"
@@ -102,26 +96,54 @@ const Register = () => {
                        shadow-xl
                        "/>
                             </div>
+                            <div className={"flex flex-col justify-center mb-4"}>
+                                <label className={"font-bold"}> Address</label>
+                                <textarea
+                                    rows={4}
+                                    className={"mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"}
+                                    name={"Address"}
+                                    value={userDetails.Address}
+                                    onChange={userValues}/>
+
+                            </div>
+                            {
+                                    <div className={" flex flex-col text-black p-4 px-0"}>
+                                        {referCode ? (
+                                            <label className="font-bold uppercase text-green-600 bg-gray-300 py-4 px-2
+                                            border-2 border-gray-500 rounded-2xl
+                                            ">
+                                                Thank you Join through Referral
+                                                program</label>
+                                        ) : (
+                                            <label>
+                                                You Don't Have any Referral
+                                            </label>
+                                        )}
+                                    </div>
+                            }
+
                             <div className="flex flex-row justify-center">
                                 <button
                                    className={ "text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
                                 onClick={()=>setPersonalDetails(false)}>Next
                                 </button>
                             </div>
+
                         </div>
                     ):(
                         <div>
                             {final ?(
-                                <div>
-                                    <div className={"flex flex-col text-black p-4"}>
+                                <div className="px-10">
+                                    <div className={"flex flex-col text-black p-2"}>
 
                                         <div className={"flex flex-col justify-center"}>
-                                            <label className={"font-bold"}>Name</label>
+                                            <label className={"font-bold"}>Enter Account holder Name</label>
                                             <input
                                                 className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
                                                 type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}
+                                                name={"Account_name"}
+                                                value={userDetails.Account_name}
+                                                onChange={userValues}
                                             />
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
@@ -129,42 +151,39 @@ const Register = () => {
                                             <input
                                                 className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
                                                 type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}/>
+                                                name={"Account_no"}
+                                                value={userDetails.Account_no}
+                                                onChange={userValues}/>
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> Bank Name</label>
                                             <input
                                                 className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
                                                 type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}/>
+                                                name={"Bank_name"}
+                                                value={userDetails.Bank_name}
+                                                onChange={userValues}/>
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> Branch</label>
                                             <input
                                                 className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
                                                 type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}/>
+                                                name={"Branch"}
+                                                value={userDetails.Branch}
+                                                onChange={userValues}/>
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> IFSC code</label>
                                             <input
                                                 className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
                                                 type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}/>
-                                        </div>
-                                        <div className={"flex flex-col justify-center"}>
-                                            <label className={"font-bold"}> Address</label>
-                                            <input
-                                                className={"mt-1 border-2 border-black h-[60px] rounded font-bold shadow-xl "}
-                                                type={"text"}
-                                                name={"name"}
-                                                onChange={uservalues}/>
+                                                name={"ifsc_code"}
 
+                                                value={userDetails.ifsc_code}
+                                                onChange={userValues}/>
                                         </div>
+
 
                                         <div className={"flex justify-center p-6 flex-row space-x-3 "}>
                                             <button

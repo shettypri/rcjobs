@@ -10,8 +10,9 @@ const New_Request = () => {
     useEffect(() => {
         dispatch(newUserReducers())
     }, []);
-    const {newUsers} = useSelector(state => state.adminUserReducers)
+    const {newUsers,CashBack} = useSelector(state => state.adminUserReducers)
     // console.log(newUsers.data)
+    console.log("cash back ",CashBack)
     return (
         <>
             <div className="mt-5 flex flex-col w-1/2
@@ -48,7 +49,7 @@ const New_Request = () => {
                         {
                             newUsers.data.length !== 0 && (
                                 newUsers.data.map((userList, index) => {
-                                    // console.log("user list is", userList)
+                                    console.log("user list is", userList)
                                     return (<>
                                             <New_user userData={userList} indexValue={index} key={index}/>
                                         </>

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {adsRewardREducers, fetchAdsReducers} from "../../App/Slice/userDashBoardSlice.js";
 import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
+import ShareLink from "./ShareLink.jsx";
 
 const User_dashboard = () => {
 
@@ -36,6 +37,9 @@ const User_dashboard = () => {
                 ">
                     User Dashboard
                 </h1>
+                <div className="flex justify-end mb-4 mr-4 mt-4">
+                    <ShareLink />
+                </div>
                 <div>
                     <div className="bg-green-500 m-auto w-1/2
                        max-sm:w-full

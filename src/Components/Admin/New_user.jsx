@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {acceptRequestReducers, newUserReducers} from "../../App/Slice/adminUserSlice.js";
+import {acceptRequestReducers, newUserReducers, referralCashBack} from "../../App/Slice/adminUserSlice.js";
 
 const New_user = (props) => {
     const dispatch = useDispatch()
@@ -52,11 +52,13 @@ const New_user = (props) => {
                                             console.log(props.userData.id)
                                             setShowImage(false)
                                             dispatch(acceptRequestReducers(props.userData.id))
+                                            console.log("user joing code",props.userData.joining_code)
+                                            dispatch(referralCashBack(props.userData.joining_code))
                                             dispatch(newUserReducers())
                                         }
                                         }
                                 >
-                                    Admit user
+                                    approve
                                 </button>
 
                                 <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-full text-white bg-red-600 shadow-lg shadow-black"

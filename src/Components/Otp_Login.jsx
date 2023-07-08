@@ -40,7 +40,8 @@ const Otp_Login = () => {
         }
     }
     const navigate = useNavigate()
-    if (isLoggedIn) {
+
+    if(isLoggedIn){
         if (newUser) {
             navigate("/user/register")
         } else {
