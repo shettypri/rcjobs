@@ -38,7 +38,7 @@ const User_dashboard = () => {
                     User Dashboard
                 </h1>
                 <div className="flex justify-end mb-4 mr-4 mt-4">
-                    <ShareLink />
+                    <ShareLink/>
                 </div>
                 <div>
                     <div className="bg-green-500 m-auto w-1/2
@@ -52,44 +52,47 @@ const User_dashboard = () => {
 
                                 <ReactSwipe
                                     className="carousel w-[410px] h-[500px] bg-red-100 pl-10 pt-4
-
+                                        max-sm:w-full max-sm:p-0
                                     "
-                                    swipeOptions={{continuous: false}}
+                                    // swipeOptions={{ disableSwipe: true }}
+                                    swipeOptions={{continuous: true,disableSwipe:true}}
                                     ref={el => (reactSwipeEl = el)}
 
                                 >
+
                                     {
                                         fetchAds.data.map((ads, index) => {
                                             return (
-                                                    <div className="w-full  m-auto
-                                                    max-sm:bg-red-900 max-sm:w-full
+                                                <div className="w-full  m-auto
+                                                    max-sm:bg-red-100 max-sm:w-full
                                                 "
-                                                         key={index}>
-                                                        <img src={ads.imageURL} alt="Error"
-                                                             height={15} width={10}
-                                                             className="w-[350px] h-[390px] border-4 border-orange-500 object-cover
-                                                        max-sm:
+                                                     key={index}>
+                                                    <img src={ads.imageURL} alt="Error"
+                                                         height={15} width={10}
+                                                         className="w-[350px] h-[390px] border-4 border-orange-500 object-cover
+                                                        max-sm:w-[320px] max-sm:mx-auto max-sm:my-2
                                                          "
-                                                        />
-                                                        <button
-                                                            className="border-2 border-black
+                                                    />
+                                                    <button
+                                                        className="border-2 border-black
                                                             mx-10  px-24 mt-4 py-3 rounded-full
                                                              font-extrabold uppercase bg-red-600 text-white
+                                                             max-sm:mx-20
                                                             "
                                                         onClick={
-                                                            ()=>{
+                                                            () => {
                                                                 dispatch(addProductReducers({
                                                                     userName: data.name,
                                                                     adsName: ads.adsName,
                                                                     clientName: ads.name,
                                                                     Phone: ads.Phone,
-                                                                    isOrderPlaced:false
+                                                                    isOrderPlaced: false
                                                                 }))
                                                             }
                                                         }>
-                                                            buy
-                                                        </button>
-                                                    </div>
+                                                        buy
+                                                    </button>
+                                                </div>
 
 
                                             )

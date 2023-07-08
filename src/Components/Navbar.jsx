@@ -42,6 +42,10 @@ const Navbar = () => {
                                             <Link to="/user/userdashboard"> dashboard</Link>
                                         </li>
                                         <li className={"mx-[10px] cursor-pointer text-white"}>
+                                            <Link to="/user/withdraw"> Withdraw</Link>
+                                        </li>
+
+                                        <li className={"mx-[10px] cursor-pointer text-white"}>
                                             <Link to="/user/profile"> {data.name} </Link>
                                         </li>
                                     </>

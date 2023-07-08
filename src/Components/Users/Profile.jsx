@@ -24,12 +24,11 @@ const Profile = () => {
         <>
             <div
                 className={"flex md:flex-col  justify-center text-center p-4 border-gray-800 border-1 rounded-2xl shadow-2xl  0 mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[400px] space-y-4 space-x-7 px-4 py-4"}>
-                <div className={"flex  md:flex-row  flex-col p-2 space-x-6"}>
+                <div className={"flex  md:flex-row  flex-col p-2 space-x-6 "}>
                     {/*{left}*/}
 
-                    <div className=" flex md:flex-col  flex-col   md:space-x-3 space-x-9
-                   bg-gradient-to-r from-yellow-50 shadow-xl shadow-blue-200
-                   ">
+                    <div
+                        className=" flex md:flex-col  flex-col   md:space-x-3 space-x-9 bg-gradient-to-r from-yellow-50 shadow-xl shadow-blue-200">
                         <div className={"flex md:flex-col  flex-row  md:-space-x-3.5  px-9 py-4 w-[300px]"}>
                             <img src={profile}
                                  className="w-[100px] mb-4 border-2 border-black rounded-full p-2 shadow shadow-red-800 mx-auto"
@@ -39,25 +38,16 @@ const Profile = () => {
                             </label>
                         </div>
 
-                        <div className="flex justify-around  flex-col">
-                            <div className="flex flex-row border-b border-b-black my-2 py-1 justify-around mx-2">
-                                <label className="uppercase  font-bold py-2">
-                                    Wallet
-                                </label>
-                                <label > :</label>
+                        <div className="flex justify-around  flex-col p-4 py-7">
+                            <div className="mx-auto my-2 font-bold">
                                 <label>
-                                    {data.wallet}
-
+                                    {data.phone}
                                 </label>
                             </div>
-                            <div className="flex flex-row border-b border-b-black my-2 py-1 justify-around mx-2">
-                                <label className="uppercase font-bold py-2">
-                                    Referral
+                            <div className="mx-auto my-2 font-bold">
+                                <label>
+                                    {data.Address}
                                 </label>
-                                <label > :</label>
-                                <lable>
-                                    {data.referred}
-                                </lable>
                             </div>
 
                         </div>
@@ -68,41 +58,32 @@ const Profile = () => {
 
                     {/*{right}*/}
 
-                    <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start p-3 "}>
+                    <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start p-3 w-full  "}>
                         <table>
                             <tbody>
-                            <tr className={""}>
-                                <th>Name</th>
-                                <th>:</th>
-                                <th><input
-                                    type={"text"}
-                                    className={"border"}
-                                /></th>
-                            </tr>
                             <tr>
-                                <th>phone</th>
-                                <th>:</th>
-                                <th><input
-                                    type={"text"}
-                                    className={"border"}
-                                /></th>
+                                <th>Bank name</th>
+                                <td>:</td>
+                                <td>
+                                    <label>
+                                        {data.Bank_name}
+                                    </label>
+
+                                </td>
                             </tr>
+                                <tr>
+                                    <th>
+                                        IFSC CODE
+                                    </th>
+                                    <th>:</th>
+                                    <td>{data.ifsc_code}</td>
+                                </tr>
                             <tr>
-                                <th>Address</th>
-                                <th>:</th>
-                                <th><input
-                                    type={"text"}
-                                    className={"border"}
-                                /></th>
-                            </tr>
-                            <tr>
-                                <th>amount</th>
-                                <th>:</th>
-                                <th><input
-                                    type={"text"}
-                                    className={"border"}
-                                    onChange={handleChange}
-                                /></th>
+                                <th></th>
+                                <th></th>
+                                <td>
+
+                                </td>
                             </tr>
                             </tbody>
                         </table>

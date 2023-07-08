@@ -20,6 +20,7 @@ import {useEffect} from "react";
 import {isLoginReducers} from "./App/Slice/userSlice.js";
 import Buy_List from "./Components/Admin/Buy_List.jsx";
 import Refer from "./Components/Refer.jsx";
+import Withdrawal from "./Components/Users/Withdrawal.jsx";
 
 function App() {
     const Dispatch = useDispatch()
@@ -55,6 +56,7 @@ function App() {
                             <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
                                 <Route exact path='/user/profile' element={<Profile/>}/>
                                 <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
+                                <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
                             </Route>
                             <Route exact path='/user/register' element={<Register/>}/>
                             <Route exact path='/user/waiting' element={<Waiting/>}/>
