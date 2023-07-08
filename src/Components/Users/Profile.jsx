@@ -23,13 +23,13 @@ const Profile = () => {
                <div className={"flex  md:flex-row  flex-col p-2 space-x-6"}>
                    {/*{left}*/}
 
-                   <div className={" flex md:flex-col  flex-row  justify-around space-x-3 "}>
-                       <div className={"flex flex-col  "}>
+                   <div className={" flex md:flex-col  flex-col   md:space-x-3 space-x-9  "}>
+                       <div className={"flex md:flex-col  flex-row  md:-space-x-3.5 "}>
                            <img src={profile} className={"w-[50px]" } alt={""}/>
                            <label className={""}>Name</label>
                        </div>
 
-                       <div className={"flex md:flex-col flex-row  space-x-2 md:space-y-3 mt-6 ]"}>
+                       <div className={"flex md:flex-col flex-row space-x-7 md:space-y-3  mt-6 p-3 ]"}>
                            <div>
                                <label>Wallet</label>
 
@@ -46,10 +46,10 @@ const Profile = () => {
 
                    {/*{right}*/}
 
-                   <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start "}>
+                   <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start p-3 "}>
                        <table>
-                           <tbody>
-                           <tr>
+                           <tbody >
+                           <tr className={""}>
                                <th>Name</th>
                                <th>:</th>
                                <th> <input
