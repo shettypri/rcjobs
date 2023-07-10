@@ -1,35 +1,29 @@
 // import wallet from "../../../src/assets/Images/wallet.png"
 import profile from "../../../src/assets/Images/profile.png"
 // import reference from "../../../src/assets/Images/reference.png"
-import {useState} from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
+
 
 const Profile = () => {
-    const [withdraw, setWithdraw] = useState(true);
-    // const handleChange = (e) => {
-    //     if (e.target.value >= 250) {
-    //         {
-    //             setWithdraw(false)
-    //         }
-    //     } else {
-    //         {
-    //             setWithdraw(true)
-    //         }
-    //     }
-    // }
+
     const [edit, setEdit] = useState();
     const handleChange=(name)=>{
         setEdit(name)
 
 
     }
+    const [ifscCde, setIfscCode] = useState("");
+
 
     const {error, data} = useSelector(state => state.userReducer)
     console.log("data =====>", data)
     return (
         <>
             <div
-                className={"flex md:flex-col  justify-center text-center p-4 border-gray-800 border-1 rounded-2xl shadow-2xl  0 mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[240px] space-y-4 space-x-7 px-4 py-4 border-2 border-black"}>
+                className={"flex md:flex-col  justify-center text-center p-4  border-1 rounded-2xl shadow-2xl  0 mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[240px] space-y-4 space-x-7 px-4 py-4 border-2 border-gray-600 bg-gradient-to-r from-amber-300 to-white "}>
                 <div className={"flex  md:flex-row  flex-col p-2 space-x-6 "}>
                     {/*{left}*/}
 
@@ -94,13 +88,6 @@ const Profile = () => {
                                 <td>
                                     {data.Bank_name}
                                 </td>
-
-
-
-
-
-
-
                             </tr>
                             <tr>
                                 <th> Branch </th>
@@ -111,8 +98,6 @@ const Profile = () => {
 
                                     </label>
 
-
-
                                 </td>
                             </tr>
                                 <tr>
@@ -120,36 +105,26 @@ const Profile = () => {
                                         IFSC Code
                                     </th>
                                     <th>:</th>
-                                    {data.name === edit ?
-                                            <td>
-                                                <input type={"text"}/>
-                                            </td>
-
-                                        :
-                                        <td><label>
-                                            {data.ifsc_code}
-                                        </label>
-                                        </td>}
-
-
+                                    <td>
+                                        {data.ifsc_code}
+                                    </td>
                                 </tr>
-
-
                             </tbody>
                         </table>
-                        {/*<p onClick={()=>handleChange()} className={"cursor-pointer underline"}>do you want to change IFSC code</p>*/}
-                        <button onClick={()=>{handleChange(data.name)}}>change ifsc code</button>
+                        {data.name === edit ?
+                            <td className={"flex flex-row md:ml-52 "}>
+                                <input type={"text"} onChange={(event)=>{setIfscCode(event.target.value)}} />
+                                <FontAwesomeIcon className="xmark cursor-pointer ml-2" id="closemark" icon={faXmark} size="xl" style={{color: "#ff0000",}}onClick={()=>{setEdit(false)}}
+                                />
+                            </td>
 
-                        <div className={"flex flex-row space-x-3 p-4"}>
-                            <button
-                                className={"disabled:bg-white enabled:bg-orange-600  enabled:text-white md:h-9  w-[150px] rounded-2xl md:w-[155px] h-9 "}
-                                disabled={withdraw}> Withdraw
-                            </button>
-                            <button
-                                className={"bg-white hover:bg-red-700 md:h-9 rounded-2xl md:w-[155px] w-[100px]"}>Cancel
-                            </button>
+                            :
+                            <td>
+                                <button className={"italic ml-8"} onClick={()=>{handleChange(data.name)}}>do you want to change ifsc code</button>
 
-                        </div>
+                            </td>}
+
+
                     </div>
 
                 </div>
