@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {walletPaymentRequestReducers, walletPaymentResponseReducers} from "../../App/Slice/adminPaymentSlice.js";
 
 const Payment_request = () => {
@@ -96,13 +96,28 @@ const Payment_request = () => {
                                             border-2 border-black
                                             max-sm:px-[15px] max-sm:mx-1 max-sm:text-[12px]
                                             ">
-                                                <button className="bg-green-500 text-white font-bold uppercase px-10 py-2 rounded-full border-2 border-gray-700 group-hover:bg-white group-hover:text-green-500
+                                                {/*<button className="bg-green-500 text-white font-bold uppercase px-10 py-2 rounded-full border-2 border-gray-700 group-hover:bg-white group-hover:text-green-500*/}
+                                                {/*max-sm:px-6*/}
+                                                {/*"*/}
+                                                {/*        onClick={()=>*/}
+                                                {/*            handlePayment(requestData.id,(requestData.wallet - requestData.withdrawalAmount))}*/}
+                                                {/*>*/}
+                                                {/*    Paid*/}
+                                                {/*</button>*/}
+                                                  <button className="bg-green-500 text-white font-bold uppercase px-10 py-2 rounded-full border-2 border-gray-700 group-hover:bg-white group-hover:text-green-500
                                                 max-sm:px-6
                                                 "
-                                                        onClick={()=>
-                                                            handlePayment(requestData.id,(requestData.wallet - requestData.withdrawalAmount))}
+                                                        onClick={()=> {
+                                                            navigate("/admin/paymentdeatails",
+                                                                {
+                                                                    state: {
+                                                                        requestData
+                                                                    }
+                                                                }
+                                                            )}
+                                                        }
                                                 >
-                                                    Paid
+                                                    View details
                                                 </button>
                                             </td>
 

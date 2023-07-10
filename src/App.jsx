@@ -21,6 +21,7 @@ import {isLoginReducers} from "./App/Slice/userSlice.js";
 import Buy_List from "./Components/Admin/Buy_List.jsx";
 import Refer from "./Components/Refer.jsx";
 import Withdrawal from "./Components/Users/Withdrawal.jsx";
+import PaymentDetails from "./Components/Admin/PaymentDetails.jsx";
 
 function App() {
     const Dispatch = useDispatch()
@@ -48,6 +49,7 @@ function App() {
                             <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
                             <Route exact path='/admin/newrequest' element={<New_Request/>}/>
                             <Route exact path='/admin/paymentrequest' element={<Payment_request/>}/>
+                            <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
                             <Route exact path='/admin/order' element={<Buy_List/>}/>
                         </Route>
 
@@ -66,29 +68,7 @@ function App() {
 
                 </Routes>
 
-                {/*<Routes>*/}
 
-                {/*    /!*otp_login*!/*/}
-                {/*    <Route exact path='/' element={<Otp_Login/>}/>*/}
-
-
-                {/*    /!*admin*!/*/}
-                {/*    <Route exact path='/admin/adds' element={<Add_ads/>}></Route>*/}
-                {/*    <Route exact path='/admin/dashboard' element={<Dashboard/>}></Route>*/}
-                {/*    <Route exact path='/admin/newrequest' element={<New_Request/>}></Route>*/}
-                {/*    /!*<Route exact path='/admin/newuser' element={<New_user/>}></Route>*!/*/}
-                {/*    <Route exact path='/admin/paymentrequest' element={<Payment_request/>}>*/}
-                {/*    </Route>*/}
-                {/*    <Route exact path='/admin/order' element={<Buy_List />} />*/}
-
-
-                {/*    /!*user*!/*/}
-                {/*    <Route exact path ='/user/profile' element={<Profile/>}/>*/}
-                {/*    <Route exact path ='/user/register' element={<Register/>}/>*/}
-                {/*    <Route exact path ='/user/userdashboard' element={<User_dashboard/>}/>*/}
-                {/*    <Route exact path ='/user/waiting' element={<Waiting/>}/>*/}
-
-                {/*</Routes>*/}
 
 
             </BrowserRouter>
