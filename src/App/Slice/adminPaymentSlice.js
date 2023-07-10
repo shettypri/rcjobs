@@ -1,6 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js";
+import {useDispatch} from "react-redux";
+import {isLoginReducers} from "./userSlice.js";
 
 export const walletPaymentRequestReducers = createAsyncThunk(
     "walletPaymentRequestReducers",
@@ -24,12 +26,12 @@ export const walletPaymentResponseReducers = createAsyncThunk(
     "walletPaymentResponseReducers",
     async (responseData)=>{
         const doctorCollection = doc(db, "users", responseData.id)
-
         try {
             await updateDoc(doctorCollection, {
                 wallet:responseData.wallet,
                 isWithdrawing:responseData.isWithdrawing,
-                withdrawalAmount:0
+                withdrawalAmount:0,
+                referred:0,
             })
             return `Accepted Sucessfully of ${responseData.id}`
         } catch (e) {
@@ -77,6 +79,7 @@ const adminPaymentSlice = createSlice({
         .addCase(walletPaymentResponseReducers.fulfilled,(state,action)=>{
             state.paymentResponse.loading = false
             state.paymentResponse.isPaid = true
+            state.paymentResponse.Success = true
         })
         .addCase(walletPaymentResponseReducers.rejected,(state,action)=>{
             state.paymentResponse.loading = false

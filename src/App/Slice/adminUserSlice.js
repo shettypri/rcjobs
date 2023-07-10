@@ -36,6 +36,7 @@ export const referralCashBack = createAsyncThunk(
                 const doctorCollection = doc(db, "users", filterArray.id)
                 await updateDoc(doctorCollection, {
                     referred: filterArray.referred + 1,
+                    total_referred:filterArray.total_referred+1,
                     wallet: filterArray.wallet + 200,
                     limit:filterArray.limit + 25
 

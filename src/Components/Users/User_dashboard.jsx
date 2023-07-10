@@ -4,18 +4,20 @@ import {adsRewardREducers, fetchAdsReducers} from "../../App/Slice/userDashBoard
 import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 import ShareLink from "./ShareLink.jsx";
-import Loader from "../Global/Loader.jsx";
-
+import {isLoginReducers} from "../../App/Slice/userSlice.js";
 
 const User_dashboard = () => {
 
     let [reactSwipeEl, setReactSwipeEl] = useState("");
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(fetchAdsReducers())
-    }, []);
     const {fetchAds, Ads_Reward} = useSelector(state => state.userDashBoardReducers)
     const {isLoggedIn, data} = useSelector(state => state.userReducer)
+    useEffect(() => {
+        dispatch(fetchAdsReducers())
+        dispatch(isLoginReducers(data.id))
+    }, []);
+
+
 
     const handleNext = () => {
         isLoggedIn
@@ -31,8 +33,6 @@ const User_dashboard = () => {
     }
     return (
         <>
-
-
             <div className=" border border-orange-500 m-auto w-1/2
           max-sm:w-full
             ">
