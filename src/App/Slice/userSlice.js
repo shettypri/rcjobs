@@ -18,6 +18,18 @@ export const isLoginReducers = createAsyncThunk(
     }
 )
 
+export const ifscCodeReducer=createAsyncThunk("ifscCodeReducer",
+    async (userID)=>{
+
+    try{
+
+    }catch(error){
+
+    }
+
+})
+
+
 export const isLogOutReducers = createAsyncThunk(
     "isLogOutReducers",
     async () => {

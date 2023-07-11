@@ -111,10 +111,10 @@ const Profile = () => {
                             </tr>
                             </tbody>
                         </table>
-                        {showInput ? (
+                        {!showInput ? (
                             <>
                                 <p className=" text-blue-950 font-bold underline py-2  cursor-pointer" onClick={() => {
-                                    setShowInput(false)
+                                    setShowInput(true)
                                 }}>
                                     do you want change ifsc code ?
                                 </p>
@@ -134,7 +134,7 @@ const Profile = () => {
                                 <button
                                     className={"bg-red-800 flex  justify-center border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
                                     onClick={() => {
-                                        setShowInput(true)
+                                        setShowInput(false)
                                     }}>cancel
                                 </button>
                             </div>
