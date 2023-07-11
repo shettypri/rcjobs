@@ -5,6 +5,7 @@ import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 import ShareLink from "./ShareLink.jsx";
 import {isLoginReducers} from "../../App/Slice/userSlice.js";
+import Loader from "../Global/Loader.jsx";
 
 const User_dashboard = () => {
 
@@ -16,7 +17,6 @@ const User_dashboard = () => {
         dispatch(fetchAdsReducers())
         dispatch(isLoginReducers(data.id))
     }, []);
-
 
 
     const handleNext = () => {
@@ -45,11 +45,11 @@ const User_dashboard = () => {
                     <ShareLink/>
                 </div>
                 <div>
-                    <div className="bg-green-500 m-auto w-1/2
+                    <div className=" m-auto w-1/2
                        max-sm:w-full
                     ">
                         {
-                            fetchAds.loading && <h1> loading</h1>
+                            fetchAds.loading && <Loader/>
                         }
                         {
                             fetchAds.Success && (
@@ -59,7 +59,7 @@ const User_dashboard = () => {
                                         max-sm:w-full max-sm:p-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
-                                    swipeOptions={{continuous: true,disableSwipe:true}}
+                                    swipeOptions={{continuous: true, disableSwipe: true}}
                                     ref={el => (reactSwipeEl = el)}
 
                                 >
@@ -113,7 +113,7 @@ const User_dashboard = () => {
                             Previous
                         </button>
                         {
-                            (!Ads_Reward.loading) && (
+                            (!Ads_Reward.loading) ? (
                                 <button
                                     className="uppercase bg-green-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black ml-2
                                     max-sm:px-10 max-sm:py-2"
@@ -121,6 +121,8 @@ const User_dashboard = () => {
                                     onClick={handleNext}>
                                     Next
                                 </button>
+                            ) : (
+                                <><Loader/></>
                             )
 
                         }

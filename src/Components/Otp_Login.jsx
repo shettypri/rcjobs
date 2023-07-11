@@ -17,6 +17,7 @@ const Otp_Login = () => {
     const [otpVerify, setOtpVerify] = useState(true);
     const [addedNumber, setAddedNumber] = useState("");
     const [captchaResult, setCaptchaResult] = useState({})
+    const [loading, setLoading] = useState(false);
     const handleNumber = (e) => {
         setMobileNumber(e)
     }
@@ -28,6 +29,7 @@ const Otp_Login = () => {
         setOtp(e)
     };
     const verifyOtp = async () => {
+        setLoading(true)
         try {
             const finalResult = await captchaResult.confirm(otp)
             sessionStorage.setItem("key", finalResult.user.uid)
@@ -36,6 +38,7 @@ const Otp_Login = () => {
                 dispatch(isLoginReducers(finalResult.user.uid))
             }
             console.log(error, isLoggedIn, newUser)
+            setLoading(false)
         } catch (error) {
             console.log("Entered otp => \n\n\n\n", error);
         }
@@ -74,9 +77,11 @@ const Otp_Login = () => {
     }
     return (
         <>
-            {Loader && (<Loader/>)}
+
+
             <div
                 className={"max-sm:w-[340px] lg:w-1/3 m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center "}>
+                {loading && (<Loader/>)}
                 <img src={LoginAvatar}
                      height={170}
                      width={160}
