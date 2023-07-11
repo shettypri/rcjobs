@@ -9,16 +9,15 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
 
-    const [edit, setEdit] = useState();
-    const handleChange=(name)=>{
-        setEdit(name)
 
-
-    }
-    const [ifscCde, setIfscCode] = useState("");
-
+    const [showInput, setShowInput] = useState(false);
 
     const {error, data} = useSelector(state => state.userReducer)
+    const [newIfsc, setNewIfsc] = useState(data.ifsc_code);
+    const handleSubmit = () => {
+
+    }
+
     console.log("data =====>", data)
     return (
         <>
@@ -29,7 +28,8 @@ const Profile = () => {
 
                     <div
                         className=" flex md:flex-col  flex-col   md:space-x-3 space-x-9 bg-gradient-to-r from-yellow-50 shadow-xl shadow-orange-200">
-                        <div className={"flex md:flex-col  flex-row justify-center  md:-space-x-3.5  px-9 py-4 w-[300px]"}>
+                        <div
+                            className={"flex md:flex-col  flex-row justify-center  md:-space-x-3.5  px-9 py-4 w-[300px]"}>
 
                             <label className="border-b border-b-black font-bold uppercase mt-2">
                                 {data.name}
@@ -90,7 +90,7 @@ const Profile = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <th> Branch </th>
+                                <th> Branch</th>
                                 <td>:</td>
                                 <td>
                                     <label>
@@ -100,31 +100,47 @@ const Profile = () => {
 
                                 </td>
                             </tr>
-                                <tr>
-                                    <th>
-                                        IFSC Code
-                                    </th>
-                                    <th>:</th>
-                                    <td>
-                                        {data.ifsc_code}
-                                    </td>
-                                </tr>
+                            <tr>
+                                <th>
+                                    IFSC Code
+                                </th>
+                                <th>:</th>
+                                <td>
+                                    {data.ifsc_code}
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
-                        {data.name === edit ?
-                            <td className={"flex flex-row md:ml-52 "}>
-                                <input type={"text"} onChange={(event)=>{setIfscCode(event.target.value)}} />
-                                <FontAwesomeIcon className="xmark cursor-pointer ml-2" id="closemark" icon={faXmark} size="xl" style={{color: "#ff0000",}}onClick={()=>{setEdit(false)}}
-                                />
-                            </td>
+                        {showInput ? (
+                            <>
+                                <p className=" text-blue-950 font-bold underline py-2  cursor-pointer" onClick={() => {
+                                    setShowInput(false)
+                                }}>
+                                    do you want change ifsc code ?
+                                </p>
 
-                            :
-                            <td>
-                                <button className={"italic ml-8"} onClick={()=>{handleChange(data.name)}}>do you want to change ifsc code</button>
-
-                            </td>}
-
-
+                            </>
+                            ):(
+                        <div className={"flex flex-col space-x-3"}>
+                            <input type={"text"} value={newIfsc}
+                                   className="w-1/2 h-10 border border-black px-4 mx-auto"
+                                   onChange={(event) => setNewIfsc(event.target.value)}
+                            />
+                            <div className="flex justify-around mt-4 space-x-3 ">
+                                <button
+                                    className={"bg-green-800 flex  justify-center border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
+                                    onClick={handleSubmit}>submit
+                                </button>
+                                <button
+                                    className={"bg-red-800 flex  justify-center border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
+                                    onClick={() => {
+                                        setShowInput(true)
+                                    }}>cancel
+                                </button>
+                            </div>
+                        </div>
+                            )
+                        }
                     </div>
 
                 </div>
