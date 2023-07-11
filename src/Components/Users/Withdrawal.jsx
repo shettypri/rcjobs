@@ -33,7 +33,8 @@ const Withdrawal = () => {
     }
     return (
         <>
-            <div className=" w-1/2 mx-auto mt-2 shadow-xl shadow-black rounded-xl max-sm:w-full">
+            <div className=" w-1/2 mx-auto mt-2 shadow-xl shadow-black rounded-xl
+            max-sm:w-full max-sm:px-3 max-sm:rounded">
                 <div className="flex flex-col bg-gray-800 font-mono text-2xl">
                     <div className="p-4 flex flex-row">
                         <div className="flex flex-col">
@@ -133,8 +134,8 @@ const Withdrawal = () => {
                         <>
                             <div className=" my-2 py-4">
                                 <div className="flex flex-row justify-around ">
-                                    <label className="ppx-2 py-2 mt-1 mx-auto uppercase
-                                      max-sm:text-[15px]
+                                    <label className="px-2 py-2 mt-1 mx-auto uppercase
+                                      max-sm:text-[14px] max-sm:mt-0
                                     "> Total Amount Wallet</label>
                                     <label className="px-2 py-2 mt-1 mx-auto uppercasee
                                       max-sm:text-[15px]
@@ -146,7 +147,9 @@ const Withdrawal = () => {
                                 {
                                     walletData.data.isWithdrawing ? (
                                         <div className="flex mx-auto">
-                                            <label className="text-red-600 font-bold px-24 py-4">
+                                            <label className="text-red-600 font-bold px-24 py-4
+                                            max-sm:text-[15px] max-sm:px-4
+                                            ">
                                                 Withdrawal request on process once is the request completed you can
                                                 withdrawal again ...
                                             </label>
@@ -157,19 +160,25 @@ const Withdrawal = () => {
                                                 cashBack.Success ?(
                                                     <>
                                                         <div className="flex py-4">
-                                                            <label className="mx-auto bg-green-200 text-green-700 uppercase px-4 py-4 border-2 border-green-700 rounded">
+                                                            <label className="mx-auto bg-green-200 text-green-700 uppercase px-4 py-4 border-2 border-green-700 rounded
+                                                            max-sm:text-[16px]
+                                                            ">
                                                                 Withdrawal Request Successfully submitted
                                                             </label>
                                                         </div>
                                                     </>
                                                 ):(
                                                     <>
-                                                        <div className="flex justify-around py-2">
+                                                        <div className="flex justify-around py-2
+                                                        max-sm:text-[15px]
+                                                        ">
                                                             <lable>
                                                                 Enter the Amount
                                                             </lable>
                                                             <input
-                                                                className="border border-black w-1/3 py-2"
+                                                                className="border border-black w-1/3 py-2
+                                                                 max-sm:text-[15px] max-sm:py-1 max-sm:rounded
+                                                                "
                                                                 type={"text"}
                                                                 pattern="[0-9]*"
                                                                 value={withdrawAmount}
@@ -201,13 +210,17 @@ const Withdrawal = () => {
                                                                     </div>) : (
                                                                         <div className="flex justify-around py-2 mb-2">
                                                                             <button
-                                                                                className="bg-red-700 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase"
+                                                                                className="bg-red-700 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase
+                                                                                max-sm:px-8 max-sm:py-2 max-sm:text-[15px]
+                                                                                "
                                                                                 onClick={() => setShowWithDraWal(true)}>
                                                                                 cancel
                                                                             </button>
                                                                             {(withdrawAmount <= walletData.data.wallet) &&
                                                                                 <button
-                                                                                    className="bg-green-600 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase"
+                                                                                    className="bg-green-600 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase
+                                                                                    max-sm:px-8 max-sm:py-2 max-sm:text-[15px]
+                                                                                    "
                                                                                     onClick={
                                                                                         () =>
                                                                                             handleWithdrwal(walletData.data.id, withdrawAmount)}
