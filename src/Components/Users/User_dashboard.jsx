@@ -21,7 +21,8 @@ const User_dashboard = () => {
 
     const handleNext = () => {
         isLoggedIn
-        && (dispatch(adsRewardREducers(
+        && (
+            dispatch(adsRewardREducers(
                 {
                     id: data.id,
                     limit: data.limit - 1,
@@ -45,7 +46,7 @@ const User_dashboard = () => {
                     <ShareLink/>
                 </div>
                 <div>
-                    <div className=" m-auto w-1/2
+                    <div className=" mx-0 w-3/4
                        max-sm:w-full
                     ">
                         {
@@ -55,11 +56,11 @@ const User_dashboard = () => {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-[410px] h-[500px] bg-red-100 pl-10 pt-4
+                                    className="carousel w-[750px] h-[500px] bg-blue-100  pt-7 px-0
                                         max-sm:w-full max-sm:p-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
-                                    swipeOptions={{continuous: true, disableSwipe: true}}
+                                    swipeOptions={{continuous: false, disableSwipe: true}}
                                     ref={el => (reactSwipeEl = el)}
 
                                 >
@@ -67,20 +68,20 @@ const User_dashboard = () => {
                                     {
                                         fetchAds.data.map((ads, index) => {
                                             return (
-                                                <div className="w-full  m-auto
-                                                    max-sm:bg-red-100 max-sm:w-full
+                                                <div className="w-full  m-auto mx-5
+                                                    max-sm:bg-red-100 max-sm:w-full px-16
                                                 "
                                                      key={index}>
                                                     <img src={ads.imageURL} alt="Error"
-                                                         height={15} width={10}
-                                                         className="w-[350px] h-[390px] border-4 border-orange-500 object-cover
-                                                        max-sm:w-[320px] max-sm:mx-auto max-sm:my-2
+                                                         height={15} width={20}
+                                                         className="w-[690px] h-[390px] border-4 border-orange-500 object-fill mx-0
+                                                        max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10
                                                          "
                                                     />
                                                     <button
                                                         className="border-2 border-black
-                                                            mx-10  px-24 mt-4 py-3 rounded-full
-                                                             font-extrabold uppercase bg-red-600 text-white
+                                                            mx-40  px-24 mt-4 py-3 rounded
+                                                             font-extrabold uppercase bg-red-700 text-white
                                                              max-sm:mx-20
                                                             "
                                                         onClick={
