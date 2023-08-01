@@ -21,13 +21,9 @@ const User_dashboard = () => {
 
     const handleNext = () => {
         isLoggedIn
-        && (
-            dispatch(adsRewardREducers(
-                {
-                    id: data.id,
-                    limit: data.limit - 1,
-                    wallet: data.wallet + 10
-                })
+        && (data.limit > 0 && (
+                dispatch(adsRewardREducers({id: data.id, limit: data.limit - 1, wallet: data.wallet + 10})
+                )
             )
         )
         reactSwipeEl.next()
@@ -46,7 +42,7 @@ const User_dashboard = () => {
                     <ShareLink/>
                 </div>
                 <div>
-                    <div className=" mx-0 w-3/4
+                    <div className=" mx-4 w-3/4
                        max-sm:w-full
                     ">
                         {
@@ -56,7 +52,7 @@ const User_dashboard = () => {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-[750px] h-[500px] bg-blue-100  pt-7 px-0
+                                    className="carousel w-full h-[500px] bg-blue-100  pt-7 px-0
                                         max-sm:w-full max-sm:p-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
@@ -69,12 +65,12 @@ const User_dashboard = () => {
                                         fetchAds.data.map((ads, index) => {
                                             return (
                                                 <div className="w-full  m-auto mx-5
-                                                    max-sm:bg-red-100 max-sm:w-full px-16
+                                                    max-sm:bg-red-100 max-sm:w-full px-0
                                                 "
                                                      key={index}>
                                                     <img src={ads.imageURL} alt="Error"
                                                          height={15} width={20}
-                                                         className="w-[690px] h-[390px] border-4 border-orange-500 object-fill mx-0
+                                                         className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-0
                                                         max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10
                                                          "
                                                     />

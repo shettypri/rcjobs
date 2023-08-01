@@ -38,7 +38,7 @@ const Navbar = () => {
                 <img className="h-12 w-25 cursor-pointer" src={logo} alt=""/>
             </div>
             <div>
-                <ul className={"duration-500 font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5"}>
+                <ul className="duration-500 font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5">
                     {
                         isLoggedIn && (
                             <>
@@ -79,8 +79,8 @@ const Navbar = () => {
                     {/*<li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>*/}
                 </ul>
             </div>
-            <div>
-                <FontAwesomeIcon icon={faBars} className={"cursor-pointer sm:hidden"} onClick={()=>{setToggle(!toggle)}}/>
+            <div className="hidden max-sm:block">
+                <FontAwesomeIcon icon={faBars} className={"cursor-pointer hidden max-sm:block"} onClick={()=>{setToggle(!toggle)}}/>
             </div>
 
 
