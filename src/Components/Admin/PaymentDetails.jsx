@@ -7,6 +7,7 @@ const PaymentDetails = (props) => {
     console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
+    console.log(data)
     const dispatch = useDispatch()
 
     const {paymentResponse} = useSelector(state => state.adminPaymentReducers)
@@ -20,9 +21,6 @@ const PaymentDetails = (props) => {
         dispatch(walletPaymentResponseReducers(paymentInfo))
     }
     console.log(paymentResponse)
-
-
-
 
     return (
         <>
@@ -54,6 +52,10 @@ const PaymentDetails = (props) => {
                             <td className="font-bold px-14 py-3 uppercase">Wallet</td>
                             <td className="">{data.wallet}</td>
                         </tr>
+                        <tr>
+                            <td className="font-bold px-14 py-3 uppercase">Address</td>
+                            <td className="">{data.Address}</td>
+                        </tr>
                         <tr className="px-4 py-4">
                             <td className="font-bold px-14 py-3 uppercase">Withdrawal</td>
                             <td className="">{data.withdrawalAmount}</td>
@@ -83,6 +85,17 @@ const PaymentDetails = (props) => {
                             <td className="px-10 py-3 uppercase font-bold">Account Number</td>
                             <td className="px-10 py-3 "> {data.Account_no}</td>
                         </tr>
+
+                        <tr className="bg-gray-200 rounded">
+                            <td className="font-bold px-14 py-3 uppercase">Withdrawal</td>
+                            <td className="">{data.withdrawalAmount}</td>
+                        </tr>
+
+                        <tr className="bg-gray-200 rounded">
+                            <td className="font-bold px-14 py-3 uppercase">Payment Amount</td>
+                            <td className="">{data.withdrawalAmount -(data.withdrawalAmount/100)*10}</td>
+                        </tr>
+
                         <tr className="bg-gray-200 rounded">
                             {
                                 paymentResponse.Success?
