@@ -100,7 +100,8 @@ const Withdrawal = () => {
                                 ">
                                     {
                                         walletData.data.referred > 0 ?
-                                            walletData.data.referred * 200 - walletData.data.wallet : walletData.data.wallet
+                                            walletData.data.wallet >  walletData.data.referred * 200 ?( walletData.data.wallet- walletData.data.referred * 200 ):
+                                           ( walletData.data.referred * 200 - walletData.data.wallet) : walletData.data.wallet
                                     }
                                 </label>
                             </div>
