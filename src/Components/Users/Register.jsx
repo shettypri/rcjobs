@@ -15,7 +15,7 @@ const Register = () => {
 
     const [personalDetailError, setPersonalDetailError] = useState(false);
     const [bankDetailError, setBankDetailError] = useState(false);
-    const [val, setVal] = useState("");
+    const [imageError, setImageError] = useState(false);
 
 
     const [userDetails, setUserDetails] = useState({
@@ -38,7 +38,8 @@ const Register = () => {
         Bank_name: "",
         Branch: "",
         ifsc_code: "",
-        Address: ""
+        Address: "",
+        PinCode:""
     });
     const Navigate = useNavigate()
     const userValues = (event) => {
@@ -50,8 +51,40 @@ const Register = () => {
             })
         }
     }
+    const pinCodeValues= (event) => {
+        const re = /^[0-9]+$/;
+
+            if ( (event.target.value === "" || re.test(event.target.value)) ) {
+                setUserDetails({
+                    ...userDetails, [event.target.name]: event.target.value
+                })
+            }
+
+
+
+
+    }
+    const accountNoValues= (event) => {
+        const re = /^[0-9]+$/;
+        // const value
+        if (event.target.value === "" || re.test(event.target.value)) {
+            setUserDetails({
+                ...userDetails, [event.target.name]: event.target.value
+            })
+        }
+    }
+    const ifscValues= (event) => {
+        setUserDetails({
+                ...userDetails, [event.target.name]: event.target.value
+            })
+
+    }
+
+
+
+
     const handlePersonalDetail = () => {
-        if (userDetails.name.length === 0 || userDetails.Address.length === 0) {
+        if (userDetails.name.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length ===0  || userDetails.PinCode.length > 6) {
             setPersonalDetailError(true)
 
         } else {
@@ -66,34 +99,34 @@ const Register = () => {
 
         }
     }
-    const handleChanges = (event) => {
-        const value = event.target.value;
-        if (/^[0-9\b]+$/.test(value)) {
-            setVal(value);
-        }
 
-    }
+
 
 
     const handleRegister = async () => {
-        console.log(uploadImage.name)
-        const imageFile = uploadImage.name
-        const imageFolder = "PAYMENT"
-        const textV4 = v4()
-        //     image uploade code to firebase:
-        const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
-        try {
-            await uploadBytes(fileFolderRef, uploadImage)
-            const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
-            userDetails["JoiningFee"] = imageUrl
-            const isDataInserted = await setDoc(doc(db, "users", `${userDetails.id}`)
-                , userDetails)
-            Navigate("/user/userdashboard")
-            //     storing into fire store data
+       if(uploadImage <= 0){
+           setImageError(true)
+       }
+       else{
+           console.log(uploadImage.name)
+           const imageFile = uploadImage.name
+           const imageFolder = "PAYMENT"
+           const textV4 = v4()
+           //     image uploade code to firebase:
+           const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
+           try {
+               await uploadBytes(fileFolderRef, uploadImage)
+               const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
+               userDetails["JoiningFee"] = imageUrl
+               const isDataInserted = await setDoc(doc(db, "users", `${userDetails.id}`)
+                   , userDetails)
+               Navigate("/user/userdashboard")
+               //     storing into fire store data
 
-        } catch (error) {
-            console.error(error);
-        }
+           } catch (error) {
+               console.error(error);
+           }
+       }
     }
 
 
@@ -145,6 +178,22 @@ const Register = () => {
                                     onChange={userValues}/>
                                 {personalDetailError && userDetails.Address.length === 0 &&
                                     (<label className={"text-red-800 italic font-bold"}>please enter Address</label>)
+                                }
+
+                            </div>
+                            <div className={"flex flex-col justify-center mb-4"}>
+                                <label className={"font-bold"}> PinCode</label>
+                                <input
+
+                                    className={"mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"}
+                                    name={"PinCode"}
+                                    value={userDetails.PinCode}
+                                    onChange={pinCodeValues}/>
+                                {personalDetailError && userDetails.PinCode.length === 0 &&
+                                    (<label className={"text-red-800 italic font-bold"}>please enter Pincode</label>)
+                                }
+                                {personalDetailError && userDetails.PinCode.length > 6 &&
+                                    (<label className={"text-red-800 italic font-bold"}>Pincode Should not exceed 6 digits</label>)
                                 }
 
                             </div>
@@ -201,8 +250,8 @@ const Register = () => {
                                                 type={"text"}
                                                 name={"Account_no"}
                                                 value={userDetails.Account_no}
-                                                // onChange={userValues}
-                                                onChange={handleChanges}
+                                                onChange={accountNoValues}
+
                                             />
                                             {bankDetailError && userDetails.Account_no.length === 0 &&
                                                 (<label className={"text-red-800 italic font-bold"}>please enter Account
@@ -243,7 +292,7 @@ const Register = () => {
                                                 name={"ifsc_code"}
 
                                                 value={userDetails.ifsc_code}
-                                                onChange={userValues}/>
+                                                onChange={ifscValues}/>
                                             {bankDetailError && userDetails.ifsc_code.length === 0 &&
                                                 (<label className={"text-red-800 italic font-bold"}>please enter ifsc
                                                     code</label>)
@@ -282,7 +331,9 @@ const Register = () => {
                                                         setUploadImage(event.target.files[0])
                                                     }}
                                                 />
-                                                {/*{ImageError && }*/}
+                                                {imageError &&  uploadImage <= 0 &&
+                                                    <label className={"text-red-800 italic font-bold"} >Please upload images</label>}
+
                                             </div>
 
                                         </div>
