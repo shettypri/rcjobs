@@ -103,7 +103,7 @@ const PaymentDetails = (props) => {
                                         <>
                                         <td colSpan={2} className="bg-green-300">
                                             <label className="text-2xl text-green-600">
-                                                Payment Done Sucessfully
+                                                Payment Done Successfully
                                             </label>
 
                                         </td>
@@ -134,6 +134,8 @@ const PaymentDetails = (props) => {
                             }
 
                         </tr>
+
+                        
                         </tbody>
                     </table>
 

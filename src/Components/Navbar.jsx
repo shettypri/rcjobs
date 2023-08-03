@@ -80,7 +80,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="hidden max-sm:block">
-                <FontAwesomeIcon icon={faBars} className={"cursor-pointer hidden max-sm:block"} onClick={()=>{setToggle(!toggle)}}/>
+
+                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white " onClick={()=>{setToggle(!toggle)}}>
+                    &#9776;
+                </section>
             </div>
 
 
