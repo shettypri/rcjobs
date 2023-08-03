@@ -31,7 +31,6 @@ const Navbar = () => {
     }
 
 
-
     return (
         <nav className="w-full h-14 bg-slate-400 flex justify-between px-4 md:px-4 items-center">
             <div>
@@ -58,12 +57,18 @@ const Navbar = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <li className={"mx-[10px] cursor-pointer text-white"}>
-                                                <Link to="/admin/dashboard"> Admin dashboard</Link>
-                                            </li>
-                                            <li className={"mx-[10px] cursor-pointer text-white"}>
-                                                <Link to="/user/profile"> {data.name} </Link>
-                                            </li>
+                                            {
+                                                data.isAdmin && (
+                                                    <>
+                                                        <li className={"mx-[10px] cursor-pointer text-white"}>
+                                                            <Link to="/admin/dashboard"> Admin dashboard</Link>
+                                                        </li>
+                                                        <li className={"mx-[10px] cursor-pointer text-white"}>
+                                                            <Link to="/user/profile"> {data.name} </Link>
+                                                        </li>
+                                                    </>
+                                                )
+                                            }
                                         </>
                                     )
                                 }
@@ -81,9 +86,13 @@ const Navbar = () => {
             </div>
             <div className="hidden max-sm:block">
 
-                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white " onClick={()=>{setToggle(!toggle)}}>
+                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white "
+                         onClick={() => {
+                             setToggle(!toggle)
+                         }}>
                     &#9776;
                 </section>
+
             </div>
 
 
