@@ -15,7 +15,10 @@ const Add_ads = () => {
     const [clientDetails, setClientDetails] = useState({
         name: "",
         isAdsShow: true,
-        Phone: ""
+        Phone: "",
+        Ads_name: "",
+        Ads_price: "",
+        Ads_Offer: "",
     });
     const [showUploadBtn, setShowUploadBtn] = useState(false);
     const handleChange = (event) => {
@@ -51,58 +54,41 @@ const Add_ads = () => {
                 showUploadBtn ?
                     (
                         <div className="">
-
-
-                            <div className="flex justify-end  mt-4 mr-44
-            max-sm:mr-4
-            ">
+                            <div className="flex justify-end  mt-4 mr-44 max-sm:mr-4">
                                 <button className="bg-gradient-to-r from-orange-600 px-8 py-3  border-2 border-black font-bold uppercase rounded-full
                 shadow-xl shadow-gray-500 hover:bg-gradient-to-r hover:from-orange-800
-                "
-                                        onClick={
-                                            () =>
-                                                setShowUploadBtn(false)
-                                        }
-                                >
-
+                " onClick={() => setShowUploadBtn(false)}>
                                     Show list
                                 </button>
                             </div>
-                            <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100
-            w-1/3
-            max-sm:w-64 max-sm:p-3">
 
+                            {/* Form begins from here*/}
+                            <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100 w-1/2
+                             max-sm:w-64 max-sm:p-3">
                                 <div className="m-auto flex flex-col">
                                     <label className="font-bold my-5 uppercase">
-                                        Upload the add below
+                                        Upload the ad below
                                     </label>
                                 </div>
 
                                 <div>
-
-                                    <div className="flex flex-col max-sm:block">
-                                        <label className="font-bold mx-2 uppercase mb-4">
-                                            Client Name
-                                        </label>
+                                    <div className="flex flex-row max-sm:block">
+                                        <label className="font-bold mx-2 uppercase mt-4">Client Name</label>
                                         <input
-                                            type="text"
-                                            name="name"
+                                            type="text" name="name"
                                             pattern="[a-zA-Z\s]"
                                             value={clientDetails.name}
+                                            placeholder="Enter the client Name"
                                             onChange={handleChange}
                                             className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-2
-                        max-sm:w-full max-sm:m-0
-                        "
+                                                        max-sm:w-full max-sm:m-0"
                                         />
                                     </div>
 
-                                    <div>
-
+                                    <div className="mx-auto px-6">
                                         <PhoneInput
-                                            className="flex flex-row w-full  mb-4"
-                                            country={"in"}
-                                            value={clientDetails.Phone}
-                                            name={"Phone"}
+                                            className="flex flex-row w-full  mb-4 px-8"
+                                            country={"in"} value={clientDetails.Phone} name={"Phone"}
                                             onChange={(event) => {
                                                 const regex = /^[0-9\b]+$/;
                                                 if (regex.test(event)) {
@@ -110,23 +96,59 @@ const Add_ads = () => {
                                                 }
                                             }
                                             }
-
                                         />
                                     </div>
-
                                 </div>
 
                                 <div className="m-auto flex flex-col">
-
-
                                     <input type={"file"} accept={"image/*"}
-                                           className="border border-blue-100
-                    w-full uppercase italic font-bold
-                    "
+                                           className="border border-blue-100 w-full uppercase italic font-bold"
                                            onChange={(event) => {
                                                setUploadAds(event.target.files[0])
                                            }
                                            }
+                                    />
+                                </div>
+
+                                <div className="m-auto flex flex-row my-2 ">
+                                    <label className="font-bold mx-2 uppercase mb-4">Product Name</label>
+                                    <input
+                                        type="text"
+                                        name="Ads_name"
+                                        pattern="[a-zA-Z\s]"
+                                        placeholder="Enter the Product Name"
+                                        value={clientDetails.Ads_name}
+                                        onChange={handleChange}
+                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-0"
+                                    />
+                                </div>
+                                <div className="m-auto flex flex-row my-2">
+                                    <label className="font-bold mx-2 uppercase mb-4">
+                                        Product Price
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="Ads_price"
+                                        pattern="[a-zA-Z\s]"
+                                        placeholder="Enter the Product Price"
+                                        value={clientDetails.Ads_price}
+                                        onChange={handleChange}
+                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-0"
+                                    />
+                                </div>
+                                <div className="m-auto flex flex-row my-2">
+                                    <label className="font-bold mx-2 uppercase mb-4">offer Percentage</label>
+                                    <input
+                                        type="text"
+                                        name="Ads_Offer"
+                                        pattern="[a-zA-Z\s]"
+                                        placeholder="Enter the offer percetage"
+                                        value={clientDetails.Ads_Offer}
+                                        onChange={handleChange}
+                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-0"
                                     />
                                 </div>
 
@@ -146,7 +168,6 @@ const Add_ads = () => {
                                             </label>
                                         )
                                     }
-
 
                                     <button className="border-2 border-indigo-900 rounded-full bg-orange-400 text-white font-bold uppercase my-8
                     w-[250px] h-[50px] hover:bg-orange-600 transition
