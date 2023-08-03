@@ -13,6 +13,11 @@ const Register = () => {
     const [final, setFinal] = useState(true);
     const referCode = sessionStorage.getItem("referCode")
 
+    const [personalDetailError, setPersonalDetailError] = useState(false);
+    const [bankDetailError, setBankDetailError] = useState(false);
+    const [val, setVal] = useState("");
+
+
     const [userDetails, setUserDetails] = useState({
         id: sessionStorage.getItem("key"),
         name: "",
@@ -41,6 +46,31 @@ const Register = () => {
             ...userDetails, [event.target.name]: event.target.value
         })
     }
+    const handlePersonalDetail=()=>{
+        if(userDetails.name.length===0 || userDetails.Address.length===0){
+            setPersonalDetailError(true)
+
+        } else {setPersonalDetails(false)
+        }
+    }
+    const handleBankDetails=()=> {
+        if (userDetails.Account_name.length===0 || userDetails.Account_no.length===0 || userDetails.Bank_name.length===0 || userDetails.Branch.length===0 || userDetails.ifsc_code.length===0) {
+            setBankDetailError(true)
+        } else {
+            setFinal(false)
+
+        }
+    }
+    // const handleChanges=(event)=>{
+    //     const value = event.target.value;
+    //     if (/^[0-9\b]+$/.test(value)) {
+    //         setVal(value);
+    //     }
+    //
+    // }
+
+
+
 
 
     const handleRegister = async () => {
@@ -65,7 +95,8 @@ const Register = () => {
     }
 
 
-    return (
+
+        return (
         <>
             <div className={"flex flex-wrap justify-center mt-4"}>
 
@@ -86,6 +117,10 @@ const Register = () => {
                                     className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
                     "
                                     name={"name"} onChange={userValues}/>
+                                {personalDetailError && userDetails.name.length===0 &&
+                                    (<label className={"text-red-800 italic font-bold"}>please enter full name</label>)
+                                }
+
                             </div>
 
                             <div className={" flex flex-col text-black p-4 px-0"}>
@@ -97,6 +132,7 @@ const Register = () => {
                                     className=" mt-1 border-2 border-gray-700 h-10 rounded font-bold
                        shadow-xl
                        "/>
+
                             </div>
                             <div className={"flex flex-col justify-center mb-4"}>
                                 <label className={"font-bold"}> Address</label>
@@ -106,6 +142,9 @@ const Register = () => {
                                     name={"Address"}
                                     value={userDetails.Address}
                                     onChange={userValues}/>
+                                {personalDetailError && userDetails.Address.length===0 &&
+                                    (<label className={"text-red-800 italic font-bold"}>please enter Address</label>)
+                                }
 
                             </div>
                             {
@@ -127,7 +166,7 @@ const Register = () => {
                             <div className="flex flex-row justify-center">
                                 <button
                                    className={ "text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
-                                onClick={()=>setPersonalDetails(false)}>Next
+                                onClick={handlePersonalDetail}>Next
                                 </button>
                             </div>
 
@@ -147,6 +186,11 @@ const Register = () => {
                                                 value={userDetails.Account_name}
                                                 onChange={userValues}
                                             />
+                                            {bankDetailError && userDetails.Account_name.length===0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Account name</label>)
+                                            }
+
+
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}>Account number</label>
@@ -155,7 +199,12 @@ const Register = () => {
                                                 type={"text"}
                                                 name={"Account_no"}
                                                 value={userDetails.Account_no}
-                                                onChange={userValues}/>
+                                                onChange={userValues}
+                                                // onChange={handleChanges}
+                                            />
+                                            {bankDetailError && userDetails.Account_no.length===0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Account number</label>)
+                                            }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> Bank Name</label>
@@ -165,6 +214,9 @@ const Register = () => {
                                                 name={"Bank_name"}
                                                 value={userDetails.Bank_name}
                                                 onChange={userValues}/>
+                                            {bankDetailError && userDetails.Bank_name.length===0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Bank name</label>)
+                                            }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> Branch</label>
@@ -174,6 +226,9 @@ const Register = () => {
                                                 name={"Branch"}
                                                 value={userDetails.Branch}
                                                 onChange={userValues}/>
+                                            {bankDetailError && userDetails.Branch.length===0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Branch name</label>)
+                                            }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}> IFSC code</label>
@@ -184,6 +239,9 @@ const Register = () => {
 
                                                 value={userDetails.ifsc_code}
                                                 onChange={userValues}/>
+                                            {bankDetailError && userDetails.ifsc_code.length===0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter ifsc code</label>)
+                                            }
                                         </div>
 
 
@@ -196,7 +254,7 @@ const Register = () => {
                                             </button>
                                             <button
                                                 className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "
-                                                }onClick={()=>setFinal(false)}>Next
+                                                } onClick={handleBankDetails}>Next
 
                                             </button>
                                         </div>
@@ -218,6 +276,7 @@ const Register = () => {
                                                         setUploadImage(event.target.files[0])
                                                     }}
                                                 />
+                                                {/*{ImageError && }*/}
                                             </div>
 
                                         </div>
@@ -269,3 +328,4 @@ const Register = () => {
 }
 
 export default Register
+

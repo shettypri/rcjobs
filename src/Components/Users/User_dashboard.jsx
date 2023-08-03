@@ -103,7 +103,7 @@ const User_dashboard = () => {
                         }</div>
                     <div className="my-4 flex flex-row justify-around bg-gray-400 py-4">
                         <button
-                            className="uppercase bg-green-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black mr-2
+                            className="uppercase bg-green-700  hover:bg-sky-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black mr-2
                             max-sm:px-10 max-sm:py-2"
                             onClick={() => reactSwipeEl.prev()}
                         >

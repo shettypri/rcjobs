@@ -12,6 +12,7 @@ const Profile = () => {
 
     const [showInput, setShowInput] = useState(false);
 
+
     const {error, data} = useSelector(state => state.userReducer)
     const [newIfsc, setNewIfsc] = useState(data.ifsc_code);
     const handleSubmit = () => {
@@ -126,13 +127,18 @@ const Profile = () => {
                                    className="w-1/2 h-10 border border-black px-4 mx-auto"
                                    onChange={(event) => setNewIfsc(event.target.value)}
                             />
+                            {newIfsc===data.ifsc_code
+                                &&(<label className={"font-bold italic text-red-800 underline mt-1 "}> ifsc code can't be same as old </label>)
+
+
+                            }
                             <div className="flex justify-around mt-4 space-x-3 ">
                                 <button
-                                    className={"bg-green-800 flex  justify-center border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
+                                    className={"bg-green-700 hover:bg-green-900 flex   justify-center p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
                                     onClick={handleSubmit}>submit
                                 </button>
                                 <button
-                                    className={"bg-red-800 flex  justify-center border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
+                                    className={"bg-red-600 hover:bg-red-900  justify-center  p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
                                     onClick={() => {
                                         setShowInput(false)
                                     }}>cancel
