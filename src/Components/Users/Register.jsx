@@ -24,15 +24,15 @@ const Register = () => {
         phone: sessionStorage.getItem("mobileNumber"),
         limit: 25,
         referred: 0,
-        total_referred:0,
+        total_referred: 0,
         wallet: 0,
         isWithdrawing: false,
         withdrawalAmount: 0,
-        Total_withdrawal:0,
+        Total_withdrawal: 0,
         isAdmin: false,
         isUserAuthorized: false,
-        joining_code: (referCode? referCode:null),
-        Referral_Code: "RCJOBS-"+referralCodeGenerator.alphaNumeric('uppercase', 4, 3),
+        joining_code: (referCode ? referCode : null),
+        Referral_Code: "RCJOBS-" + referralCodeGenerator.alphaNumeric('uppercase', 4, 3),
         Account_name: "",
         Account_no: "",
         Bank_name: "",
@@ -42,35 +42,37 @@ const Register = () => {
     });
     const Navigate = useNavigate()
     const userValues = (event) => {
-        setUserDetails({
-            ...userDetails, [event.target.name]: event.target.value
-        })
-    }
-    const handlePersonalDetail=()=>{
-        if(userDetails.name.length===0 || userDetails.Address.length===0){
-            setPersonalDetailError(true)
-
-        } else {setPersonalDetails(false)
+        const re = /^[A-Za-z]+$/;
+        // const value
+        if (event.target.value === "" || re.test(event.target.value)) {
+            setUserDetails({
+                ...userDetails, [event.target.name]: event.target.value
+            })
         }
     }
-    const handleBankDetails=()=> {
-        if (userDetails.Account_name.length===0 || userDetails.Account_no.length===0 || userDetails.Bank_name.length===0 || userDetails.Branch.length===0 || userDetails.ifsc_code.length===0) {
+    const handlePersonalDetail = () => {
+        if (userDetails.name.length === 0 || userDetails.Address.length === 0) {
+            setPersonalDetailError(true)
+
+        } else {
+            setPersonalDetails(false)
+        }
+    }
+    const handleBankDetails = () => {
+        if (userDetails.Account_name.length === 0 || userDetails.Account_no.length === 0 || userDetails.Bank_name.length === 0 || userDetails.Branch.length === 0 || userDetails.ifsc_code.length === 0) {
             setBankDetailError(true)
         } else {
             setFinal(false)
 
         }
     }
-    // const handleChanges=(event)=>{
-    //     const value = event.target.value;
-    //     if (/^[0-9\b]+$/.test(value)) {
-    //         setVal(value);
-    //     }
-    //
-    // }
+    const handleChanges = (event) => {
+        const value = event.target.value;
+        if (/^[0-9\b]+$/.test(value)) {
+            setVal(value);
+        }
 
-
-
+    }
 
 
     const handleRegister = async () => {
@@ -95,8 +97,7 @@ const Register = () => {
     }
 
 
-
-        return (
+    return (
         <>
             <div className={"flex flex-wrap justify-center mt-4"}>
 
@@ -104,7 +105,7 @@ const Register = () => {
                 py-10
                 ">
 
-                    {personDetails ?(
+                    {personDetails ? (
                         <div className="px-4">
                             <div
                                 className={" text-3xl font-semibold bg-[#FD7F2C] text-white w-full uppercase m-[0px] mt-[0px] rounded  h-15"}>
@@ -114,10 +115,10 @@ const Register = () => {
                             <div className={" flex flex-col text-black p-4 px-0"}>
                                 <label className={"font-bold"}>Enter Full Name</label>
                                 <input type="text" value={userDetails.name}
-                                    className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
+                                       className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
                     "
-                                    name={"name"} onChange={userValues}/>
-                                {personalDetailError && userDetails.name.length===0 &&
+                                       name={"name"} onChange={userValues}/>
+                                {personalDetailError && userDetails.name.length === 0 &&
                                     (<label className={"text-red-800 italic font-bold"}>please enter full name</label>)
                                 }
 
@@ -142,38 +143,38 @@ const Register = () => {
                                     name={"Address"}
                                     value={userDetails.Address}
                                     onChange={userValues}/>
-                                {personalDetailError && userDetails.Address.length===0 &&
+                                {personalDetailError && userDetails.Address.length === 0 &&
                                     (<label className={"text-red-800 italic font-bold"}>please enter Address</label>)
                                 }
 
                             </div>
                             {
-                                    <div className={" flex flex-col text-black p-4 px-0"}>
-                                        {referCode ? (
-                                            <label className="font-bold uppercase text-green-600 bg-gray-300 py-4 px-2
+                                <div className={" flex flex-col text-black p-4 px-0"}>
+                                    {referCode ? (
+                                        <label className="font-bold uppercase text-green-600 bg-gray-300 py-4 px-2
                                             border-2 border-gray-500 rounded-2xl
                                             ">
-                                                Thank you Join through Referral
-                                                program</label>
-                                        ) : (
-                                            <label>
-                                                You Don't Have any Referral
-                                            </label>
-                                        )}
-                                    </div>
+                                            Thank you Join through Referral
+                                            program</label>
+                                    ) : (
+                                        <label>
+                                            You Don't Have any Referral
+                                        </label>
+                                    )}
+                                </div>
                             }
 
                             <div className="flex flex-row justify-center">
                                 <button
-                                   className={ "text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
-                                onClick={handlePersonalDetail}>Next
+                                    className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
+                                    onClick={handlePersonalDetail}>Next
                                 </button>
                             </div>
 
                         </div>
-                    ):(
+                    ) : (
                         <div>
-                            {final ?(
+                            {final ? (
                                 <div className="px-10">
                                     <div className={"flex flex-col text-black p-2"}>
 
@@ -186,8 +187,9 @@ const Register = () => {
                                                 value={userDetails.Account_name}
                                                 onChange={userValues}
                                             />
-                                            {bankDetailError && userDetails.Account_name.length===0 &&
-                                                (<label className={"text-red-800 italic font-bold"}>please enter Account name</label>)
+                                            {bankDetailError && userDetails.Account_name.length === 0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Account
+                                                    name</label>)
                                             }
 
 
@@ -199,11 +201,12 @@ const Register = () => {
                                                 type={"text"}
                                                 name={"Account_no"}
                                                 value={userDetails.Account_no}
-                                                onChange={userValues}
-                                                // onChange={handleChanges}
+                                                // onChange={userValues}
+                                                onChange={handleChanges}
                                             />
-                                            {bankDetailError && userDetails.Account_no.length===0 &&
-                                                (<label className={"text-red-800 italic font-bold"}>please enter Account number</label>)
+                                            {bankDetailError && userDetails.Account_no.length === 0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Account
+                                                    number</label>)
                                             }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
@@ -214,8 +217,9 @@ const Register = () => {
                                                 name={"Bank_name"}
                                                 value={userDetails.Bank_name}
                                                 onChange={userValues}/>
-                                            {bankDetailError && userDetails.Bank_name.length===0 &&
-                                                (<label className={"text-red-800 italic font-bold"}>please enter Bank name</label>)
+                                            {bankDetailError && userDetails.Bank_name.length === 0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Bank
+                                                    name</label>)
                                             }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
@@ -226,8 +230,9 @@ const Register = () => {
                                                 name={"Branch"}
                                                 value={userDetails.Branch}
                                                 onChange={userValues}/>
-                                            {bankDetailError && userDetails.Branch.length===0 &&
-                                                (<label className={"text-red-800 italic font-bold"}>please enter Branch name</label>)
+                                            {bankDetailError && userDetails.Branch.length === 0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter Branch
+                                                    name</label>)
                                             }
                                         </div>
                                         <div className={"flex flex-col justify-center"}>
@@ -239,8 +244,9 @@ const Register = () => {
 
                                                 value={userDetails.ifsc_code}
                                                 onChange={userValues}/>
-                                            {bankDetailError && userDetails.ifsc_code.length===0 &&
-                                                (<label className={"text-red-800 italic font-bold"}>please enter ifsc code</label>)
+                                            {bankDetailError && userDetails.ifsc_code.length === 0 &&
+                                                (<label className={"text-red-800 italic font-bold"}>please enter ifsc
+                                                    code</label>)
                                             }
                                         </div>
 
@@ -248,7 +254,7 @@ const Register = () => {
                                         <div className={"flex justify-center p-6 flex-row space-x-3 "}>
                                             <button
                                                 className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
-                                                onClick={()=>setPersonalDetails(true)}
+                                                onClick={() => setPersonalDetails(true)}
                                             >
                                                 Back
                                             </button>
@@ -260,7 +266,7 @@ const Register = () => {
                                         </div>
                                     </div>
                                 </div>
-                            ):(
+                            ) : (
                                 <div>
                                     <div>
                                         <div className={"flex flex-col  mt-4"}>
@@ -285,7 +291,9 @@ const Register = () => {
                                     <div className={"flex justify-center p-6 flex-row space-x-3 "}>
                                         <button
                                             className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400  "}
-                                            onClick={()=>{setFinal(true)}}
+                                            onClick={() => {
+                                                setFinal(true)
+                                            }}
                                         >
                                             back
                                         </button>
@@ -300,21 +308,14 @@ const Register = () => {
                             )}
 
 
-
-
-
                         </div>
                     )}
-
 
 
                     {/*<div className={"p-6"}>*/}
                     {/*    IF NOT PAID YET <span*/}
                     {/*    className={"italic text-blue-700 underline underline-offset-1 cursor-pointer hover:text-blue-900"}> click here to pay</span>*/}
                     {/*</div>*/}
-
-
-
 
 
                 </div>
