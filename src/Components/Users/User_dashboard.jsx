@@ -52,9 +52,9 @@ const User_dashboard = () => {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-full h-[660px] bg-blue-100  pt-7 px-0
+                                    className="carousel w-full h-[660px] bg-gray-100  pt-7 px-0
                                     mx-10
-                                        max-sm:w-full max-sm:p-0
+                                        max-sm:w-full max-sm:p-0 max-sm:m-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
                                     swipeOptions={{continuous: false, disableSwipe: true}}
@@ -67,7 +67,7 @@ const User_dashboard = () => {
                                             return (
                                                 <div className="w-full  m-auto mx-5
                                                      max-2xl:w-3/4 max-xl:w-full
-                                                    max-sm:bg-red-100 max-sm:w-full px-0
+                                                    max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
                                                      key={index}>
                                                     <img src={ads.imageURL} alt="Error"
@@ -83,8 +83,14 @@ const User_dashboard = () => {
                                                     </div>
                                                     <div className="flex flex-col ">
                                                         <div className="mx-2 font-bold text-2xl"> &#8377;  899</div>
-                                                        <div className="mx-2 font-bold text-lg text-gray-600 line-through"> &#8377;  999
+                                                        <div className="mx-2 font-bold text-lg flex flex-row ">
+                                                            <section className="text-gray-600 line-through mx-2 ">
+                                                                &#8377;  999
+                                                            </section>
 
+                                                            <section className="text-green-600">
+                                                                5% off
+                                                            </section>
                                                         </div>
                                                     </div>
                                                     <button
