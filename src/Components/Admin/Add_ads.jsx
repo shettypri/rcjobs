@@ -110,19 +110,6 @@ const Add_ads = () => {
                                     />
                                 </div>
 
-                                <div className="m-auto flex flex-row my-2 ">
-                                    <label className="font-bold mx-2 uppercase mb-4">Product Name</label>
-                                    <input
-                                        type="text"
-                                        name="Ads_name"
-                                        pattern="[a-zA-Z\s]"
-                                        placeholder="Enter the Product Name"
-                                        value={clientDetails.Ads_name}
-                                        onChange={handleChange}
-                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
-                                                        max-sm:w-full max-sm:m-0"
-                                    />
-                                </div>
                                 <div className="m-auto flex flex-row my-2">
                                     <label className="font-bold mx-2 uppercase mb-4">
                                         Product Price

@@ -52,7 +52,8 @@ const User_dashboard = () => {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-full h-[500px] bg-blue-100  pt-7 px-0
+                                    className="carousel w-full h-[660px] bg-blue-100  pt-7 px-0
+                                    mx-10
                                         max-sm:w-full max-sm:p-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
@@ -65,20 +66,33 @@ const User_dashboard = () => {
                                         fetchAds.data.map((ads, index) => {
                                             return (
                                                 <div className="w-full  m-auto mx-5
+                                                     max-2xl:w-3/4 max-xl:w-full
                                                     max-sm:bg-red-100 max-sm:w-full px-0
                                                 "
                                                      key={index}>
                                                     <img src={ads.imageURL} alt="Error"
                                                          height={15} width={20}
                                                          className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-0
-                                                        max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10
+                                                        max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10 max-2xl:w-3/4
                                                          "
                                                     />
+
+                                                    <div className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
+                                                        name of the product
+
+                                                    </div>
+                                                    <div className="flex flex-col ">
+                                                        <div className="mx-2 font-bold text-2xl"> &#8377;  899</div>
+                                                        <div className="mx-2 font-bold text-lg text-gray-600 line-through"> &#8377;  999
+
+                                                        </div>
+                                                    </div>
                                                     <button
                                                         className="border-2 border-black
                                                             mx-40  px-24 mt-4 py-3 rounded
                                                              font-extrabold uppercase bg-red-700 text-white
                                                              max-sm:mx-20
+                                                             max-2xl:mx-10
                                                             "
                                                         onClick={
                                                             () => {
