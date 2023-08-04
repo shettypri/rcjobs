@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
-import {db} from "../../config/firebase.config.js";
+import {db} from "../../firebase.config.js";
 
 export const fetchAdsReducers = createAsyncThunk(
     "fetchAdsReducers",

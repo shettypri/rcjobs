@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {db} from "../../config/firebase.config.js";
+import {db} from "../../firebase.config.js";
 import {addDoc, collection, doc, getDocs, updateDoc} from "firebase/firestore";
 
 export const addProductReducers = createAsyncThunk(

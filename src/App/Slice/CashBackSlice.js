@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {doc, getDoc} from "@firebase/firestore";
-import {db} from "../../config/firebase.config.js";
+import {db} from "../../firebase.config.js";
 import {updateDoc} from "firebase/firestore";
 import {useDispatch} from "react-redux";
 

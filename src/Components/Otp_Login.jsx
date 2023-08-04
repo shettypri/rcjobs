@@ -3,7 +3,7 @@ import {useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import OTPInput from "otp-input-react"
 import {RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
-import {auth} from "../config/firebase.config.js";
+import {auth} from "../firebase.config.js";
 import {useDispatch, useSelector} from "react-redux";
 import {isLoginReducers} from "../App/Slice/userSlice.js";
 import {useNavigate} from "react-router-dom";

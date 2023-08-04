@@ -26,3 +26,4 @@ export const auth = getAuth();
 export const db = getFirestore(app)
 export const storage = getStorage(app)
 // const analytics = getAnalytics(app);
+export const exampleZZZ = import.meta.env.VITE_REACT_APP_DEVELOPMENT_MESSAGING_SENDER_ID

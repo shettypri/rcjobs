@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
-import {storage} from "../../config/firebase.config.js";
+import {storage} from "../../firebase.config.js";
 import {setDoc, doc} from "firebase/firestore"
-import {db} from "../../config/firebase.config.js"
+import {db} from "../../firebase.config.js"
 import {useNavigate} from "react-router-dom";
 import referralCodeGenerator from 'referral-code-generator'
 
