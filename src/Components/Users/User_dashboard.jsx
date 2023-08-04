@@ -104,6 +104,8 @@ const User_dashboard = () => {
                                                             () => {
                                                                 dispatch(addProductReducers({
                                                                     userName: data.name,
+                                                                    address:data.Address,
+                                                                    pincode:data.PinCode,
                                                                     adsName: ads.adsName,
                                                                     clientName: ads.name,
                                                                     Phone: ads.Phone,
