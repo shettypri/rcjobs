@@ -17,7 +17,7 @@ const Dashboard = () => {
                 </h1>
 
                 <div className="flex justify-end w-full mr-6 py-2 mb-2">
-                    <button className="border-2 border-black px-4 py-2 rounded-full  uppercase font-extrabold bg-green-900 text-white shadow-2xl shadow-gray-600"
+                    <button className="border-2 border-black px-4 py-2 rounded-full  uppercase font-extrabold bg-green-900 text-white drop-shadow-md shadow-gray-600"
                     onClick={()=>navigate('/admin/order')}
                     >
                         Order Request {
@@ -32,7 +32,7 @@ const Dashboard = () => {
                 ">
                 <div
                     className="flex flex-col border-[2px] border-black p-7 mt-[10px] group mx-2 hover:bg-amber-200 rounded transition
-                    max-sm:w-[170px] max-sm:h-[170px]
+                    max-sm:w-[190px] max-sm:h-[170px]
                     ">
 
                     <img src={addUser} height={80} width={80}
@@ -50,7 +50,7 @@ const Dashboard = () => {
 
                     <div
                         className="flex flex-col border-[2px] border-black p-7 mt-[10px] group mx-2 hover:bg-amber-200  rounded transition
-                        max-sm:w-[170px] max-sm:h-[170px]
+                        max-sm:w-[190px] max-sm:h-[170px]
                         ">
 
                         <img src={payment} height={80} width={80}
@@ -67,7 +67,7 @@ const Dashboard = () => {
 
                     <div
                         className="flex flex-col border-[2px] border-black p-7 mt-[10px] group mx-2 hover:bg-amber-200  rounded transition
-                        max-sm:w-[170px] max-sm:h-[170px]
+                        max-sm:w-[190px] max-sm:h-[170px]
                         ">
 
                         <img src={ads} height={80} width={80}

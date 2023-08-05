@@ -33,9 +33,7 @@ const User_dashboard = () => {
             <div className=" border border-orange-500 m-auto w-1/2
           max-sm:w-full
             ">
-                <h1 className="w-full m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold
-
-                ">
+                <h1 className="w-full m-auto bg-gradient-to-r from-orange-300 to-orange-500 flex items-center justify-center text-white text-2xl font-bold ">
                     User Dashboard
                 </h1>
                 <div className="flex justify-end mb-4 mr-4 mt-4">

@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ListAds from "./ListAds.jsx";
 
 const Add_ads = () => {
+    const [inputError, setInputError] = useState(false);
     const [uploadAds, setUploadAds] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSucess] = useState(false);
@@ -27,26 +28,31 @@ const Add_ads = () => {
 
     }
     const handleAds = async () => {
-        setLoading(loading)
-        clientDetails["adsName"] = uploadAds.name
-        const imageFile = uploadAds.name
-        const imageFolder = "ADS_FOLDER"
-        const textV4 = v4()
+       if(clientDetails.name.length===0 || clientDetails.Phone.length ||uploadAds<=0 || clientDetails.Ads_price.length===0 ||clientDetails.Ads_Offer===0 ){
+           setInputError(true)
 
-        //     image uploade code to firebase:
-        const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
-        const collectionList = collection(db, 'ADS_DATA')
-        try {
-            await uploadBytes(fileFolderRef, uploadAds)
-            const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
-            clientDetails['imageURL'] = imageUrl
-            await addDoc(collectionList, clientDetails);
-            console.log(clientDetails)
-            setLoading(false)
-            setSucess(true)
-        } catch (error) {
-            console.error(error);
-        }
+       }else{
+           setLoading(loading)
+           clientDetails["adsName"] = uploadAds.name
+           const imageFile = uploadAds.name
+           const imageFolder = "ADS_FOLDER"
+           const textV4 = v4()
+
+           //     image uploade code to firebase:
+           const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
+           const collectionList = collection(db, 'ADS_DATA')
+           try {
+               await uploadBytes(fileFolderRef, uploadAds)
+               const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
+               clientDetails['imageURL'] = imageUrl
+               await addDoc(collectionList, clientDetails);
+               console.log(clientDetails)
+               setLoading(false)
+               setSucess(true)
+           } catch (error) {
+               console.error(error);
+           }
+       }
     }
     return (
         <>
@@ -73,21 +79,29 @@ const Add_ads = () => {
 
                                 <div>
                                     <div className="flex flex-row max-sm:block">
-                                        <label className="font-bold mx-2 uppercase mt-4">Client Name</label>
+                                        <label className="font-bold mx-2 uppercase mt-4 max-sm:ml-14 ">Client Name</label>
                                         <input
                                             type="text" name="name"
                                             pattern="[a-zA-Z\s]"
                                             value={clientDetails.name}
                                             placeholder="Enter the client Name"
                                             onChange={handleChange}
-                                            className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-2
-                                                        max-sm:w-full max-sm:m-0"
+                                            className="border border-black py-2 rounded-xl px-2 w-[220px] mx-4 mt-2
+                                                        max-sm:w-60 max-sm:m-0 max-sm:ml-14 "
                                         />
+
                                     </div>
+                                    <div className={`${inputError ? "block":"hidden"}`}>
+                                        {inputError &&  clientDetails.name.length===0 &&
+                                            (<label className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please enter the name</label>)
+                                        }
+                                    </div>
+
+
 
                                     <div className="mx-auto px-6">
                                         <PhoneInput
-                                            className="flex flex-row w-full  mb-4 px-8"
+                                            className="flex flex-row w-full  mb-4 px-8  "
                                             country={"in"} value={clientDetails.Phone} name={"Phone"}
                                             onChange={(event) => {
                                                 const regex = /^[0-9\b]+$/;
@@ -98,9 +112,53 @@ const Add_ads = () => {
                                             }
                                         />
                                     </div>
+                                    <div className={`${inputError ? "block":"hidden"}`}>
+                                        {inputError &&  clientDetails.Phone.length===0 &&
+                                            (<label className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please enter the phone number</label>)
+                                        }
+                                    </div>
                                 </div>
-
-                                <div className="m-auto flex flex-col">
+                                <div className="flex flex-col">
+                                    <div className="m-auto flex flex-row my-2">
+                                        <label className="font-bold mx-2 uppercase mb-4">
+                                            Product Price
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="Ads_price"
+                                            pattern="[a-zA-Z\s]"
+                                            placeholder="Enter the Product Price"
+                                            value={clientDetails.Ads_price}
+                                            onChange={handleChange}
+                                            className="border border-black py-2 rounded-xl  px-2 w-[220px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-1"
+                                        />
+                                    </div>
+                                    <div className={`${inputError ? "block":"hidden"}`}>
+                                        {inputError &&  clientDetails.Ads_price.length===0 &&
+                                            (<label className="capitalize font-semibold not-italic  text-red-600">please enter the Price</label>)
+                                        }
+                                    </div>
+                                </div>
+                                <div className="flex flex-col py-3">
+                                    <div className="m-aut o flex flex-row my-2">
+                                        <label className="font-bold mx-2 uppercase mb-4">offer Percentage</label>
+                                        <input
+                                            type="text"
+                                            name="Ads_Offer"
+                                            pattern="[a-zA-Z\s]"
+                                            placeholder="Enter the offer percetage"
+                                            value={clientDetails.Ads_Offer}
+                                            onChange={handleChange}
+                                            className="border border-black py-2 rounded-xl px-2 w-[220px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-0"
+                                        />
+                                    </div>
+                                    <div className={`${inputError ? "block":"hidden"}`}>
+                                        {inputError && clientDetails.Ads_Offer.length===0 && (<label className="capitalize font-semibold not-italic  text-red-600">Please enter the offer percentage </label>) }
+                                    </div>
+                                </div>
+                                <div className="m-auto flex flex-col py-2  ">
                                     <input type={"file"} accept={"image/*"}
                                            className="border border-blue-100 w-full uppercase italic font-bold"
                                            onChange={(event) => {
@@ -109,37 +167,11 @@ const Add_ads = () => {
                                            }
                                     />
                                 </div>
-
-                                <div className="m-auto flex flex-row my-2">
-                                    <label className="font-bold mx-2 uppercase mb-4">
-                                        Product Price
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="Ads_price"
-                                        pattern="[a-zA-Z\s]"
-                                        placeholder="Enter the Product Price"
-                                        value={clientDetails.Ads_price}
-                                        onChange={handleChange}
-                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
-                                                        max-sm:w-full max-sm:m-0"
-                                    />
+                                <div className={`${inputError ? "block":"hidden"}`}>
+                                    {inputError &&  uploadAds<=0 &&
+                                        (<label className={"capitalize font-semibold not-italic  text-red-600  "}>please Upload image</label>)
+                                    }
                                 </div>
-                                <div className="m-auto flex flex-row my-2">
-                                    <label className="font-bold mx-2 uppercase mb-4">offer Percentage</label>
-                                    <input
-                                        type="text"
-                                        name="Ads_Offer"
-                                        pattern="[a-zA-Z\s]"
-                                        placeholder="Enter the offer percetage"
-                                        value={clientDetails.Ads_Offer}
-                                        onChange={handleChange}
-                                        className="border border-black py-2 rounded-full px-2 w-[320px] mx-4 mt-1
-                                                        max-sm:w-full max-sm:m-0"
-                                    />
-                                </div>
-
-
                                 <div className="flex flex-col">
                                     {
                                         loading && success(

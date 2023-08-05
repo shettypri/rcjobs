@@ -43,7 +43,7 @@ const Register = () => {
     });
     const Navigate = useNavigate()
     const userValues = (event) => {
-        const re = /^[A-Za-z]+$/;
+        const re = /^[a-zA-Z0-9_ ]*$/;
         // const value
         if (event.target.value === "" || re.test(event.target.value)) {
             setUserDetails({
@@ -241,8 +241,8 @@ const Register = () => {
                                                     name</label>)
                                             }
 
-
                                         </div>
+
                                         <div className={"flex flex-col justify-center"}>
                                             <label className={"font-bold"}>Account number</label>
                                             <input
