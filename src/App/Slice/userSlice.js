@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {doc, getDoc} from "@firebase/firestore";
-import {db} from "../../firebase.config.js";
-import {auth} from "../../firebase.config.js";
+import {db} from "../../config/firebase.config.js";
+import {auth} from "../../config/firebase.config.js";
 import {signOut} from "firebase/auth";
 
 export const isLoginReducers = createAsyncThunk(

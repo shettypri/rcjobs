@@ -3,8 +3,6 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {newUserReducers} from "../../App/Slice/adminUserSlice.js";
 import New_user from "./New_user.jsx";
-import {exampleZZZ} from "../../firebase.config.js";
-
 const New_Request = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -12,10 +10,7 @@ const New_Request = () => {
         dispatch(newUserReducers())
     }, []);
     const {newUsers,CashBack} = useSelector(state => state.adminUserReducers)
-    // console.log(newUsers.data)
-    // console.log("cash back ",CashBack)
-    console.log(import.meta.env.VITE_REACT_APP_DEVELOPMENT_MESSAGING_SENDER_ID)
-    // console.log(exampleZZZ)
+
     return (
         <>
             <div className="mt-5 flex flex-col w-1/2

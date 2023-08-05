@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
-import {storage, db} from "../../firebase.config.js";
+import {storage, db} from "../../config/firebase.config.js";
 import {addDoc, collection} from "firebase/firestore";
 import PhoneInput from "react-phone-input-2";
 import {fetchAdsReducers} from "../../App/Slice/fetchAdsSlice.js";
