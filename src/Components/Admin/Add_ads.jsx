@@ -28,31 +28,31 @@ const Add_ads = () => {
 
     }
     const handleAds = async () => {
-       if(clientDetails.name.length===0 || clientDetails.Phone.length ||uploadAds<=0 || clientDetails.Ads_price.length===0 ||clientDetails.Ads_Offer===0 ){
-           setInputError(true)
 
-       }else{
-           setLoading(loading)
-           clientDetails["adsName"] = uploadAds.name
-           const imageFile = uploadAds.name
-           const imageFolder = "ADS_FOLDER"
-           const textV4 = v4()
+        if (clientDetails.name.length === 0 || clientDetails.Phone.length === 0 || uploadAds === "" || clientDetails.Ads_price.length === 0 || clientDetails.Ads_Offer === 0 || clientDetails.Ads_name.length === 0) {
+            setInputError(true)
+        } else {
+            setLoading(loading)
+            clientDetails["adsName"] = uploadAds.name
+            const imageFile = uploadAds.name
+            const imageFolder = "ADS_FOLDER"
+            const textV4 = v4()
 
-           //     image uploade code to firebase:
-           const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
-           const collectionList = collection(db, 'ADS_DATA')
-           try {
-               await uploadBytes(fileFolderRef, uploadAds)
-               const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
-               clientDetails['imageURL'] = imageUrl
-               await addDoc(collectionList, clientDetails);
-               console.log(clientDetails)
-               setLoading(false)
-               setSucess(true)
-           } catch (error) {
-               console.error(error);
-           }
-       }
+            //     image uploade code to firebase:
+            const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
+            const collectionList = collection(db, 'ADS_DATA')
+            try {
+                await uploadBytes(fileFolderRef, uploadAds)
+                const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
+                clientDetails['imageURL'] = imageUrl
+                await addDoc(collectionList, clientDetails);
+                console.log(clientDetails)
+                setLoading(false)
+                setSucess(true)
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
     return (
         <>
@@ -79,7 +79,8 @@ const Add_ads = () => {
 
                                 <div>
                                     <div className="flex flex-row max-sm:block">
-                                        <label className="font-bold mx-2 uppercase mt-4 max-sm:ml-14 ">Client Name</label>
+                                        <label className="font-bold mx-2 uppercase mt-4 max-sm:ml-14 ">Client
+                                            Name</label>
                                         <input
                                             type="text" name="name"
                                             pattern="[a-zA-Z\s]"
@@ -91,12 +92,13 @@ const Add_ads = () => {
                                         />
 
                                     </div>
-                                    <div className={`${inputError ? "block":"hidden"}`}>
-                                        {inputError &&  clientDetails.name.length===0 &&
-                                            (<label className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please enter the name</label>)
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.name.length === 0 &&
+                                            (<label
+                                                className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please
+                                                enter the name</label>)
                                         }
                                     </div>
-
 
 
                                     <div className="mx-auto px-6">
@@ -112,9 +114,35 @@ const Add_ads = () => {
                                             }
                                         />
                                     </div>
-                                    <div className={`${inputError ? "block":"hidden"}`}>
-                                        {inputError &&  clientDetails.Phone.length===0 &&
-                                            (<label className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please enter the phone number</label>)
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.Phone.length === 0 &&
+                                            (<label
+                                                className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please
+                                                enter the phone number</label>)
+                                        }
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <div className="m-auto flex flex-row my-2">
+                                        <label className="font-bold mx-2 uppercase mb-4">
+                                            Product Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="Ads_name"
+                                            pattern="[a-zA-Z\s]"
+                                            placeholder="Enter the Product namw"
+                                            value={clientDetails.Ads_name}
+                                            onChange={handleChange}
+                                            className="border border-black py-2 rounded-xl  px-2 w-[220px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-1"
+                                        />
+                                    </div>
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.Ads_price.length === 0 &&
+                                            (<label className="capitalize font-semibold not-italic  text-red-600">please
+                                                enter the Price</label>)
                                         }
                                     </div>
                                 </div>
@@ -134,12 +162,15 @@ const Add_ads = () => {
                                                         max-sm:w-full max-sm:m-1"
                                         />
                                     </div>
-                                    <div className={`${inputError ? "block":"hidden"}`}>
-                                        {inputError &&  clientDetails.Ads_price.length===0 &&
-                                            (<label className="capitalize font-semibold not-italic  text-red-600">please enter the Price</label>)
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.Ads_price.length === 0 &&
+                                            (<label className="capitalize font-semibold not-italic  text-red-600">please
+                                                enter the Price</label>)
                                         }
                                     </div>
                                 </div>
+
+
                                 <div className="flex flex-col py-3">
                                     <div className="m-aut o flex flex-row my-2">
                                         <label className="font-bold mx-2 uppercase mb-4">offer Percentage</label>
@@ -154,11 +185,13 @@ const Add_ads = () => {
                                                         max-sm:w-full max-sm:m-0"
                                         />
                                     </div>
-                                    <div className={`${inputError ? "block":"hidden"}`}>
-                                        {inputError && clientDetails.Ads_Offer.length===0 && (<label className="capitalize font-semibold not-italic  text-red-600">Please enter the offer percentage </label>) }
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.Ads_Offer.length === 0 && (
+                                            <label className="capitalize font-semibold not-italic  text-red-600">Please
+                                                enter the offer percentage </label>)}
                                     </div>
                                 </div>
-                                <div className="m-auto flex flex-col py-2  ">
+                                <div className="m-auto flex flex-col py-2 border-dashed border-2 border-gray-800 px-14 py-4">
                                     <input type={"file"} accept={"image/*"}
                                            className="border border-blue-100 w-full uppercase italic font-bold"
                                            onChange={(event) => {
@@ -166,10 +199,16 @@ const Add_ads = () => {
                                            }
                                            }
                                     />
+                                    <div>
+                                        <label className="text-black font-bold text-lg my-2 py-4">
+                                            Please select the product image
+                                        </label>
+                                    </div>
                                 </div>
-                                <div className={`${inputError ? "block":"hidden"}`}>
-                                    {inputError &&  uploadAds<=0 &&
-                                        (<label className={"capitalize font-semibold not-italic  text-red-600  "}>please Upload image</label>)
+                                <div className={`${inputError ? "block" : "hidden"}`}>
+                                    {inputError && uploadAds <= 0 &&
+                                        (<label className={"capitalize font-semibold not-italic  text-red-600  "}>please
+                                            Upload image</label>)
                                     }
                                 </div>
                                 <div className="flex flex-col">
