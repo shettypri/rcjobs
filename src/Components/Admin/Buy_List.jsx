@@ -19,9 +19,9 @@ const BuyList = () => {
                  max-sm:w-full
                  ">
                     <div className="mx-4">
-                        <button className="text-2xl  text-white border-2 border-white px-4
+                        <button className="text-2xl  text-white border-2 border-white px-6  mr-28
                         rounded-full py-1 shadow shadow-white
-                        max-sm:text-xl max-sm:px-6
+                        max-sm:text-xl max-sm:px-6 max-sm:mr-14
                         "
                         onClick={()=>
                             navigate("/admin/dashboard")
@@ -44,12 +44,12 @@ const BuyList = () => {
                 <div className="w-full ">
                     <table className="w-full">
                         <tr className="mx-2">
-                            <th className="border-2 border-black px-3 py-1 uppercase">Sl no</th>
-                            <th className="border-2 border-black px-3 py-1 uppercase">Customer name</th>
-                            <th className="border-2 border-black px-3 py-1 uppercase">Client name</th>
-                            <th className="border-2 border-black px-3 py-1 uppercase">Ads Name</th>
-                            <th className="border-2 border-black px-3 py-1 uppercase">Contact</th>
-                            <th className="border-2 border-black px-3 py-1 uppercase">Response</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Sl no</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Customer name</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Client name</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Ads Name</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Contact</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Response</th>
                         </tr>
                         {
                             getProduct.Success &&
