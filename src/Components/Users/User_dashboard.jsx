@@ -78,18 +78,22 @@ const User_dashboard = () => {
                                                     />
 
                                                     <div className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
-                                                        name of the product
+                                                        {ads.adsName}
 
                                                     </div>
                                                     <div className="flex flex-col ">
-                                                        <div className="mx-2 font-bold text-2xl"> &#8377;  899</div>
+                                                        <div className="mx-2 font-bold text-2xl"> &#8377;
+                                                            {
+                                                                 Number(ads.Ads_price)-(Number(ads.Ads_price)/100)* (Number(ads.Ads_Offer))
+                                                            }
+                                                        </div>
                                                         <div className="mx-2 font-bold text-lg flex flex-row ">
                                                             <section className="text-gray-600 line-through mx-2 ">
-                                                                &#8377;  999
+                                                                &#8377;  {ads.Ads_price}
                                                             </section>
 
                                                             <section className="text-green-600">
-                                                                5% off
+                                                                {ads.Ads_Offer}% off
                                                             </section>
                                                         </div>
                                                     </div>

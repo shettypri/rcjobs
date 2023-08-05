@@ -13,7 +13,7 @@ export const newUserReducers = createAsyncThunk(
                     ...dataArray.data()
                 })
             )
-            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === false)
+            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === false && userCustomer.isAdmin === false)
             return filterData
         } catch (e) {
             return e
@@ -30,7 +30,7 @@ export const referralCashBack = createAsyncThunk(
                     ...dataArray.data()
                 })
             )
-                const filterData = requestData.filter(userCustomer => userCustomer.Referral_Code === joiningCode)
+                const filterData = requestData.filter(userCustomer => userCustomer.Referral_Code === joiningCode )
                 const filterArray = filterData[0]
             if (joiningCode !== null) {
                 const doctorCollection = doc(db, "users", filterArray.id)
