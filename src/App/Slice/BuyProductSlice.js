@@ -4,10 +4,9 @@ import {addDoc, collection, doc, getDocs, updateDoc} from "firebase/firestore";
 
 export const addProductReducers = createAsyncThunk(
     "addProductReducers", async (productData) => {
-        const collectionList = collection(db, 'BUY_PRODUCT22')
+        const collectionList = collection(db, 'BUY_PRODUCT')
         try {
-            const dataStored = await addDoc(collectionList, productData);
-            return dataStored
+            return await addDoc(collectionList, productData)
         } catch (e) {
             return e
         }

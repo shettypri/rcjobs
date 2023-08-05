@@ -10,6 +10,7 @@ const BuyList = () => {
         dispatch(getProductReducers())
     }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
+    console.log(getProduct.data)
     return (
         <>
             <div
@@ -46,9 +47,9 @@ const BuyList = () => {
                         <tr className="mx-2">
                             <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Sl no</th>
                             <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Customer name</th>
-                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Client name</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Client Info</th>
                             <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Ads Name</th>
-                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Contact</th>
+                            <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Address</th>
                             <th className="border-2 border-black px-3 py-1 max-sm:px-2 max-sm:py-0 max-sm:text-xs uppercase">Response</th>
                         </tr>
                         {
@@ -58,9 +59,20 @@ const BuyList = () => {
                                         <tr key={index}>
                                             <td className="border-2 border-black px-7 py-2 uppercase font-bold">{index + 1}</td>
                                             <td className="border-2 border-black px-7 py-2 uppercase font-bold">{product.userName}</td>
-                                            <td className="border-2 border-black px-7 py-2 uppercase font-bold">{product.clientName}</td>
+                                            <td className="border-2 border-black px-7 py-2 uppercase font-bold">
+                                                <div>
+                                                    <section>{product.clientName}</section>
+                                                    <section>+{product.Phone}</section>
+                                                </div>
+
+                                            </td>
                                             <td className="border-2 border-black px-7 py-2 uppercase font-bold">{product.adsName}</td>
-                                            <td className="border-2 border-black px-7 py-2 uppercase font-bold">+{product.Phone}</td>
+                                            <td className="border-2 border-black px-7 py-2 uppercase font-bold">
+                                                <div>
+                                                    <section>{product.address}</section>
+                                                    <section>{product.Pincode}</section>
+                                                </div>
+                                            </td>
                                             <td className="border-2 border-black pl-10 py-2 uppercase font-bold">
                                                 <button
                                                     className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-full text-white border-2 border-black"

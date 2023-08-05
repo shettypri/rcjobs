@@ -50,7 +50,7 @@ const User_dashboard = () => {
                             fetchAds.Success && (
 
                                 <ReactSwipe
-                                    className="carousel w-full h-[660px] bg-gray-100  pt-7 px-0
+                                    className="carousel w-full h-[654px] bg-gray-100  pt-7 px-0
                                     mx-10
                                         max-sm:w-full max-sm:p-0 max-sm:m-0
                                     "
@@ -59,7 +59,6 @@ const User_dashboard = () => {
                                     ref={el => (reactSwipeEl = el)}
 
                                 >
-
                                     {
                                         fetchAds.data.map((ads, index) => {
                                             return (
@@ -76,7 +75,7 @@ const User_dashboard = () => {
                                                     />
 
                                                     <div className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
-                                                        {ads.adsName}
+                                                        {ads.Ads_name}
 
                                                     </div>
                                                     <div className="flex flex-col ">
@@ -91,7 +90,14 @@ const User_dashboard = () => {
                                                             </section>
 
                                                             <section className="text-green-600">
-                                                                {ads.Ads_Offer}% off
+                                                                {
+                                                                    Number(ads.Ads_Offer) === 0 &&(
+                                                                        <>
+                                                                            {ads.Ads_Offer}% off
+                                                                        </>
+                                                                    )
+                                                                }
+
                                                             </section>
                                                         </div>
                                                     </div>
@@ -104,15 +110,17 @@ const User_dashboard = () => {
                                                             "
                                                         onClick={
                                                             () => {
-                                                                dispatch(addProductReducers({
+                                                                const orderDetails ={
                                                                     userName: data.name,
                                                                     address:data.Address,
-                                                                    pincode:data.PinCode,
-                                                                    adsName: ads.adsName,
+                                                                    Pincode:data.PinCode,
+                                                                    adsName: ads.Ads_name,
                                                                     clientName: ads.name,
                                                                     Phone: ads.Phone,
                                                                     isOrderPlaced: false
-                                                                }))
+                                                                }
+                                                                console.log(orderDetails)
+                                                                dispatch(addProductReducers(orderDetails))
                                                             }
                                                         }>
                                                         buy
