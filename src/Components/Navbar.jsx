@@ -8,7 +8,7 @@ import {faBars} from "@fortawesome/free-solid-svg-icons";
 
 
 const Navbar = () => {
-    const [toggle, setToggle] = useState(true);
+    const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
     const Dispatch = useDispatch()
     // const locationPath = useLocation()
