@@ -74,24 +74,26 @@ const User_dashboard = () => {
                                                          "
                                                     />
 
-                                                    <div className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
+                                                    <div
+                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
                                                         {ads.Ads_name}
 
                                                     </div>
                                                     <div className="flex flex-col ">
                                                         <div className="mx-2 font-bold text-2xl"> &#8377;
                                                             {
-                                                                 Number(ads.Ads_price)-(Number(ads.Ads_price)/100)* (Number(ads.Ads_Offer))
+                                                                Number(ads.Ads_price) - (Number(ads.Ads_price) / 100) * (Number(ads.Ads_Offer))
                                                             }
                                                         </div>
                                                         <div className="mx-2 font-bold text-lg flex flex-row ">
-                                                            <section className="text-gray-600 line-through mx-2 ">
+                                                            <section
+                                                                className={`${Number(ads.Ads_Offer) !== 0 ? "text-gray-600" : ("text-white")}  line-through mx-2 `}>
                                                                 &#8377;  {ads.Ads_price}
                                                             </section>
 
                                                             <section className="text-green-600">
                                                                 {
-                                                                    Number(ads.Ads_Offer) === 0 &&(
+                                                                    Number(ads.Ads_Offer) !== 0 && (
                                                                         <>
                                                                             {ads.Ads_Offer}% off
                                                                         </>
@@ -110,11 +112,11 @@ const User_dashboard = () => {
                                                             "
                                                         onClick={
                                                             () => {
-                                                                const orderDetails ={
+                                                                const orderDetails = {
                                                                     userName: data.name,
-                                                                    address:data.Address,
-                                                                    cust_Phone:data.phone,
-                                                                    Pincode:data.PinCode,
+                                                                    address: data.Address,
+                                                                    cust_Phone: data.phone,
+                                                                    Pincode: data.PinCode,
                                                                     adsName: ads.Ads_name,
                                                                     clientName: ads.name,
                                                                     Phone: ads.Phone,
@@ -122,7 +124,7 @@ const User_dashboard = () => {
                                                                 }
                                                                 console.log(orderDetails)
                                                                 dispatch(addProductReducers(orderDetails))
-                                                                const alertMessage = `The order `+ ads.Ads_name +` has been Placed`
+                                                                const alertMessage = `The order ` + ads.Ads_name + ` has been Placed`
                                                                 alert(alertMessage)
                                                             }
                                                         }>

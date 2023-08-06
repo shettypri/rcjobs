@@ -3,8 +3,6 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {isLoginReducers, isLogOutReducers} from "../App/Slice/userSlice.js";
 import {useEffect, useState} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
 
 
 const Navbar = () => {
@@ -48,7 +46,7 @@ const Navbar = () => {
                                                 <Link to="/user/userdashboard"> dashboard</Link>
                                             </li>
                                             <li className={"mx-[10px] cursor-pointer text-white"}>
-                                                <Link to="/user/withdraw"> Withdraw</Link>
+                                                <Link to="/user/withdraw"> Withdraw </Link>
                                             </li>
 
                                             <li className={"mx-[10px] cursor-pointer text-white"}>
@@ -63,9 +61,10 @@ const Navbar = () => {
                                                         <li className={"mx-[10px] cursor-pointer text-white"}>
                                                             <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                         </li>
-                                                        <li className={"mx-[10px] cursor-pointer text-white"}>
-                                                            <Link to="/user/profile"> {data.name} </Link>
-                                                        </li>
+
+                                                        {/*<li className={"mx-[10px] cursor-pointer text-white"}>*/}
+                                                        {/*    <Link to="/user/profile"> {data.name} </Link>*/}
+                                                        {/*</li>*/}
                                                     </>
                                                 )
                                             }
