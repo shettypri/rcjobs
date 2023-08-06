@@ -113,6 +113,7 @@ const User_dashboard = () => {
                                                                 const orderDetails ={
                                                                     userName: data.name,
                                                                     address:data.Address,
+                                                                    cust_Phone:data.phone,
                                                                     Pincode:data.PinCode,
                                                                     adsName: ads.Ads_name,
                                                                     clientName: ads.name,
@@ -121,6 +122,8 @@ const User_dashboard = () => {
                                                                 }
                                                                 console.log(orderDetails)
                                                                 dispatch(addProductReducers(orderDetails))
+                                                                const alertMessage = `The order `+ ads.Ads_name +` has been Placed`
+                                                                alert(alertMessage)
                                                             }
                                                         }>
                                                         buy
