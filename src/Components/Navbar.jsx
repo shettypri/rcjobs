@@ -84,6 +84,7 @@ const Navbar = () => {
                     {/*<li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>*/}
                 </ul>
             </div>
+            {/*mobile navbar*/}
             <div className="hidden max-sm:block">
 
                 <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white "
@@ -93,15 +94,18 @@ const Navbar = () => {
                     &#9776;
                 </section>
 
-                {toggle ? (<div className=" bg-slate-600 group fixed z-50  right-0 flex flex-col pt-2 mt-[-4px] mr-60">
-                    <ul className=" cursor-pointer px-1 mr-20 flex flex-col w-3/4">
+                {toggle ? (<div className=" bg-slate-600 group fixed z-50  right-0 top-14 flex flex-col pt-2 mt-[-4px] mr-0 border-2 border-gray-500 ">
+                    <ul className=" cursor-pointer px-1 mr-20 flex flex-col w-3/4 "
+
+                    >
                         {
                             isLoggedIn && (
                                 <>
                                     {
                                         data.isUserAuthorized ? (
                                             <>
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}>
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}
+                                                >
                                                     <Link to="/user/userdashboard " className="font-extrabold capitalize "> dashboard</Link>
                                                 </li>
                                                 <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}>
@@ -120,9 +124,9 @@ const Navbar = () => {
                                                             <li className={"mx-[10px] cursor-pointer text-white my-3 border-white border-b"}>
                                                                 <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                             </li>
-                                                            <li className={"mx-[10px] cursor-pointer text-white"}>
-                                                                <Link to="/user/profile"> {data.name} </Link>
-                                                            </li>
+                                                            {/*<li className={"mx-[10px] cursor-pointer text-white"}>*/}
+                                                            {/*    <Link to="/user/profile"> {data.name} </Link>*/}
+                                                            {/*</li>*/}
                                                         </>
                                                     )
                                                 }
