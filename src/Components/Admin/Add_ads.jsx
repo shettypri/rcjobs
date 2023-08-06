@@ -70,7 +70,7 @@ const Add_ads = () => {
 
                             {/* Form begins from here*/}
                             <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100 w-1/2
-                             max-sm:w-64 max-sm:p-3">
+                             max-sm:w-full max-sm:p-3">
                                 <div className="m-auto flex flex-col">
                                     <label className="font-bold my-5 uppercase">
                                         Upload the ad below
