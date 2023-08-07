@@ -1,25 +1,20 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
 import {storage, db} from "../../config/firebase.config.js";
 import {addDoc, collection} from "firebase/firestore";
 import PhoneInput from "react-phone-input-2";
-import {fetchAdsReducers} from "../../App/Slice/fetchAdsSlice.js";
-import {useDispatch, useSelector} from "react-redux";
 import ListAds from "./ListAds.jsx";
+import {useNavigate} from "react-router-dom";
 
 const Add_ads = () => {
+    const navigate = useNavigate()
     const [inputError, setInputError] = useState(false);
     const [uploadAds, setUploadAds] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSucess] = useState(false);
     const [clientDetails, setClientDetails] = useState({
-        name: "",
-        isAdsShow: true,
-        Phone: "",
-        Ads_name: "",
-        Ads_price: "",
-        Ads_Offer: "",
+        name: "", isAdsShow: true, Phone: "", Ads_name: "", Ads_price: "", Ads_Offer: "",
     });
     const [showUploadBtn, setShowUploadBtn] = useState(false);
     const handleChange = (event) => {
@@ -46,14 +41,38 @@ const Add_ads = () => {
                 const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
                 clientDetails['imageURL'] = imageUrl
                 await addDoc(collectionList, clientDetails);
-                console.log(clientDetails)
                 setLoading(false)
+                setClientDetails({
+                    ...clientDetails,
+                    name: "", isAdsShow: true, Phone: "+91", Ads_name: "", Ads_price: "", Ads_Offer: "",
+                })
+                setUploadAds(null)
+                delete clientDetails.adsName;
                 setSucess(true)
+                setTimeout(() => {
+
+                    setSucess(false)
+                }, 2000);
+
             } catch (error) {
                 console.error(error);
             }
         }
+        // if(success){
+        //     console.log("first setup")
+        //     setClientDetails({
+        //         ...clientDetails,
+        //         name: "", isAdsShow: true, Phone: "+91", Ads_name: "", Ads_price: "", Ads_Offer: "",
+        //     })
+        //     delete clientDetails.adsName;
+        //     setTimeout(()=>{
+        //         console.log("cleaning")
+        //         setSucess(false)
+        //     }, 2000);
+        // }
     }
+
+
     return (
         <>
             {
@@ -191,8 +210,10 @@ const Add_ads = () => {
                                                 enter the offer percentage </label>)}
                                     </div>
                                 </div>
-                                <div className="m-auto flex flex-col py-2 border-dashed border-2 border-gray-800 px-14 py-4">
+                                <div
+                                    className="m-auto flex flex-col py-2 border-dashed border-2 border-gray-800 px-14 py-4">
                                     <input type={"file"} accept={"image/*"}
+                                           value={uploadAds}
                                            className="border border-blue-100 w-full uppercase italic font-bold"
                                            onChange={(event) => {
                                                setUploadAds(event.target.files[0])
@@ -213,12 +234,7 @@ const Add_ads = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     {
-                                        loading && success(
-                                            <h1>
-                                                loading
-                                            </h1>
-                                        )
-                                    }
+                                        loading && (<h1>Loading......</h1>)}
                                     {
                                         success && (
                                             <label className="text-green-500 font-bold uppercase mt-6">

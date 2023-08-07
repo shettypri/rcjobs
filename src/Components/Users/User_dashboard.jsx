@@ -75,7 +75,7 @@ const User_dashboard = () => {
                                                     />
 
                                                     <div
-                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto">
+                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 ">
                                                         {ads.Ads_name}
 
                                                     </div>
