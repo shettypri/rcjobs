@@ -23,7 +23,11 @@ export const ifscCodeReducer=createAsyncThunk("ifscCodeReducer",
 
     try{
 
+
+
     }catch(error){
+        console.log(`Error is ${error}`);
+        return error
 
     }
 

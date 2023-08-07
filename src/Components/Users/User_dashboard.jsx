@@ -20,12 +20,14 @@ const User_dashboard = () => {
 
 
     const handleNext = () => {
-        isLoggedIn
-        && (data.limit > 0 && (
+
+        isLoggedIn && (data.limit > 0 && (
                 dispatch(adsRewardREducers({id: data.id, limit: data.limit - 1, wallet: data.wallet + 10})
                 )
             )
         )
+        isLoggedIn &&(dispatch(isLoginReducers(data.id)))
+        console.log(reactSwipeEl)
         reactSwipeEl.next()
     }
     return (
@@ -52,6 +54,7 @@ const User_dashboard = () => {
                                 <ReactSwipe
                                     className="carousel w-full h-[654px] bg-gray-100  pt-7 px-0
                                     mx-10
+
                                         max-sm:w-full max-sm:p-0 max-sm:m-0
                                     "
                                     // swipeOptions={{ disableSwipe: true }}
@@ -62,11 +65,14 @@ const User_dashboard = () => {
                                     {
                                         fetchAds.data.map((ads, index) => {
                                             return (
-                                                <div className="w-full  m-auto mx-5
+                                                <div className="w-full  mx-auto
+                                                border-2 border-red-500
                                                      max-2xl:w-3/4 max-xl:w-full
                                                     max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
                                                      key={index}>
+                                                    <div>
+
                                                     <img src={ads.imageURL} alt="Error"
                                                          height={15} width={20}
                                                          className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-0
@@ -130,6 +136,7 @@ const User_dashboard = () => {
                                                         }>
                                                         buy
                                                     </button>
+                                                    </div>
                                                 </div>
 
 
@@ -147,12 +154,14 @@ const User_dashboard = () => {
                             Previous
                         </button>
                         {
-                            (!Ads_Reward.loading) ? (
+                            (!(Ads_Reward.loading && data.loading)) ? (
                                 <button
                                     className="uppercase bg-green-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black ml-2
                                     max-sm:px-10 max-sm:py-2"
 
-                                    onClick={handleNext}>
+                                    onClick={()=>
+                                        handleNext()}
+                                >
                                     Next
                                 </button>
                             ) : (
