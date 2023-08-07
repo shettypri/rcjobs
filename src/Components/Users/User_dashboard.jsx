@@ -87,7 +87,7 @@ const User_dashboard = () => {
                                                         </div>
                                                         <div className="mx-2 font-bold text-lg flex flex-row ">
                                                             <section
-                                                                className={`${Number(ads.Ads_Offer) !== 0 ? "text-gray-600" : ("text-white")}  line-through mx-2 `}>
+                                                                className={`${Number(ads.Ads_Offer) !== 0 ? "text-gray-600" : ("text-gray-100")}  line-through mx-2 `}>
                                                                 &#8377;  {ads.Ads_price}
                                                             </section>
 

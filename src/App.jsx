@@ -13,7 +13,7 @@ import User_dashboard from "./Components/Users/User_dashboard.jsx";
 import Waiting from "./Components/Users/Waiting.jsx";
 import {
     AdminRoute, AuthUserRoute,
-    ProtectedLoginRoute, UserRoute,
+    ProtectedLoginRoute, RegisterRoute, UserRoute,
 } from "./ProtectedRoute/ProtectedRoute.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
@@ -58,7 +58,9 @@ function App() {
                                 <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
                                 <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
                             </Route>
-                            <Route exact path='/user/register' element={<Register/>}/>
+                            <Route element={<RegisterRoute isUserAuthorized={data.isUserAuthorized}/>}>
+                                <Route exact path='/user/register' element={<Register/>}/>
+                            </Route>
                             <Route exact path='/user/waiting' element={<Waiting/>}/>
 
                         </Route>
