@@ -37,6 +37,6 @@ export const AuthUserRoute = ({isAuthorised})=>{
 export const RegisterRoute = ({isUserAuthorized}) =>{
     if(!isUserAuthorized)
         return <Navigate to={"/user/register"}/>
-    return <Navigate to="'/user/userdashboard"/>
+    return <Navigate to="/user/userdashboard"/>
 }
 export default {ProtectedLoginRoute, AdminRoute, UserRoute,RegisterRoute};
