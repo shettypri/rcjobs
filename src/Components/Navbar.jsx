@@ -14,7 +14,6 @@ const Navbar = () => {
     const sessionKey = sessionStorage.getItem("key")
     useEffect(() => {
         if (locationPath !== "/" && locationPath !== "/user/:refer") {
-            console.log("=========", locationPath)
             sessionKey && (
                 Dispatch(isLoginReducers((sessionKey)))
             )
