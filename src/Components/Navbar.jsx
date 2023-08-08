@@ -41,7 +41,9 @@ const Navbar = () => {
         sessionStorage && sessionStorage.clear()
         navigate("/")
     }
-
+    const hideDropDown = ()=>{
+        setToggle(false)
+    }
 
     return (
         <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center">
@@ -111,14 +113,19 @@ const Navbar = () => {
                                         data.isUserAuthorized ? (
                                             <>
                                                 <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}
+                                                    onClick={hideDropDown}
                                                 >
                                                     <Link to="/user/userdashboard " className="font-extrabold capitalize "> dashboard</Link>
                                                 </li>
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}>
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}
+                                                    onClick={hideDropDown}
+                                                >
                                                     <Link to="/user/withdraw" className="font-extrabold capitalize" > Withdraw</Link>
                                                 </li>
 
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}>
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}
+                                                    onClick={hideDropDown}
+                                                >
                                                     <Link to="/user/profile" className="font-extrabold capitalize"> {data.name} </Link>
                                                 </li>
                                             </>
@@ -127,7 +134,9 @@ const Navbar = () => {
                                                 {
                                                     data.isAdmin && (
                                                         <>
-                                                            <li className={"mx-[10px] cursor-pointer text-white my-3 border-white border-b"}>
+                                                            <li className={"mx-[10px] cursor-pointer text-white my-3 border-white border-b"}
+                                                            onClick={hideDropDown}
+                                                            >
                                                                 <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                             </li>
                                                         </>
@@ -136,7 +145,7 @@ const Navbar = () => {
                                             </>
                                         )
                                     }
-                                    <li className={"mx-[10px] cursor-pointer text-white my-3"}>
+                                    <li className={"mx-[10px] cursor-pointer text-white my-3"} onClick={hideDropDown}>
                                         <p onClick={handleLogOut} className="font-extrabold capitalize border-b border-white"
                                         > logout</p>
                                     </li>
