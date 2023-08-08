@@ -4,8 +4,21 @@ import {useNavigate, useParams} from "react-router-dom";
 const Refer = () => {
     const navigate = useNavigate()
     const params = useParams()
+
+    /* The line `const refferalLink = params.refer` is extracting the value of the `refer` parameter
+    from the URL. It is using the `useParams` hook from the `react-router-dom` library to access the
+    URL parameters. The extracted value is then stored in the `refferalLink` variable. */
     const refferalLink = params.refer
+
+    /* `sessionStorage.setItem("referCode", refferalLink)` is setting a value in the sessionStorage
+    object. The value is stored under the key "referCode" and its value is the value of the
+    `refferalLink` variable. */
     sessionStorage.setItem("referCode", refferalLink)
+
+   /**
+    * The function `goToLogin` logs the value of `refferalLink` to the console and then navigates to
+    * the home page ("/").
+    */
     const goToLogin = () => {
         console.log(refferalLink)
         navigate("/")

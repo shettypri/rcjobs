@@ -42,7 +42,7 @@ const Navbar = () => {
                                 {
                                     data.isUserAuthorized ? (
                                         <>
-                                            <li className={"mx-[10px] cursor-pointer text-white"}>
+                                            <li className={"mx-[10px] cursor-pointer text-white "}>
                                                 <Link to="/user/userdashboard"> dashboard</Link>
                                             </li>
                                             <li className={"mx-[10px] cursor-pointer text-white"}>
