@@ -20,6 +20,11 @@ const User_dashboard = () => {
     }, []);
 
 
+    /**
+     * The function `handleNext` is used to handle the next action in a React component, including
+     * checking if the user is logged in, updating the ads limit and wallet, dispatching actions, and
+     * moving to the next element in a React Swipe component.
+     */
     const handleNext = () => {
 
         isLoggedIn &&
@@ -121,6 +126,13 @@ const User_dashboard = () => {
                                                              max-sm:mx-20
                                                              max-2xl:mx-10
                                                             "
+                                                        /* The above code is handling an onClick event
+                                                        in a React component. When the event is
+                                                        triggered, it creates an object called
+                                                        `orderDetails` with various properties such
+                                                        as `userName`, `address`, `cust_Phone`, etc.
+                                                        The values for these properties are obtained
+                                                        from the `data` and `ads` objects. */
                                                         onClick={
                                                             () => {
                                                                 const orderDetails = {
