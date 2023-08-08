@@ -8,19 +8,34 @@ import {useEffect, useState} from "react";
 const Navbar = () => {
     // toggle variable for mobile view navbar
     const [toggle, setToggle] = useState(false);
+    /* `const navigate = useNavigate()` is a hook provided by the React Router library. It returns a
+    navigate function that can be used to programmatically navigate to different routes in your
+    application. In this case, it is used in the `handleLogOut` function to navigate to the "/"
+    route after logging out. */
     const navigate = useNavigate()
     const Dispatch = useDispatch()
     const locationPath = useLocation()
     const sessionKey = sessionStorage.getItem("key")
+
+    /* The `useEffect` hook is used to perform side effects in a functional component. In this case,
+    the `useEffect` hook is used to dispatch an action to the Redux store when the component mounts. */
     useEffect(() => {
+        /* The code block `if (locationPath !== "/" && locationPath !== "/user/:refer")` checks if the
+        current location path is not equal to "/" (root path) and not equal to "/user/:refer" (a
+        specific user path). If this condition is true, it proceeds to the next line. */
         if (locationPath !== "/" && locationPath !== "/user/:refer") {
             sessionKey && (
                 Dispatch(isLoginReducers((sessionKey)))
             )
         }
     }, []);
+
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
 
+    /**
+     * The function `handleLogOut` logs the user out, clears the session storage, and navigates to the
+     * home page.
+     */
     const handleLogOut = () => {
         Dispatch(isLogOutReducers())
         sessionStorage && sessionStorage.clear()
