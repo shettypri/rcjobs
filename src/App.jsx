@@ -58,7 +58,7 @@ function App() {
                                 <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
                                 <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
                             </Route>
-                            <Route element={<RegisterRoute isUserAuthorized={data.isUserAuthorized}/>}>
+                            <Route element={<RegisterRoute isNewUser={newUser}/>}>
                                 <Route exact path='/user/register' element={<Register/>}/>
                             </Route>
                             <Route exact path='/user/waiting' element={<Waiting/>}/>

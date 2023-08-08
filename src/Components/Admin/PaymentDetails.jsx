@@ -90,8 +90,16 @@ const PaymentDetails = (props) => {
                             <td className="font-bold px-14 py-3 uppercase">Withdrawal</td>
                             <td className="">{data.withdrawalAmount}</td>
                         </tr>
-
                         <tr className="bg-gray-200 rounded">
+                            <td className="font-bold px-14 py-3 uppercase">tds fee</td>
+                            <td className="">-5%</td>
+                        </tr>
+                        <tr className="bg-gray-200 rounded">
+                            <td className="font-bold px-14 py-3 uppercase">processing fee</td>
+                            <td className="">-5%</td>
+                        </tr>
+
+                        <tr className="bg-gray-200 rounded border-dashed border-2 border-t-black">
                             <td className="font-bold px-14 py-3 uppercase">Payment Amount</td>
                             <td className="">{data.withdrawalAmount -(data.withdrawalAmount/100)*10}</td>
                         </tr>

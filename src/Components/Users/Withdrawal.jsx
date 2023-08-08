@@ -39,7 +39,7 @@ const Withdrawal = () => {
                     <div className="p-4 flex flex-row">
                         <div className="flex flex-col">
                             <label
-                                className="text-2xl text-white font-bold mx-auto drop-shadow-xl py-2 px-2 mt-4
+                                className="text-2xl capitalize text-white font-bold mx-auto drop-shadow-xl py-2 px-2 mt-4
                                 max-sm:text-xl
                                 "> {walletData.data.name}</label>
                             <label

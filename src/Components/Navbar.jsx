@@ -6,15 +6,14 @@ import {useEffect, useState} from "react";
 
 
 const Navbar = () => {
+    // toggle variable for mobile view navbar
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
     const Dispatch = useDispatch()
-    // const locationPath = useLocation()
     const locationPath = useLocation()
     const sessionKey = sessionStorage.getItem("key")
     useEffect(() => {
         if (locationPath !== "/" && locationPath !== "/user/:refer") {
-            console.log("=========", locationPath)
             sessionKey && (
                 Dispatch(isLoginReducers((sessionKey)))
             )
@@ -39,17 +38,16 @@ const Navbar = () => {
                     {
                         isLoggedIn && (
                             <>
-                                {
-                                    data.isUserAuthorized ? (
+                                {   data.isUserAuthorized ? (
                                         <>
-                                            <li className={"mx-[10px] cursor-pointer text-white "}>
+                                            <li className={"mx-[10px] cursor-pointer text-white capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/userdashboard"> dashboard</Link>
                                             </li>
-                                            <li className={"mx-[10px] cursor-pointer text-white"}>
+                                            <li className={"mx-[10px] cursor-pointer text-white capitalize capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/withdraw"> Withdraw </Link>
                                             </li>
 
-                                            <li className={"mx-[10px] cursor-pointer text-white"}>
+                                            <li className={"mx-[10px] cursor-pointer text-white capitalize capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/profile"> {data.name} </Link>
                                             </li>
                                         </>
@@ -61,10 +59,6 @@ const Navbar = () => {
                                                         <li className={"mx-[10px] cursor-pointer text-white"}>
                                                             <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                         </li>
-
-                                                        {/*<li className={"mx-[10px] cursor-pointer text-white"}>*/}
-                                                        {/*    <Link to="/user/profile"> {data.name} </Link>*/}
-                                                        {/*</li>*/}
                                                     </>
                                                 )
                                             }
@@ -79,8 +73,6 @@ const Navbar = () => {
                             </>
                         )
                     }
-
-                    {/*<li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>*/}
                 </ul>
             </div>
             {/*mobile navbar*/}
@@ -103,15 +95,15 @@ const Navbar = () => {
                                     {
                                         data.isUserAuthorized ? (
                                             <>
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}
                                                 >
                                                     <Link to="/user/userdashboard " className="font-extrabold capitalize "> dashboard</Link>
                                                 </li>
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}>
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}>
                                                     <Link to="/user/withdraw" className="font-extrabold capitalize" > Withdraw</Link>
                                                 </li>
 
-                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white"}>
+                                                <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}>
                                                     <Link to="/user/profile" className="font-extrabold capitalize"> {data.name} </Link>
                                                 </li>
                                             </>
@@ -123,9 +115,6 @@ const Navbar = () => {
                                                             <li className={"mx-[10px] cursor-pointer text-white my-3 border-white border-b"}>
                                                                 <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                             </li>
-                                                            {/*<li className={"mx-[10px] cursor-pointer text-white"}>*/}
-                                                            {/*    <Link to="/user/profile"> {data.name} </Link>*/}
-                                                            {/*</li>*/}
                                                         </>
                                                     )
                                                 }
@@ -140,8 +129,6 @@ const Navbar = () => {
                                 </>
                             )
                         }
-
-                        {/*<li className={"mx-[10px] cursor-pointer text-white"}> <Link to="/otplogin"> logout </Link> </li>*/}
                     </ul>
                 </div>):("")}
             </div>
