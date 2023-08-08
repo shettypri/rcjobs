@@ -81,7 +81,7 @@ const Payment_request = () => {
                                                 {index + 1}
                                             </td>
                                             <td className="mx-2 px-6
-                                            border-2 border-black
+                                            border-2 border-black capitalize
                                              max-sm:px-[24px] max-sm:mx-1 max-sm:text-[12px]
                                             ">
                                                 {requestData.name}

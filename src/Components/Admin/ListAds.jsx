@@ -6,7 +6,6 @@ const ListAds =() => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchAdsReducers())
-
     }, []);
     const deleteAds = (id)=>{
         dispatch(deleteAdsReducers(id))
@@ -38,7 +37,7 @@ const ListAds =() => {
                     fetchAds.Success &&(
 
                         fetchAds.data.map((ads,index)=>{
-                            console.log('ads->',ads)
+                            // console.log('ads->',ads)
                             return(
                                 <tr key={index} >
                                     <td className=" border border-black

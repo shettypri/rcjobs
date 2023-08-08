@@ -10,7 +10,7 @@ const BuyList = () => {
         dispatch(getProductReducers())
     }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
-    console.log(getProduct.data)
+    // console.log(getProduct.data)
     return (
         <>
             <div
@@ -79,11 +79,7 @@ const BuyList = () => {
                                                 </div>
 
                                             </td>
-                                            {/*<td className="border-2 border-black px-7 py-2 uppercase font-bold">*/}
-                                            {/*    <div>*/}
 
-                                            {/*    </div>*/}
-                                            {/*</td>*/}
                                             <td className="border-2 border-black pl-10 py-2 uppercase font-bold">
                                                 <button
                                                     className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-full text-white border-2 border-black"

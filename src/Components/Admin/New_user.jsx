@@ -4,6 +4,10 @@ import {acceptRequestReducers, newUserReducers, referralCashBack} from "../../Ap
 
 const New_user = (props) => {
     const dispatch = useDispatch()
+
+    /* The line `const [showImage, setShowImage] = useState(false);` is using the `useState` hook from
+    React to create a state variable called `showImage` and a function called `setShowImage` to
+    update its value. The initial value of `showImage` is set to `false`. */
     const [showImage, setShowImage] = useState(false);
     return (
         <>
@@ -26,6 +30,10 @@ const New_user = (props) => {
                         className="bg-yellow-400 py-1 px-4 font-bold border-2 border-orange-500 rounded-full hover:bg-white
                         max-sm:py-0
                         "
+                        /* The `onClick={() => setShowImage(true)}` is an event handler that is
+                        triggered when the button is clicked. It calls the `setShowImage` function
+                        and passes `true` as an argument. This updates the value of the `showImage`
+                        state variable to `true`, which will cause the image to be displayed. */
                         onClick={() => setShowImage(true)}
                     >
                         View Payment Proof

@@ -4,13 +4,18 @@ import {walletPaymentRequestReducers, walletPaymentResponseReducers} from "../..
 
 const PaymentDetails = (props) => {
     const location = useLocation();
-    console.log(location.state)
+    // console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
-    console.log(data)
+    // console.log(data)
     const dispatch = useDispatch()
 
     const {paymentResponse} = useSelector(state => state.adminPaymentReducers)
+    
+    /**
+     * The handlePayment function updates the payment information in the wallet and dispatches the
+     * updated information to the walletPaymentResponseReducers.
+     */
     const handlePayment = () => {
         const paymentInfo = {
             id: data.id,
@@ -20,7 +25,7 @@ const PaymentDetails = (props) => {
         }
         dispatch(walletPaymentResponseReducers(paymentInfo))
     }
-    console.log(paymentResponse)
+    // console.log(paymentResponse)
 
     return (
         <>
@@ -29,7 +34,7 @@ const PaymentDetails = (props) => {
                     <label className="ml-10 font-bold text-2xl border border-white px-10 py-2 text-white cursor-pointer rounded
                     hover:bg-gray-600 transition
                     "
-                           onClick={()=>{
+                           onClick={() => {
                                dispatch(walletPaymentRequestReducers())
                                navigate("/admin/paymentrequest")
                            }}
@@ -101,22 +106,22 @@ const PaymentDetails = (props) => {
 
                         <tr className="bg-gray-200 rounded border-dashed border-2 border-t-black">
                             <td className="font-bold px-14 py-3 uppercase">Payment Amount</td>
-                            <td className="">{data.withdrawalAmount -(data.withdrawalAmount/100)*10}</td>
+                            <td className="">{data.withdrawalAmount - (data.withdrawalAmount / 100) * 10}</td>
                         </tr>
 
                         <tr className="bg-gray-200 rounded">
                             {
-                                paymentResponse.Success?
+                                paymentResponse.Success ?
                                     (
                                         <>
-                                        <td colSpan={2} className="bg-green-300">
-                                            <label className="text-2xl text-green-600">
-                                                Payment Done Successfully
-                                            </label>
+                                            <td colSpan={2} className="bg-green-300">
+                                                <label className="text-2xl text-green-600">
+                                                    Payment Done Successfully
+                                                </label>
 
-                                        </td>
+                                            </td>
                                         </>
-                                    ):(
+                                    ) : (
                                         <>
                                             <td className="mt-4 py-10">
                                                 <button
@@ -143,7 +148,7 @@ const PaymentDetails = (props) => {
 
                         </tr>
 
-                        
+
                         </tbody>
                     </table>
 
