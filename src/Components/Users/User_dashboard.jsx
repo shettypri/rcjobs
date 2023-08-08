@@ -10,6 +10,7 @@ import Loader from "../Global/Loader.jsx";
 const User_dashboard = () => {
 
     let [reactSwipeEl, setReactSwipeEl] = useState("");
+    const [adsNumber, setAdsNumber] = useState(1);
     const dispatch = useDispatch()
     const {fetchAds, Ads_Reward} = useSelector(state => state.userDashBoardReducers)
     const {isLoggedIn, data} = useSelector(state => state.userReducer)
@@ -21,13 +22,17 @@ const User_dashboard = () => {
 
     const handleNext = () => {
 
-        isLoggedIn && (data.limit > 0 && (
-                dispatch(adsRewardREducers({id: data.id, limit: data.limit - 1, wallet: data.wallet + 10})
-                )
+        isLoggedIn &&
+        (
+            adsNumber !== fetchAds.data.length &&(
+            data.limit > 0 && (   dispatch(adsRewardREducers({id: data.id, limit: data.limit - 1, wallet: data.wallet + 10}) )    )
             )
         )
         isLoggedIn &&(dispatch(isLoginReducers(data.id)))
-        console.log(reactSwipeEl)
+        // adsNumber >0 && (setAdsNumber(adsNumber-1))
+        adsNumber !== fetchAds.data.length && (setAdsNumber(adsNumber+1))
+        // console.log("adsLength",adsNumber)
+        // console.log("Total length",fetchAds.data.length )
         reactSwipeEl.next()
     }
     return (
@@ -66,22 +71,22 @@ const User_dashboard = () => {
                                         fetchAds.data.map((ads, index) => {
                                             return (
                                                 <div className="w-full  mx-auto
-                                                border-2 border-red-500
+
                                                      max-2xl:w-3/4 max-xl:w-full
                                                     max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
                                                      key={index}>
-                                                    <div>
+                                                    <div className="border-2 border-red-500 block ">
 
                                                     <img src={ads.imageURL} alt="Error"
                                                          height={15} width={20}
-                                                         className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-0
+                                                         className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-auto
                                                         max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10 max-2xl:w-3/4
                                                          "
                                                     />
 
                                                     <div
-                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 ">
+                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto ">
                                                         {ads.Ads_name}
 
                                                     </div>
@@ -138,8 +143,6 @@ const User_dashboard = () => {
                                                     </button>
                                                     </div>
                                                 </div>
-
-
                                             )
                                         })}
                                 </ReactSwipe>
@@ -149,7 +152,11 @@ const User_dashboard = () => {
                         <button
                             className="uppercase bg-green-700  hover:bg-sky-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black mr-2
                             max-sm:px-10 max-sm:py-2"
-                            onClick={() => reactSwipeEl.prev()}
+                            onClick={() => {
+                                reactSwipeEl.prev()
+                                adsNumber >0 && (setAdsNumber(adsNumber-1))
+                            }
+                            }
                         >
                             Previous
                         </button>
