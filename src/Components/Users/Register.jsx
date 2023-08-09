@@ -223,7 +223,7 @@ const Register = () => {
                                             program</label>
                                     ) : (
                                         <label>
-                                            You Don't Have any Referral
+                                            You Do not  Have any Referral
                                         </label>
                                     )}
                                 </div>
