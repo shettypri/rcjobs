@@ -8,10 +8,13 @@ const PaymentInfo =()=> {
     return (
         <>
         <div>
-            <div>
-                <select  value={selectedOption}>
-                    <option onClick={()=>setShowBankDetails(true)}>Bank Payment</option>
-                    <option onClick={()=>setShowBankDetails(false)}>UPI</option>
+            <div className="">
+                <select  value={selectedOption}
+                         className="px-24 py-3 border-2 border-black uppercase">
+                    <option className="uppercase"
+                        onClick={()=>setShowBankDetails(true)}>Bank Payment</option>
+                    <option className="uppercase"
+                        onClick={()=>setShowBankDetails(false)}>UPI</option>
                 </select>
             </div>
 
