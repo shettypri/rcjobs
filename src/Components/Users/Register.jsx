@@ -334,6 +334,7 @@ const Register = () => {
                             ) : (
                                 <div>
                                     <div>
+
                                         <div className={"flex flex-col  mt-4 "}>
                                             <label className={"font-bold flex space-y-3 p-3 justify-center"}>Enter
                                                 payment proof </label>
@@ -354,6 +355,8 @@ const Register = () => {
                                                     <label className={"text-red-800 italic font-bold"} >Please upload images</label>}
 
                                             </div>
+                                            <label className=" font-bold"> please pay 1000RS as Registration Fees</label>
+
 
                                         </div>
                                     </div>
@@ -374,6 +377,7 @@ const Register = () => {
                                             Register
                                         </button>
                                     </div>
+
                                 </div>
                             )}
 
