@@ -6,6 +6,7 @@ import {setDoc, doc} from "firebase/firestore"
 import {db} from "../../config/firebase.config.js"
 import {useNavigate} from "react-router-dom";
 import referralCodeGenerator from 'referral-code-generator'
+import PaymentInfo from "../Company_Bank_Details/Payment_Info.jsx";
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");
@@ -99,9 +100,6 @@ const Register = () => {
 
         }
     }
-
-
-
 
     const handleRegister = async () => {
        if(uploadImage <= 0){
@@ -321,6 +319,9 @@ const Register = () => {
                                         <div className={"flex flex-col  mt-4"}>
                                             <label className={"font-bold flex space-y-3 p-3 justify-center"}>Enter
                                                 payment proof </label>
+                                            <div>
+                                                <PaymentInfo/>
+                                            </div>
                                             <div className="">
                                                 <input
                                                     type="file"

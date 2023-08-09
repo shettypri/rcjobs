@@ -52,6 +52,7 @@ function App() {
                         </Route>
 
                         {/*user*/}
+
                         <Route element={<UserRoute isAdmin={data.isAdmin} newUser={newUser}/>}>
                             <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
                                 <Route exact path='/user/profile' element={<Profile/>}/>
