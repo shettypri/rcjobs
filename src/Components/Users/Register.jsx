@@ -334,7 +334,7 @@ const Register = () => {
                             ) : (
                                 <div>
                                     <div>
-                                        <div className={"flex flex-col  mt-4"}>
+                                        <div className={"flex flex-col  mt-4 "}>
                                             <label className={"font-bold flex space-y-3 p-3 justify-center"}>Enter
                                                 payment proof </label>
                                             <div>
