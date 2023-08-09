@@ -10,7 +10,7 @@ const PaymentInfo =()=> {
         <div>
             <div className="">
                 <select  value={selectedOption}
-                         className="w-full py-3 border-2 border-black uppercase">
+                         className="w-full py-3 border-2 border-black uppercase mx-auto">
                     <option className="uppercase"
                         onClick={()=>setShowBankDetails(true)}>Bank Payment</option>
                     <option className="uppercase"
