@@ -42,16 +42,22 @@ const Register = () => {
         Address: "",
         PinCode:""
     });
+    /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
+    that is used to handle user input events. */
     const Navigate = useNavigate()
     const userValues = (event) => {
         const re = /^[a-zA-Z0-9_ ]*$/;
-        // const value
+        
         if (event.target.value === "" || re.test(event.target.value)) {
             setUserDetails({
                 ...userDetails, [event.target.name]: event.target.value
             })
         }
     }
+   /**
+    * The function `pinCodeValues` is used to update the `userDetails` object with the value of the pin
+    * code input field, only if the value is empty or consists of only numeric characters.
+    */
     const pinCodeValues= (event) => {
         const re = /^[0-9]+$/;
 
@@ -60,11 +66,11 @@ const Register = () => {
                     ...userDetails, [event.target.name]: event.target.value
                 })
             }
-
-
-
-
     }
+    /**
+     * The function `accountNoValues` updates the `userDetails` object with the value of the input
+     * field if it is empty or contains only numbers.
+     */
     const accountNoValues= (event) => {
         const re = /^[0-9]+$/;
         // const value
@@ -74,6 +80,10 @@ const Register = () => {
             })
         }
     }
+   /**
+    * The function `ifscValues` updates the `userDetails` object with the value of the input field that
+    * triggered the event.
+    */
     const ifscValues= (event) => {
         setUserDetails({
                 ...userDetails, [event.target.name]: event.target.value
@@ -84,6 +94,10 @@ const Register = () => {
 
 
 
+ /**
+  * The function `handlePersonalDetail` checks if the user's personal details are valid and sets an
+  * error flag if any of the fields are empty or if the pin code is longer than 6 characters.
+  */
     const handlePersonalDetail = () => {
         if (userDetails.name.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length ===0  || userDetails.PinCode.length > 6) {
             setPersonalDetailError(true)
@@ -92,6 +106,10 @@ const Register = () => {
             setPersonalDetails(false)
         }
     }
+    /**
+     * The function `handleBankDetails` checks if any of the bank details fields are empty and sets an
+     * error flag if so, otherwise it sets a final flag to false.
+     */
     const handleBankDetails = () => {
         if (userDetails.Account_name.length === 0 || userDetails.Account_no.length === 0 || userDetails.Bank_name.length === 0 || userDetails.Branch.length === 0 || userDetails.ifsc_code.length === 0) {
             setBankDetailError(true)
@@ -106,7 +124,7 @@ const Register = () => {
            setImageError(true)
        }
        else{
-           console.log(uploadImage.name)
+        //    console.log(uploadImage.name)
            const imageFile = uploadImage.name
            const imageFolder = "PAYMENT"
            const textV4 = v4()
