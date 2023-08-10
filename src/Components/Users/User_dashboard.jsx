@@ -81,7 +81,7 @@ const User_dashboard = () => {
                                                     max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
                                                      key={index}>
-                                                    <div className="border-2 border-red-500 block ">
+                                                    <div className=" block ">
 
                                                     <img src={ads.imageURL} alt="Error"
                                                          height={15} width={20}

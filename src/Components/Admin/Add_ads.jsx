@@ -151,7 +151,7 @@ const Add_ads = () => {
                                             type="text"
                                             name="Ads_name"
                                             pattern="[a-zA-Z\s]"
-                                            placeholder="Enter the Product namw"
+                                            placeholder="Enter the Product name"
                                             value={clientDetails.Ads_name}
                                             onChange={handleChange}
                                             className="border border-black py-2 rounded-xl  px-2 w-[220px] mx-4 mt-1
@@ -213,7 +213,7 @@ const Add_ads = () => {
                                 <div
                                     className="m-auto flex flex-col py-2 border-dashed border-2 border-gray-800 px-14 py-4">
                                     <input type={"file"} accept={"image/*"}
-                                           value={uploadAds}
+                                           // value={uploadAds}
                                            className="border border-blue-100 w-full uppercase italic font-bold"
                                            onChange={(event) => {
                                                setUploadAds(event.target.files[0])

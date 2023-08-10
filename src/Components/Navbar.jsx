@@ -55,7 +55,7 @@ const Navbar = () => {
                     {
                         isLoggedIn && (
                             <>
-                                {   data.isUserAuthorized ? (
+                                {   (data.isUserAuthorized &&  !data.isAdmin) ? (
                                         <>
                                             <li className={"mx-[10px] cursor-pointer text-white capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/userdashboard"> dashboard</Link>
