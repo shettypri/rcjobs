@@ -16,16 +16,22 @@ import {
     ProtectedLoginRoute, RegisterRoute, UserRoute,
 } from "./ProtectedRoute/ProtectedRoute.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {isLoginReducers} from "./App/Slice/userSlice.js";
 import Buy_List from "./Components/Admin/Buy_List.jsx";
 import Refer from "./Components/Refer.jsx";
 import Withdrawal from "./Components/Users/Withdrawal.jsx";
 import PaymentDetails from "./Components/Admin/PaymentDetails.jsx";
+import Pre_Loader from "./Components/Global/Pre_Loader.jsx";
 
 function App() {
     const Dispatch = useDispatch()
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
+    const [showLoader, setShowLoader] = useState(true);
+
+    setTimeout(()=>{
+        setShowLoader(false)
+    }, 5000);
 
     return (
         <>
@@ -33,41 +39,48 @@ function App() {
                 <div>
                     <Navbar/>
                 </div>
+                {
+                    showLoader ? ( <Pre_Loader/>):(
+                        <Routes>
 
-                <Routes>
+                            {/*<Route exact path='/loader' element={<Pre_Loader/>}/>*/}
 
-                    {/*otp_login*/}
-                    <Route exact path='/' element={<Otp_Login/>}/>
-                    <Route exact path='/user/:refer' element={<Refer/>}/>
+                            {/*otp_login*/}
+                            <Route exact path='/' element={<Otp_Login/>}/>
+                            <Route exact path='/user/:refer' element={<Refer/>}/>
 
-                    <Route element={<ProtectedLoginRoute isLoggedIn={isLoggedIn}/>}>
-                        {/*admin*/}
-                        <Route element={<AdminRoute isAdmin={data.isAdmin}/>}>
-                            <Route exact path='/admin/adds' element={<Add_ads/>}/>
-                            <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
-                            <Route exact path='/admin/newrequest' element={<New_Request/>}/>
-                            <Route exact path='/admin/paymentrequest' element={<Payment_request/>}/>
-                            <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
-                            <Route exact path='/admin/order' element={<Buy_List/>}/>
-                        </Route>
+                            <Route element={<ProtectedLoginRoute isLoggedIn={isLoggedIn}/>}>
+                                {/*admin*/}
+                                <Route element={<AdminRoute isAdmin={data.isAdmin}/>}>
+                                    <Route exact path='/admin/adds' element={<Add_ads/>}/>
+                                    <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
+                                    <Route exact path='/admin/newrequest' element={<New_Request/>}/>
+                                    <Route exact path='/admin/paymentrequest' element={<Payment_request/>}/>
+                                    <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
+                                    <Route exact path='/admin/order' element={<Buy_List/>}/>
+                                </Route>
 
-                        {/*user*/}
+                                {/*user*/}
 
-                        <Route element={<UserRoute isAdmin={data.isAdmin} newUser={newUser}/>}>
-                            <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
-                                <Route exact path='/user/profile' element={<Profile/>}/>
-                                <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
-                                <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
+                                <Route element={<UserRoute isAdmin={data.isAdmin} newUser={newUser}/>}>
+                                    <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
+                                        <Route exact path='/user/profile' element={<Profile/>}/>
+                                        <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
+                                        <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
+                                    </Route>
+                                    <Route element={<RegisterRoute isNewUser={newUser}/>}>
+                                        <Route exact path='/user/register' element={<Register/>}/>
+                                    </Route>
+                                    <Route exact path='/user/waiting' element={<Waiting/>}/>
+
+                                </Route>
                             </Route>
-                            <Route element={<RegisterRoute isNewUser={newUser}/>}>
-                                <Route exact path='/user/register' element={<Register/>}/>
-                            </Route>
-                            <Route exact path='/user/waiting' element={<Waiting/>}/>
 
-                        </Route>
-                    </Route>
+                        </Routes>
+                    )
+                }
 
-                </Routes>
+
             </BrowserRouter>
         </>
     )
