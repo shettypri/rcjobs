@@ -3,9 +3,10 @@ import React from 'react';
 const Bank = () => {
     return (
         <>
-            <div className="bg-white drop-shadow-lg rounded-md border-2">
-                <table className="py-4  my-4 w-[600px]">
-                    <tbody>
+            <div className="bg-white drop-shadow-lg rounded-md border-2 max-sm:w-full max-sm:px-2">
+                <table className="py-4  my-4 w-[600px]
+                max-sm:w-full max-sm:mx-2 max-sm:mr-4">
+                    <tbody className="max-sm:">
                         <tr className="my-2">
                             <th>ACCOUNT NAME:</th>
                             <td> RELIABLE RIGHT CLICK INDIA LLP</td>
