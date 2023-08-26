@@ -79,7 +79,7 @@ const Otp_Login = () => {
     return (
         <>
             <div className="w-full flex flex-row">
-                <div className="w-2/6">
+                <div className="w-3/12">
                         <Google_Ads/>
                         <Google_Ads/>
                         <Google_Ads/>
@@ -155,7 +155,7 @@ const Otp_Login = () => {
 
                 </div>
 
-                <div className="w-2/6">
+                <div className="w-3/12">
                     <Google_Ads/>
                     <Google_Ads/>
                     <Google_Ads/>
