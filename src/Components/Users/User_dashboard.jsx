@@ -43,7 +43,7 @@ const User_dashboard = () => {
     }
     return (
         <>
-            <div className="flex flex-row w-full">
+            <div className="flex flex-row w-full  max-sm:flex-col max-sm:h-full">
                 <div className="w-3/12 max-sm:w-full ">
                     <div className="max-sm:h-[30px]"><Google_Ads/></div>
                     <div className="max-sm:hidden"><Google_Ads/></div>
@@ -60,7 +60,7 @@ const User_dashboard = () => {
                     </div>
                     <div>
                         <div className=" mx-4 w-3/4
-                       max-sm:w-full
+                       max-sm:w-full max-sm:mx-0
                     ">
                             {
                                 fetchAds.loading && <Loader/>
@@ -83,7 +83,6 @@ const User_dashboard = () => {
                                             fetchAds.data.map((ads, index) => {
                                                 return (
                                                     <div className="w-full  mx-auto
-
                                                      max-2xl:w-3/4 max-xl:w-full
                                                     max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
@@ -130,7 +129,7 @@ const User_dashboard = () => {
                                                                 className="border-2 border-black
                                                             mx-40  px-24 mt-4 py-3 rounded
                                                              font-extrabold uppercase bg-red-700 text-white
-                                                             max-sm:mx-20
+                                                             max-sm:mx-20 max-sm:px-16 max-sm:py-2 max-sm:rounded-full
                                                              max-2xl:mx-10
                                                             "
                                                                 /* The above code is handling an onClick event

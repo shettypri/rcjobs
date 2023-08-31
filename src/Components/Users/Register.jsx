@@ -149,17 +149,17 @@ const Register = () => {
 
     return (
         <>
-            <div className="w-full flex flex-row">
+            <div className="w-full flex flex-row max-sm:flex-col max-sm:h-full">
                 <div className=" w-1/12 flex flex-col h-1/5">
                     <div className="block w-full"><Google_Ads/></div>
                 </div>
                 <div className=" w-1/12 flex flex-col ">
                     <div className="block w-full"><Google_Ads/></div>
                 </div>
-                <div className=" w-1/12 flex flex-col ">
+                <div className=" w-1/12 flex flex-col  max-sm:hidden">
                     <div className="block w-full"><Google_Ads/></div>
                 </div>
-                <div className=" w-1/12 flex flex-col ">
+                <div className=" w-1/12 flex flex-col  max-sm:hidden">
                     <div className="block w-full"><Google_Ads/></div>
                 </div>
                 <div className="w-2/6">
