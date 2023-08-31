@@ -31,7 +31,7 @@ function App() {
 
     setTimeout(()=>{
         setShowLoader(false)
-    }, 5000);
+    }, 4000);
 
     return (
         <>
