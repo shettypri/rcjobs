@@ -36,7 +36,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <div>
+                <div className="my-20">
                     <Navbar/>
                 </div>
                 {

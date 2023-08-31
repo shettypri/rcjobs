@@ -24,14 +24,15 @@ const Profile = () => {
     
     return (
         <>
-            <div className="flex flex-row w-full justify-around">
-                <div className="w-2/12">
+            <div className="flex flex-row w-full justify-around max-sm:flex-col">
+                <div className="w-2/12 max-sm:hidden">
                 <Google_Ads/>
                 </div>
 
-                <div>
+                <div className="max-sm:mx-0 m-0 max-sm:w-full max-sm:px-0">
                     <div
-                        className={"flex md:flex-col  justify-center text-center p-4  border-1 rounded-2xl shadow-2xl  0 mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[20px] space-y-4 space-x-7 px-4 py-4 border-2 border-gray-600 bg-gradient-to-r from-amber-300 to-white "}>
+                        className={"flex md:flex-col  justify-center text-center p-4  border-1 rounded-2xl shadow-2xl   mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[20px] space-y-4 space-x-7 px-2 py-4 border-2 border-gray-600 bg-gradient-to-r from-amber-300 to-white "}>
+
                         <div className="flex  md:flex-row  flex-col p-2 space-x-6 ">
                             {/*{left}*/}
 
@@ -166,7 +167,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="w-2/12">
+                <div className="w-2/12 max-sm:w-full">
                     <Google_Ads/>
                 </div>
 

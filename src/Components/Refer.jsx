@@ -28,8 +28,8 @@ const Refer = () => {
 
     return (
         <>
-            <div className="flex flex-row justify-between w-full">
-                <div className="w-2/12 h-2 flex-col">
+            <div className="flex flex-row justify-between w-full max-sm:flex-col">
+                <div className="w-2/12 h-2 flex-col max-sm:hidden">
                     <div className="flex flex-row w-full h-2">
                         <div className="w-full h-2"><Google_Ads/></div>
                         <div className="w-full h-2"><Google_Ads/></div>

@@ -46,12 +46,12 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center">
+        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center  fixed top-0  z-50 ">
             <div>
                 <img className="h-12 w-25 cursor-pointer" src={logo} alt=""/>
             </div>
             <div>
-                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 ">
+                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 max-sm:hidden">
                     {
                         isLoggedIn && (
                             <>
@@ -102,8 +102,9 @@ const Navbar = () => {
                     &#9776;
                 </section>
 
-                {toggle ? (<div className="bg-slate-600 group fixed z-50  right-0 top-14 flex flex-col pt-2 mt-[-4px] mr-0 border-2 border-gray-500 ">
-                    <ul className=" cursor-pointer px-1 mr-20 flex flex-col w-3/4 "
+                {toggle ? (
+                    <div className="bg-slate-600 group fixed z-50  right-0 top-14 flex flex-col pt-2  mr-0 border-2 border-gray-500 ">
+                    <ul className=" cursor-pointer px-1 mr-40 flex flex-col w-3/4 "
 
                     >
                         {
