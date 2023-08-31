@@ -166,17 +166,17 @@ const Register = () => {
                     <div className={"flex flex-wrap justify-center mt-4"}>
 
                         <div className="flex flex-col space-y-3 p-0  bg-white rounded-lg shadow-xl border-2 border-black
-                py-10
+                py-10 max-sm:ml-64  max-sm:px-6 max-sm:py-3.5
                 ">
 
                             {personDetails ? (
                                 <div className="px-4">
                                     <div
-                                        className={" text-3xl font-semibold bg-[#FD7F2C] text-white w-full uppercase m-[0px] mt-[0px] rounded  h-15"}>
+                                        className={" text-3xl font-semi-bold bg-[#FD7F2C] text-white w-full uppercase m-[0px] mt-[0px] rounded  h-15 max-sm:text-2xl max-sm:font-semi-bold max-sm:px-7 "}>
                                         Registration Form
                                     </div>
 
-                                    <div className={" flex flex-col text-black p-4 px-0"}>
+                                    <div className={" flex flex-col text-black p-4 px-0 "}>
                                         <label className={"font-bold"}>Enter Full Name</label>
                                         <input type="text" value={userDetails.name}
                                                className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
@@ -331,16 +331,16 @@ const Register = () => {
                                                 </div>
 
 
-                                                <div className={"flex justify-center p-6 flex-row space-x-3 "}>
-                                                    <button
-                                                        className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
-                                                        onClick={() => setPersonalDetails(true)}
-                                                    >
-                                                        Back
-                                                    </button>
-                                                    <button
-                                                        className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "
-                                                        } onClick={handleBankDetails}>Next
+                                        <div className={"flex justify-center p-6 flex-row space-x-3 "}>
+                                            <button
+                                                className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
+                                                onClick={() => setPersonalDetails(true)}
+                                            >
+                                                Back
+                                            </button>
+                                            <button
+                                                className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "
+                                                } onClick={handleBankDetails}>Next
 
                                                     </button>
                                                 </div>
@@ -397,10 +397,10 @@ const Register = () => {
                             )}
 
 
-                            {/*<div className={"p-6"}>*/}
-                            {/*    IF NOT PAID YET <span*/}
-                            {/*    className={"italic text-blue-700 underline underline-offset-1 cursor-pointer hover:text-blue-900"}> click here to pay</span>*/}
-                            {/*</div>*/}
+                    {/*<div className={"p-6"}>*/}
+                    {/*    IF NOT PAID YET <span*/}
+                    {/*    className={"italic text-blue-700 underline underline-offset-1 cursor-pointer hover:text-blue-900"}> click here to pay</span>*/}
+                    {/*</div>*/}
 
 
                         </div>
