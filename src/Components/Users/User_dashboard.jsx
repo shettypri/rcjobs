@@ -44,11 +44,11 @@ const User_dashboard = () => {
     return (
         <>
             <div className="flex flex-row w-full">
-            <div className="my-10 w-1/5 mx-10 flex flex-col">
-                <Google_Ads />
-                <Google_Ads />
-                <Google_Ads />
-            </div>
+                <div className="w-3/12 max-sm:w-full ">
+                    <div className="max-sm:h-[30px]"><Google_Ads/></div>
+                    <div className="max-sm:hidden"><Google_Ads/></div>
+                    <div className="max-sm:hidden"><Google_Ads/></div>
+                </div>
                 <div className=" border border-orange-500 m-auto w-5/12 mt-2
           max-sm:w-full
             ">
