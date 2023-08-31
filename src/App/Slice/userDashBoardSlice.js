@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js";
+import arrayShuffle from "array-shuffle";
 
 export const fetchAdsReducers = createAsyncThunk(
     "fetchAdsReducers",
@@ -13,7 +14,8 @@ export const fetchAdsReducers = createAsyncThunk(
                     ...dataArray.data()
                 })
             )
-            return requestData
+            const suffleArray = arrayShuffle(requestData)
+            return suffleArray
         } catch (e) {
             return e
         }
