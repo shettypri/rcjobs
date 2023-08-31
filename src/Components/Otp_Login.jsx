@@ -2,7 +2,7 @@ import LoginAvatar from "../assets/Images/user.png"
 import {useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import OTPInput from "otp-input-react"
-import {RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
+import {getAuth, RecaptchaVerifier, signInWithPhoneNumber} from "firebase/auth";
 import {auth} from "../config/firebase.config.js";
 import {useDispatch, useSelector} from "react-redux";
 import {isLoginReducers} from "../App/Slice/userSlice.js";
@@ -15,7 +15,10 @@ const Otp_Login = () => {
     const dispatch = useDispatch()
     const [mobileNumber, setMobileNumber] = useState("");
     const [otp, setOtp] = useState("");
+    const [otpTimeLimit, setOtpTimeLimit] = useState(0);
     const [otpVerify, setOtpVerify] = useState(true);
+    const [reverifyOtp, setReverifyOtp] = useState(false)
+    // const [otpVerify, setOtpVerify] = useState(false);
     const [addedNumber, setAddedNumber] = useState("");
     const [captchaResult, setCaptchaResult] = useState({})
     const [loading, setLoading] = useState(false);
@@ -58,11 +61,26 @@ const Otp_Login = () => {
         }
     }
 
+
+    // const resendOtpTimer = ()=>{
+    //     setOtpTimeLimit(60)
+    //     let newTimeLimit;
+    //     let timeLimit = setInterval(()=>{
+    //         newTimeLimit = otpTimeLimit-1
+    //         setOtpTimeLimit( (newTimeLimit))
+    //         if(otpTimeLimit === 0){
+    //             clearInterval(timeLimit)
+    //         }
+    //     }, 1000);
+    //
+    // }
+
     const getOtpByNumber = async () => {
         // console.log("number")
         const numberMobile = "+" + mobileNumber
         console.log("the number is", numberMobile)
         sessionStorage.setItem("mobileNumber", numberMobile)
+
         try {
             const captchaResult = await new RecaptchaVerifier('recaptcha-container', {}, auth);
             console.log("capthcha result")
@@ -70,23 +88,47 @@ const Otp_Login = () => {
             if (captchVeryfied) {
                 setCaptchaResult(captchVeryfied)
             }
+            console.log(captchaResult)
+            // resendOtpTimer()
         } catch (error) {
             console.log("Login otp Error => ", error);
         }
         setOtpVerify(false)
         setAddedNumber(mobileNumber)
     }
+    // const resendOtpBtn = async () => {
+    //     setReverifyOtp(true)
+    //     const numberMobile = "+" + mobileNumber
+    //     console.log("the number is", numberMobile)
+    //     sessionStorage.setItem("mobileNumber", numberMobile)
+    //
+    //     try {
+    //         const captchaResult = await new RecaptchaVerifier('recaptcha-container-reset', {}, auth);
+    //         console.log("capthcha result")
+    //         const captchVeryfied = await signInWithPhoneNumber(auth, numberMobile, captchaResult)
+    //         if (captchVeryfied) {
+    //             setCaptchaResult(captchVeryfied)
+    //         }
+    //         console.log(captchaResult)
+    //         // resendOtpTimer()
+    //     } catch (error) {
+    //         console.log("Login otp Error => ", error);
+    //     }
+    //     setOtpVerify(false)
+    //     setAddedNumber(mobileNumber)
+    // };
+
     return (
         <>
-            <div className="w-full flex flex-row">
-                <div className="w-3/12">
-                        <Google_Ads/>
-                        <Google_Ads/>
-                        <Google_Ads/>
+            <div className="w-full flex flex-row max-sm:flex-col max-sm:h-full">
+                <div className="w-3/12 max-sm:w-full ">
+                    <div className="max-sm:h-[30px]"><Google_Ads/></div>
+                    <div className="max-sm:hidden"><Google_Ads/></div>
+                    <div className="max-sm:hidden"><Google_Ads/></div>
 
                 </div>
                 <div
-                    className={"max-sm:w-[340px] lg:w-4/12 m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center mt-2"}>
+                    className="max-sm:w-[340px] lg:w-4/12 m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center mt-2 ">
                     {loading && (<Loader/>)}
                     <img src={LoginAvatar}
                          height={170}
@@ -127,6 +169,16 @@ const Otp_Login = () => {
                                     disabled={false}
                                     inputClassName="otp-input"
                                 />
+                                {/*Resend otp Button*/}
+                                {/*<div className="my-2 flex flex-col mb-3 items-center  mr-4 ">*/}
+                                {/*    {}*/}
+                                {/*    <button className=" mt-4 text-blue-700 font-bold border border-blue-700 px-10 ml-52 py-1 rounded-full capitalize"*/}
+                                {/*    onClick={resendOtpBtn}*/}
+                                {/*    >*/}
+                                {/*        Resend otp &nbsp;*/}
+                                {/*    </button>*/}
+                                {/*</div>*/}
+
                                 <div className="mt-2 flex flex-col mb-3 items-center">
 
                                     <button
@@ -136,6 +188,12 @@ const Otp_Login = () => {
                                         Verify OTP
                                     </button>
                                 </div>
+
+                                {/*{*/}
+                                {/*    reverifyOtp && (*/}
+                                {/*        <div id="recaptcha-container-reset"/>*/}
+                                {/*    )*/}
+                                {/*}*/}
                                 <div>
                                     <button className="text-blue-500 underline-offset-1 "
                                             onClick={() => setOtpVerify(true)}
@@ -155,7 +213,7 @@ const Otp_Login = () => {
 
                 </div>
 
-                <div className="w-3/12">
+                <div className="w-3/12  max-sm:w-2/6 ">
                     <Google_Ads/>
                     <Google_Ads/>
                     <Google_Ads/>

@@ -1,4 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
+import Google_Ads from "./Google_Ads/Google_Ads.jsx";
 
 
 const Refer = () => {
@@ -27,24 +28,55 @@ const Refer = () => {
 
     return (
         <>
-        <div className="flex  mx-auto justify-center items-center h-full py-44
+            <div className="flex flex-row justify-between w-full">
+                <div className="w-2/12 h-2 flex-col">
+                    <div className="flex flex-row w-full h-2">
+                        <div className="w-full h-2"><Google_Ads/></div>
+                        <div className="w-full h-2"><Google_Ads/></div>
+                    </div>
+
+
+                </div>
+
+                <div className="w-6/12 flex flex-col">
+                    <div className="flex  mx-auto justify-center items-center h-full py-10
         max-sm:py-52
         ">
-            <div className="flex flex-col px-44 border-2 border-white py-20 rounded
+                        <div className="flex flex-col px-44 border-2 border-white py-20 rounded
             max-sm:py-4 max-sm:px-14
             ">
-                <label className="font-bold my-4 capitalize
+                            <label className="font-bold my-4 capitalize
 
                 ">Thank you for joining through referral program</label>
-                <button onClick={goToLogin}
-                        className="border border-black px-0 rounded-full py-4 bg-gray-400 uppercase w-1/2 mx-24
+                            <button onClick={goToLogin}
+                                    className="border border-black px-0 rounded-full py-4 bg-gray-400 uppercase w-1/2 mx-24
                         font-bold hover:bg-gray-500 hover:text-white
                         max-sm:py-2 max-sm:w-1/2 max-sm:mx-20
                         ">
-                    login page
-                </button>
+                                login page
+                            </button>
+                        </div>
+                    </div>
+                    <div className="w-full h-2 flex flex-row mt-4">
+                        <div className="block w-full mx-1">
+                            <Google_Ads/>
+                        </div>
+                        <div className="block w-full mx-1">
+                            <Google_Ads/>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-2 flex flex-row mt-4">
+                        <Google_Ads/>
+                    </div>
+                </div>
+
+                <div className="w-2/12">
+                    <Google_Ads />
+                </div>
+
             </div>
-        </div>
+
         </>
 
 
