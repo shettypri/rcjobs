@@ -51,7 +51,7 @@ const Navbar = () => {
                 <img className="h-12 w-25 cursor-pointer" src={logo} alt=""/>
             </div>
             <div>
-                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5">
+                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 ">
                     {
                         isLoggedIn && (
                             <>
@@ -60,11 +60,11 @@ const Navbar = () => {
                                             <li className={"mx-[10px] cursor-pointer text-white capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/userdashboard"> dashboard</Link>
                                             </li>
-                                            <li className={"mx-[10px] cursor-pointer text-white capitalize capitalize hover:border-b-white hover:border-b-2"}>
+                                            <li className={"mx-[10px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/withdraw"> Withdraw </Link>
                                             </li>
 
-                                            <li className={"mx-[10px] cursor-pointer text-white capitalize capitalize hover:border-b-white hover:border-b-2"}>
+                                            <li className={"mx-[10px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/profile"> {data.name} </Link>
                                             </li>
                                         </>
@@ -102,7 +102,7 @@ const Navbar = () => {
                     &#9776;
                 </section>
 
-                {toggle ? (<div className=" bg-slate-600 group fixed z-50  right-0 top-14 flex flex-col pt-2 mt-[-4px] mr-0 border-2 border-gray-500 ">
+                {toggle ? (<div className="bg-slate-600 group fixed z-50  right-0 top-14 flex flex-col pt-2 mt-[-4px] mr-0 border-2 border-gray-500 ">
                     <ul className=" cursor-pointer px-1 mr-20 flex flex-col w-3/4 "
 
                     >
