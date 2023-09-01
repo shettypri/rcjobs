@@ -95,7 +95,7 @@ const Navbar = () => {
             {/*mobile navbar*/}
             <div className="hidden max-sm:block">
 
-                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white "
+                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white  "
                          onClick={() => {
                              setToggle(!toggle)
                          }}>
