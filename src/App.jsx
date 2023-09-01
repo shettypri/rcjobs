@@ -23,6 +23,8 @@ import Refer from "./Components/Refer.jsx";
 import Withdrawal from "./Components/Users/Withdrawal.jsx";
 import PaymentDetails from "./Components/Admin/PaymentDetails.jsx";
 import Pre_Loader from "./Components/Global/Pre_Loader.jsx";
+import UserCustomer from "./Components/Admin/UserCustomer.jsx";
+import MonthlyJoining from "./Components/Admin/MonthlyJoining.jsx";
 
 function App() {
     const Dispatch = useDispatch()
@@ -55,6 +57,8 @@ function App() {
                                     <Route exact path='/admin/adds' element={<Add_ads/>}/>
                                     <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
                                     <Route exact path='/admin/newrequest' element={<New_Request/>}/>
+                                    <Route exact path='/admin/customer' element={<UserCustomer/>}/>
+                                    <Route exact path='/admin/monthly-join' element={<MonthlyJoining/>}/>
                                     <Route exact path='/admin/paymentrequest' element={<Payment_request/>}/>
                                     <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
                                     <Route exact path='/admin/order' element={<Buy_List/>}/>

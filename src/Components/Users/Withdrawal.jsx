@@ -49,7 +49,7 @@ const Withdrawal = () => {
 
                 <div className="w-3/6 flex flex-col h-3/5 max-sm:w-full">
                     <div className=" w-5/6 mx-auto mt-2 shadow-xl shadow-black rounded-xl h-2/5
-            max-sm:w-full max-sm:px-3 max-sm:rounded">
+            max-sm:w-full max-sm:px-3 max-sm:rounded mb-10">
                         <div className="flex flex-col bg-gray-800 font-mono text-2xl">
                             <div className="p-4 flex flex-row">
                                 <div className="flex flex-col">
@@ -269,14 +269,14 @@ const Withdrawal = () => {
 
                     </div>
 
-                    <div className="w-full h-2 flex flex-row mt-4">
-                        <div className="block w-full mx-1">
-                            <Google_Ads/>
-                        </div>
-                        <div className="block w-full mx-1">
-                            <Google_Ads/>
-                        </div>
-                    </div>
+                    {/*<div className="w-full h-2 flex flex-row mt-10">*/}
+                    {/*    <div className="block w-full mx-1">*/}
+                    {/*        <Google_Ads/>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="block w-full mx-1">*/}
+                    {/*        <Google_Ads/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
 
                 <div className="w-1/6  flex flex-col">
