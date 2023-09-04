@@ -11,7 +11,6 @@ import Payment_Info from "../Company_Bank_Details/Payment_Info.jsx";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
 import {db, storage} from "../../config/firebase.config.js";
-import {doc, setDoc} from "firebase/firestore";
 
 const User_dashboard = () => {
 
