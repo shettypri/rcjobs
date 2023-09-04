@@ -33,11 +33,11 @@ const UserCustomer = () => {
                     <table className="w-5/6  border-2 border-black">
                         <thead>
                         <tr>
-                            <th className="py-2 capitalize border-2 border-black">SI NO</th>
-                            <th className="py-2 capitalize border-2 border-black">Name</th>
-                            <th className="py-2 capitalize border-2 border-black">Address</th>
-                            <th className="py-2 capitalize border-2 border-black">Phone No</th>
-                            <th className="py-2 capitalize border-2 border-black">Action</th>
+                            <th className="py-2 capitalize border-2 border-black ">SI NO</th>
+                            <th className="py-2 capitalize border-2 border-black ">Name</th>
+                            <th className="py-2 capitalize border-2 border-black ">Address</th>
+                            <th className="py-2 capitalize border-2 border-black ">Phone No</th>
+                            <th className="py-2 capitalize border-2 border-black ">Action</th>
                         </tr>
                         </thead>
 
