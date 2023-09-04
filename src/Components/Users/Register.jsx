@@ -18,6 +18,7 @@ const Register = () => {
     const [personalDetailError, setPersonalDetailError] = useState(false);
     const [bankDetailError, setBankDetailError] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const [verify, setVerify] = useState(false);
 
 
     const [userDetails, setUserDetails] = useState({
@@ -46,6 +47,11 @@ const Register = () => {
     /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
     that is used to handle user input events. */
     const Navigate = useNavigate()
+
+
+    const handleVerify = ()=>{
+
+    }
     const userValues = (event) => {
         const re = /^[a-zA-Z0-9_ ]*$/;
         
@@ -243,8 +249,23 @@ const Register = () => {
                                             )}
                                         </div>
                                     }
+                                    <div className="flex flex-row ">
+                                        <div className="">
+                                            <input className="mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"/>
+                                        </div>
 
-                                    <div className="flex flex-row justify-center">
+
+                                        <div className="ml-5">
+                                            <button
+                                                onClick={handleVerify}
+                                                className=" text-center font-semibold border-1  text-white  rounded-3xl w-[110px] h-[30px] bg-blue-700 "> Verify</button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div className="flex flex-row justify-center py-5">
                                         <button
                                             className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
                                             onClick={handlePersonalDetail}>Next
