@@ -58,6 +58,8 @@ export const acceptRequestReducers = createAsyncThunk(
             await updateDoc(doctorCollection, {
                 isUserAuthorized: true,
                 isBlocked:false,
+                Joining_date:new Date().toUTCString().slice(5, 16),
+                Joining_Month:(new Date().toUTCString().slice(5, 16).split(" ")[1]),
             })
             return `Accepted Sucessfully of ${id}`
         } catch (e) {

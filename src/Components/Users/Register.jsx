@@ -40,8 +40,6 @@ const Register = () => {
         Bank_name: "",
         Branch: "",
         ifsc_code: "",
-        Joining_date:new Date().toUTCString().slice(5, 16),
-        Joining_Month:(new Date().toUTCString().slice(5, 16).split(" ")[1]),
         Address: "",
         PinCode:""
     });
