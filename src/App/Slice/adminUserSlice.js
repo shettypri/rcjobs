@@ -56,7 +56,8 @@ export const acceptRequestReducers = createAsyncThunk(
 
         try {
             await updateDoc(doctorCollection, {
-                isUserAuthorized: true
+                isUserAuthorized: true,
+                isBlocked:false,
             })
             return `Accepted Sucessfully of ${id}`
         } catch (e) {

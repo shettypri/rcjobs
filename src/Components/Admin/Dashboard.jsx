@@ -4,10 +4,16 @@ import payment from "../../assets/Images/payment.png"
 import monthly_join from "../../assets/Images/monthly-Join.png"
 import userCustomer from "../../assets/Images/Customer.png"
 import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getCustomerReducers} from "../../App/Slice/AdminCustomerSlice.js";
 
 const Dashboard = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    useEffect(() => {
+        dispatch(getCustomerReducers())
+    }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
     return (
         <>

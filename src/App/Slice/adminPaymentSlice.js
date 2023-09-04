@@ -1,8 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js";
-import {useDispatch} from "react-redux";
-import {isLoginReducers} from "./userSlice.js";
 
 export const walletPaymentRequestReducers = createAsyncThunk(
     "walletPaymentRequestReducers",
@@ -39,6 +37,13 @@ export const walletPaymentResponseReducers = createAsyncThunk(
         }
     }
 )
+
+// export const paymentInfoStoreReducers = createAsyncThunk(
+//     "paymentInfoStoreReducers",
+//     async (data)=>{
+//
+//     }
+// )
 
 const adminPaymentSlice = createSlice({
     name:"adminPaymentReducer",
