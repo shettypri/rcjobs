@@ -8,6 +8,7 @@ import BuyProductSlice from "./Slice/BuyProductSlice.js";
 import CashBackSlice from "./Slice/CashBackSlice.js";
 import AdminCustomerSlice from "./Slice/AdminCustomerSlice.js";
 import ReferSlice from "./Slice/referSlice.js";
+import WithdrawalSlice from "./Slice/WithdrawalSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
         CashBackReducers:CashBackSlice,
         CustomerReducers:AdminCustomerSlice,
         ReferReducers:ReferSlice,
+        withdrawalReducer:WithdrawalSlice,
 
     }
 })

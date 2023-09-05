@@ -1,6 +1,8 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {walletPaymentRequestReducers, walletPaymentResponseReducers} from "../../App/Slice/adminPaymentSlice.js";
+import {reset, walletPaymentRequestReducers, walletPaymentResponseReducers} from "../../App/Slice/adminPaymentSlice.js";
+import {withdrawalStoreReducers} from "../../App/Slice/WithdrawalSlice.js";
+import {useState} from "react";
 
 const PaymentDetails = (props) => {
     const location = useLocation();
@@ -9,6 +11,8 @@ const PaymentDetails = (props) => {
     const data = location.state.requestData
     console.log(data)
     const dispatch = useDispatch()
+    const [paymentSucessResult, setPaymentSucessResult] = useState(false)
+    const [btnClicked, setBtnClicked] = useState(false)
 
     const {paymentResponse} = useSelector(state => state.adminPaymentReducers)
     
@@ -24,16 +28,23 @@ const PaymentDetails = (props) => {
             withdrawalAmount: 0,
         }
         dispatch(walletPaymentResponseReducers(paymentInfo))
-        const withdrwalInfo  = {
+
+        const withdrawalInfo  = {
             id:data.id,
             actualAmount: data.withdrawalAmount,
             withdrawalAmount: data.withdrawalAmount - (data.withdrawalAmount / 100) * 10,
             payment_date:new Date().toUTCString().slice(5, 16),
-            payment_Month:(new Date().toUTCString().slice(5, 16).split(" ")[1]),
+            payment_Month:new Date().getMonth(),
             name:data.name,
             phone:data.phone
         }
+        dispatch(withdrawalStoreReducers(withdrawalInfo))
+        setBtnClicked(true)
+        setPaymentSucessResult(true)
 
+    }
+    if(paymentResponse.Error){
+        setPaymentSucessResult(false)
     }
     // console.log(paymentResponse)
 
@@ -121,17 +132,27 @@ const PaymentDetails = (props) => {
 
                         <tr className="bg-gray-200 rounded">
                             {
-                                paymentResponse.Success ?
+                                btnClicked?
+                                (paymentSucessResult ?
                                     (
                                         <>
                                             <td colSpan={2} className="bg-green-300">
                                                 <label className="text-2xl text-green-600">
                                                     Payment Done Successfully
                                                 </label>
-
                                             </td>
                                         </>
-                                    ) : (
+                                    ):(
+                                            <>
+                                                <td colSpan={2} className="bg-red-300">
+                                                    <label className="text-2xl text-red-600">
+                                                        Payment not Successfully
+                                                    </label>
+
+                                                </td>
+                                            </>
+                                    )
+                                ) : (
                                         <>
                                             <td className="mt-4 py-10">
                                                 <button

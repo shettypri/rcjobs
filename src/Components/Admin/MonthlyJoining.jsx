@@ -9,9 +9,14 @@ const MonthlyJoining = () => {
         dispatch(getCustomerReducers())
     }, []);
     const {customerUser} = useSelector(state => state.CustomerReducers)
-    const filterData = customerUser.data.filter(
+    console.log("HELLO IAHOXOD",customerUser)
+    let filterData;
+    customerUser.success &&(
+    filterData = customerUser.data.filter(
         customerData => customerData.Joining_Month === (new Date().toUTCString().slice(5, 16).split(" ")[1])
     )
+    )
+
     return (
         <>
             <div className="flex flex-col">
@@ -42,7 +47,7 @@ const MonthlyJoining = () => {
 
                             <tbody className="">
                             {
-                                filterData.map((newUsers, index) => {
+                                customerUser.success && filterData.map((newUsers, index) => {
                                     return (
                                         <tr key={index}>
                                             <th>{index + 1}</th>

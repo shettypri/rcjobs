@@ -1,17 +1,30 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {doc, updateDoc} from "firebase/firestore";
+import {addDoc, collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js";
 
 export const withdrawalStoreReducers = createAsyncThunk(
     "withdrawalStoreReducers",
-    async ()=>{
-        const productCollection = doc(db, "Payment_record", id)
+    async (withdrwalInfo) => {
+        const collectionList = collection(db, 'PAYMENT_INFO')
+        try {
+            return await addDoc(collectionList, withdrwalInfo)
+        } catch (e) {
+            return e
+        }
+    }
+)
+export const withdrawalDataReducers = createAsyncThunk("withdrawalDataReducers",
+    async () => {
+        const firebaseCollectionName = collection(db, "PAYMENT_INFO")
 
         try {
-            await updateDoc(productCollection, {
-                isOrderPlaced: true
-            })
-            return `Accepted Sucessfully of ${id}`
+            const getPendingRequest = await getDocs(firebaseCollectionName)
+            const requestData = getPendingRequest.docs.map((dataArray) => ({
+                    ...dataArray.data(),
+                    id: dataArray.id
+                })
+            )
+            return requestData
         } catch (e) {
             return e
         }
@@ -19,21 +32,25 @@ export const withdrawalStoreReducers = createAsyncThunk(
 )
 
 const WithdrawalSlice = createSlice({
-    name:"WithdrawalSlice",
-    initialState:{
-        withdrawalStoreState:{
-            loading:false,
-            Success:false,
-            Error:false,
+    name: "WithdrawalSlice",
+    initialState: {
+        withdrawalStoreState: {
+            loading: false,
+            Success: false,
+            Error: false,
         },
-        withdrawalStoreData:{
-            loading:false,
-            Success:false,
-            Error:false,
-            data:"",
+        withdrawalStoreData: {
+            loading: false,
+            Success: false,
+            Error: false,
+            data: "",
         }
     },
-    extraReducers:(builder)=>{
-        builder
+    extraReducers: (builder) => {
+        builder.addCase(withdrawalStoreReducers.pending,(state)=>{
+            state.l
+        })
     }
 })
+
+export default WithdrawalSlice.reducer

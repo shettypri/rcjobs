@@ -10,17 +10,17 @@ const Payment_request = () => {
     }, []);
     const navigate = useNavigate()
     const {paymentRequest} = useSelector(state => state.adminPaymentReducers)
-    const handlePayment = (id,wallet)=>{
-        console.log("onclick",id)
-        const paymentInfo ={
-            id:id,
-            wallet:wallet,
-            isWithdrawing:false,
-            withdrawalAmount:0,
-        }
-        dispatch(walletPaymentResponseReducers(paymentInfo))
-        dispatch(walletPaymentRequestReducers())
-    }
+    // const handlePayment = (id,wallet)=>{
+    //     console.log("onclick",id)
+    //     const paymentInfo ={
+    //         id:id,
+    //         wallet:wallet,
+    //         isWithdrawing:false,
+    //         withdrawalAmount:0,
+    //     }
+    //     dispatch(walletPaymentResponseReducers(paymentInfo))
+    //     dispatch(walletPaymentRequestReducers())
+    // }
     return (
         <>
             <div className="flex flex-col items-center m-auto mt-4 w-full
