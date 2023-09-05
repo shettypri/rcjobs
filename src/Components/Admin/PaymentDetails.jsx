@@ -25,13 +25,15 @@ const PaymentDetails = (props) => {
         }
         dispatch(walletPaymentResponseReducers(paymentInfo))
         const withdrwalInfo  = {
+            id:data.id,
+            actualAmount: data.withdrawalAmount,
             withdrawalAmount: data.withdrawalAmount - (data.withdrawalAmount / 100) * 10,
             payment_date:new Date().toUTCString().slice(5, 16),
             payment_Month:(new Date().toUTCString().slice(5, 16).split(" ")[1]),
             name:data.name,
             phone:data.phone
         }
-        dis
+
     }
     // console.log(paymentResponse)
 

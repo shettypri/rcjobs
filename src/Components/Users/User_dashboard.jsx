@@ -56,7 +56,9 @@ const User_dashboard = () => {
                     adsName: ProductDetails.Ads_name,
                     clientName: ProductDetails.name,
                     Phone: ProductDetails.Phone,
-                    price: ProductDetails.Ads_price,
+                    actual_price: ProductDetails.Ads_price,
+                    paid_price:Number(ProductDetails.Ads_price) - (Number(ProductDetails.Ads_price) / 100) * (Number(ProductDetails.Ads_Offer)),
+                    offer:ProductDetails.Ads_Offer,
                     ProductUrl: ProductDetails.imageURL,
                     paidUrl: imageUrl,
                     isOrderPlaced: false
