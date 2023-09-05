@@ -35,6 +35,7 @@ const PaymentDetails = (props) => {
             withdrawalAmount: data.withdrawalAmount - (data.withdrawalAmount / 100) * 10,
             payment_date:new Date().toUTCString().slice(5, 16),
             payment_Month:new Date().getMonth(),
+            payment_TimeStamp:new Date(),
             name:data.name,
             phone:data.phone
         }

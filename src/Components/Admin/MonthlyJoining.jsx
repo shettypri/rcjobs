@@ -1,14 +1,22 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getCustomerReducers} from "../../App/Slice/AdminCustomerSlice.js";
+import {withdrawalDataReducers} from "../../App/Slice/WithdrawalSlice.js";
 
 
 const MonthlyJoining = () => {
     const dispatch = useDispatch()
+
+    const [selectMonth, setSelectMonth] = useState()
+    
     useEffect(() => {
         dispatch(getCustomerReducers())
+        dispatch(withdrawalDataReducers())
     }, []);
+    
+    
     const {customerUser} = useSelector(state => state.CustomerReducers)
+    const {withdrawalStoreData} = useSelector(state => state.withdrawalReducer)
     console.log("HELLO IAHOXOD",customerUser)
     let filterData;
     customerUser.success &&(
@@ -16,11 +24,28 @@ const MonthlyJoining = () => {
         customerData => customerData.Joining_Month === (new Date().toUTCString().slice(5, 16).split(" ")[1])
     )
     )
+    let withdrwalData;
+    withdrawalStoreData.Success &&(
+        withdrwalData = withdrawalStoreData.data.filter(
+            withDrawlInfo => withDrawlInfo.payment_Month === new Date().getMonth()
+        )
+    )
+    
 
     return (
         <>
             <div className="flex flex-col">
 
+                <div className="w-full">
+                    <label>
+                        Pick a fruit:
+                        <select name="selectedFruit">
+                            <option value="apple">Apple</option>
+                            <option value="banana">Banana</option>
+                            <option value="orange">Orange</option>
+                        </select>
+                    </label>
+                </div>
                 <div className="flex flex-col bg-gray-800 w-3/4 mx-auto rounded">
                     <div className="flex flex-row justify-around py-4 ">
                         <label className="text-white text-3xl p-8">Number of

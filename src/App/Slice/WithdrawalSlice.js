@@ -51,7 +51,7 @@ const WithdrawalSlice = createSlice({
         builder.addCase(withdrawalStoreReducers.pending,(state)=>{
             state.withdrawalStoreState.loading=true;
         })
-            .addCase(withdrawalStoreReducers.fulfilled, (state, action) => {
+            .addCase(withdrawalStoreReducers.fulfilled, (state) => {
                 state.withdrawalStoreState.loading = false;
                 state.withdrawalStoreState.Success = true;
             })
@@ -59,10 +59,10 @@ const WithdrawalSlice = createSlice({
                 state.withdrawalStoreState.loading = false;
                 state.withdrawalStoreState.Error = action.payload;
             })
-            .addCase(withdrawalStoreReducers.pending,(state)=>{
+            .addCase(withdrawalDataReducers.pending,(state)=>{
                 state.withdrawalStoreData.loading=true;
             })
-            .addCase(withdrawalStoreReducers.fulfilled, (state, action) => {
+            .addCase(withdrawalDataReducers.fulfilled, (state, action) => {
                 state.withdrawalStoreData.loading = false;
                 state.withdrawalStoreData.Success = true;
                 if (state.withdrawalStoreData.data.length !== 0) {
@@ -70,7 +70,7 @@ const WithdrawalSlice = createSlice({
                 }
                 state.withdrawalStoreData.data = (action.payload)
             })
-            .addCase(withdrawalStoreReducers.rejected, (state, action) => {
+            .addCase(withdrawalDataReducers.rejected, (state, action) => {
                 state.withdrawalStoreData.loading = false;
                 state.withdrawalStoreData.Error = action.payload;
             })
