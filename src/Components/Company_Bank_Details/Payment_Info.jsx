@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import Bank from "./Bank.jsx";
 import Upi from "./Upi.jsx";
+import {useLocation} from "react-router-dom";
 
 const PaymentInfo = () => {
     const [showBankDetails, setShowBankDetails] = useState(true);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState("Bank Payment");
 
+    const location = useLocation()
+    console.log(location.pathname)
     const handleOptionChange = (event)=>{
         setSelectedOption(event.target.value);
     }
@@ -33,9 +36,15 @@ const PaymentInfo = () => {
                     }
                 </div>
 
-                <div className="py-3 flex bg-gray-200">
-                    <label className=" font-bold capitalize mx-auto text-red-600"> please pay &#8377; 1000/- as Registration Fees</label>
-                </div>
+                {
+                    location.pathname === "/user/register" &&(
+                        <div className="py-3 flex bg-gray-200">
+                            <label className=" font-bold capitalize mx-auto text-red-600"> please pay &#8377; 1000/- as Registration Fees</label>
+                        </div>
+                    )
+                }
+
+
             </div>
         </>
     );

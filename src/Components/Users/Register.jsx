@@ -8,17 +8,21 @@ import {useNavigate} from "react-router-dom";
 import referralCodeGenerator from 'referral-code-generator'
 import PaymentInfo from "../Company_Bank_Details/Payment_Info.jsx";
 import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {ReferUserReducers} from "../../App/Slice/referSlice.js";
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");
     const [personDetails, setPersonalDetails] = useState(true);
     const [final, setFinal] = useState(true);
     const referCode = sessionStorage.getItem("referCode")
-
+    const [isvalidRefernce, setIsvalidRefernce] = useState(false);
+    const [referLink, setReferLink] = useState("")
     const [personalDetailError, setPersonalDetailError] = useState(false);
     const [bankDetailError, setBankDetailError] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [verify, setVerify] = useState(false);
+
 
 
     const [userDetails, setUserDetails] = useState({
@@ -47,10 +51,22 @@ const Register = () => {
     /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
     that is used to handle user input events. */
     const Navigate = useNavigate()
+    const dispatch =useDispatch()
+
+    const{referUserData} = useSelector(state => state.ReferReducers)
+
+    const removeLink =()=>{
+        setReferLink("")
+    }
 
 
     const handleVerify = ()=>{
-
+        if(referLink.length !== 0){
+            const userCoupon = referLink.split("/")[4]
+            dispatch(ReferUserReducers(userCoupon))
+        }else{
+            setIsvalidRefernce(false)
+        }
     }
     const userValues = (event) => {
         const re = /^[a-zA-Z0-9_ ]*$/;
@@ -65,6 +81,9 @@ const Register = () => {
     * The function `pinCodeValues` is used to update the `userDetails` object with the value of the pin
     * code input field, only if the value is empty or consists of only numeric characters.
     */
+
+
+
     const pinCodeValues= (event) => {
         const re = /^[0-9]+$/;
 
@@ -100,7 +119,6 @@ const Register = () => {
 
 
 
-
  /**
   * The function `handlePersonalDetail` checks if the user's personal details are valid and sets an
   * error flag if any of the fields are empty or if the pin code is longer than 6 characters.
@@ -108,7 +126,6 @@ const Register = () => {
     const handlePersonalDetail = () => {
         if (userDetails.name.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length ===0  || userDetails.PinCode.length > 6) {
             setPersonalDetailError(true)
-
         } else {
             setPersonalDetails(false)
         }
@@ -243,26 +260,63 @@ const Register = () => {
                                                     Thank you Join through Referral
                                                     program</label>
                                             ) : (
-                                                <label>
-                                                    You Do not  Have any Referral
-                                                </label>
+                                                <>
+
+                                                    <label>
+                                                        You Do not Have any Referral
+                                                    </label>
+
+                                                    <div className="flex flex-row ">
+                                                        <div className="">
+                                                            <input className="mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"
+                                                                   value={referLink}
+                                                                   name={"referLink"}
+                                                                   type={"text"}
+                                                                   onChange={(event)=>{
+                                                                       setReferLink(event.target.value)
+                                                                   }}
+                                                            />
+                                                        </div>
+                                                        <div className="ml-5">
+                                                            <button
+                                                                onClick={handleVerify}
+                                                                className=" text-center font-semibold border-1  text-white  rounded-3xl w-[110px] h-[30px] bg-blue-700 "
+
+                                                            > Verify</button>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                    {
+
+                                                        referUserData.isReferValid &&(
+
+                                                                <>
+                                                                    {
+                                                                        referUserData.data === undefined ?
+
+                                                                            (
+                                                                                <section className="text-red-600 font-bold capitalize">
+                                                                                    Invalid referal link
+
+                                                                                </section>
+
+                                                                            ):(
+                                                                                <section className="text-green-600 font-bold capitalize">
+                                                                                    Refer By &nbsp; {referUserData.data.name}
+                                                                                </section>
+                                                                            )
+                                                                    }
+
+                                                                </>
+                                                            )
+                                                    }
+                                                </>
                                             )}
                                         </div>
                                     }
-                                    <div className="flex flex-row ">
-                                        <div className="">
-                                            <input className="mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"/>
-                                        </div>
 
-
-                                        <div className="ml-5">
-                                            <button
-                                                onClick={handleVerify}
-                                                className=" text-center font-semibold border-1  text-white  rounded-3xl w-[110px] h-[30px] bg-blue-700 "> Verify</button>
-
-                                        </div>
-
-                                    </div>
 
 
                                     <div className="flex flex-row justify-center py-5">

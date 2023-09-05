@@ -7,6 +7,7 @@ import fetchAdsSlice from "./Slice/fetchAdsSlice.js";
 import BuyProductSlice from "./Slice/BuyProductSlice.js";
 import CashBackSlice from "./Slice/CashBackSlice.js";
 import AdminCustomerSlice from "./Slice/AdminCustomerSlice.js";
+import ReferSlice from "./Slice/referSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -17,7 +18,9 @@ const store = configureStore({
         fetchAdsReducers:fetchAdsSlice,
         ProductReducer:BuyProductSlice,
         CashBackReducers:CashBackSlice,
-        CustomerReducers:AdminCustomerSlice
+        CustomerReducers:AdminCustomerSlice,
+        ReferReducers:ReferSlice,
+
     }
 })
 

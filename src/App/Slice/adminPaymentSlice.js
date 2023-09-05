@@ -60,7 +60,8 @@ const adminPaymentSlice = createSlice({
             Success: false,
             Error:false,
             isPaid:false,
-        }
+        },
+
     },extraReducers:(builder)=>{
     builder
         .addCase(walletPaymentRequestReducers.pending,(state)=>{

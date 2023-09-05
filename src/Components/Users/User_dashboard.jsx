@@ -105,9 +105,9 @@ const User_dashboard = () => {
         <>
             {
                 buyDetails ? (
-                    <div className="w-full">
-                        <div className="w-full flex flex-row justify-around">
-                            <div className="w-1/2">
+                    <div className="w-full ">
+                        <div className="w-full flex flex-row justify-around max-sm:flex-col ">
+                            <div className="w-1/2 max-sm:my-2 max-sm:w-full">
                                 <div className="h-4/6">
                                     <img src={productDetails.imageURL} width={400} height={20}
                                          className="mx-auto w-2/4 h-5/6"/>
