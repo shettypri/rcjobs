@@ -25,6 +25,8 @@ import PaymentDetails from "./Components/Admin/PaymentDetails.jsx";
 import Pre_Loader from "./Components/Global/Pre_Loader.jsx";
 import UserCustomer from "./Components/Admin/UserCustomer.jsx";
 import MonthlyJoining from "./Components/Admin/MonthlyJoining.jsx";
+import Block_Page from "./Components/Global/Block_Page.jsx";
+import {OrderDetails} from "./Components/Admin/OrderDetails.jsx";
 
 function App() {
     const Dispatch = useDispatch()
@@ -62,11 +64,13 @@ function App() {
                                     <Route exact path='/admin/paymentrequest' element={<Payment_request/>}/>
                                     <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
                                     <Route exact path='/admin/order' element={<Buy_List/>}/>
+                                    <Route exact path='/admin/orderdetails' element={<OrderDetails/>}/>
                                 </Route>
 
                                 {/*user*/}
 
                                 <Route element={<UserRoute isAdmin={data.isAdmin} newUser={newUser}/>}>
+
                                     <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
                                         <Route exact path='/user/profile' element={<Profile/>}/>
                                         <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
@@ -79,6 +83,7 @@ function App() {
 
                                 </Route>
                             </Route>
+                            <Route exact path='user/blockpage' element={<Block_Page/>}/>
 
                         </Routes>
                     )

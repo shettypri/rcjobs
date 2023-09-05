@@ -10,7 +10,7 @@ const BuyList = () => {
         dispatch(getProductReducers())
     }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
-    // console.log(getProduct.data)
+    console.log(getProduct.data)
     return (
         <>
             <div
@@ -81,14 +81,33 @@ const BuyList = () => {
                                             </td>
 
                                             <td className="border-2 border-black pl-10 py-2 uppercase font-bold">
+                                                {/*<button*/}
+                                                {/*    className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-full text-white border-2 border-black"*/}
+                                                {/*    onClick={() => {*/}
+                                                {/*        dispatch(placeOrderReducer(product.id))*/}
+                                                {/*        dispatch(getProductReducers())*/}
+                                                {/*    }}*/}
+                                                {/*>Placed*/}
+                                                {/*</button>*/}
                                                 <button
                                                     className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-full text-white border-2 border-black"
                                                     onClick={() => {
-                                                        dispatch(placeOrderReducer(product.id))
-                                                        dispatch(getProductReducers())
-                                                    }}
-                                                >Placed
+                                                        {
+                                                            navigate("/admin/orderdetails",
+                                                                {
+                                                                    state: {
+                                                                        product
+
+                                                                    }
+                                                                }
+                                                            )}
+                                                    }
+
+                                                    }
+                                                >View details
                                                 </button>
+
+
                                             </td>
                                         </tr>
                                     )

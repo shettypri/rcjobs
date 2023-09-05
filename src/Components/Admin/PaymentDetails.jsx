@@ -7,7 +7,7 @@ const PaymentDetails = (props) => {
     // console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
-    // console.log(data)
+    console.log(data)
     const dispatch = useDispatch()
 
     const {paymentResponse} = useSelector(state => state.adminPaymentReducers)

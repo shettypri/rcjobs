@@ -2,21 +2,30 @@
 import profile from "../../../src/assets/Images/profile.png"
 // import reference from "../../../src/assets/Images/reference.png"
 import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import {ifscCodeReducer} from "../../App/Slice/userSlice.js";
 
 
 const Profile = () => {
+    const dispatch = useDispatch()
+
 
 
     const [showInput, setShowInput] = useState(false);
 
 
+
     const {error, data} = useSelector(state => state.userReducer)
     const [newIfsc, setNewIfsc] = useState(data.ifsc_code);
-    const handleSubmit = () => {
+    const handleSubmit = (id,newIfsc) => {
+        const updateIfsc ={
+            id:id,
+            ifsc:newIfsc
+        }
+        dispatch(ifscCodeReducer(updateIfsc))
 
 
     }
@@ -134,6 +143,7 @@ const Profile = () => {
                                     <div className={"flex flex-col space-x-3"}>
                                         <input type={"text"} value={newIfsc}
                                                className="w-1/2 h-10 border border-black px-4 mx-auto"
+
                                                onChange={(event) => setNewIfsc(event.target.value)}
                                         />
                                         {newIfsc===data.ifsc_code
@@ -144,7 +154,7 @@ const Profile = () => {
                                         <div className="flex justify-around mt-4 space-x-3 ">
                                             <button
                                                 className={"bg-green-700 hover:bg-green-900 flex   justify-center p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
-                                                onClick={handleSubmit}>submit
+                                                onClick={()=>handleSubmit(data.id,newIfsc)}>submit
                                             </button>
                                             <button
                                                 className={"bg-red-600 hover:bg-red-900  justify-center  p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}

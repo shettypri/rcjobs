@@ -3,6 +3,7 @@ import {doc, getDoc} from "@firebase/firestore";
 import {db} from "../../config/firebase.config.js";
 import {auth} from "../../config/firebase.config.js";
 import {signOut} from "firebase/auth";
+import {collection, updateDoc} from "firebase/firestore";
 
 export const isLoginReducers = createAsyncThunk(
     "isLoginReducers",
@@ -19,11 +20,14 @@ export const isLoginReducers = createAsyncThunk(
 )
 
 export const ifscCodeReducer=createAsyncThunk("ifscCodeReducer",
-    async (userID)=>{
+    async (requestCode)=>{
+    const  users = doc(db,"users",requestCode.id)
+        try{
 
-    try{
+        await updateDoc(users,{
+            ifsc_code:requestCode.ifsc
 
-
+        })
 
     }catch(error){
         console.log(`Error is ${error}`);
@@ -45,13 +49,18 @@ export const isLogOutReducers = createAsyncThunk(
         }
     }
 )
+
+
+
+
 const userSlice = createSlice({
     name: 'userReducer', initialState: {
         loading: false,
         isLoggedIn: false,
         newUser: false,
         error: false,
-        data: ""
+        data: "",
+        isifscUpdated:false
     },
     extraReducers: (builder) => {
         builder.addCase(isLoginReducers.pending, (state) => {
@@ -89,4 +98,7 @@ const userSlice = createSlice({
             })
     }
 })
+
+
+
 export default userSlice.reducer
