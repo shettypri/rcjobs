@@ -6,8 +6,8 @@ import {withdrawalDataReducers} from "../../App/Slice/WithdrawalSlice.js";
 
 const MonthlyJoining = () => {
     const dispatch = useDispatch()
-
-    const [selectMonth, setSelectMonth] = useState()
+    const todayDate = new Date()
+    const [selectedMonth, setSelectedMonth] = useState(todayDate.getMonth())
     
     useEffect(() => {
         dispatch(getCustomerReducers())
@@ -17,7 +17,8 @@ const MonthlyJoining = () => {
     
     const {customerUser} = useSelector(state => state.CustomerReducers)
     const {withdrawalStoreData} = useSelector(state => state.withdrawalReducer)
-    console.log("HELLO IAHOXOD",customerUser)
+    // console.log("HELLO IAHOXOD",customerUser)
+    console.log("dates",withdrawalStoreData.data)
     let filterData;
     customerUser.success &&(
     filterData = customerUser.data.filter(

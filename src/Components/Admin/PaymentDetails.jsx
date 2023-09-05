@@ -36,6 +36,7 @@ const PaymentDetails = (props) => {
             payment_date:new Date().toUTCString().slice(5, 16),
             payment_Month:new Date().getMonth(),
             payment_TimeStamp:new Date(),
+            payment_year:new Date().getFullYear(),
             name:data.name,
             phone:data.phone
         }
