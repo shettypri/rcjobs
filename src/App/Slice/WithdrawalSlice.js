@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {addDoc, collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js";
+import {getCustomerReducers} from "./AdminCustomerSlice.js";
 
 export const withdrawalStoreReducers = createAsyncThunk(
     "withdrawalStoreReducers",
@@ -48,8 +49,33 @@ const WithdrawalSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(withdrawalStoreReducers.pending,(state)=>{
-            state.l
+            state.withdrawalStoreState.loading=true;
         })
+            .addCase(withdrawalStoreReducers.fulfilled, (state, action) => {
+                state.withdrawalStoreState.loading = false;
+                state.withdrawalStoreState.Success = true;
+            })
+            .addCase(withdrawalStoreReducers.rejected, (state, action) => {
+                state.withdrawalStoreState.loading = false;
+                state.withdrawalStoreState.Error = action.payload;
+            })
+            .addCase(withdrawalStoreReducers.pending,(state)=>{
+                state.withdrawalStoreData.loading=true;
+            })
+            .addCase(withdrawalStoreReducers.fulfilled, (state, action) => {
+                state.withdrawalStoreData.loading = false;
+                state.withdrawalStoreData.Success = true;
+                if (state.withdrawalStoreData.data.length !== 0) {
+                    state.withdrawalStoreData.data = ""
+                }
+                state.withdrawalStoreData.data = (action.payload)
+            })
+            .addCase(withdrawalStoreReducers.rejected, (state, action) => {
+                state.withdrawalStoreData.loading = false;
+                state.withdrawalStoreData.Error = action.payload;
+            })
+
+
     }
 })
 
