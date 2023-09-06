@@ -3,6 +3,8 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {isLoginReducers, isLogOutReducers} from "../App/Slice/userSlice.js";
 import {useEffect, useState} from "react";
+import {getCustomerReducers} from "../App/Slice/AdminCustomerSlice.js";
+import {withdrawalDataReducers} from "../App/Slice/WithdrawalSlice.js";
 
 
 const Navbar = () => {
@@ -28,6 +30,13 @@ const Navbar = () => {
                 Dispatch(isLoginReducers((sessionKey)))
             )
         }
+    }, []);
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCustomerReducers())
+        dispatch(withdrawalDataReducers())
     }, []);
 
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
