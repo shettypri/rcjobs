@@ -9,7 +9,7 @@ const PaymentDetails = (props) => {
     // console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
-    console.log(data)
+    // console.log(data)
     const dispatch = useDispatch()
     const [paymentSucessResult, setPaymentSucessResult] = useState(false)
     const [btnClicked, setBtnClicked] = useState(false)

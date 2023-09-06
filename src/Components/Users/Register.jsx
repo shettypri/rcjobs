@@ -137,7 +137,7 @@ const Register = () => {
             )
 
         setPersonalDetails(false)
-            console.log(userDetails)
+            // console.log(userDetails)
     }
 
 }
