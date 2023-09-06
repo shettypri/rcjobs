@@ -27,36 +27,29 @@ export const UserRoute = ({isAdmin, newUser}) => {
         return (<Navigate to={"/"}/>)
 
 }
-export const AuthUserRoute = ({isAuthorised,isBlocked})=>{
+export const AuthUserRoute = ({isAuthorised, isBlocked}) => {
     // console.log("Exppriment Route")
-    if(isAuthorised === true && isBlocked === false){
-        return <Outlet />
+
+    if (isAuthorised === true && isBlocked === false) {
+        return <Outlet/>
     }
-    if(isAuthorised === true && isBlocked === true){
+    if (isAuthorised === true && isBlocked === true) {
         return <Navigate to="user/blockpage"/>
     }
     return (<Navigate to={'/user/waiting'}/>)
 }
 
-export const RegisterRoute = ({isNewUser,isAuthorised}) =>{
-
-    if(isNewUser)
-        return <Navigate to={'/user/register'}/>
-    if(isAuthorised === true){
-        return <Navigate to="/user/userdashboard"/>
-        // return <Navigate to={}/>
-    }
-    if(isAuthorised === false){
-        return <Navigate to="'/user/waiting'"/>
-
-    }
-        // return <Navigate to={'/user/register'}/>
-    // return <Navigate to="/user/userdashboard"/>
+export const RegisterRoute = ({isNewUser}) => {
+    if (isNewUser === true)
+        return <Outlet/>
+        // return <Navigate to="/user/register"/>
+    // return <Navigate to={'/user/register'}/>
+    return <Navigate to="/user/userdashboard"/>
 }
 
-export const BlockUserRoute = ({isBlocked})=>{
-    if(isBlocked){
+export const BlockUserRoute = ({isBlocked}) => {
+    if (isBlocked) {
         return <Navigate to={"user/blockpage"}/>
     }
 }
-export default {ProtectedLoginRoute, AdminRoute, UserRoute,RegisterRoute,BlockUserRoute};
+export default {ProtectedLoginRoute, AdminRoute, UserRoute, RegisterRoute, BlockUserRoute};
