@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProductReducers, placeOrderReducer} from "../../App/Slice/BuyProductSlice.js";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 export const OrderDetails = () => {
@@ -10,12 +10,11 @@ export const OrderDetails = () => {
         dispatch(getProductReducers())
     }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
-    console.log(getProduct.data)
-
+    // console.log(getProduct.data)
     const location = useLocation()
-
     const data = location.state.product
     // console.log(data)
+    const navigate=useNavigate()
 
 
 
@@ -25,10 +24,33 @@ export const OrderDetails = () => {
     return (
         <>
 
-        <div className=" flex flex-col px-64 w-full bg-orange-400  ">
-            <h1 className=" text-black font-bold uppercase text-3xl  px-64 py-2 max-sm:text-xl">
-            Order Details
-        </h1>
+        <div className="flex justify-center flex-col">
+
+            <div className="flex flex-row bg-orange-600 px-4 w-full py-3 mt-2 justify-center
+                 max-sm:w-full
+                 ">
+                <div className="mx-4">
+                    <button className="text-2xl  text-white border-2 border-white px-6  mr-28
+                        rounded-full py-1 shadow shadow-white
+                        max-sm:text-xl max-sm:px-6 max-sm:mr-14
+                        "
+                            onClick={()=>
+                                navigate("/admin/order")
+                            }>
+                        &#x1F878;
+                    </button>
+                </div>
+                <div className="px-40
+                    max-sm:px-5
+                    ">
+                    <h1 className="text-white font-bold uppercase text-3xl  px-4 py-2
+
+                        max-sm:text-xl
+                        ">
+                        Order List
+                    </h1>
+                </div>
+            </div>
         </div>
 
             <div className=" flex flex-row  mx-auto gap-10 " >
@@ -49,12 +71,16 @@ export const OrderDetails = () => {
                             </section>
                         </div>
 
-                        <section className="font-bold text-xl py-4 px-16 "> Price : {data.paid_price}</section>
+                        <div>
+                            <section className="font-bold text-xl py-4 px-16 "> Actual Price &#8377; : {data.actual_price}</section>
+                            <section className="font-bold text-xl py-4 px-16 ">Discount % : {data.offer}</section>
+                            <section className="font-bold text-xl py-2 px-16 box-border border-4  ">Paid Price &#8377; : {data.paid_price}</section>
 
+                        </div>
 
                     </div>
 
-                    <div className=" font-bold text-black px-10   ">
+                    <div className=" font-bold text-black px-10  ">
 
                         <img className="py-4"
                              src={data.ProductUrl} alt={""} height={550} width={400}/>
@@ -75,6 +101,7 @@ export const OrderDetails = () => {
                             {
                                 dispatch(placeOrderReducer(data.id))
                                 dispatch(getProductReducers())
+
                             }}
                         }
                         >place order</button>
