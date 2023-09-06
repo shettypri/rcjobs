@@ -10,6 +10,7 @@ import PaymentInfo from "../Company_Bank_Details/Payment_Info.jsx";
 import Google_Ads from "../Google_Ads/Google_Ads.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {ReferUserReducers} from "../../App/Slice/referSlice.js";
+import Loader from "../Global/Loader.jsx";
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");
@@ -65,7 +66,8 @@ const Register = () => {
         if (referLink.length !== 0) {
             const userCouponCode = referLink.split("/")[4]
             setUserCoupon(userCouponCode)
-            dispatch(ReferUserReducers(userCoupon))
+            console.log("useState Hook",userCoupon)
+            dispatch(ReferUserReducers(userCouponCode))
         } else {
             setIsvalidRefernce(false)
         }
@@ -308,24 +310,27 @@ return (
                                                 {
 
                                                     referUserData.isReferValid && (
-
                                                         <>
                                                             {
-                                                                referUserData.data === undefined ?
+                                                                referUserData.loading ?(
+                                                                    <Loader />
+                                                                    ):(
+                                                                    referUserData.data === undefined ?
+                                                                        (
+                                                                            <section
+                                                                                className="text-red-600 font-bold capitalize">
+                                                                                Invalid referal link
 
-                                                                    (
-                                                                        <section
-                                                                            className="text-red-600 font-bold capitalize">
-                                                                            Invalid referal link
+                                                                            </section>
 
-                                                                        </section>
+                                                                        ) : (
+                                                                            <section
+                                                                                className="text-green-600 font-bold capitalize">
+                                                                                Refer By &nbsp; {referUserData.data.name}
+                                                                            </section>
+                                                                        )
+                                                                )
 
-                                                                    ) : (
-                                                                        <section
-                                                                            className="text-green-600 font-bold capitalize">
-                                                                            Refer By &nbsp; {referUserData.data.name}
-                                                                        </section>
-                                                                    )
                                                             }
 
                                                         </>
