@@ -78,17 +78,17 @@ const Otp_Login = () => {
     const getOtpByNumber = async () => {
         // console.log("number")
         const numberMobile = "+" + mobileNumber
-        console.log("the number is", numberMobile)
+        // console.log("the number is", numberMobile)
         sessionStorage.setItem("mobileNumber", numberMobile)
 
         try {
             const captchaResult = await new RecaptchaVerifier('recaptcha-container', {}, auth);
-            console.log("capthcha result")
+            // console.log("capthcha result")
             const captchVeryfied = await signInWithPhoneNumber(auth, numberMobile, captchaResult)
             if (captchVeryfied) {
                 setCaptchaResult(captchVeryfied)
             }
-            console.log(captchaResult)
+            // console.log(captchaResult)
             // resendOtpTimer()
         } catch (error) {
             console.log("Login otp Error => ", error);
