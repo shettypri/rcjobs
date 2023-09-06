@@ -76,8 +76,8 @@ const MonthlyJoining = () => {
     ]
 
     const fetchDataByfilter = () => {
-        console.log("month", selectedMonth.value)
-        console.log("year", selectedYear)
+        // console.log("month", selectedMonth.value)
+        // console.log("year", selectedYear)
         setWithdrwalDataArray("")
         withdrwalData = withdrawalStoreData.data.filter(
             withDrawlInfo => withDrawlInfo.payment_Month === selectedMonth.value && withDrawlInfo.payment_year === selectedYear.value
