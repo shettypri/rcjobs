@@ -8,7 +8,7 @@ const PaymentInfo = () => {
     const [selectedOption, setSelectedOption] = useState("Bank Payment");
 
     const location = useLocation()
-    console.log(location.pathname)
+    // console.log(location.pathname)
     const handleOptionChange = (event)=>{
         setSelectedOption(event.target.value);
     }
