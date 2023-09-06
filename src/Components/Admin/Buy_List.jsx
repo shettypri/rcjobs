@@ -10,7 +10,7 @@ const BuyList = () => {
         dispatch(getProductReducers())
     }, []);
     const {getProduct} = useSelector(state => state.ProductReducer)
-    console.log(getProduct.data)
+    // console.log(getProduct.data)
     return (
         <>
             <div
