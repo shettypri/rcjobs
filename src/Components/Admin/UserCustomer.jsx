@@ -9,7 +9,7 @@ const UserCustomer = () => {
     // }, []);
     const {customerUser} = useSelector(state => state.CustomerReducers)
 
-    console.log(customerUser)
+    // console.log(customerUser)
 
     const confirmToBlockUser = (_id)=>{
         dispatch(blockCustomerReducers(_id))
