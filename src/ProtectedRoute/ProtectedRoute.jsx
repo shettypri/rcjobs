@@ -42,7 +42,7 @@ export const AuthUserRoute = ({isAuthorised, isBlocked}) => {
 export const RegisterRoute = ({isNewUser}) => {
     if (isNewUser === true)
         return <Outlet/>
-        // return <Navigate to="/user/register"/>
+        // return <Navigate to='/user/register'/>
     // return <Navigate to={'/user/register'}/>
     return <Navigate to="/user/userdashboard"/>
 }
