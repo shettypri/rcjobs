@@ -27,13 +27,13 @@ const MonthlyJoining = () => {
 
 
     const reducedArray = (arrayData) => {
-        console.log(arrayData)
+        // console.log(arrayData)
         let resultArray = arrayData.reduce((prev, current) => {
             return prev + current.withdrawalAmount
         }, 0)
         setTotalAmount(resultArray)
         setWithdrwalDataArray(arrayData)
-        console.log("hello", totalAmount)
+        // console.log("hello", totalAmount)
     }
 
     customerUser.success && (
