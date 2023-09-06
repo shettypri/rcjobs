@@ -39,10 +39,11 @@ const ReferSlice = createSlice({
                 state.referUserData.loading = false
                 state.referUserData.Success = true
                 state.referUserData.isReferValid = true
+                if(state.referUserData.data !== undefined)
+                    if (state.referUserData.data.length !== 0)
+                        state.referUserData.data = ""
 
-                if (state.referUserData.data.length !== 0) {
-                    state.referUserData.data = ""
-                }
+
                 state.referUserData.data = (action.payload)
             })
             .addCase(ReferUserReducers.rejected, (state) => {
