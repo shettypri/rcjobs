@@ -38,6 +38,7 @@ const Register = () => {
         Total_withdrawal: 0,
         isAdmin: false,
         isUserAuthorized: false,
+        isBlocked:false,
         joining_code: (referCode ? referCode : null),
         Referral_Code: "RCJOBS-" + referralCodeGenerator.alphaNumeric('uppercase', 4, 3),
         Account_name: "",

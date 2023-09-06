@@ -12,7 +12,7 @@ import Register from "./Components/Users/Register.jsx";
 import User_dashboard from "./Components/Users/User_dashboard.jsx";
 import Waiting from "./Components/Users/Waiting.jsx";
 import {
-    AdminRoute, AuthUserRoute,
+    AdminRoute, AuthUserRoute, BlockUserRoute,
     ProtectedLoginRoute, RegisterRoute, UserRoute,
 } from "./ProtectedRoute/ProtectedRoute.jsx";
 import {useDispatch, useSelector} from "react-redux";
@@ -33,7 +33,7 @@ function App() {
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
     const [showLoader, setShowLoader] = useState(true);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         setShowLoader(false)
     }, 4000);
 
@@ -44,7 +44,7 @@ function App() {
                     <Navbar/>
                 </div>
                 {
-                    showLoader ? ( <Pre_Loader/>):(
+                    showLoader ? (<Pre_Loader/>) : (
                         <Routes>
 
                             {/*<Route exact path='/loader' element={<Pre_Loader/>}/>*/}
@@ -71,19 +71,21 @@ function App() {
 
                                 <Route element={<UserRoute isAdmin={data.isAdmin} newUser={newUser}/>}>
 
-                                    <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}/>}>
+                                    <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized} isBlocked={data.isBlocked}/>}>
                                         <Route exact path='/user/profile' element={<Profile/>}/>
                                         <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
                                         <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
                                     </Route>
-                                    <Route element={<RegisterRoute isNewUser={newUser}/>}>
+                                    <Route element={<RegisterRoute isNewUser={newUser} isAuthorised={data.isUserAuthorized}/>}>
                                         <Route exact path='/user/register' element={<Register/>}/>
                                     </Route>
                                     <Route exact path='/user/waiting' element={<Waiting/>}/>
-
+                                    <Route element={<BlockUserRoute isBlocked={data.isBlocked}/>}>
+                                        <Route exact path='user/blockpage' element={<Block_Page/>}/>
+                                    </Route>
                                 </Route>
+
                             </Route>
-                            <Route exact path='user/blockpage' element={<Block_Page/>}/>
 
                         </Routes>
                     )

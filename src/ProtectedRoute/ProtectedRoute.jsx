@@ -1,4 +1,5 @@
-import {Navigate, Outlet} from "react-router-dom";
+import {Navigate, Outlet, Route} from "react-router-dom";
+import Waiting from "../Components/Users/Waiting.jsx";
 
 
 export const ProtectedLoginRoute = ({isLoggedIn}) => {
@@ -26,18 +27,36 @@ export const UserRoute = ({isAdmin, newUser}) => {
         return (<Navigate to={"/"}/>)
 
 }
-export const AuthUserRoute = ({isAuthorised})=>{
+export const AuthUserRoute = ({isAuthorised,isBlocked})=>{
     // console.log("Exppriment Route")
-    if(isAuthorised === true){
+    if(isAuthorised === true && isBlocked === false){
         return <Outlet />
+    }
+    if(isAuthorised === true && isBlocked === true){
+        return <Navigate to="user/blockpage"/>
     }
     return (<Navigate to={'/user/waiting'}/>)
 }
 
-export const RegisterRoute = ({isNewUser}) =>{
+export const RegisterRoute = ({isNewUser,isAuthorised}) =>{
+
     if(isNewUser)
-        return <Outlet />
+        return <Navigate to={'/user/register'}/>
+    if(isAuthorised === true){
+        return <Navigate to="/user/userdashboard"/>
+        // return <Navigate to={}/>
+    }
+    if(isAuthorised === false){
+        return <Navigate to="'/user/waiting'"/>
+
+    }
         // return <Navigate to={'/user/register'}/>
-    return <Navigate to="/user/userdashboard"/>
+    // return <Navigate to="/user/userdashboard"/>
 }
-export default {ProtectedLoginRoute, AdminRoute, UserRoute,RegisterRoute};
+
+export const BlockUserRoute = ({isBlocked})=>{
+    if(isBlocked){
+        return <Navigate to={"user/blockpage"}/>
+    }
+}
+export default {ProtectedLoginRoute, AdminRoute, UserRoute,RegisterRoute,BlockUserRoute};

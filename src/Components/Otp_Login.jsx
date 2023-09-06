@@ -37,11 +37,11 @@ const Otp_Login = () => {
         try {
             const finalResult = await captchaResult.confirm(otp)
             sessionStorage.setItem("key", finalResult.user.uid)
-            console.log("result iis", finalResult.user.uid)
+            // console.log("result iis", finalResult.user.uid)
             if (finalResult) {
                 dispatch(isLoginReducers(finalResult.user.uid))
             }
-            console.log(error, isLoggedIn, newUser)
+            // console.log(error, isLoggedIn, newUser)
             setLoading(false)
         } catch (error) {
             console.log("Entered otp => \n\n\n\n", error);
