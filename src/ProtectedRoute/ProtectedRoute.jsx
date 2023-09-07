@@ -48,8 +48,8 @@ export const AuthUserRoute = ({isAuthorised, isBlocked}) => {
 }
 
 export const RegisterRoute = ({isNewUser,isAuthorised}) => {
-    console.log("register Page",isNewUser)
-    console.log("Authorised Page",isAuthorised)
+    // console.log("register Page",isNe
+
     if(isAuthorised === true ){
         return <Navigate to="/user/userdashboard"/>
     }
