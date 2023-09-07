@@ -40,9 +40,9 @@ export const AuthUserRoute = ({isAuthorised, isBlocked}) => {
         }
     }
 
-    if (isAuthorised === true && isBlocked === false) {
-
-    }
+    // if (isAuthorised === true && isBlocked === false) {
+    //
+    // }
 
 
 }

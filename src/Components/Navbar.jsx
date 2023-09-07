@@ -56,9 +56,9 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center  fixed top-0  z-50 ">
-            <div>
-                <img className="h-12 w-25 cursor-pointer" src={logo} alt=""/>
+        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center py-1  fixed top-0  z-50 border-1 border-slate-600">
+            <div className="bg-white px-14 ml-[-20px] py-[3px]">
+                <img className="h-12 w-25 cursor-pointer " src={logo} alt=""/>
             </div>
             <div>
                 <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 max-sm:hidden">
