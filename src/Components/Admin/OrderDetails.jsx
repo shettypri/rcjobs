@@ -92,11 +92,11 @@ export const OrderDetails = () => {
                     <div className=" font-bold text-black px-10  h-[250px] py-8    ">
                         <h1 className="text-xl ">Payment details</h1>
                         <img className="py-4"
-                             src={data.paidUrl} alt={""} height={650} width={600}/>
+                             src={data.paidUrl} alt={""} height={650} width={600} />
 
                     </div>
 
-                    <div className=" flex justify-end mr-12 py-48">
+                    <div className=" flex justify-end mr-12 py-80">
                         <button className=" font-bold to-emerald-100 bg-green-700 rounded-3xl py-3 px-6 capitalize text-xl hover:bg-green-950" onClick={()=>{
                             {
                                 dispatch(placeOrderReducer(data.id))
