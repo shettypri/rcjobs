@@ -1,10 +1,8 @@
 
 const Block_Page = () => {
-
+    console.log("HJDHHJFTRYUIFCGHJ")
     return (
         <>
-
-
 
 
             <div role="alert" className="w-1/2  mx-auto max-sm:w-3/4">

@@ -41,6 +41,7 @@ const Navbar = () => {
 
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
 
+    console.log("USER DETAILS",data)
     /**
      * The function `handleLogOut` logs the user out, clears the session storage, and navigates to the
      * home page.
