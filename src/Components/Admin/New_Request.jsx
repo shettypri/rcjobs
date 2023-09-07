@@ -14,7 +14,7 @@ const New_Request = () => {
     return (
         <>
             <div className="mt-5 flex flex-col w-1/2
-            border-2 border-black shadow-gray-600 shadow-xl
+            border-2 border-black
             max-sm:w-full mb-3 justify-center mx-auto
             ">
                 {/*Heading*/}

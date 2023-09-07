@@ -128,7 +128,7 @@ const Otp_Login = () => {
 
                 </div>
                 <div
-                    className="max-sm:w-[340px] lg:w-4/12 m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center mt-2 ">
+                    className="max-sm:w-[340px] lg:w-5/12   m-auto  pb-3 flex justify-center items-center flex-col border-2 border-amber-600 rounded-lg place-items-center mt-2 ">
                     {loading && (<Loader/>)}
                     <img src={LoginAvatar}
                          height={170}
@@ -150,7 +150,7 @@ const Otp_Login = () => {
                                 />
                                 <div className=" group mt-2 mx-auto">
                                     <button
-                                        className="w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2
+                                        className="w-[200px] h-[45px]  font-bold rounded-lg cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150  mt-2
                             "
                                         onClick={getOtpByNumber}
                                     >
@@ -161,14 +161,15 @@ const Otp_Login = () => {
                         ) : (
                             <div className="">
                                 <OTPInput
-                                    className=" mt-4 otp-input"
+                                    className=" mt-4 otp-input "
                                     value={otp}
                                     onChange={handleOtpChange}
                                     OTPLength={6}
                                     otpType="number"
                                     disabled={false}
-                                    inputClassName="otp-input"
+                                    inputClassName="otp-input "
                                 />
+
                                 {/*Resend otp Button*/}
                                 {/*<div className="my-2 flex flex-col mb-3 items-center  mr-4 ">*/}
                                 {/*    {}*/}
@@ -182,7 +183,7 @@ const Otp_Login = () => {
                                 <div className="mt-2 flex flex-col mb-3 items-center">
 
                                     <button
-                                        className=" w-[200px] h-[45px] border border-blue-600 font-bold rounded-full cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 shadow-lg shadow-gray-500 mt-2"
+                                        className=" w-[200px] h-[45px]  font-bold rounded-lg cursor-pointer text-white bg-orange-500 group-hover:text-white group-hover:bg-orange-600 transition ease-in-out delay-150 mt-2"
                                         onClick={verifyOtp}
                                     >
                                         Verify OTP

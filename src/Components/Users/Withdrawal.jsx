@@ -48,10 +48,10 @@ const Withdrawal = () => {
                 </div>
 
                 <div className="w-3/6 flex flex-col h-3/5 max-sm:w-full">
-                    <div className=" w-5/6 mx-auto mt-2 shadow-xl shadow-black rounded-xl h-2/5
+                    <div className=" w-5/6 mx-auto mt-2 border border-black p-2 h-2/5
             max-sm:w-full max-sm:px-3 max-sm:rounded mb-10">
                         <div className="flex flex-col bg-gray-800 font-mono text-2xl">
-                            <div className="p-4 flex flex-row">
+                            <div className="p-4 flex flex-row ">
                                 <div className="flex flex-col">
                                     <label
                                         className="text-2xl capitalize text-white font-bold mx-auto drop-shadow-xl py-2 px-2 mt-4
@@ -94,7 +94,7 @@ const Withdrawal = () => {
                                 Wallet Amount
                             </label>
 
-                            <button className="text-white border-2 border-white mr-4 px-4 rounded-full uppercase cursor-pointer hover:bg-white hover:text-gray-600 font-extrabold
+                            <button className="text-white border-2 border-white mr-4 px-4 rounded-lg uppercase cursor-pointer hover:bg-white hover:text-gray-600 font-extrabold
 
                     max-sm:text-[15px]
 
@@ -189,7 +189,7 @@ const Withdrawal = () => {
                                                                 <div className="flex justify-around py-2
                                                         max-sm:text-[15px]
                                                         ">
-                                                                    <lable>
+                                                                    <lable className="ml-10">
                                                                         Enter the Amount
                                                                     </lable>
                                                                     <input
@@ -229,7 +229,7 @@ const Withdrawal = () => {
                                                                             </div>) : (
                                                                                 <div className="flex justify-around py-2 mb-2">
                                                                                     <button
-                                                                                        className="bg-red-700 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase
+                                                                                        className="bg-red-600 px-14 py-2 text-white font-bold rounded-lg  uppercase
                                                                                 max-sm:px-8 max-sm:py-2 max-sm:text-[15px]
                                                                                 "
                                                                                         onClick={() => setShowWithDraWal(true)}>
@@ -237,7 +237,7 @@ const Withdrawal = () => {
                                                                                     </button>
                                                                                     {(withdrawAmount <= walletData.data.wallet) &&
                                                                                         <button
-                                                                                            className="bg-green-600 px-14 py-2 text-white font-bold rounded-full border-2 border-black uppercase
+                                                                                            className="bg-green-600 px-14 py-2 text-white font-bold rounded-lg  uppercase
                                                                                     max-sm:px-8 max-sm:py-2 max-sm:text-[15px]
                                                                                     "
                                                                                             onClick={
@@ -269,14 +269,7 @@ const Withdrawal = () => {
 
                     </div>
 
-                    {/*<div className="w-full h-2 flex flex-row mt-10">*/}
-                    {/*    <div className="block w-full mx-1">*/}
-                    {/*        <Google_Ads/>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="block w-full mx-1">*/}
-                    {/*        <Google_Ads/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+
                 </div>
 
                 <div className="w-1/6  flex flex-col">

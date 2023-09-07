@@ -12,6 +12,7 @@ const MonthlyJoining = () => {
     const [withdrwalDataArray, setWithdrwalDataArray] = useState("");
     const [selectedMonth, setSelectedMonth] = useState(todayDate.getMonth())
     const [selectedYear, setSelectedYear] = useState(todayDate.getFullYear());
+    const [joiningUser, setJoiningUser] = useState("")
 
     // useEffect(() => {
     //     dispatch(getCustomerReducers())
@@ -19,7 +20,7 @@ const MonthlyJoining = () => {
     // }, []);
 
 
-    const {customerUser} = useSelector(state => state.CustomerReducers)
+    const {JoinCustomerState} = useSelector(state => state.CustomerReducers)
     const {withdrawalStoreData} = useSelector(state => state.withdrawalReducer)
     // console.log("dates",withdrawalStoreData.data)
     let filterData="";
@@ -36,12 +37,13 @@ const MonthlyJoining = () => {
         // console.log("hello", totalAmount)
     }
 
-    customerUser.success && (
+    JoinCustomerState.success && (
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-            filterData = customerUser.data.filter(
-                customerData => customerData.payment_Month === selectedMonth && customerData.payment_year === selectedYear
-            )
+            filterData = JoinCustomerState.data.filter(
+                customerData => customerData.Joining_Month === selectedMonth && customerData.Joining_year === selectedYear
+            ),
+                setJoiningUser(filterData)
         }, [])
     )
 
@@ -79,10 +81,22 @@ const MonthlyJoining = () => {
         // console.log("month", selectedMonth.value)
         // console.log("year", selectedYear)
         setWithdrwalDataArray("")
+        setJoiningUser("")
+        filterData = JoinCustomerState.data.filter(
+            customerData => customerData.Joining_Month === selectedMonth.value && customerData.Joining_year === selectedYear.value
+        )
+        setJoiningUser(filterData)
         withdrwalData = withdrawalStoreData.data.filter(
             withDrawlInfo => withDrawlInfo.payment_Month === selectedMonth.value && withDrawlInfo.payment_year === selectedYear.value
-        ),
+        )
+
             reducedArray(withdrwalData)
+
+        // console.log("data of fiterDAta",joiningUser)
+
+        console.log("HKBJHGF",joiningUser.length)
+        // console.log("withdrawal Data",withdrwalData)
+
     }
     const handleMonthChange = (selectedOption) => {
         setSelectedMonth(selectedOption)
@@ -125,18 +139,13 @@ const MonthlyJoining = () => {
 
                 </div>
 
-                {/*<div className="bg-red-100 w-2/3 flex mx-auto my-4 px-4 border border-black rounded capitalize py-2">*/}
-                {/*    <section className="font-bold text-2xl">*/}
-                {/*        The selected month is {selectedMonth} and selected year is {selectedYear}*/}
-                {/*    </section>*/}
-                {/*</div>*/}
-
                 <div className="flex flex-col bg-gray-800 w-3/4 mx-auto rounded">
                     <div className="flex flex-row justify-around py-4 ">
+                        {filterData.length && console.log(filterData)}
                         <label className="text-white text-3xl p-8">Number of
-                            users &nbsp;{ (filterData.length > 0) ? filterData.length : 0}</label>
+                            users &nbsp;{ (joiningUser.length > 0) ? joiningUser.length : 0}</label>
                         <label
-                            className="text-white text-3xl border-2 rounded-full p-8"> {(customerUser.data.length) * 1000}</label>
+                            className="text-white text-3xl border-2 rounded-full p-8"> {(joiningUser.length > 0) ? joiningUser.length *1000 : 0}</label>
                     </div>
 
                     <div

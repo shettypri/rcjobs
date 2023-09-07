@@ -40,13 +40,13 @@ const Profile = () => {
 
                 <div className="max-sm:mx-0 m-0 max-sm:w-full max-sm:px-0">
                     <div
-                        className={"flex md:flex-col  justify-center text-center p-4  border-1 rounded-2xl shadow-2xl   mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[20px] space-y-4 space-x-7 px-2 py-4 border-2 border-gray-600 bg-gradient-to-r from-amber-300 to-white "}>
+                        className={"flex md:flex-col  justify-center text-center p-4  border-1 rounded-lg   mt-14 w-[360px] ml-[30px] md:h-15 md:w-[850px] md:ml-[20px] space-y-4 space-x-7 px-2 py-4 border-2 border-gray-600 bg-gray-100 "}>
 
                         <div className="flex  md:flex-row  flex-col p-2 space-x-6 ">
                             {/*{left}*/}
 
                             <div
-                                className=" flex md:flex-col  flex-col   md:space-x-3 space-x-9 bg-gradient-to-r from-yellow-50 shadow-xl shadow-orange-200">
+                                className=" flex md:flex-col  flex-col   md:space-x-3 space-x-9 text-black rounded-lg  ">
                                 <div
                                     className={"flex md:flex-col  flex-row justify-center  md:-space-x-3.5  px-9 py-4 w-[300px]"}>
 
@@ -72,15 +72,15 @@ const Profile = () => {
 
                             </div>
 
-
+                            <section className="bg-black w-1 "></section>
                             {/*{right}*/}
 
                             <div className={"flex flex-col space-y-7 drop-shadow-md justify-items-start p-3 w-full  "}>
                                 <table>
                                     <tbody>
-                                    <tr>
+                                    <tr className="flex flex-row justify-between">
                                         <th>Account Name</th>
-                                        <td>:</td>
+                                        {/*<td>:</td>*/}
                                         <td>
                                             <label>
                                                 {data.name}
@@ -89,9 +89,9 @@ const Profile = () => {
 
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr className="flex flex-row justify-between">
                                         <th>Account Number</th>
-                                        <td>:</td>
+                                        {/*<td>:</td>*/}
                                         <td>
                                             <label>
                                                 {data.Account_no}
@@ -101,16 +101,16 @@ const Profile = () => {
 
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr className="flex flex-row justify-between">
                                         <th> Bank Name</th>
-                                        <td>:</td>
+                                        {/*<td>:</td>*/}
                                         <td>
                                             {data.Bank_name}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr className="flex flex-row justify-between">
                                         <th> Branch</th>
-                                        <td>:</td>
+                                        {/*<td>:</td>*/}
                                         <td>
                                             <label>
                                                 {data.Branch}
@@ -119,11 +119,11 @@ const Profile = () => {
 
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr className="flex flex-row justify-between">
                                         <th>
                                             IFSC Code
                                         </th>
-                                        <th>:</th>
+                                        {/*<th>:</th>*/}
                                         <td>
                                             {data.ifsc_code}
                                         </td>
@@ -153,11 +153,11 @@ const Profile = () => {
                                         }
                                         <div className="flex justify-around mt-4 space-x-3 ">
                                             <button
-                                                className={"bg-green-700 hover:bg-green-900 flex   justify-center p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
+                                                className={"bg-green-700 hover:bg-green-900 flex   justify-center p-1 border-1 border-black rounded-lg w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 capitalize font-bold"}
                                                 onClick={()=>handleSubmit(data.id,newIfsc)}>submit
                                             </button>
                                             <button
-                                                className={"bg-red-600 hover:bg-red-900  justify-center  p-1 border-1 border-black rounded-2xl w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
+                                                className={"bg-red-600 hover:bg-red-900  justify-center  p-1 border-1 border-black rounded-lg w-6/12 md:w-44 md:h-10 md:py-2 text-white h-9 font-bold capitalize "}
                                                 onClick={() => {
                                                     setShowInput(false)
                                                 }}>cancel

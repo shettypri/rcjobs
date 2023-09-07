@@ -298,7 +298,7 @@ return (
                                                     <div className="ml-5">
                                                         <button
                                                             onClick={handleVerify}
-                                                            className=" text-center font-semibold border-1  text-white  rounded-3xl w-[110px] h-[30px] bg-blue-700 "
+                                                            className=" text-center font-semibold border-1  text-white  rounded-lg w-[110px] h-[30px] bg-blue-700 "
 
                                                         > Verify
                                                         </button>
@@ -344,7 +344,7 @@ return (
 
                                 <div className="flex flex-row justify-center py-5">
                                     <button
-                                        className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
+                                        className={"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
                                         onClick={handlePersonalDetail}>Next
                                     </button>
                                 </div>
@@ -436,13 +436,13 @@ return (
 
                                             <div className={"flex justify-center p-6 flex-row space-x-3 "}>
                                                 <button
-                                                    className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
+                                                    className={"\"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
                                                     onClick={() => setPersonalDetails(true)}
                                                 >
                                                     Back
                                                 </button>
                                                 <button
-                                                    className={"\"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "
+                                                    className={"\"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "
                                                     } onClick={handleBankDetails}>Next
 
                                                 </button>
@@ -479,7 +479,7 @@ return (
 
                                         <div className={"flex justify-center p-6 flex-row space-x-3 "}>
                                             <button
-                                                className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400  "}
+                                                className={"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400  "}
                                                 onClick={() => {
                                                     setFinal(true)
                                                 }}
@@ -487,7 +487,7 @@ return (
                                                 back
                                             </button>
                                             <button
-                                                className={"text-center font-semibold border-1  text-white border-black rounded-2xl w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400  "}
+                                                className={"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400  "}
                                                 onClick={handleRegister}
                                             >
                                                 Register

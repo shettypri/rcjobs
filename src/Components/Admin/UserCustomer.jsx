@@ -51,7 +51,7 @@ const UserCustomer = () => {
                                         <th className="py-2 capitalize border-2 border-black">{customerDetails.phone}</th>
                                         <th className="py-2 capitalize border-2 border-black">{customerDetails.Address}</th>
                                         <th className="py-2 capitalize border-2 border-black">
-                                            <button className="border-2 border-black rounded-full px-10 py-1 bg-red-600 text-white hover:bg-red-700 "
+                                            <button className=" rounded-lg px-10 py-1 bg-red-600 text-white hover:bg-red-700 "
                                             onClick={()=>toBlockUserBtn(customerDetails)}
                                             >
                                                 Block Customer

@@ -56,7 +56,7 @@ const ListAds =() => {
                                     max-sm:text-[12px] px-[10px] py-1
                                     ">
                                         <button className="bg-red-700  text-white font-bold uppercase
-                                        rounded-full border border-black mx-auto px-5 py-2
+                                        rounded-lg  mx-auto px-5 py-1
                                         hover:bg-red-600
                                         max-sm:px-2 max-sm:py-2
                                         "

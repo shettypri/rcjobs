@@ -56,8 +56,10 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center py-1  fixed top-0  z-50 border-1 border-slate-600">
-            <div className="bg-white px-14 ml-[-20px] py-[3px]">
+        <nav className="w-full h-14 bg-slate-600 flex justify-between px-4 md:px-4 items-center py-1  fixed top-0  z-50 border-1 border-slate-600
+
+        ">
+            <div className="bg-white px-14 ml-[-20px] py-[3px] max-sm:px-2">
                 <img className="h-12 w-25 cursor-pointer " src={logo} alt=""/>
             </div>
             <div>
@@ -92,7 +94,7 @@ const Navbar = () => {
                                         </>
                                     )
                                 }
-                                <li className={"mx-[10px] cursor-pointer text-white"}>
+                                <li className={"mx-[10px] cursor-pointer text-white capitalize"}>
                                     <p onClick={handleLogOut}
                                     > logout</p>
                                 </li>
@@ -105,7 +107,7 @@ const Navbar = () => {
             {/*mobile navbar*/}
             <div className="hidden max-sm:block">
 
-                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-white  "
+                <section className="cursor-pointer hidden max-sm:block py-4 text-2xl font-extrabold text-orange-500  "
                          onClick={() => {
                              setToggle(!toggle)
                          }}>

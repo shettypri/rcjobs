@@ -108,7 +108,7 @@ const User_dashboard = () => {
         <>
             {
                 buyDetails ? (
-                    <div className="w-full ">
+                    <div className="w-full pb-44 10 ">
                         <div className="w-full flex flex-row justify-around max-sm:flex-col ">
                             <div className="w-1/2 max-sm:my-2 max-sm:w-full">
                                 <div className="h-4/6">
@@ -272,8 +272,8 @@ const User_dashboard = () => {
                                                                                     </div>
                                                                                 </div>
                                                                                 <button
-                                                                                    className="border-2 border-black
-                                                            mx-40  px-24 mt-4 py-3 rounded
+                                                                                    className="
+                                                            mx-40  px-16 mt-4 py-3 rounded-xl
                                                              font-extrabold uppercase bg-red-700 text-white
                                                              max-sm:mx-20 max-sm:px-16 max-sm:py-2 max-sm:rounded-full
                                                              max-2xl:mx-10
@@ -305,9 +305,9 @@ const User_dashboard = () => {
                                             </>
                                         )
                                     }</div>
-                                <div className="my-4 flex flex-row justify-around bg-gray-400 py-4">
+                                <div className="my-4 flex flex-row justify-around bg-gray-200 py-4">
                                     <button
-                                        className="uppercase bg-green-700  hover:bg-sky-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black mr-2
+                                        className="uppercase bg-white  hover:bg-sky-700 py-3 px-14 rounded-lg text-black  font-bold border-2 border-gray-500 mr-2
                             max-sm:px-10 max-sm:py-2"
                                         onClick={() => {
                                             reactSwipeEl.prev()
@@ -321,7 +321,7 @@ const User_dashboard = () => {
                                         !showAdsOnSwipe &&
                                         (!(Ads_Reward.loading && data.loading)) ? (
                                             <button
-                                                className="uppercase bg-green-700 py-4 px-14 rounded-full text-white  font-bold border-2 border-black ml-2
+                                                className="uppercase bg-black py-3 px-14 rounded-lg text-white  font-bold border-2 border-gray-500 ml-2
                                     max-sm:px-10 max-sm:py-2"
 
                                                 onClick={() =>

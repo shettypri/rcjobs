@@ -158,7 +158,7 @@ const PaymentDetails = (props) => {
                                         <>
                                             <td className="mt-4 py-10">
                                                 <button
-                                                    className=" mx-6 bg-red-700 px-16 py-2 rounded-full text-white uppercase border border-black font-extrabold"
+                                                    className=" mx-6 bg-red-700 px-16 py-2 rounded-lg text-white uppercase border border-black font-extrabold"
                                                     onClick={
                                                         () => navigate("/admin/paymentrequest")
                                                     }
@@ -168,7 +168,7 @@ const PaymentDetails = (props) => {
                                             </td>
                                             <td className="mt-4 py-10">
                                                 <button
-                                                    className=" mx-6 bg-green-600 px-20 py-2 rounded-full text-white uppercase border border-black font-extrabold"
+                                                    className=" mx-6 bg-green-600 px-20 py-2 rounded-lg text-white uppercase border border-black font-extrabold"
                                                     onClick={handlePayment}
                                                 >
                                                     Paid

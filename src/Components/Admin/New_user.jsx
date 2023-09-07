@@ -27,7 +27,7 @@ const New_user = (props) => {
                 max-sm:py-1 max-sm:px-0 max-sm:text-[12px]
                 ">
                     <button
-                        className="bg-yellow-400 py-1 px-4 font-bold border-2 border-orange-500 rounded-full hover:bg-white
+                        className="bg-yellow-400 py-1 px-4 font-bold border-2 border-orange-500 rounded-lg hover:bg-white
                         max-sm:py-0
                         "
                         /* The `onClick={() => setShowImage(true)}` is an event handler that is
@@ -49,13 +49,13 @@ const New_user = (props) => {
                         >
                             <div className=" flex justify-center mt-2">
                                 <img src={props.userData.JoiningFee}
-                                     className=" rounded shadow-2xl shadow-gray-600"
+                                     className=" rounded  "
                                      width={500} height={250}
                                 />
                             </div>
 
                             <div className="flex justify-around my-2 py-2">
-                                <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-full text-white bg-green-600 shadow-lg shadow-black"
+                                <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-lg text-white bg-green-600 "
                                         onClick={() => {
                                             console.log(props.userData.id)
                                             setShowImage(false)
@@ -69,7 +69,7 @@ const New_user = (props) => {
                                     approve
                                 </button>
 
-                                <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-full text-white bg-red-600 shadow-lg shadow-black"
+                                <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-lg text-white bg-red-600 "
                                         onClick={() => setShowImage(false)}
                                 >
                                     Show less

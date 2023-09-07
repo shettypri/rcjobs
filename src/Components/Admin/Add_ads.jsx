@@ -80,15 +80,15 @@ const Add_ads = () => {
                     (
                         <div className="">
                             <div className="flex justify-end  mt-4 mr-44 max-sm:mr-4">
-                                <button className="bg-gradient-to-r from-orange-600 px-8 py-3  border-2 border-black font-bold uppercase rounded-full
-                shadow-xl shadow-gray-500 hover:bg-gradient-to-r hover:from-orange-800
+                                <button className="bg-black  text-white px-8 py-3  border-2 border-black font-bold uppercase rounded-lg
+                 hover:from-orange-800
                 " onClick={() => setShowUploadBtn(false)}>
                                     Show list
                                 </button>
                             </div>
 
                             {/* Form begins from here*/}
-                            <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded  drop-shadow-2xl bg-gradient-to-r from-gray-50 to-orange-100 w-1/2
+                            <div className="flex justify-center items-center flex-col border border-blue-700 m-auto mt-[25px] rounded    w-1/2
                              max-sm:w-full max-sm:p-3">
                                 <div className="m-auto flex flex-col">
                                     <label className="font-bold my-5 uppercase">
@@ -97,7 +97,28 @@ const Add_ads = () => {
                                 </div>
 
                                 <div>
-                                    <div className="flex flex-row max-sm:block">
+                                    <div className="mx-auto px-6 justify-between">
+                                        <PhoneInput
+                                            className="flex flex-row w-full  mb-4 px-8  "
+                                            country={"in"} value={clientDetails.Phone} name={"Phone"}
+                                            onChange={(event) => {
+                                                const regex = /^[0-9\b]+$/;
+                                                if (regex.test(event)) {
+                                                    setClientDetails({...clientDetails, ["Phone"]: event})
+                                                }
+                                            }
+                                            }
+                                        />
+                                    </div>
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && clientDetails.Phone.length === 0 &&
+                                            (<label
+                                                className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please
+                                                enter the phone number</label>)
+                                        }
+                                    </div>
+
+                                    <div className="flex flex-row max-sm:block justify-around ">
                                         <label className="font-bold mx-2 uppercase mt-4 max-sm:ml-14 ">Client
                                             Name</label>
                                         <input
@@ -120,30 +141,11 @@ const Add_ads = () => {
                                     </div>
 
 
-                                    <div className="mx-auto px-6">
-                                        <PhoneInput
-                                            className="flex flex-row w-full  mb-4 px-8  "
-                                            country={"in"} value={clientDetails.Phone} name={"Phone"}
-                                            onChange={(event) => {
-                                                const regex = /^[0-9\b]+$/;
-                                                if (regex.test(event)) {
-                                                    setClientDetails({...clientDetails, ["Phone"]: event})
-                                                }
-                                            }
-                                            }
-                                        />
-                                    </div>
-                                    <div className={`${inputError ? "block" : "hidden"}`}>
-                                        {inputError && clientDetails.Phone.length === 0 &&
-                                            (<label
-                                                className={"capitalize font-semibold not-italic  text-red-600 max-sm:ml-14"}>please
-                                                enter the phone number</label>)
-                                        }
-                                    </div>
+
                                 </div>
 
-                                <div className="flex flex-col">
-                                    <div className="m-auto flex flex-row my-2">
+                                <div className="flex flex-col ">
+                                    <div className="m-auto flex flex-row my-2 justify-between">
                                         <label className="font-bold mx-2 uppercase mb-4">
                                             Product Name
                                         </label>
@@ -190,8 +192,8 @@ const Add_ads = () => {
                                 </div>
 
 
-                                <div className="flex flex-col py-3">
-                                    <div className="m-aut o flex flex-row my-2">
+                                <div className="flex flex-col py-3 ">
+                                    <div className="m-aut o flex flex-row my-2 justify-around   ">
                                         <label className="font-bold mx-2 uppercase mb-4">offer Percentage</label>
                                         <input
                                             type="text"
@@ -243,7 +245,7 @@ const Add_ads = () => {
                                         )
                                     }
 
-                                    <button className="border-2 border-indigo-900 rounded-full bg-orange-400 text-white font-bold uppercase my-8
+                                    <button className="border-2 border-indigo-900 rounded-lg bg-orange-400 text-white font-bold uppercase my-8
                     w-[250px] h-[50px] hover:bg-orange-600 transition
                     max-sm:h-9 max-sm:w-[150px]
                     "
@@ -262,8 +264,8 @@ const Add_ads = () => {
                                 <div className="flex justify-end  mt-4 mr-44
             max-sm:mr-4
             ">
-                                    <button className="bg-gradient-to-r from-orange-600 px-8 py-3  border-2 border-black font-bold uppercase rounded-full
-                shadow-xl shadow-gray-500 hover:bg-gradient-to-r hover:from-orange-800
+                                    <button className="bg-black text-white px-8 py-3  border-2 border-black font-bold uppercase rounded-lg
+                hover:bg-gray-500 hover:from-orange-800
                 "
                                             onClick={
                                                 () =>

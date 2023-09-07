@@ -21,6 +21,25 @@ export const getCustomerReducers = createAsyncThunk(
     }
 )
 
+export const getJoinedCustomer = createAsyncThunk(
+    "getJoinedCustomer",
+    async ()=>{
+        const firebaseCollectionName = collection(db, "users")
+
+        try {
+            const getPendingRequest = await getDocs(firebaseCollectionName)
+            const requestData = getPendingRequest.docs.map((dataArray) => ({
+                    ...dataArray.data()
+                })
+            )
+            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === true && userCustomer.isAdmin === false )
+            return filterData
+        } catch (e) {
+            return e
+        }
+    }
+)
+
 export const blockCustomerReducers = createAsyncThunk(
     "blockCustomerReducers",
     async (_id)=>{
@@ -52,8 +71,14 @@ const  adminCustomerSlice = createSlice({
             error:false,
             success:false,
             result:""
+        },
+        JoinCustomerState:{
+            // getJoinedCustomer
+            loading:false,
+            error:false,
+            success:false,
+            data:""
         }
-
         },
     extraReducers:(builder)=>{
         builder
@@ -83,6 +108,21 @@ const  adminCustomerSlice = createSlice({
                 state.BlockedUserState.loading = false;
                 state.BlockedUserState.Error = true;
                 state.BlockedUserState.result=action.payload
+            })
+            .addCase(getJoinedCustomer.pending, (state) => {
+                state.JoinCustomerState.loading = true;
+            })
+            .addCase(getJoinedCustomer.fulfilled, (state, action) => {
+                state.JoinCustomerState.loading = false;
+                state.JoinCustomerState.Success = true;
+                if (state.JoinCustomerState.data.length !== 0) {
+                    state.JoinCustomerState.data = ""
+                }
+                state.JoinCustomerState.data = (action.payload)
+            })
+            .addCase(getJoinedCustomer.rejected, (state, action) => {
+                state.JoinCustomerState.loading = false;
+                state.JoinCustomerState.Error = action.payload;
             })
 
     }

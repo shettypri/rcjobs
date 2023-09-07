@@ -97,7 +97,7 @@ export const OrderDetails = () => {
                     </div>
 
                     <div className=" flex justify-end mr-12 py-80">
-                        <button className=" font-bold to-emerald-100 bg-green-700 rounded-3xl py-3 px-6 capitalize text-xl hover:bg-green-950" onClick={()=>{
+                        <button className=" font-bold to-emerald-100 bg-green-600 rounded-lg  text-white py-3 px-6 capitalize text-xl hover:bg-green-950 mt-10" onClick={()=>{
                             {
                                 dispatch(placeOrderReducer(data.id))
                                 dispatch(getProductReducers())
