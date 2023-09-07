@@ -1,4 +1,4 @@
-import LoginAvatar from "../assets/Images/user.png"
+import LoginAvatar from "../assets/Logo/rc-jobs-test-logo.png"
 import {useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import OTPInput from "otp-input-react"
@@ -133,10 +133,10 @@ const Otp_Login = () => {
                     <img src={LoginAvatar}
                          height={170}
                          width={160}
-                         className="drop-shadow-2xl max-sm:w-[85px] mt-5"
+                         className="drop-shadow-2xl max-sm:w-[85px] mt-5 "
                     />
 
-                    <h1 className="capitalize font-bold text-3xl max-sm:text-2xl">
+                    <h1 className="capitalize font-bold text-3xl max-sm:text-2xl ">
                         Login
                     </h1>
                     {
