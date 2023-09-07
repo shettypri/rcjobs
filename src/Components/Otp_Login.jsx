@@ -136,9 +136,9 @@ const Otp_Login = () => {
                          className="drop-shadow-2xl max-sm:w-[85px] mt-5 "
                     />
 
-                    <h1 className="capitalize font-bold text-3xl max-sm:text-2xl ">
-                        Login
-                    </h1>
+                    {/*<h1 className="capitalize font-bold text-3xl max-sm:text-2xl ">*/}
+                    {/*    Login*/}
+                    {/*</h1>*/}
                     {
                         otpVerify ? (
                             <div className="mt-2 flex flex-col mb-3 ">
