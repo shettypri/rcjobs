@@ -201,7 +201,7 @@ return (
             <div className="w-2/6">
                 <div className={"flex flex-wrap justify-center mt-4"}>
 
-                    <div className="flex flex-col space-y-3 p-0  bg-white rounded-lg shadow-xl border-2 border-black
+                    <div className="flex flex-col space-y-3 p-0  bg-white rounded-lg  border-2 border-black
                 py-10 max-sm:ml-64  max-sm:px-6 max-sm:py-3.5
                 ">
 
@@ -215,7 +215,7 @@ return (
                                 <div className={" flex flex-col text-black p-4 px-0 "}>
                                     <label className={"font-bold"}>Enter Full Name</label>
                                     <input type="text" value={userDetails.name}
-                                           className=" mt-1 border-2 border-black h-10 rounded font-bold shadow-xl
+                                           className=" mt-1 border-2 border-black h-10 rounded font-bold
                     "
                                            name={"name"} onChange={userValues}/>
                                     {personalDetailError && userDetails.name.length === 0 &&
@@ -232,7 +232,7 @@ return (
                                         value={userDetails.phone}
                                         disabled
                                         className=" mt-1 border-2 border-gray-700 h-10 rounded font-bold
-                       shadow-xl
+
                        "/>
 
                                 </div>
@@ -240,7 +240,7 @@ return (
                                     <label className={"font-bold"}> Address</label>
                                     <textarea
                                         rows={4}
-                                        className={"mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"}
+                                        className={"mt-1 border-2 border-black  rounded font-bold px-1"}
                                         name={"Address"}
                                         value={userDetails.Address}
                                         onChange={userValues}/>
@@ -254,7 +254,7 @@ return (
                                     <label className={"font-bold"}> PinCode</label>
                                     <input
 
-                                        className={"mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"}
+                                        className={"mt-1 border-2 border-black  rounded font-bold px-1"}
                                         name={"PinCode"}
                                         value={userDetails.PinCode}
                                         onChange={pinCodeValues}/>
@@ -286,7 +286,7 @@ return (
                                                 <div className="flex flex-row ">
                                                     <div className="">
                                                         <input
-                                                            className="mt-1 border-2 border-black  rounded font-bold shadow-xl px-1"
+                                                            className="mt-1 border-2 border-black  rounded font-bold  px-1"
                                                             value={referLink}
                                                             name={"referLink"}
                                                             type={"text"}
@@ -359,7 +359,7 @@ return (
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}>Enter Account holder Name</label>
                                                 <input
-                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  "}
                                                     type={"text"}
                                                     name={"Account_name"}
                                                     value={userDetails.Account_name}
@@ -376,7 +376,7 @@ return (
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}>Account number</label>
                                                 <input
-                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold"}
                                                     type={"text"}
                                                     name={"Account_no"}
                                                     value={userDetails.Account_no}
@@ -392,7 +392,7 @@ return (
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}> Bank Name</label>
                                                 <input
-                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold "}
                                                     type={"text"}
                                                     name={"Bank_name"}
                                                     value={userDetails.Bank_name}
@@ -406,7 +406,7 @@ return (
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}> Branch</label>
                                                 <input
-                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold"}
                                                     type={"text"}
                                                     name={"Branch"}
                                                     value={userDetails.Branch}
@@ -420,7 +420,7 @@ return (
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}> IFSC code</label>
                                                 <input
-                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold  shadow-xl"}
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold"}
                                                     type={"text"}
                                                     name={"ifsc_code"}
 

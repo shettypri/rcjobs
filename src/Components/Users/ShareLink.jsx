@@ -20,7 +20,7 @@ const ShareLink = () => {
         <div className="">
             <button className="bg-gray-500 text-white px-4 py-2 rounded-lg  font-extrabold uppercase"
             onClick={handleShareLink}>
-                Refferal Link
+                Referral Link
             </button>
         </div>
         </>
