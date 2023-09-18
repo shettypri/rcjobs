@@ -5,9 +5,9 @@ import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 import ShareLink from "./ShareLink.jsx";
 import {isLoginReducers} from "../../App/Slice/userSlice.js";
-import Loader from "../Global/Loader.jsx";
-import Google_Ads from "../Google_Ads/Google_Ads.jsx";
-import Payment_Info from "../Company_Bank_Details/Payment_Info.jsx";
+import Loader from "../../Components/Global/Loader.jsx";
+import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
+import Payment_Info from "../../Components/Company_Bank_Details/Payment_Info.jsx";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
 import {db, storage} from "../../config/firebase.config.js";
@@ -99,7 +99,7 @@ const User_dashboard = () => {
         // console.log("Total length",fetchAds.data.length )
         setTimeout(() => {
             setShowAdsOnSwipe(false)
-        }, 2000)
+        }, 10000)
         reactSwipeEl.next()
 
     }

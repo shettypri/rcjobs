@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {isLoginReducers} from "../../App/Slice/userSlice.js";
 import {useNavigate} from "react-router-dom";
 import {cashBackRequestReducers, walletReducers} from "../../App/Slice/CashBackSlice.js";
-import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
 
 const Withdrawal = () => {
     const navigate = useNavigate()

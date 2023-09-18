@@ -1,6 +1,6 @@
 
 const Block_Page = () => {
-    console.log("HJDHHJFTRYUIFCGHJ")
+    // console.log("HJDHHJFTRYUIFCGHJ")
     return (
         <>
 
