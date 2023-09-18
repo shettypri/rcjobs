@@ -69,7 +69,7 @@ const Dashboard = () => {
                         <p className="m-auto font-bold text-[20px] group-hover:text-blue-700
                         max-sm:text-[17px]  max-sm:w-[180px]
                     ">
-                            Payment Request
+                            Payment
                         </p>
                     </div>
 

@@ -125,7 +125,7 @@ const Withdrawal = () => {
                                     <div className="flex flex-row justify-around  bg-blue-200">
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
-                                "> Withdrawal Reference Amount Wallet</label>
+                                "> Current Referral Wallet </label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
                                 ">
@@ -137,7 +137,7 @@ const Withdrawal = () => {
                                     <div className="flex flex-row justify-around  bg-blue-200">
                                         <label className="ppx-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
-                                "> Total Amount Wallet</label>
+                                "> Current Amount Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercasee
                                   max-sm:text-[15px]
                                 ">
@@ -223,7 +223,7 @@ const Withdrawal = () => {
                                                                             (<div className="flex">
                                                                                 <lable
                                                                                     className="mx-auto font-bold text-red-600">
-                                                                                    total wallet should have more than 250
+                                                                                    Total wallet should have more than 250
                                                                                     for withdrawal
                                                                                 </lable>
                                                                             </div>) : (

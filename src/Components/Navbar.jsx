@@ -123,7 +123,7 @@ const Navbar = () => {
                             isLoggedIn && (
                                 <>
                                     {
-                                        data.isUserAuthorized ? (
+                                        (data.isUserAuthorized === true && data.isAdmin === false) ? (
                                             <>
                                                 <li className={"mx-[10px] cursor-pointer text-white my-3 border-b border-white "}
                                                     onClick={hideDropDown}
