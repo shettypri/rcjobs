@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {isLoginReducers} from "../../App/Slice/userSlice.js";
 import {useNavigate} from "react-router-dom";
 import {cashBackRequestReducers, walletReducers} from "../../App/Slice/CashBackSlice.js";
-import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
+import Google_Ads from "../Google_Ads/Google_Ads.jsx";
 
 const Withdrawal = () => {
     const navigate = useNavigate()
@@ -125,7 +125,7 @@ const Withdrawal = () => {
                                     <div className="flex flex-row justify-around  bg-blue-200">
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
-                                "> Current Referral Wallet </label>
+                                "> Withdrawal Reference Amount Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
                                 ">
@@ -137,7 +137,7 @@ const Withdrawal = () => {
                                     <div className="flex flex-row justify-around  bg-blue-200">
                                         <label className="ppx-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
-                                "> Current Amount Wallet</label>
+                                "> Total Amount Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercasee
                                   max-sm:text-[15px]
                                 ">
@@ -223,7 +223,7 @@ const Withdrawal = () => {
                                                                             (<div className="flex">
                                                                                 <lable
                                                                                     className="mx-auto font-bold text-red-600">
-                                                                                    Total wallet should have more than 250
+                                                                                    total wallet should have more than 250
                                                                                     for withdrawal
                                                                                 </lable>
                                                                             </div>) : (

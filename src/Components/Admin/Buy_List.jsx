@@ -90,7 +90,7 @@ const BuyList = () => {
                                                 {/*>Placed*/}
                                                 {/*</button>*/}
                                                 <button
-                                                    className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-lg text-white "
+                                                    className="uppercase bg-green-600 px-4 pl-10 py-2 pr-10 rounded-full text-white border-2 border-black"
                                                     onClick={() => {
                                                         {
                                                             navigate("/admin/orderdetails",

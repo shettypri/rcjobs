@@ -5,9 +5,9 @@ import ReactSwipe from "react-swipe"
 import {addProductReducers} from "../../App/Slice/BuyProductSlice.js";
 import ShareLink from "./ShareLink.jsx";
 import {isLoginReducers} from "../../App/Slice/userSlice.js";
-import Loader from "../../Components/Global/Loader.jsx";
-import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
-import Payment_Info from "../../Components/Company_Bank_Details/Payment_Info.jsx";
+import Loader from "../Global/Loader.jsx";
+import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import Payment_Info from "../Company_Bank_Details/Payment_Info.jsx";
 import {v4} from "uuid";
 import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
 import {db, storage} from "../../config/firebase.config.js";
@@ -99,7 +99,7 @@ const User_dashboard = () => {
         // console.log("Total length",fetchAds.data.length )
         setTimeout(() => {
             setShowAdsOnSwipe(false)
-        }, 10000)
+        }, 2000)
         reactSwipeEl.next()
 
     }
@@ -118,7 +118,7 @@ const User_dashboard = () => {
 
                                 <div className="mx-auto  w-1/2 flex">
                                     <section
-                                        className="font-bold capitalize  border-2 border-black mx-auto px-16 py-2 rounded-lg">
+                                        className="font-bold capitalize  border-2 border-black mx-auto px-10 py-2 rounded-full">
                                         {productDetails.Ads_name}
                                     </section>
 
@@ -155,13 +155,13 @@ const User_dashboard = () => {
 
                                 <div className="mx-auto  w-1/2 flex flex-row justify-around mt-4">
                                     <button
-                                        className="text-white capitalize bg-red-600  rounded-lg px-10 py-1 "
+                                        className="text-white capitalize bg-red-600  rounded-full px-10 py-1 border-2 border-black"
                                         onClick={() => setBuyDetails(false)}
                                     >
                                         Cancel
                                     </button>
                                     <button
-                                        className="text-white capitalize bg-green-600  rounded-lg px-12 py-1 "
+                                        className="text-white capitalize bg-green-600  rounded-full px-12 py-1 border-2 border-black"
                                         onClick={() => BuyProductBtn(productDetails)}
                                     >
                                         Buy
@@ -208,12 +208,9 @@ const User_dashboard = () => {
                                             <>
 
                                                         <ReactSwipe
-                                                            className={"carousel w-full h-[654px] bg-gray-100  pt-7 px-0 mx-10 pointer-events-none max-sm:w-full  max-sm:p-0 max-sm:m-0"}
+                                                            className={"carousel w-full h-[654px] bg-gray-100  pt-7 px-0 mx-10 max-sm:w-full max-sm:p-0 max-sm:m-0"}
                                                             // swipeOptions={{ disableSwipe: true }}
-                                                            swipeOptions={
-                                                                {continuous: false}
-                                                            // {disableSwipe: true}
-                                                                }
+                                                            swipeOptions={{continuous: false, disableSwipe: true}}
                                                             ref={el => (reactSwipeEl = el)}
 
                                                         >
@@ -234,57 +231,52 @@ const User_dashboard = () => {
                                                                                         <Google_Ads/>
                                                                                     </div>
 
-                                                                            <div className={showAdsOnSwipe?"hidden ":"block"}>
+                                                                            <div className={showAdsOnSwipe?"hidden":"block"}>
 
-                                                                                <div className="max-sm:">
-                                                                                    <img src={ads.imageURL} alt="Error"
-                                                                                        height={15} width={20}
-                                                                                        className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-auto
+                                                                                <img src={ads.imageURL} alt="Error"
+                                                                                     height={15} width={20}
+                                                                                     className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-auto
                                                         max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10 max-2xl:w-3/4
                                                          "
                                                                                 />
 
+                                                                                <div
+                                                                                    className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto ">
+                                                                                    {ads.Ads_name}
+
+                                                                                </div>
+                                                                                <div className="flex flex-col ">
                                                                                     <div
-                                                                                        className="text-xl flex justify-center my-2 font-extrabold capitalize border-dashed border border-black py-4 w-3/4 mx-auto ">
-                                                                                        {ads.Ads_name}
-
+                                                                                        className="mx-2 font-bold text-2xl"> &#8377;
+                                                                                        {
+                                                                                            Number(ads.Ads_price) - (Number(ads.Ads_price) / 100) * (Number(ads.Ads_Offer))
+                                                                                        }
                                                                                     </div>
-                                                                                    <div className="flex flex-col ">
-                                                                                        <div
-                                                                                            className="mx-2 font-bold text-2xl"> &#8377;
+                                                                                    <div
+                                                                                        className="mx-2 font-bold text-lg flex flex-row ">
+                                                                                        <section
+                                                                                            className={`${Number(ads.Ads_Offer) !== 0 ? "text-gray-600" : ("text-gray-100")}  line-through mx-2 `}>
+                                                                                            &#8377;  {ads.Ads_price}
+                                                                                        </section>
+
+                                                                                        <section className="text-green-600">
                                                                                             {
-                                                                                                Number(ads.Ads_price) - (Number(ads.Ads_price) / 100) * (Number(ads.Ads_Offer))
+                                                                                                Number(ads.Ads_Offer) !== 0 && (
+                                                                                                    <>
+                                                                                                        {ads.Ads_Offer}% off
+                                                                                                    </>
+                                                                                                )
                                                                                             }
-                                                                                        </div>
-                                                                                        <div
-                                                                                            className="mx-2 font-bold text-lg flex flex-row ">
-                                                                                            <section
-                                                                                                className={`${Number(ads.Ads_Offer) !== 0 ? "text-gray-600" : ("text-gray-100")}  line-through mx-2 `}>
-                                                                                                &#8377;  {ads.Ads_price}
-                                                                                            </section>
 
-                                                                                            <section
-                                                                                                className="text-green-600">
-                                                                                                {
-                                                                                                    Number(ads.Ads_Offer) !== 0 && (
-                                                                                                        <>
-                                                                                                            {ads.Ads_Offer}%
-                                                                                                            off
-                                                                                                        </>
-                                                                                                    )
-                                                                                                }
-
-                                                                                            </section>
-                                                                                        </div>
+                                                                                        </section>
                                                                                     </div>
                                                                                 </div>
-
                                                                                 <button
                                                                                     className="
                                                             mx-40  px-16 mt-4 py-3 rounded-xl
                                                              font-extrabold uppercase bg-red-700 text-white
                                                              max-sm:mx-20 max-sm:px-16 max-sm:py-2 max-sm:rounded-full
-                                                             max-2xl:mx-10 pointer-events-auto
+                                                             max-2xl:mx-10
                                                             "
                                                                                     /* The above code is handling an onClick event
                                                                                     in a React component. When the event is
