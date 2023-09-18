@@ -1,20 +1,14 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {collection, getDocs, doc, deleteDoc, updateDoc} from "firebase/firestore";
+import {collection, getDocs, doc , updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase.config.js"
+import adminAcceptNewRequestService from "../../Services/admin_service/adminAceptNewRequestService.js";
+import newRequestService from "../../Services/admin_service/newRequestService.js";
 
 export const newUserReducers = createAsyncThunk(
     "newUserReducers",
     async () => {
-        const firebaseCollectionName = collection(db, "users")
-
         try {
-            const getPendingRequest = await getDocs(firebaseCollectionName)
-            const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data()
-                })
-            )
-            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === false && userCustomer.isAdmin === false)
-            return filterData
+            return await newRequestService()
         } catch (e) {
             return e
         }
@@ -52,17 +46,8 @@ export const referralCashBack = createAsyncThunk(
 export const acceptRequestReducers = createAsyncThunk(
     "acceptRequestReducers",
     async (id) => {
-        const doctorCollection = doc(db, "users", id)
-
         try {
-            await updateDoc(doctorCollection, {
-                isUserAuthorized: true,
-                isBlocked:false,
-                Joining_date:new Date().toUTCString().slice(5, 16),
-                Joining_Month:new Date().getMonth(),
-                Joining_year:new Date().getFullYear(),
-            })
-            return `Accepted Sucessfully of ${id}`
+            return await adminAcceptNewRequestService(id)
         } catch (e) {
             return e
         }

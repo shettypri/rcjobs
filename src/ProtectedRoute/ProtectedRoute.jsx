@@ -1,5 +1,5 @@
-import {Navigate, Outlet, Route} from "react-router-dom";
-import Waiting from "../Services/Users/Waiting.jsx";
+import {Navigate, Outlet} from "react-router-dom";
+// import Waiting from "../Components/Users/Waiting.jsx";
 
 
 export const ProtectedLoginRoute = ({isLoggedIn}) => {

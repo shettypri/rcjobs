@@ -1,9 +1,4 @@
 import {useState} from "react";
-import {v4} from "uuid";
-import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
-import {storage} from "../../config/firebase.config.js";
-import {setDoc, doc} from "firebase/firestore"
-import {db} from "../../config/firebase.config.js"
 import {useNavigate} from "react-router-dom";
 import referralCodeGenerator from 'referral-code-generator'
 import PaymentInfo from "../Company_Bank_Details/Payment_Info.jsx";
@@ -11,6 +6,9 @@ import Google_Ads from "../Google_Ads/Google_Ads.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {ReferUserReducers} from "../../App/Slice/referSlice.js";
 import Loader from "../Global/Loader.jsx";
+import uploadFileService from "../../Services/user_service/uploadFileService.js";
+import registerService from "../../Services/user_service/registerService.js";
+import Loader2 from "../Global/Loader2.jsx";
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");
@@ -24,6 +22,8 @@ const Register = () => {
     const [imageError, setImageError] = useState(false);
     const [verify, setVerify] = useState(false);
     const [userCoupon, setUserCoupon] = useState("")
+    const [loading, setLoading] = useState(false);
+    
 
 
     const [userDetails, setUserDetails] = useState({
@@ -48,7 +48,11 @@ const Register = () => {
         Branch: "",
         ifsc_code: "",
         Address: "",
-        PinCode: ""
+        PinCode: "",
+        transationAmount :[],
+        totalEarning:0,
+        buyProduct:[],
+        allreferalList:[],
     });
     /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
     that is used to handle user input events. */
@@ -66,7 +70,7 @@ const Register = () => {
         if (referLink.length !== 0) {
             const userCouponCode = referLink.split("/")[4]
             setUserCoupon(userCouponCode)
-            console.log("useState Hook",userCoupon)
+            // console.log("useState Hook",userCoupon)
             dispatch(ReferUserReducers(userCouponCode))
         } else {
             setIsvalidRefernce(false)
@@ -161,28 +165,21 @@ const handleRegister = async () => {
     if (uploadImage <= 0) {
         setImageError(true)
     } else {
-        //    console.log(uploadImage.name)
-        const imageFile = uploadImage.name
-        const imageFolder = "PAYMENT"
-        const textV4 = v4()
-        //     image uploade code to firebase:
-        const fileFolderRef = ref(storage, `${imageFolder}/${imageFile + textV4}`)
+        setLoading(true)
         try {
-            await uploadBytes(fileFolderRef, uploadImage)
-            const imageUrl = await getDownloadURL(ref(storage, `${imageFolder}/${imageFile + textV4}`))
+            const imageUrl = await uploadFileService(uploadImage)   
             userDetails["JoiningFee"] = imageUrl
-            const isDataInserted = await setDoc(doc(db, "users", `${userDetails.id}`)
-                , userDetails)
+            await registerService(userDetails)
             Navigate("/user/userdashboard")
             //     storing into fire store data
 
         } catch (error) {
             console.error(error);
+        }finally{
+            setLoading(false)   
         }
     }
 }
-
-
 return (
     <>
         <div className="w-full flex flex-row max-sm:flex-col max-sm:h-full">
@@ -204,6 +201,7 @@ return (
                     <div className="flex flex-col space-y-3 p-0  bg-white rounded-lg  border-2 border-black
                 py-10 max-sm:ml-64  max-sm:px-6 max-sm:py-3.5
                 ">
+                    {loading &&(<Loader2 />)}
 
                         {personDetails ? (
                             <div className="px-4">

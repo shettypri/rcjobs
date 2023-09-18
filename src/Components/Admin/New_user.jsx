@@ -21,7 +21,7 @@ const New_user = (props) => {
                 <td className="border-2 border-black w-1/3 px-10 h-10
                 max-sm:py-1 max-sm:text-[12px]
                 ">
-                    {props.userData.name}
+                    {props.userData.name} 
                 </td>
                 <td className="border-2 border-black w-1/3  h-10 px-4 py-2
                 max-sm:py-1 max-sm:px-0 max-sm:text-[12px]
@@ -60,8 +60,8 @@ const New_user = (props) => {
                                             console.log(props.userData.id)
                                             setShowImage(false)
                                             dispatch(acceptRequestReducers(props.userData.id))
-                                            console.log("user joing code",props.userData.joining_code)
-                                            dispatch(referralCashBack(props.userData.joining_code))
+                                            // console.log("user joing code",props.userData.joining_code)
+                                            props.userData.joining_code !== null && dispatch(referralCashBack(props.userData.joining_code))
                                             dispatch(newUserReducers())
                                         }
                                         }
