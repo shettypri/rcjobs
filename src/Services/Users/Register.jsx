@@ -6,11 +6,11 @@ import {setDoc, doc} from "firebase/firestore"
 import {db} from "../../config/firebase.config.js"
 import {useNavigate} from "react-router-dom";
 import referralCodeGenerator from 'referral-code-generator'
-import PaymentInfo from "../Company_Bank_Details/Payment_Info.jsx";
-import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import PaymentInfo from "../../Components/Company_Bank_Details/Payment_Info.jsx";
+import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {ReferUserReducers} from "../../App/Slice/referSlice.js";
-import Loader from "../Global/Loader.jsx";
+import Loader from "../../Components/Global/Loader.jsx";
 
 const Register = () => {
     const [uploadImage, setUploadImage] = useState("");

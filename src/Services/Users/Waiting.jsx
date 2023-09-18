@@ -1,4 +1,4 @@
-import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
 
 const Waiting = () => {
     return (

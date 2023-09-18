@@ -1,11 +1,11 @@
 // import wallet from "../../../src/assets/Images/wallet.png"
-import profile from "../../../src/assets/Images/profile.png"
+import profile from "../../assets/Images/profile.png"
 // import reference from "../../../src/assets/Images/reference.png"
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
-import Google_Ads from "../Google_Ads/Google_Ads.jsx";
+import Google_Ads from "../../Components/Google_Ads/Google_Ads.jsx";
 import {ifscCodeReducer} from "../../App/Slice/userSlice.js";
 
 
