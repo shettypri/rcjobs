@@ -1,21 +1,13 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
-import {db} from "../../config/firebase.config.js";;
+import {db} from "../../config/firebase.config.js";
+import { deleteAdsService, getAdsService } from "../../Services/admin_service/fetchAdsService.js";
 
 export const fetchAdsReducers = createAsyncThunk(
     "fetchAdsReducers",
     async () => {
-        const firebaseCollectionName = collection(db, "ADS_DATA")
-
         try {
-            const getPendingRequest = await getDocs(firebaseCollectionName)
-            const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data(),
-                    id: dataArray.id
-                })
-            )
-            const filterData = requestData.filter(ads => ads.isAdsShow === true)
-            return filterData
+            return await getAdsService()
         } catch (e) {
             return e
         }
@@ -24,13 +16,10 @@ export const fetchAdsReducers = createAsyncThunk(
 export const deleteAdsReducers = createAsyncThunk(
     "deleteAdsReducers",
     async (id) => {
-        const adsCollection = doc(db, "ADS_DATA", id)
+        
 
         try {
-            await updateDoc(adsCollection, {
-                isAdsShow: false
-            })
-            return `Accepted Sucessfully of ${id}`
+            return await deleteAdsService(id)
         } catch (e) {
             return e
         }
@@ -45,8 +34,12 @@ const FetchAdsSlice = createSlice({
             Success: false,
             data: ""
         },
-
-
+        deleteAds: {
+            loading: false,
+            Error: false,
+            Success: false,
+            result: ""
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -65,6 +58,19 @@ const FetchAdsSlice = createSlice({
                 state.fetchAds.loading = false;
                 state.fetchAds.Error = action.payload;
             })
+            .addCase(deleteAdsReducers.pending, (state) => {
+                state.deleteAds.loading = true;
+            })
+            .addCase(deleteAdsReducers.fulfilled, (state, action) => {
+                state.deleteAds.loading = false;
+                state.deleteAds.Success = true;
+                state.deleteAds.result = action.payload
+            })
+            .addCase(deleteAdsReducers.rejected, (state, action) => {
+                state.deleteAds.loading = false;
+                state.deleteAds.Error = action.payload;
+            })
+
 
 
     }

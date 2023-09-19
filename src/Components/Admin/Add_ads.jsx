@@ -5,7 +5,7 @@ import {storage, db} from "../../config/firebase.config.js";
 import {addDoc, collection} from "firebase/firestore";
 import PhoneInput from "react-phone-input-2";
 import ListAds from "./ListAds.jsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Add_ads = () => {
     const navigate = useNavigate()

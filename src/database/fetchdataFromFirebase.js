@@ -9,6 +9,7 @@ const fetchDataFromFirebase = async (collectionName) => {
         const filterTheGetArray = getArray.docs.map((dataArray) => 
         ({
             ...dataArray.data(),
+            id: dataArray.id
         })
         );
         // console.log("filterTheGetArray", filterTheGetArray);
