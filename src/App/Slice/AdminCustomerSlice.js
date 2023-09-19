@@ -1,20 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
-import {db} from "../../config/firebase.config.js";
+import { blockCustomerService, getCustomerService, getJoinedCustomerService } from "../../Services/admin_service/adminCustomerService.js";
 
 export const getCustomerReducers = createAsyncThunk(
     "getCustomerReducers",
     async ()=> {
-        const firebaseCollectionName = collection(db, "users")
-
         try {
-            const getPendingRequest = await getDocs(firebaseCollectionName)
-            const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data()
-                })
-            )
-            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === true && userCustomer.isAdmin === false && userCustomer.isBlocked === false)
-            return filterData
+            return await getCustomerService()
         } catch (e) {
             return e
         }
@@ -24,32 +15,31 @@ export const getCustomerReducers = createAsyncThunk(
 export const getJoinedCustomer = createAsyncThunk(
     "getJoinedCustomer",
     async ()=>{
-        const firebaseCollectionName = collection(db, "users")
-
         try {
-            const getPendingRequest = await getDocs(firebaseCollectionName)
-            const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data()
-                })
-            )
-            const filterData = requestData.filter(userCustomer => userCustomer.isUserAuthorized === true && userCustomer.isAdmin === false )
-            return filterData
+            return await getJoinedCustomerService()
         } catch (e) {
             return e
         }
     }
 )
 
+
 export const blockCustomerReducers = createAsyncThunk(
     "blockCustomerReducers",
     async (_id)=>{
-        const usersCollection = doc(db, "users", _id)
-
         try {
-            await updateDoc(usersCollection, {
-                isBlocked: true
-            })
+            await blockCustomerService(_id)
+        } catch (e) {
+            return e
+        }
 
+    }
+)
+export const unblockCustomerReducers = createAsyncThunk(
+    "unblockCustomerReducers",
+    async (_id)=>{
+        try {
+            return await blockCustomerService(_id)
         } catch (e) {
             return e
         }
