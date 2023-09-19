@@ -11,7 +11,7 @@ const fetchDataFromFirebase = async (collectionName) => {
             ...dataArray.data(),
         })
         );
-        console.log("filterTheGetArray", filterTheGetArray);
+        // console.log("filterTheGetArray", filterTheGetArray);
         return filterTheGetArray; 
     } catch (err) {
         return err;

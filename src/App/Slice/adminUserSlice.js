@@ -1,12 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {collection, getDocs, doc , updateDoc} from "firebase/firestore";
-import {db} from "../../config/firebase.config.js"
 import adminAcceptNewRequestService from "../../Services/admin_service/adminAceptNewRequestService.js";
 import newRequestService from "../../Services/admin_service/newRequestService.js";
+import { updateUserByReferCodeService } from "../../Services/admin_service/adminReferralCashBackService.js";
 
-export const newUserReducers = createAsyncThunk(
-    "newUserReducers",
-    async () => {
+export const newUserReducers = createAsyncThunk("newUserReducers",
+async () => {
         try {
             return await newRequestService()
         } catch (e) {
@@ -14,37 +12,16 @@ export const newUserReducers = createAsyncThunk(
         }
     }
 )
-export const referralCashBack = createAsyncThunk(
-    "referralCashBack",
+export const referralCashBack = createAsyncThunk("referralCashBack",
     async (joiningCode) => {
-        const firebaseCollectionName = collection(db, "users")
         try {
-            const getPendingRequest = await getDocs(firebaseCollectionName)
-            const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data()
-                })
-            )
-                const filterData = requestData.filter(userCustomer => userCustomer.Referral_Code === joiningCode )
-                const filterArray = filterData[0]
-            if (joiningCode !== null) {
-                const doctorCollection = doc(db, "users", filterArray.id)
-                await updateDoc(doctorCollection, {
-                    referred: filterArray.referred + 1,
-                    total_referred:filterArray.total_referred+1,
-                    wallet: filterArray.wallet + 200,
-                    limit:filterArray.limit + 25
-
-                })
-            }
-            return filterData
-            // return ["Data updated"]
+            return await updateUserByReferCodeService(joiningCode)
         } catch (e) {
             return e
         }
     }
 )
-export const acceptRequestReducers = createAsyncThunk(
-    "acceptRequestReducers",
+export const acceptRequestReducers = createAsyncThunk("acceptRequestReducers",
     async (id) => {
         try {
             return await adminAcceptNewRequestService(id)

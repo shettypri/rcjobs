@@ -1,14 +1,20 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {acceptRequestReducers, newUserReducers, referralCashBack} from "../../App/Slice/adminUserSlice.js";
+import { updateUserByReferCodeService } from "../../Services/admin_service/adminReferralCashBackService.js";
 
 const New_user = (props) => {
     const dispatch = useDispatch()
-
+    
     /* The line `const [showImage, setShowImage] = useState(false);` is using the `useState` hook from
     React to create a state variable called `showImage` and a function called `setShowImage` to
     update its value. The initial value of `showImage` is set to `false`. */
     const [showImage, setShowImage] = useState(false);
+    // const uss = async()=>{
+    //     console.log("function");
+    //     return await updateUserByReferCodeService("RCJOBS-U036D520V646A291")
+    // }
+    // uss()
     return (
         <>
             <tr className=" font-bold uppercas1">
