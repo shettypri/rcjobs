@@ -6,6 +6,7 @@ const adminAcceptNewRequestService = async (id) => {
     const data = {
         isUserAuthorized: true,
         isBlocked: false,
+        joinedTimeStamp: new Date(),
         Joining_date: new Date().toUTCString().slice(5, 16),
         Joining_Month: new Date().getMonth(),
         Joining_year: new Date().getFullYear(),
