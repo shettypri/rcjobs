@@ -36,7 +36,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex flex-col
-                max-sm:flex-col -mt-16 max-sm:-ml-11 max-sm:-mt-1
+                max-sm:flex-col -mt-16 max-sm:-ml-11 max-sm:-mt-1 max-lg:mt-4
                 ">
                     <div className="flex flex-row p-2 max-sm:flex-col">
                         <div
