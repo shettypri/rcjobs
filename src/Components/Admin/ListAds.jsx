@@ -13,7 +13,7 @@ const ListAds =() => {
     }
     const{fetchAds}=useSelector(state => state.fetchAdsReducers)
     return (
-        <>
+        <div>
             <table className="w-1/2 mx-auto mt-4">
                 <tr>
                     <th className="px-2 uppercase border border-black
@@ -71,7 +71,7 @@ const ListAds =() => {
                     )
                 }
             </table>
-        </>
+        </div>
     );
 }
 

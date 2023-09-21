@@ -27,6 +27,7 @@ import UserCustomer from "./Components/Admin/UserCustomer.jsx";
 import MonthlyJoining from "./Components/Admin/MonthlyJoining.jsx";
 import Block_Page from "./Components/Global/Block_Page.jsx";
 import {OrderDetails} from "./Components/Admin/OrderDetails.jsx";
+import Blocked_user from "./Components/Admin/Blocked_user.jsx";
 function App() {
     const Dispatch = useDispatch()
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
@@ -64,6 +65,7 @@ function App() {
                                     <Route exact path='/admin/paymentdeatails' element={<PaymentDetails/>}/>
                                     <Route exact path='/admin/order' element={<Buy_List/>}/>
                                     <Route exact path='/admin/orderdetails' element={<OrderDetails/>}/>
+                                    <Route exact path='/admin/blockeduser' element={<Blocked_user/>}/>
                                 </Route>
 
                                 {/*user*/}
