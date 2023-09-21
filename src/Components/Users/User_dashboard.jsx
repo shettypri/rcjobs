@@ -11,7 +11,7 @@ import Payment_Info from "../Company_Bank_Details/Payment_Info.jsx";
 import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../config/firebase.config.js";
-import ButtonLoader from "../Global/ButtonLoader.jsx";
+import uploadProductToUser from "../../Services/user_service/uploadProductToUser.js";
 
 const User_dashboard = () => {
     let [reactSwipeEl, setReactSwipeEl] = useState("");
@@ -66,6 +66,21 @@ const User_dashboard = () => {
                 console.log(orderDetails)
                 dispatch(addProductReducers(orderDetails))
                 const alertMessage = `The order ` + ProductDetails.Ads_name + ` has been Placed`
+                const productData = {
+                    adsName: ProductDetails.Ads_name,
+                    clientName: ProductDetails.name,
+                    Phone: ProductDetails.Phone,
+                    actual_price: ProductDetails.Ads_price,
+                    paid_price: Number(ProductDetails.Ads_price) - (Number(ProductDetails.Ads_price) / 100) * (Number(ProductDetails.Ads_Offer)),
+                    offer: ProductDetails.Ads_Offer,
+                    ProductUrl: ProductDetails.imageURL,
+                    paidUrl: imageUrl,
+                }
+
+                // const allTheOrders = data.buyProduct
+                // allTheOrders.push(productData)  //pushing the data into the array
+                // await uploadProductToUser(data.id, allTheOrders) //uploading the data into the database
+
                 setLoader(false)
                 alert(alertMessage)
                 setBuyDetails(false)

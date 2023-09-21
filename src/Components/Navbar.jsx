@@ -62,22 +62,26 @@ const Navbar = () => {
             <div className="bg-white px-14 ml-[-20px] py-[3px] max-sm:px-2">
                 <img className="h-12 w-25 cursor-pointer " src={logo} alt=""/>
             </div>
+
+            <div className="text-white capitalize hover:border-b-white  px-4 font-bold">
+                <section className=" ">{data.name}</section>
+            </div>
             <div>
-                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 max-sm:hidden">
+                <ul className=" font-bold md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center  flex-col md:flex-row px-5 max-sm:hidden mr-4">
                     {
                         isLoggedIn && (
                             <>
                                 {   (data.isUserAuthorized &&  !data.isAdmin) ? (
                                         <>
-                                            <li className={"mx-[10px] cursor-pointer text-white capitalize hover:border-b-white hover:border-b-2"}>
+                                            <li className={"mx-[18px] cursor-pointer text-white capitalize hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/userdashboard"> dashboard</Link>
                                             </li>
-                                            <li className={"mx-[10px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
+                                            <li className={"mx-[18px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
                                                 <Link to="/user/withdraw"> Withdraw </Link>
                                             </li>
 
-                                            <li className={"mx-[10px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
-                                                <Link to="/user/profile"> {data.name} </Link>
+                                            <li className={"mx-[18px] cursor-pointer text-white capitalize  hover:border-b-white hover:border-b-2"}>
+                                                <Link to="/user/profile"> Bank </Link>
                                             </li>
                                         </>
                                     ) : (
@@ -85,7 +89,7 @@ const Navbar = () => {
                                             {
                                                 data.isAdmin && (
                                                     <>
-                                                        <li className={"mx-[10px] cursor-pointer text-white"}>
+                                                        <li className={"mx-[18px] cursor-pointer text-white"}>
                                                             <Link to="/admin/dashboard"> Admin dashboard</Link>
                                                         </li>
                                                     </>

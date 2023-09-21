@@ -1,14 +1,19 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {reset, walletPaymentRequestReducers, walletPaymentResponseReducers} from "../../App/Slice/adminPaymentSlice.js";
+import { walletPaymentRequestReducers, walletPaymentResponseReducers} from "../../App/Slice/adminPaymentSlice.js";
 import {withdrawalStoreReducers} from "../../App/Slice/WithdrawalSlice.js";
 import {useState} from "react";
+import transactionAmountService from "../../Services/admin_service/transactionAmountService.js";
 
-const PaymentDetails = (props) => {
+
+
+const PaymentDetails = () => {
     const location = useLocation();
     // console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
+    console.log("99",data.transationAmount);
+    
     // console.log(data)
     const dispatch = useDispatch()
     const [paymentSucessResult, setPaymentSucessResult] = useState(false)
@@ -20,13 +25,15 @@ const PaymentDetails = (props) => {
      * The handlePayment function updates the payment information in the wallet and dispatches the
      * updated information to the walletPaymentResponseReducers.
      */
-    const handlePayment = () => {
+    const handlePayment = async() => {
+        
         const paymentInfo = {
             id: data.id,
             wallet: (data.wallet - data.withdrawalAmount),
             isWithdrawing: false,
             withdrawalAmount: 0,
         }
+        
         dispatch(walletPaymentResponseReducers(paymentInfo))
 
         const withdrawalInfo  = {
@@ -40,7 +47,19 @@ const PaymentDetails = (props) => {
             name:data.name,
             phone:data.phone
         }
+        const dataArrayObj = {
+            timeStamp:new Date(),
+            totalAmount:withdrawalInfo.actualAmount,
+            paymentAmount:withdrawalInfo.withdrawalAmount,
+
+        }
+        
         dispatch(withdrawalStoreReducers(withdrawalInfo))
+
+        const transactionInfo = data.transationAmount.push(dataArrayObj)
+       
+        console.log(transactionInfo);
+        await transactionAmountService(data.id,data.transationAmount)
         setBtnClicked(true)
         setPaymentSucessResult(true)
 
