@@ -12,7 +12,7 @@ const PaymentDetails = () => {
     // console.log(location.state)
     const navigate = useNavigate()
     const data = location.state.requestData
-    console.log("99",data.transationAmount);
+    // console.log("99",data.transationAmount);
     
     // console.log(data)
     const dispatch = useDispatch()
@@ -32,6 +32,9 @@ const PaymentDetails = () => {
             wallet: (data.wallet - data.withdrawalAmount),
             isWithdrawing: false,
             withdrawalAmount: 0,
+            Total_withdrawal:paymentInfo.Total_withdrawal+(
+                data.withdrawalAmount - (data.withdrawalAmount / 100) * 10
+            )
         }
         
         dispatch(walletPaymentResponseReducers(paymentInfo))

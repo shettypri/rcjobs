@@ -27,6 +27,7 @@ import UserCustomer from "./Components/Admin/UserCustomer.jsx";
 import MonthlyJoining from "./Components/Admin/MonthlyJoining.jsx";
 import Block_Page from "./Components/Global/Block_Page.jsx";
 import {OrderDetails} from "./Components/Admin/OrderDetails.jsx";
+import HistoryTansaction from './Components/Users/HistoryTansaction';
 function App() {
     const Dispatch = useDispatch()
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
@@ -73,6 +74,7 @@ function App() {
                                     <Route element={<AuthUserRoute isAuthorised={data.isUserAuthorized}
                                                                    isBlocked={data.isBlocked}/>}>
                                         <Route exact path='/user/profile' element={<Profile/>}/>
+                                        <Route exact path='/user/transcation' element={<HistoryTansaction/>}/>
                                         <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
                                         <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
                                     </Route>

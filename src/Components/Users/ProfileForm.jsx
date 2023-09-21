@@ -160,12 +160,12 @@ const ProfileForm = () => {
             </div>
             <div className={editing?"flex justify-end":"hidden"}>
 
-            <button className="px-10 bg-red-700 text-white py-2 rounded-lg capitalize font-bold mx-4"
+            <button className="px-10 bg-red-700 text-white py-2 rounded-lg capitalize font-bold mx-4 max-sm:px-8"
             onClick={()=>{setEditing(false)}}
             >
                 cancel
             </button>
-            <button className="px-10 bg-green-700 text-white py-2 rounded-lg capitalize font-bold mx-4"
+            <button className="px-10 bg-green-700 text-white py-2 rounded-lg capitalize font-bold mx-4 max-sm:px-8"
             onClick={handleFormSubmit}
             >
                 Submit

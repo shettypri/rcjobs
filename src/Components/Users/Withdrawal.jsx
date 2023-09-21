@@ -1,8 +1,8 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {isLoginReducers} from "../../App/Slice/userSlice.js";
-import {useNavigate} from "react-router-dom";
-import {cashBackRequestReducers, walletReducers} from "../../App/Slice/CashBackSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { isLoginReducers } from "../../App/Slice/userSlice.js";
+import { useNavigate } from "react-router-dom";
+import { cashBackRequestReducers, walletReducers } from "../../App/Slice/CashBackSlice.js";
 import Google_Ads from "../Google_Ads/Google_Ads.jsx";
 
 const Withdrawal = () => {
@@ -12,14 +12,14 @@ const Withdrawal = () => {
     const [withdrawAmount, setWithdrawAmount] = useState("");
 
 
-    const {error, data} = useSelector(state => state.userReducer)
+    const { error, data } = useSelector(state => state.userReducer)
 
     useEffect(() => {
         dispatch(walletReducers(data.id))
     }, []);
 
 
-    const {walletData, cashBack} = useSelector(state => state.CashBackReducers)
+    const { walletData, cashBack } = useSelector(state => state.CashBackReducers)
     // const handleFinalData = (id)=>{dispatch(isLoginReducers(id))}
     const handleWithdrwal = (id, amount) => {
         const dataWithdrwal = {
@@ -39,10 +39,10 @@ const Withdrawal = () => {
                 <div className="w-1/6  flex flex-col max-sm:flex-col">
                     <div className="w-full h-1 flex flex-row mt-4">
                         <div className="block w-full mx-1">
-                            <Google_Ads/>
+                            <Google_Ads />
                         </div>
                         <div className="block w-full mx-1 max-sm:hidden">
-                            <Google_Ads/>
+                            <Google_Ads />
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ const Withdrawal = () => {
                     max-sm:text-[15px]
 
                     "
-                                    onClick={() => setShowWithDraWal(false)}
+                                onClick={() => setShowWithDraWal(false)}
                             >
                                 Withdraw Amount
                             </button>
@@ -266,8 +266,21 @@ const Withdrawal = () => {
                                 </>
                             )
                         }
+                        <div>
+                            <button className="bg-green-700 px-5 py-3 my-2 flex mx-auto rounded-lg text-white font-bold" 
+                            onClick={()=>{
+                                dispatch(isLoginReducers(data.id))
+                                navigate("/user/transcation")
+                            }
+                            }
+                            >
+                                View all Earnings
+                            </button>
+                        </div>
 
                     </div>
+
+
 
 
                 </div>
@@ -275,7 +288,7 @@ const Withdrawal = () => {
                 <div className="w-1/6  flex flex-col">
                     <div className="w-full h-1 flex flex-row mt-4">
                         <div className="block w-full mx-1">
-                            <Google_Ads/>
+                            <Google_Ads />
                         </div>
 
                     </div>
