@@ -3,7 +3,7 @@ import {doc, getDoc} from "@firebase/firestore";
 import {db} from "../../config/firebase.config.js";
 import {auth} from "../../config/firebase.config.js";
 import {signOut} from "firebase/auth";
-import {collection, updateDoc} from "firebase/firestore";
+import profileUpdateService from "../../Services/user_service/ProfileUpdateService.js";
 
 export const isLoginReducers = createAsyncThunk(
     "isLoginReducers",
@@ -19,16 +19,12 @@ export const isLoginReducers = createAsyncThunk(
     }
 )
 
-export const ifscCodeReducer=createAsyncThunk("ifscCodeReducer",
-    async (requestCode)=>{
-    const  users = doc(db,"users",requestCode.id)
+export const updateProfileReducer=createAsyncThunk("updateProfileReducer",
+    async (requestData)=>{
+   
         try{
-
-        await updateDoc(users,{
-            ifsc_code:requestCode.ifsc
-
-        })
-
+            return await profileUpdateService(requestData)    
+        
     }catch(error){
         console.log(`Error is ${error}`);
         return error
@@ -60,7 +56,9 @@ const userSlice = createSlice({
         newUser: false,
         error: false,
         data: "",
-        isifscUpdated:false
+        ProfileLoading:false,
+        ProfileUpdateEror:false,
+        isProfileUpdated:false
     },
     extraReducers: (builder) => {
         builder.addCase(isLoginReducers.pending, (state) => {
@@ -96,6 +94,18 @@ const userSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            .addCase(updateProfileReducer.pending,(state)=>{
+                state.ProfileLoading=true
+            })
+            .addCase(updateProfileReducer.fulfilled,(state,)=>{
+                state.ProfileLoading=false
+                state.isProfileUpdated=true
+            })
+            .addCase(updateProfileReducer.rejected,(state,action)=>{
+                state.ProfileLoading=false
+                state.ProfileUpdateEror=action.payload
+            })
+
     }
 })
 
