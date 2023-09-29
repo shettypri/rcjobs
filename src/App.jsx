@@ -29,6 +29,8 @@ import Block_Page from "./Components/Global/Block_Page.jsx";
 import {OrderDetails} from "./Components/Admin/OrderDetails.jsx";
 import HistoryTansaction from './Components/Users/HistoryTansaction';
 import Blocked_user from "./Components/Admin/Blocked_user.jsx";
+import ProductPreview from './Components/Anonymous/ProductPreview';
+import Verificcation from "./Components/Anonymous/Verification"
 function App() {
     const Dispatch = useDispatch()
     const {loading, isLoggedIn, newUser, error, data} = useSelector(state => state.userReducer)
@@ -53,6 +55,8 @@ function App() {
                             {/*otp_login*/}
                             <Route exact path='/' element={<Otp_Login/>}/>
                             <Route exact path='/user/:refer' element={<Refer/>}/>
+                            <Route exact path='/anonymous' element={<ProductPreview/>}/>
+                            <Route exact path='anonymous/verification' element={<Verificcation/>}/>
 
                             <Route element={<ProtectedLoginRoute isLoggedIn={isLoggedIn}/>}>
                                 {/*admin*/}
@@ -79,6 +83,7 @@ function App() {
                                         <Route exact path='/user/transcation' element={<HistoryTansaction/>}/>
                                         <Route exact path='/user/userdashboard' element={<User_dashboard/>}/>
                                         <Route exact path='/user/withdraw' element={<Withdrawal/>}/>
+
                                     </Route>
 
                                     <Route element={<RegisterRoute isNewUser={newUser}
