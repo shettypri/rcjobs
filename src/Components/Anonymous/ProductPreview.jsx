@@ -28,7 +28,14 @@ const ProductPreview=()=> {
             className=" mt-1 flex justify-center p-3 space-y-3 "
              />
            </div>
-           <div className="flex flex-row py-2 px-2 " >
+                 
+        </div>
+
+        <div className="flex flex-col ">
+        <div>
+            <PaymentInfo/>
+        </div>
+        <div className="flex flex-row py-4 my-4 px-2 " >
            <div className="">
             <button className="text-white capitalize bg-red-500 ml-7 py-2 rounded-md px-10  border-2 hover:border-red-800 font-semibold "> Cancel </button>
            </div>
@@ -37,15 +44,10 @@ const ProductPreview=()=> {
             > Proceed </button>
            </div>
            </div>
-                 
         </div>
-
-        <div>
-            <PaymentInfo/>
-        </div>
-
-
+    
     </div>
+    
 
 
     </>
