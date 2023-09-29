@@ -1,9 +1,9 @@
 
 
-const AffilatePayment = () => {
+const AffiliatePayment = () => {
   return (
-    <div>AffilatePayment</div>
+    <div>AffiliatePayment</div>
   )
 }
 
-export default AffilatePayment
+export default AffiliatePayment
