@@ -20,6 +20,7 @@ const ProfileForm = () => {
         Address:data.Address,
         PinCode:data.PinCode,
         Account_name: data.Account_name,
+        PanCardNo:data.PanCardNo,
         Account_no: data.Account_no,
         Bank_name: data.Bank_name,
         Branch: data.Branch,
@@ -35,10 +36,10 @@ const ProfileForm = () => {
     const handleFormSubmit = () => {
         console.log(formDetails);
         setEditing(false);
-        if(data.Address === formDetails.Address && data.PinCode === formDetails.PinCode && data.Account_name === formDetails.Account_name && data.Account_no === formDetails.Account_no && data.Bank_name === formDetails.Bank_name && data.Branch === formDetails.Branch && data.ifsc_code === formDetails.ifsc_code){
+        if(data.Address === formDetails.Address && data.PinCode === formDetails.PinCode && data.Account_name === formDetails.Account_name && data.Account_no === formDetails.Account_no && data.Bank_name === formDetails.Bank_name && data.Branch === formDetails.Branch && data.ifsc_code === formDetails.ifsc_code && formDetails.PanCardNo === data.PanCardNo){
             alert("No changes made")
         }else{
-            if(formDetails.Address === "" && formDetails.PinCode === "" && formDetails.Account_name === "" && formDetails.Account_no === "" && formDetails.Bank_name === "" && formDetails.Branch === "" && formDetails.ifsc_code === ""){
+            if(formDetails.Address === "" && formDetails.PinCode === "" && formDetails.Account_name === "" && formDetails.Account_no === "" && formDetails.Bank_name === "" && formDetails.Branch === "" && formDetails.ifsc_code === "" && formDetails.PanCardNo === ""){
                 console.log();
                 alert("Please fill all the fields")
             }else{
@@ -128,6 +129,15 @@ const ProfileForm = () => {
           required />
           <label 
           className={inputClassCss}>Account Holder Name as per Bank </label>
+        </div>
+        <div className="relative z-0 w-full mb-6 group">
+          <input type="text" name="PanCardNo"  className={labelCss}
+            value={formDetails.PanCardNo}
+            onChange={handleChange}
+            disabled={!editing} 
+          required />
+          <label 
+          className={inputClassCss}>Pan card Number </label>
         </div>
 
         <div className="grid md:grid-cols-2 md:gap-6">

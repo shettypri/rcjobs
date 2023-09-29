@@ -23,6 +23,8 @@ const Register = () => {
     const [verify, setVerify] = useState(false);
     const [userCoupon, setUserCoupon] = useState("")
     const [loading, setLoading] = useState(false);
+    const [noReferral, setNoReferral] = useState(false);
+    
     
 
 
@@ -44,6 +46,7 @@ const Register = () => {
         Referral_Code: "RCJOBS-" + referralCodeGenerator.alphaNumeric('uppercase', 4, 3),
         Account_name: "",
         Account_no: "",
+        PanCardNo:"",
         Bank_name: "",
         Branch: "",
         ifsc_code: "",
@@ -64,7 +67,7 @@ const Register = () => {
     const removeLink = () => {
         setReferLink("")
     }
-
+    console.log("-->",referUserData)
 
     const handleVerify = () => {
         if (referLink.length !== 0) {
@@ -73,6 +76,7 @@ const Register = () => {
             // console.log("useState Hook",userCoupon)
             dispatch(ReferUserReducers(userCouponCode))
         } else {
+            userDetails['joining_code']=null
             setIsvalidRefernce(false)
         }
     }
@@ -131,7 +135,10 @@ const Register = () => {
      * error flag if any of the fields are empty or if the pin code is longer than 6 characters.
      */
     const handlePersonalDetail = () => {
-        if (userDetails.name.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length === 0 || userDetails.PinCode.length > 6) {
+
+        if (userDetails.name.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length === 0 || userDetails.PinCode.length > 6 ) {
+            console.log("here");
+            // console.log(!(referUserData.data === undefined || referUserData.data ===  "" || userDetails['joining_code']=== null));
             setPersonalDetailError(true)
 
         } else {
@@ -140,10 +147,17 @@ const Register = () => {
                 referUserData.data === undefined ?
                     (userDetails["joining_code"] = null)
                     : (
-                        userDetails["joining_code"] = userCoupon)
+                        userDetails["joining_code"] = userCoupon),
+                        console.log(userDetails)
             )
-
-        setPersonalDetails(false)
+            if(userDetails["joining_code"] === null){
+                setNoReferral(true)
+            }
+            else{
+                setNoReferral(false)
+                setPersonalDetails(false)
+            }
+            
             // console.log(userDetails)
     }
 
@@ -153,7 +167,7 @@ const Register = () => {
  * error flag if so, otherwise it sets a final flag to false.
  */
 const handleBankDetails = () => {
-    if (userDetails.Account_name.length === 0 || userDetails.Account_no.length === 0 || userDetails.Bank_name.length === 0 || userDetails.Branch.length === 0 || userDetails.ifsc_code.length === 0) {
+    if (userDetails.Account_name.length === 0 || userDetails.Account_no.length === 0 || userDetails.PanCardNo.length === 0 || userDetails.Bank_name.length === 0 || userDetails.Branch.length === 0 || userDetails.ifsc_code.length === 0) {
         setBankDetailError(true)
     } else {
         setFinal(false)
@@ -339,11 +353,19 @@ return (
                                     </div>
                                 }
 
-
+                                <div className={noReferral ?"block":" hidden"}>
+                                   
+                                    <p className="text-red-700 font-bold">
+                                        Please enter the refer code for next step
+                                    </p>
+                                    
+                                </div>
                                 <div className="flex flex-row justify-center py-5">
                                     <button
                                         className={"text-center font-semibold border-1  text-white border-black rounded-lg w-[120px] h-[35px] bg-gray-600 hover:bg-orange-400 "}
-                                        onClick={handlePersonalDetail}>Next
+                                        onClick={handlePersonalDetail}
+                                       
+                                        >Next
                                     </button>
                                 </div>
 
@@ -387,6 +409,23 @@ return (
                                                         number</label>)
                                                 }
                                             </div>
+                                                
+                                            <div className={"flex flex-col justify-center"}>
+                                                <label className={"font-bold"}>Pan card Number</label>
+                                                <input
+                                                    className={"mt-1 border-2 border-black h-10 rounded font-bold"}
+                                                    type={"text"}
+                                                    name={"PanCardNo"}
+                                                    value={userDetails.PanCardNo}
+                                                    onChange={accountNoValues}
+
+                                                />
+                                                {bankDetailError && userDetails.PanCardNo.length === 0 &&
+                                                    (<label className={"text-red-800 italic font-bold"}>please enter
+                                                        Pan card number</label>)
+                                                }
+                                            </div>
+
                                             <div className={"flex flex-col justify-center"}>
                                                 <label className={"font-bold"}> Bank Name</label>
                                                 <input

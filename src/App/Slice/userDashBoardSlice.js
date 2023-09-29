@@ -11,7 +11,8 @@ export const fetchAdsReducers = createAsyncThunk(
         try {
             const getPendingRequest = await getDocs(firebaseCollectionName)
             const requestData = getPendingRequest.docs.map((dataArray) => ({
-                    ...dataArray.data()
+                    ...dataArray.data(),
+                    id: dataArray.id
                 })
             )
             const suffleArray = arrayShuffle(requestData)

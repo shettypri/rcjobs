@@ -1,6 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
-import {db} from "../../config/firebase.config.js";
 import { deleteAdsService, getAdsService } from "../../Services/admin_service/fetchAdsService.js";
 
 export const fetchAdsReducers = createAsyncThunk(
@@ -16,8 +14,6 @@ export const fetchAdsReducers = createAsyncThunk(
 export const deleteAdsReducers = createAsyncThunk(
     "deleteAdsReducers",
     async (id) => {
-        
-
         try {
             return await deleteAdsService(id)
         } catch (e) {

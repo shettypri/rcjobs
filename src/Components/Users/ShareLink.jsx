@@ -4,9 +4,9 @@ import copy from "copy-to-clipboard";
 const ShareLink = () => {
     const{data} = useSelector(state => state.userReducer)
     const refLink = data.Referral_Code
-    // const referLink= `http://192.168.0.139:5173/user/${refLink}` ;
     // const referLink= `http://172.16.20.80:5173/user/${refLink}` ;
     // const referLink= `https://rcjobs-e85b3.web.app/user/${refLink}` ;
+    // const referLink= `http://192.168.0.139:5173/user/${refLink}` ;
     const referLink= `https://earn.rcjobssms.com/user/${refLink}` ;
     /**
      * The function `handleShareLink` copies a link to the clipboard and displays an alert message.

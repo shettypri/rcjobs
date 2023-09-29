@@ -8,7 +8,7 @@ const GoogleAds = () => {
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
-            console.log("Error ads components",e)
+            console.error("Error ads components",e)
         }
     }, []);
     return(

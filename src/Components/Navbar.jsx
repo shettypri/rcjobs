@@ -63,7 +63,9 @@ const Navbar = () => {
                 <img className="h-12 w-25 cursor-pointer " src={logo} alt=""/>
             </div>
 
-            <div className="text-white capitalize hover:border-b-white  px-4 font-bold">
+            <div className={
+                data.isAdmin ? "hidden" : "text-white capitalize hover:border-b-white  px-4 font-bold"
+            }>
                 <section className=" ">{data.name}</section>
             </div>
             <div>

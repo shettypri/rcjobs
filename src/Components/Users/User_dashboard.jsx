@@ -12,6 +12,8 @@ import { v4 } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../config/firebase.config.js";
 import uploadProductToUser from "../../Services/user_service/uploadProductToUser.js";
+import SwipeLoader from "../Global/SwipeLoader.jsx";
+import AffiliateButton from "./AffliateButton.jsx";
 
 const User_dashboard = () => {
     let [reactSwipeEl, setReactSwipeEl] = useState("");
@@ -114,7 +116,7 @@ const User_dashboard = () => {
         // console.log("Total length",fetchAds.data.length )
         setTimeout(() => {
             setShowAdsOnSwipe(false)
-        }, 2000)
+        }, 6000)
         reactSwipeEl.next()
 
     }
@@ -169,7 +171,7 @@ const User_dashboard = () => {
                                 </div>
 
                                 {
-                                    loader && <Loader/>
+                                    loader && <Loader />
                                 }
                                 <div className="mx-auto  w-1/2 flex flex-row justify-around mt-4">
                                     <button
@@ -218,7 +220,7 @@ const User_dashboard = () => {
                                 <ShareLink />
                             </div>
                             <div>
-                                <div className=" mx-4 w-3/4
+                                <div className=" mx-0 w-11/12
                        max-sm:w-full max-sm:mx-0
                     ">
                                     {
@@ -229,7 +231,7 @@ const User_dashboard = () => {
                                             <>
 
                                                 <ReactSwipe
-                                                    className={"carousel w-full h-[654px] bg-gray-100  pt-7 px-0 mx-10 max-sm:w-full max-sm:p-0 max-sm:m-0"}
+                                                    className={"carousel w-full h-[664px] bg-gray-50  pt-7 px-0 mx-4 max-sm:w-full max-sm:p-0 max-sm:m-0"}
                                                     // swipeOptions={{ disableSwipe: true }}
                                                     swipeOptions={{ continuous: false, disableSwipe: true }}
                                                     ref={el => (reactSwipeEl = el)}
@@ -237,26 +239,29 @@ const User_dashboard = () => {
                                                 >
                                                     {
                                                         fetchAds.data.map((ads, index) => {
-                                                            // console.log(ads.Ads_name)
+                                                            // console.log(ads.id)
                                                             return (
-                                                                <div className="w-full  mx-auto
+                                                                <div className="w-[600px] pb-0  mx-auto
                                                      max-2xl:w-3/4 max-xl:w-full
                                                     max-sm:bg-red-100 max-sm:w-full max-sm:m-0 px-0
                                                 "
                                                                     key={index}>
 
                                                                     <div className={
-                                                                        showAdsOnSwipe ? "max-sm:w-full w-full flex flex-col" : "hidden"
+                                                                        showAdsOnSwipe ? "block " : "hidden"
                                                                     }>
-                                                                        <Google_Ads />
-                                                                        <Google_Ads />
+                                                                        <section className="max-sm:w-full w-full flex flex-col ">
+                                                                            {/* <Google_Ads />
+                                                                            <Google_Ads /> */}
+                                                                            <SwipeLoader />
+                                                                        </section >
                                                                     </div>
 
-                                                                    <div className={showAdsOnSwipe ? "hidden" : "block"}>
+                                                                    <div className={showAdsOnSwipe ? "hidden" : "block w-full"}>
 
                                                                         <img src={ads.imageURL} alt="Error"
-                                                                            height={15} width={20}
-                                                                            className="w-[500px] h-[390px] border-4 border-orange-500 object-fill mx-auto
+                                                                            height={15} width={22}
+                                                                            className="w-[550px] h-[390px] border-4 border-orange-500 object-fill mx-auto
                                                         max-sm:w-[320px] max-sm:mx-auto max-sm:my-2 z-10 max-2xl:w-3/4
                                                          "
                                                                         />
@@ -288,33 +293,36 @@ const User_dashboard = () => {
                                                                                             </>
                                                                                         )
                                                                                     }
-
                                                                                 </section>
                                                                             </div>
                                                                         </div>
-                                                                        <button
-                                                                            className="
-                                                            mx-40  px-16 mt-4 py-3 rounded-xl
-                                                             font-extrabold uppercase bg-red-700 text-white
-                                                             max-sm:mx-20 max-sm:px-16 max-sm:py-2 max-sm:rounded-full
-                                                             max-2xl:mx-10
-                                                            "
-                                                                            /* The above code is handling an onClick event
-                                                                            in a React component. When the event is
-                                                                            triggered, it creates an object called
-                                                                            `orderDetails` with various properties such
-                                                                            as `userName`, `address`, `cust_Phone`, etc.
-                                                                            The values for these properties are obtained
-                                                                            from the `data` and `ads` objects. */
+                                                         <div className="flex justify-between pb-4 mr-2 mb-2 ">
 
-                                                                            onClick={() => {
-                                                                                setProductDetails(ads)
-                                                                                setBuyDetails(true)
-                                                                            }}
-
-                                                                        >
-                                                                            buy
-                                                                        </button>
+                                                                                    <AffiliateButton isUSerID={data.id} isAdsDetails={ads}/>
+                                                                            <button
+                                                                                className="
+                                                                  px-16 mt-0 py-3 rounded-xl 
+                                                                 font-extrabold uppercase bg-red-700 text-white
+                                                                 max-sm:mx-4 max-sm:px-12 max-sm:py-1 max-sm:rounded-lg
+                                                                 max-2xl:mx-10
+                                                                "
+                                                                                /* The above code is handling an onClick event
+                                                                                in a React component. When the event is
+                                                                                triggered, it creates an object called
+                                                                                `orderDetails` with various properties such
+                                                                                as `userName`, `address`, `cust_Phone`, etc.
+                                                                                The values for these properties are obtained
+                                                                                from the `data` and `ads` objects. */
+    
+                                                                                onClick={() => {
+                                                                                    setProductDetails(ads)
+                                                                                    setBuyDetails(true)
+                                                                                }}
+    
+                                                                            >
+                                                                                buy
+                                                                            </button>
+                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -330,6 +338,7 @@ const User_dashboard = () => {
                                     <button
                                         className="uppercase bg-white  hover:bg-sky-700 py-3 px-14 rounded-lg text-black  font-bold border-2 border-gray-500 mr-2
                             max-sm:px-10 max-sm:py-2"
+                            disabled={showAdsOnSwipe}
                                         onClick={() => {
                                             reactSwipeEl.prev()
                                             adsNumber > 0 && (setAdsNumber(adsNumber - 1))

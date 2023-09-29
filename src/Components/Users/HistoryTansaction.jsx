@@ -6,10 +6,10 @@ const HistoryTansaction = () => {
     const { data } = useSelector(state => state.userReducer)
     // console.log(data.transationAmount);
     const transactionInfo = data.transationAmount
-    console.log(transactionInfo);
+    // console.log(transactionInfo);
     // console.log("hello->");
     const timeStampToDate = (timeStamp) => {
-        console.log(timeStamp);
+        // console.log(timeStamp);
         timeStamp
 
         const milliseconds = timeStamp.seconds * 1000;

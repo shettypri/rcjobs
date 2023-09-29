@@ -1,13 +1,14 @@
 import { ADS_DATA_COLLECTION } from "../../Constants/database";
-import fetchDataFromFirebase from "../../database/fetchdataFromFirebase";
+import getAdsData from "../../database/getAdsData";
 import updateFirebaseData from "../../database/updateFirebaseData";
 
 export const getAdsService = async () => {
     console.log("HELLO");
     const collectionName = ADS_DATA_COLLECTION;
     try {
-        const requestData = await fetchDataFromFirebase(collectionName);
+        const requestData = await getAdsData(collectionName);
         const filterData = requestData.filter(ads => ads.isAdsShow === true)
+        console.log("filterOne", filterData);
        return filterData
     } catch (err) {
         return "Error";
