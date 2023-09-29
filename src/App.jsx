@@ -55,7 +55,7 @@ function App() {
                             {/*otp_login*/}
                             <Route exact path='/' element={<Otp_Login/>}/>
                             <Route exact path='/user/:refer' element={<Refer/>}/>
-                            <Route exact path='/anonymous/codelink' element={<ProductPreview/>}/>
+                            <Route exact path='/anonymous/:codelink' element={<ProductPreview/>}/>
                             <Route exact path='anonymous/verification' element={<Verificcation/>}/>
 
                             <Route element={<ProtectedLoginRoute isLoggedIn={isLoggedIn}/>}>

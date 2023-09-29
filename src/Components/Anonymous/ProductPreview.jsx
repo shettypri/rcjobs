@@ -1,13 +1,33 @@
 
 import PaymentInfo from "../Company_Bank_Details/Payment_Info"
 import testimg from "../../assets/Images/user.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AffiliatePayment from "./AffilatePayment"
+import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { getAdsAnonymousReducers } from "../../App/Slice/AnonymousSlice"
 
 
 
 
 const ProductPreview = () => {
+  const params = useParams()
+  const dispatch = useDispatch()
+  const SplitArray = params.codelink.split('NICOZN')
+  const { userId, adsId } = { userId: SplitArray[0], adsId: SplitArray[1] }
+  useEffect(() => {
+    console.log(adsId);
+    dispatch(
+      getAdsAnonymousReducers(adsId)
+    )
+  }, [])
+
+
+  // console.log(userId);
+  const { getAdsState } = useSelector(state => state.AnonymousReducer)
+  const adsData = getAdsState.data
+  console.log(adsData);
+  // console.log(getAdsState);
   const [showForm, setShowForm] = useState(false)
 
   return (
@@ -15,12 +35,24 @@ const ProductPreview = () => {
       <div className="w-full flex flex-row justify-around max-sm:flex-col">
 
         <div className="w-1/2 flex-col">
-          <img src={testimg} alt="" width={400} height={20} className="mx-auto w-2/4 "></img>
-          <section className="font-bold text-xl ml-8 py-3 max-sm:text-sm ">
-            Product Name :
+          <img src={adsData.imageURL} alt="" width={400} height={20} className="mx-auto w-2/4 "></img>
+          <section className="font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly">
+            <section>Product Name</section>
+            <section>{adsData.Ads_name}</section>
           </section>
-          <section className="font-bold text-xl ml-8 py-3 max-sm:text-sm">
-            Product Price :
+          <section
+            className="font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly">
+            <section>Product Price :</section>
+            <section className={adsData.Ads_Offer !== 0 ? "text-gray-700 line-through" : "text-gray-900"}>
+              {adsData.Ads_price}
+            </section>
+          </section>
+          <section
+            className={adsData.Ads_Offer !== 0 ? "font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly" : "hidden"}>
+            <section>Offer Price :</section>
+            <section>
+              {Number(adsData.Ads_price) - (Number(adsData.Ads_price) / 100) * (Number(adsData.Ads_Offer))}
+            </section>
           </section>
           <div>
             <input

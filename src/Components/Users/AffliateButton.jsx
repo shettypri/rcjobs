@@ -8,17 +8,14 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
 
   const generateLink = () => {
     const adsId = isAdsDetails.id
-    console.log(adsId);
-    console.log(isUSerID);
     const affricateCode = `${isUSerID}NICOZN${adsId}`
-    const AffiliateLink = `http://172.16.20.24:5173/user/${affricateCode}`
-    console.log(AffiliateLink);
+    // const AffiliateLink = `http://172.16.20.24:5173/anonymous/${affricateCode}`
+    const AffiliateLink = `http://192.168.0.139:5173/anonymous/${affricateCode}`
     
     copy(AffiliateLink)
     alert(`The link is copied to clipboard ${AffiliateLink}`)
 
-    const arrayLink = AffiliateLink.split('user/')[1].split('NICOZN')
-    console.log(arrayLink);
+    
   }
   return (
     <button

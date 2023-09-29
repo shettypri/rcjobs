@@ -144,8 +144,17 @@ const User_dashboard = () => {
                                 <div className="mx-auto  w-1/2 flex flex-row justify-between mt-4">
                                     <section className="font-bold">Price</section>
                                     <section className="font-bold">:</section>
-                                    <section className="font-bold capitalize  ">
+                                    <section className={productDetails.Ads_Offer !==0 ?"font-bold capitalize  line-through":" font-bold capitalize "}>
                                         {productDetails.Ads_price}
+                                    </section>
+
+                                </div>
+                                <div className={productDetails.Ads_Offer !==0 ?"mx-auto  w-1/2 flex flex-row justify-between mt-4":"hidden"}>
+                                    <section className="font-bold">Offer Price</section>
+                                    <section className="font-bold">:</section>
+                                    <section className="font-bold capitalize  ">
+                                        {/* {productDetails.Ads_price} */}
+                                        { Number(productDetails.Ads_price) - (Number(productDetails.Ads_price) / 100) * (Number(productDetails.Ads_Offer))}
                                     </section>
 
                                 </div>
@@ -296,9 +305,9 @@ const User_dashboard = () => {
                                                                                 </section>
                                                                             </div>
                                                                         </div>
-                                                         <div className="flex justify-between pb-4 mr-2 mb-2 ">
+                                                                        <div className="flex justify-between pb-4 mr-2 mb-2 ">
 
-                                                                                    <AffiliateButton isUSerID={data.id} isAdsDetails={ads}/>
+                                                                            <AffiliateButton isUSerID={data.id} isAdsDetails={ads} />
                                                                             <button
                                                                                 className="
                                                                   px-16 mt-0 py-3 rounded-xl 
@@ -313,16 +322,16 @@ const User_dashboard = () => {
                                                                                 as `userName`, `address`, `cust_Phone`, etc.
                                                                                 The values for these properties are obtained
                                                                                 from the `data` and `ads` objects. */
-    
+
                                                                                 onClick={() => {
                                                                                     setProductDetails(ads)
                                                                                     setBuyDetails(true)
                                                                                 }}
-    
+
                                                                             >
                                                                                 buy
                                                                             </button>
-                                                         </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             )
@@ -338,7 +347,7 @@ const User_dashboard = () => {
                                     <button
                                         className="uppercase bg-white  hover:bg-sky-700 py-3 px-14 rounded-lg text-black  font-bold border-2 border-gray-500 mr-2
                             max-sm:px-10 max-sm:py-2"
-                            disabled={showAdsOnSwipe}
+                                        disabled={showAdsOnSwipe}
                                         onClick={() => {
                                             reactSwipeEl.prev()
                                             adsNumber > 0 && (setAdsNumber(adsNumber - 1))
