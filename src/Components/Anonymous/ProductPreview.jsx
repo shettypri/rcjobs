@@ -14,6 +14,9 @@ const ProductPreview = () => {
   const dispatch = useDispatch()
   const SplitArray = params.codelink.split('NICOZN')
   const { userId, adsId } = { userId: SplitArray[0], adsId: SplitArray[1] }
+
+  sessionStorage.setItem("affiliateLinkReward", userId)
+
   useEffect(() => {
     console.log(adsId);
     dispatch(

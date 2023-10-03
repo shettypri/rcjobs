@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AnonymousAffiliate from "./AnonymousAffiliate"
 import LoginAffliate from "./LoginAffliate"
+import AffliateBuy from "./AffliateBuy"
 
 
 
@@ -24,11 +25,12 @@ const handleOptionChange = (event)=>{
         </select>
 
     </div>
-    <div>
+    <div className="flex flex-col">
         {selectedOption === "Anonymous" ? 
         <AnonymousAffiliate/> 
         :
          <LoginAffliate /> }
+
     </div>
    </div>
   </>

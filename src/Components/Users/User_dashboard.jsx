@@ -63,6 +63,10 @@ const User_dashboard = () => {
                     offer: ProductDetails.Ads_Offer,
                     ProductUrl: ProductDetails.imageURL,
                     paidUrl: imageUrl,
+                    order_date: new Date().toUTCString().slice(5, 16),
+                    order_Month: new Date().getMonth(),
+                    order_TimeStamp: new Date(),
+                    order_year: new Date().getFullYear(),
                     isOrderPlaced: false
                 }
                 console.log(orderDetails)
@@ -144,17 +148,17 @@ const User_dashboard = () => {
                                 <div className="mx-auto  w-1/2 flex flex-row justify-between mt-4">
                                     <section className="font-bold">Price</section>
                                     <section className="font-bold">:</section>
-                                    <section className={productDetails.Ads_Offer !==0 ?"font-bold capitalize  line-through":" font-bold capitalize "}>
+                                    <section className={productDetails.Ads_Offer !== 0 ? "font-bold capitalize  line-through" : " font-bold capitalize "}>
                                         {productDetails.Ads_price}
                                     </section>
 
                                 </div>
-                                <div className={productDetails.Ads_Offer !==0 ?"mx-auto  w-1/2 flex flex-row justify-between mt-4":"hidden"}>
+                                <div className={productDetails.Ads_Offer !== 0 ? "mx-auto  w-1/2 flex flex-row justify-between mt-4" : "hidden"}>
                                     <section className="font-bold">Offer Price</section>
                                     <section className="font-bold">:</section>
                                     <section className="font-bold capitalize  ">
                                         {/* {productDetails.Ads_price} */}
-                                        { Number(productDetails.Ads_price) - (Number(productDetails.Ads_price) / 100) * (Number(productDetails.Ads_Offer))}
+                                        {Number(productDetails.Ads_price) - (Number(productDetails.Ads_price) / 100) * (Number(productDetails.Ads_Offer))}
                                     </section>
 
                                 </div>

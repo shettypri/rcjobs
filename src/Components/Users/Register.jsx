@@ -56,6 +56,12 @@ const Register = () => {
         totalEarning:0,
         buyProduct:[],
         allreferalList:[],
+
+        currentAffiliateWallet:0,
+        TotalAffiliateAmount:0,
+        totalNumberOfAffiliate:0,
+        
+        AffiliateData:[],
     });
     /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
     that is used to handle user input events. */
