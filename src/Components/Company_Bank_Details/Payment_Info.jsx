@@ -16,7 +16,7 @@ const PaymentInfo = () => {
         <>
             <div>
 
-                <div className="flex max-sm:w-full justify-center items-center text-center">
+                <div className="flex max-sm:w-3/4 mx-auto justify-center items-center text-center">
                     <select value={selectedOption}
                             className="w-full py-3 border-2 border-black uppercase mx-auto flex text-center"
                             onChange={handleOptionChange}
