@@ -71,7 +71,7 @@ const ProductPreview = () => {
           <div>
             <PaymentInfo />
           </div>
-          <div className="flex flex-row py-4 my-4 px-2 " >
+          <div className="flex flex-row py-4 my-4 px-2  max-sm:-ml-7" >
             <div className="">
               <button className="text-white capitalize bg-red-500 ml-7 py-2 rounded-md px-10  border-2 hover:border-red-800 font-semibold "
                 onClick={() => setShowForm(false)}
