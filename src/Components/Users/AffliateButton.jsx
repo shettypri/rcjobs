@@ -9,8 +9,8 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
   const generateLink = () => {
     const adsId = isAdsDetails.id
     const affricateCode = `${isUSerID}NICOZN${adsId}`
-    // const AffiliateLink = `http://172.16.20.24:5173/anonymous/${affricateCode}`
-    const AffiliateLink = `http://192.168.0.139:5173/anonymous/${affricateCode}`
+    const AffiliateLink = `http://172.16.20.44:5173/anonymous/${affricateCode}`
+    // const AffiliateLink = `http://192.168.0.139:5173/anonymous/${affricateCode}`
     
     copy(AffiliateLink)
     alert(`The link is copied to clipboard ${AffiliateLink}`)
