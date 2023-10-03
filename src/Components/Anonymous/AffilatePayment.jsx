@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AnonymousAffiliate from "./AnonymousAffiliate"
-import LoginAffiliate from "./LoginAffliate"
+import LoginAffliate from "./LoginAffliate"
+
 
 
 const AffiliatePayment = () => {
@@ -12,7 +13,7 @@ const handleOptionChange = (event)=>{
   return (
   <>
    <div>
-   <div className="flex max-sm:w-full justify-center items-center text-center w-2/4 ml-14 h-8 mt-6">
+   <div className="flex max-sm:w-full justify-center items-center text-center w-2/4 ml-14 h-8 mt-6 mb-20 pb-16">
        <select className="w-full py-3 border-2 border-black uppercase mx-auto flex text-center rounded-sm"
        value={selectedOption}
        onChange={handleOptionChange}>
@@ -24,7 +25,10 @@ const handleOptionChange = (event)=>{
 
     </div>
     <div>
-        {selectedOption === "Anonymous" ? <AnonymousAffiliate/> : <LoginAffiliate/> }
+        {selectedOption === "Anonymous" ? 
+        <AnonymousAffiliate/> 
+        :
+         <LoginAffliate /> }
     </div>
    </div>
   </>
