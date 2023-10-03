@@ -85,7 +85,7 @@ const ProductPreview = () => {
         </div>
       </div>
       {
-        showForm && <AffiliatePayment />
+        showForm && <AffiliatePayment/>
       }
 
 
