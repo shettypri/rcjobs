@@ -11,6 +11,7 @@ const rewardForAffiliate = async (id, amount) => {
             wallet: Number(data.wallet) + Number(amount),
             currentAffiliateWallet:
                 Number(data.currentAffiliateWallet) + Number(amount),
+            totalNumberOfAffiliate: Number(data.totalNumberOfAffiliate) + 1,
         };
         return await updateFirebaseData(id,updateData,USERS_COLLECTION)
     } catch (err) {

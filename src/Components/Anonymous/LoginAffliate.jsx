@@ -10,6 +10,7 @@ import { auth } from "../../config/firebase.config";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoginReducers } from "../../App/Slice/userSlice";
 import LoggedInUser from "./LoggedInUser";
+import ErrorText from "../Global/Affliate/ErrorText";
 
 const LoginAffliate = () => {
   const [phoneNumber, setPhoneNumber] = useState('+91');
@@ -19,10 +20,11 @@ const LoginAffliate = () => {
   const dispatch = useDispatch()
 
   const [captchaResult, setcaptchaResult] = useState({})
-  const { isLoggedIn,data } = useSelector(
+  const { isLoggedIn, data, newUser } = useSelector(
     state => state.userReducer
   )
-  console.log("======>",data);
+  console.log("======>", data);
+  console.log("======>", newUser);
 
   const handleSendOtp = async () => {
     console.log(phoneNumber);
@@ -33,7 +35,7 @@ const LoginAffliate = () => {
 
     try {
       const captchaResult = await new RecaptchaVerifier('recaptcha-container', {}, auth);
-     
+
       const captchaVerified = await signInWithPhoneNumber(auth, numberMobile, captchaResult)
       if (captchaVerified) {
         setcaptchaResult(captchaVerified)
@@ -65,14 +67,18 @@ const LoginAffliate = () => {
     console.log(e);
   }
 
- 
+
 
 
   return (
     <>
       {
         isLoggedIn ? (
-          <LoggedInUser data={data} />
+          newUser ? (
+            <ErrorText text="You don't have the account please buy from Anonymous user" />
+          ) : (<LoggedInUser data={data} />)
+
+
         ) : (
           <>
             <div className="flex flex-col items-center justify-center border border-orange-500 my-4 w-1/2 mx-auto rounded-lg">

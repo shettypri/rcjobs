@@ -57,14 +57,14 @@ const ProductPreview = () => {
             </section>
           </section>
 
-          <div>
+          {/* <div>
             <input
               type="file"
               name="name"
               accept="image/*"
               className=" mt-1 flex justify-center p-3 space-y-3 "
             />
-          </div>
+          </div> */}
 
         </div>
 

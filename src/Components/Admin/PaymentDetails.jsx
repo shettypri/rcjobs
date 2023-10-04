@@ -25,6 +25,8 @@ const PaymentDetails = () => {
      * The handlePayment function updates the payment information in the wallet and dispatches the
      * updated information to the walletPaymentResponseReducers.
      */
+    
+
     const handlePayment = async() => {
         
         const paymentInfo = {
@@ -66,6 +68,9 @@ const PaymentDetails = () => {
         await transactionAmountService(data.id,data.transationAmount)
         setBtnClicked(true)
         setPaymentSucessResult(true)
+        // setTimeout(() => {
+        //     navigate("/admin/paymentrequest")
+        // }, 2000)
 
     }
     if(paymentResponse.Error){

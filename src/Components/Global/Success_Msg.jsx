@@ -1,6 +1,7 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const SuccessMsg = (props) =>{
     const [successShow, setSuccessShow] = useState(true);
@@ -8,7 +9,7 @@ const SuccessMsg = (props) =>{
         <>
             {successShow &&
                 <div>
-                    <div className={"bg-red text-black font-black flex flex-col"}>
+                    <div className={"bg-red-200 text-black font-black flex flex-col"}>
                         <h2>
                             {/* eslint-disable-next-line react/prop-types */}
                             {props.success}

@@ -104,7 +104,13 @@ const Withdrawal = () => {
                                     </label>
                                 </div>
                                 <div className="flex flex-row justify-around my-2 ">
-                                    <label className="uppercase my-2">Total Affiliate Reward</label>
+                                    <label className="uppercase my-2">No. of Affiliate </label>
+                                    <label className="uppercase my-2">
+                                        {walletData.data.totalNumberOfAffiliate}
+                                    </label>
+                                </div>
+                                <div className="flex flex-row justify-around my-2 ">
+                                    <label className="uppercase my-2">All previoius Affiliate Reward</label>
                                     <label className="uppercase my-2">
                                         {walletData.data.TotalAffiliateAmount}
                                     </label>

@@ -61,6 +61,8 @@ const Register = () => {
         TotalAffiliateAmount:0,
         totalNumberOfAffiliate:0,
         
+        
+
         AffiliateData:[],
     });
     /* The above code is a JavaScript React code snippet. It defines a function called `userValues`
