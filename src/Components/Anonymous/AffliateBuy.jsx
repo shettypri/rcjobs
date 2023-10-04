@@ -36,6 +36,8 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
     order_TimeStamp: new Date(),
     order_year: new Date().getFullYear(),
 
+    affiliatePercentage:adsData.affiliatePercentage,
+
     isOrderPlaced: false,
 
     isAffiliated: true,
