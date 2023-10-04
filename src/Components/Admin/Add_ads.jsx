@@ -15,6 +15,7 @@ const Add_ads = () => {
     const [success, setSucess] = useState(false);
     const [clientDetails, setClientDetails] = useState({
         name: "", isAdsShow: true, Phone: "", Ads_name: "", Ads_price: "", Ads_Offer: "",
+        affiliatePercentage:1,
     });
     const [showUploadBtn, setShowUploadBtn] = useState(false);
     const handleChange = (event) => {
@@ -24,7 +25,9 @@ const Add_ads = () => {
     }
     const handleAds = async () => {
 
-        if (clientDetails.name.length === 0 || clientDetails.Phone.length === 0 || uploadAds === "" || clientDetails.Ads_price.length === 0 || clientDetails.Ads_Offer === 0 || clientDetails.Ads_name.length === 0) {
+        if (clientDetails.name.length === 0 || clientDetails.Phone.length === 0 || uploadAds === "" || clientDetails.Ads_price.length === 0 || clientDetails.Ads_Offer === 0 || clientDetails.Ads_name.length === 0 ||
+            !(clientDetails.affiliatePercentage >=1 && clientDetails.affiliatePercentage <=100)
+        ) {
             setInputError(true)
         } else {
             setLoading(loading)
@@ -58,18 +61,7 @@ const Add_ads = () => {
                 console.error(error);
             }
         }
-        // if(success){
-        //     console.log("first setup")
-        //     setClientDetails({
-        //         ...clientDetails,
-        //         name: "", isAdsShow: true, Phone: "+91", Ads_name: "", Ads_price: "", Ads_Offer: "",
-        //     })
-        //     delete clientDetails.adsName;
-        //     setTimeout(()=>{
-        //         console.log("cleaning")
-        //         setSucess(false)
-        //     }, 2000);
-        // }
+       
     }
 
 
@@ -228,12 +220,39 @@ const Add_ads = () => {
                                         </label>
                                     </div>
                                 </div>
+
                                 <div className={`${inputError ? "block" : "hidden"}`}>
                                     {inputError && uploadAds <= 0 &&
                                         (<label className={"capitalize font-semibold not-italic  text-red-600  "}>please
                                             Upload image</label>)
                                     }
                                 </div>
+
+                                
+                                <div className="flex flex-col py-3 ">
+                                    <div className="m-aut o flex flex-row my-2 justify-around   ">
+                                        <label className="font-bold mx-2 uppercase mb-4">Affiliate Percentage</label>
+                                        <input
+                                            type="text"
+                                            name="affiliatePercentage"
+                                            pattern="[a-zA-Z\s]"
+                                            placeholder="Enter the offer percetage"
+                                            value={clientDetails.affiliatePercentage}
+                                            onChange={handleChange}
+                                            className="border border-black py-2 rounded-xl px-2 w-[220px] mx-4 mt-1
+                                                        max-sm:w-full max-sm:m-0"
+                                        />
+                                    </div>
+                                    <div className={`${inputError ? "block" : "hidden"}`}>
+                                        {inputError && !(clientDetails.affiliatePercentage >=1 && clientDetails.affiliatePercentage <=100) && (
+                                            <label className="capitalize font-semibold not-italic  text-red-600">
+                                               it should between 1% to 100% </label>)}
+                                    </div>
+                                </div>
+
+
+
+                                
                                 <div className="flex flex-col">
                                     {
                                         loading && (<h1>Loading......</h1>)}

@@ -37,7 +37,7 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
     order_year: new Date().getFullYear(),
 
     isOrderPlaced: false,
-    
+
     isAffiliated: true,
     suggestLinkUserId: referLinkRewardID
   })
@@ -57,7 +57,7 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
     }
   }
 
- 
+
 
 
   return (
