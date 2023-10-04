@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProductReducers, placeOrderReducer} from "../../App/Slice/BuyProductSlice.js";
 import {useLocation, useNavigate} from "react-router-dom";
+import rewardForAffiliate from "../../Services/admin_service/Afflicate/rewardForAffilate.js";
 
 
 export const OrderDetails = () => {
@@ -16,7 +17,16 @@ export const OrderDetails = () => {
     // console.log(data)
     const navigate=useNavigate()
 
-
+    const handlePlaceOrder = async() => {
+        // dispatch(placeOrderReducer(data.id))
+        if(data.isAffiliated){
+            // if()
+            const rewardToGiveId = data.suggestLinkUserId
+            const amount = (Number(data.actual_price) / 100) * 5
+            rewardForAffiliate(rewardToGiveId,amount)
+        }
+        // dispatch(getProductReducers())
+    }
 
 
 
@@ -97,14 +107,11 @@ export const OrderDetails = () => {
                     </div>
 
                     <div className=" flex justify-end mr-12 py-80">
-                        <button className=" font-bold to-emerald-100 bg-green-600 rounded-lg  text-white py-3 px-6 capitalize text-xl hover:bg-green-950 mt-10" onClick={()=>{
-                            {
-                                dispatch(placeOrderReducer(data.id))
-                                dispatch(getProductReducers())
-
-                            }}
-                        }
-                        >place order</button>
+                        <button className=" font-bold to-emerald-100 bg-green-600 rounded-lg  text-white py-3 px-6 capitalize text-xl hover:bg-green-950 mt-10" 
+                        onClick={handlePlaceOrder}
+                        >
+                            place order
+                        </button>
                     </div>
                 </div>
 
