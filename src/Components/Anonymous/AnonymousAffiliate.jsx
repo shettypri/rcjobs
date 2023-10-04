@@ -1,18 +1,24 @@
 
 import {useState} from "react";
-const AnonymousAffiliate = () => {
-    
 
+
+
+const AnonymousAffiliate = () => {
 const [anonymousUser, setAnonymousUser] = useState({
     name:"",
     address:"",
     phone:"",
     pincode:""
 
+
+    
 })
 const [paymentImage, setPaymentImage] = useState(null)
 
  const [errorMessage, setErrorMessage] = useState(false)
+ const [error, setError] = useState(false)
+ const [success, setSuccess] = useState(false)
+ const [loading, setLoading] = useState(false)
 
 
 
@@ -135,8 +141,6 @@ const [paymentImage, setPaymentImage] = useState(null)
                     <div className="-mt-36 ml-14">
                     <button className=" text-center font-semibold border-1  text-white  rounded-lg w-[110px] h-[30px] bg-blue-700 " onClick={()=>{handleValues}}> submit</button>
                     </div>
-
-
 
                    
 

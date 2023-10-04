@@ -45,12 +45,12 @@ const ProductPreview = () => {
           <section
             className="font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly">
             <section>Product Price :</section>
-            <section className={adsData.Ads_Offer != 0 ? "text-gray-700 line-through" : "text-gray-900"}>
+            <section className={adsData.Ads_Offer !== 0 ? "text-gray-700 line-through" : "text-gray-900"}>
               {adsData.Ads_price}
             </section>
           </section>
           <section
-            className={adsData.Ads_Offer != 0 ? "font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly" : "hidden"}>
+            className={adsData.Ads_Offer !== 0 ? "font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly" : "hidden"}>
             <section>Offer Price :</section>
             <section>
               {Number(adsData.Ads_price) - (Number(adsData.Ads_price) / 100) * (Number(adsData.Ads_Offer))}
