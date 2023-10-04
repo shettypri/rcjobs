@@ -10,6 +10,8 @@ const [anonymousUser, setAnonymousUser] = useState({
     phone:"",
     pincode:""
 
+
+    
 })
 const [paymentImage, setPaymentImage] = useState(null)
 
