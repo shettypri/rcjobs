@@ -144,9 +144,10 @@ const Withdrawal = () => {
                                                         (walletData.data.referred * 200 - walletData.data.wallet) : walletData.data.wallet
                                             } */}
                                             {
-
+                                                    walletData.data.referred > 0 ?
                                                 Math.abs(walletData.data.referred * 200 - walletData.data.wallet - walletData.data.currentAffiliateWallet)
-
+                                                :
+                                                Math.abs(walletData.data.wallet - walletData.data.currentAffiliateWallet)
                                             }
                                         </label>
                                         

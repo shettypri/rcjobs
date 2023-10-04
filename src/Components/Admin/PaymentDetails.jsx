@@ -32,9 +32,10 @@ const PaymentDetails = () => {
             wallet: (data.wallet - data.withdrawalAmount),
             isWithdrawing: false,
             withdrawalAmount: 0,
-            Total_withdrawal:paymentInfo.Total_withdrawal+(
-                data.withdrawalAmount - (data.withdrawalAmount / 100) * 10
-            )
+            currentAffiliateWallet:0,
+            Total_withdrawal:(data.Total_withdrawal+
+                (data.withdrawalAmount - (data.withdrawalAmount / 100) * 10)
+                ),
         }
         
         dispatch(walletPaymentResponseReducers(paymentInfo))
