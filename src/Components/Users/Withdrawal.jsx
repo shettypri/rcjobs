@@ -35,7 +35,7 @@ const Withdrawal = () => {
     return (
         <>
             <div className="flex flex-row w-full justify-around max-sm:flex-col">
-
+                {/* ADS */}
                 <div className="w-1/6  flex flex-col max-sm:flex-col">
                     <div className="w-full h-1 flex flex-row mt-4">
                         <div className="block w-full mx-1">
@@ -82,6 +82,7 @@ const Withdrawal = () => {
                     ">{walletData.data.referred}</label>
                         </div>
 
+
                         <div className="flex flex-row justify-around ">
                             <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">all Reference
                                 Amount</label>
@@ -89,6 +90,29 @@ const Withdrawal = () => {
                                 {walletData.data.total_referred * 200}
                             </label>
                         </div>
+                        <div className="">
+                            <div className="bg-gray-800 py-4 flex rounded w-full">
+                                <label className="text-white flex mx-auto font-bold text-2xl">
+                                    Shared Earning
+                                </label>
+                            </div>
+                            <div className="">
+                                <div className="flex flex-row justify-around my-2 ">
+                                    <label className="uppercase my-2">Current Affiliate Reward</label>
+                                    <label className="uppercase my-2">
+                                        {walletData.data.currentAffiliateWallet}
+                                    </label>
+                                </div>
+                                <div className="flex flex-row justify-around my-2 ">
+                                    <label className="uppercase my-2">Total Affiliate Reward</label>
+                                    <label className="uppercase my-2">
+                                        {walletData.data.TotalAffiliateAmount}
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
                         <div className="bg-gray-800 py-4 flex rounded">
                             <label className="mx-auto text-white text-2xl max-sm:text-[15px] ">
                                 Wallet Amount
@@ -114,12 +138,30 @@ const Withdrawal = () => {
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
                                   max-sm:text-[15px]
                                 ">
-                                            {
+                                            {/* {
                                                 walletData.data.referred > 0 ?
                                                     walletData.data.wallet > walletData.data.referred * 200 ? (walletData.data.wallet - walletData.data.referred * 200) :
                                                         (walletData.data.referred * 200 - walletData.data.wallet) : walletData.data.wallet
+                                            } */}
+                                            {
+                                                    walletData.data.referred > 0 ?
+                                                Math.abs(walletData.data.referred * 200 - walletData.data.wallet - walletData.data.currentAffiliateWallet)
+                                                :
+                                                Math.abs(walletData.data.wallet - walletData.data.currentAffiliateWallet)
                                             }
                                         </label>
+                                        
+                                    </div>
+                                    <div className="flex flex-row justify-around  bg-blue-200">
+                                        <label className="px-2 py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px]
+                                "> Affilate current Wallet</label>
+                                        <label className="px-2 py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px]
+                                ">
+                                            {walletData.data.currentAffiliateWallet}
+                                        </label>
+                                        
                                     </div>
 
                                     <div className="flex flex-row justify-around  bg-blue-200">
@@ -267,12 +309,12 @@ const Withdrawal = () => {
                             )
                         }
                         <div>
-                            <button className="bg-green-700 px-5 py-3 my-2 flex mx-auto rounded-lg text-white font-bold" 
-                            onClick={()=>{
-                                dispatch(isLoginReducers(data.id))
-                                navigate("/user/transcation")
-                            }
-                            }
+                            <button className="bg-green-700 px-5 py-3 my-2 flex mx-auto rounded-lg text-white font-bold"
+                                onClick={() => {
+                                    dispatch(isLoginReducers(data.id))
+                                    navigate("/user/transcation")
+                                }
+                                }
                             >
                                 View all Earnings
                             </button>

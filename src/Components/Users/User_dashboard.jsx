@@ -67,7 +67,9 @@ const User_dashboard = () => {
                     order_Month: new Date().getMonth(),
                     order_TimeStamp: new Date(),
                     order_year: new Date().getFullYear(),
-                    isOrderPlaced: false
+                    isOrderPlaced: false,
+
+                    isAffiliated: false,
                 }
                 console.log(orderDetails)
                 dispatch(addProductReducers(orderDetails))

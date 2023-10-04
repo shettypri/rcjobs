@@ -37,7 +37,8 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
     order_year: new Date().getFullYear(),
 
     isOrderPlaced: false,
-
+    
+    isAffiliated: true,
     suggestLinkUserId: referLinkRewardID
   })
 
@@ -51,12 +52,6 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
       buyData.paidUrl = imageUrl
       await dispatch(addProductReducers(buyData))
       console.log(buyData);
-
-      
-      // const rewardReffer = (Number(adsData.Ads_price) / 100) * (Number(adsData.Ads_Offer))
-      // if(referLinkRewardID!== undefined || referLinkRewardID!==null){
-
-      // }
 
       setBuyBtnClick(false)
     }

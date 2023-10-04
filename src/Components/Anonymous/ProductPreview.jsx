@@ -57,6 +57,15 @@ const ProductPreview = () => {
             </section>
           </section>
 
+          <div>
+            <input
+              type="file"
+              name="name"
+              accept="image/*"
+              className=" mt-1 flex justify-center p-3 space-y-3 "
+            />
+          </div>
+
         </div>
 
         <div className="flex flex-col ">
@@ -79,9 +88,8 @@ const ProductPreview = () => {
         </div>
       </div>
       {
-        showForm && <AffiliatePayment />
+        showForm && <AffiliatePayment/>
       }
-
 
 
 
