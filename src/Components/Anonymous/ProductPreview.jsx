@@ -56,14 +56,6 @@ const ProductPreview = () => {
               {Number(adsData.Ads_price) - (Number(adsData.Ads_price) / 100) * (Number(adsData.Ads_Offer))}
             </section>
           </section>
-          <div>
-            <input
-              type="file"
-              name="name"
-              accept="image/*"
-              className=" mt-1 flex justify-center p-3 space-y-3 "
-            />
-          </div>
 
         </div>
 
@@ -87,7 +79,7 @@ const ProductPreview = () => {
         </div>
       </div>
       {
-        showForm && <AffiliatePayment/>
+        showForm && <AffiliatePayment />
       }
 
 
