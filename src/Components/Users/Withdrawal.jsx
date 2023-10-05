@@ -90,6 +90,13 @@ const Withdrawal = () => {
                                 {walletData.data.total_referred * 200}
                             </label>
                         </div>
+                        <div className="flex flex-row justify-around ">
+                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">all Earned
+                                Amount</label>
+                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">
+                                {walletData.data.totalEarning}
+                            </label>
+                        </div>
                         <div className="">
                             <div className="bg-gray-800 py-4 flex rounded w-full">
                                 <label className="text-white flex mx-auto font-bold text-2xl">

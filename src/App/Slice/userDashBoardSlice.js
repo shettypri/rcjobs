@@ -32,6 +32,7 @@ export const adsRewardREducers = createAsyncThunk(
             await updateDoc(doctorCollection, {
                 limit:updateInfo.limit,
                 wallet:updateInfo.wallet,
+                totalEarning :updateInfo.totalEarning
             })
             return `Accepted Sucessfully of ${updateInfo.id}`
         } catch (e) {

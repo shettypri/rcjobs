@@ -111,7 +111,8 @@ const User_dashboard = () => {
                     data.limit > 0 && (dispatch(adsRewardREducers({
                         id: data.id,
                         limit: data.limit - 1,
-                        wallet: data.wallet + 10
+                        wallet: data.wallet + 10,
+                        totalEarning :Number(data.totalEarning)+10
                     })))
                 )
             )
@@ -311,12 +312,12 @@ const User_dashboard = () => {
                                                                                 </section>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="flex justify-between pb-4 mr-2 mb-2 ">
+                                                                        <div className="flex justify-around pb-4 mr-2 mb-2 ">
 
                                                                             <AffiliateButton isUSerID={data.id} isAdsDetails={ads} />
                                                                             <button
                                                                                 className="
-                                                                  px-16 mt-0 py-3 rounded-xl 
+                                                                  px-12 mt-0 py-3 rounded-xl 
                                                                  font-extrabold uppercase bg-red-700 text-white
                                                                  max-sm:mx-4 max-sm:px-12 max-sm:py-1 max-sm:rounded-lg
                                                                  max-2xl:mx-10
