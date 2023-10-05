@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import {  useState } from "react"
 import AffliateBuy from "./AffliateBuy"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"

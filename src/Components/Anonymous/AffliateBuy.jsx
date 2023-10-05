@@ -19,7 +19,7 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
 
   const { addProduct } = useSelector(state => state.ProductReducer)
   const { loading, Error, Success } = addProduct
-  console.log(addProduct);
+  // console.log(addProduct);
 
 
   const placeOrderBtn = async () => {
@@ -59,7 +59,7 @@ const AffliateBuy = ({ userData, isAnonymous, paymentFile }) => {
       const imageUrl = await uploadPayment(paymentFile)
       buyData.paidUrl = imageUrl
       await dispatch(addProductReducers(buyData))
-      console.log(buyData);
+      // console.log(buyData);
       setTimeout(() => {
         setBuyBtnClick(false)
       }, 4000)

@@ -23,11 +23,11 @@ const LoginAffliate = () => {
   const { isLoggedIn, data, newUser } = useSelector(
     state => state.userReducer
   )
-  console.log("======>", data);
-  console.log("======>", newUser);
+  // console.log("======>", data);
+  // console.log("======>", newUser);
 
   const handleSendOtp = async () => {
-    console.log(phoneNumber);
+    // console.log(phoneNumber);
     // Logic to send OTP to the provided phone number
     // You can implement this logic with a backend service.
 
@@ -60,11 +60,11 @@ const LoginAffliate = () => {
   };
   const handleNumber = (e) => {
     setPhoneNumber(e)
-    console.log(e);
+    // console.log(e);
   }
   const handleOtpChange = (e) => {
     setOtp(e)
-    console.log(e);
+    // console.log(e);
   }
 
 
