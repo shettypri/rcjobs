@@ -16,7 +16,7 @@ export const OrderDetails = () => {
     const { getProduct } = useSelector(state => state.ProductReducer)
     const { orderPlaced } = useSelector(state => state.ProductReducer)
     const { loading, Error, Success } = orderPlaced
-    console.log(loading, Error, Success)
+    // console.log(loading, Error, Success)
     // console.log(getProduct.data)
     const location = useLocation()
     const data = location.state.product
