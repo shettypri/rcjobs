@@ -19,7 +19,7 @@ const handleOptionChange = (event)=>{
        value={selectedOption}
        onChange={handleOptionChange}>
         
-        <option className="" value="Anonymous">Anonymous</option>
+        <option className="" value="Anonymous">Guest User</option>
         <option className="" value="User">User</option>
 
         </select>

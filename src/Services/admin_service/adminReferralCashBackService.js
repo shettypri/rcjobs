@@ -25,7 +25,8 @@ export const updateUserByReferCodeService= async(joiningCode)=>{
                     referred: arrayData.referred + 1,
                     total_referred:arrayData.total_referred+1,
                     wallet: arrayData.wallet + 200,
-                    limit:arrayData.limit + 25
+                    limit:arrayData.limit + 25,
+                    totalEarning :arrayData.totalEarning+200
                 })
                 return arrayData
     } catch (error) {
