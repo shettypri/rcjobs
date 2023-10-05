@@ -81,7 +81,7 @@ const LoginAffliate = () => {
 
         ) : (
           <>
-            <div className="flex flex-col items-center justify-center border border-orange-500 my-4 w-1/2 mx-auto rounded-lg">
+            <div className="flex flex-col items-center justify-center border border-orange-500 my-4 w-1/2 mx-auto rounded-lg   pb-5 max-sm:w-full max-sm:pb-5">
               <h1 className="text-3xl font-semibold mb-4">OTP Login</h1>
 
               {!isOtpSent ? (

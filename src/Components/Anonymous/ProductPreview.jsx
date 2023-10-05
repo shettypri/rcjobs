@@ -36,10 +36,10 @@ const ProductPreview = () => {
     <>
       <div className="w-full flex flex-row justify-around max-sm:flex-col">
 
-        <div className="w-1/2 flex-col">
-          <img src={adsData.imageURL} alt="" width={400} height={20} className="mx-auto w-2/4 "></img>
+        <div className="w-full flex-col">
+          <img src={adsData.imageURL} alt="" width={400} height={20} className="mx-auto w-3/4 max-sm:w-full p-3 "></img>
           <section className="font-bold text-xl ml-8 py-3 max-sm:text-sm flex flex-row justify-evenly">
-            <section>Product Name</section>
+            <section>Product Name :</section>
             <section>{adsData.Ads_name}</section>
           </section>
           <section
@@ -73,13 +73,13 @@ const ProductPreview = () => {
             <PaymentInfo />
           </div>
           <div className="flex flex-row py-4 my-4 px-2  max-sm:-ml-7" >
-            <div className="">
-              <button className="text-white capitalize bg-red-500 ml-7 py-2 rounded-md px-10  border-2 hover:border-red-800 font-semibold "
+            <div className="max-sm:ml-7">
+              <button className="text-white capitalize bg-red-500 ml-7 py-2 rounded-md px-10  max-sm:px-7 max-sm:py-1 border-2 hover:border-red-800 font-semibold "
                 onClick={() => setShowForm(false)}
               > Cancel </button>
             </div>
             <div className="">
-              <button className="text-white capitalize bg-green-500 ml-7 py-2 rounded-md px-10  border-2 hover:border-green-800 font-semibold "
+              <button className="text-white capitalize bg-green-500 ml-7 py-2 rounded-md px-10 max-sm:px-7 max-sm:py-1 border-2 hover:border-green-800 font-semibold "
                 onClick={() => setShowForm(true)}
               >
                 Proceed </button>

@@ -3,7 +3,7 @@ import copy from "copy-to-clipboard";
 
 const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
   useEffect(() => {
-   
+
   }, [])
 
   const generateLink = () => {
@@ -20,7 +20,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
     copy(AffiliateLink)
     alert(`The link is copied to clipboard ${AffiliateLink}`)
 
-    
+
   }
   return (
     <button
@@ -32,7 +32,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
    max-2xl:mx-10"
       onClick={generateLink}
     >
-      Affiliate
+      Share
     </button>
   )
 }
