@@ -62,7 +62,7 @@ const AnonymousAffiliate = () => {
 
     return (
         <>
-            <div className="ml-48 mt-4 p-3 w-1/2 max-sm:w-72 max-sm:ml-4 max-sm:px-0 bg-white  rounded-md shadow-md mx-auto">
+            <div className="ml-48 mt-4 p-3 w-1/2 max-sm:w-72 max-sm:ml-2 max-sm:px-0 bg-white  rounded-md shadow-md mx-auto">
                 <div className="mx-auto w-3/4 border-black p-3 max-sm:ml-4  flex flex-col">
                     <label className="block text-lg font-semibold text-black" >
                         Name

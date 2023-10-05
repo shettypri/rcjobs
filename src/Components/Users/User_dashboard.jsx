@@ -141,7 +141,7 @@ const User_dashboard = () => {
 
                                 <div className="mx-auto  w-1/2 flex">
                                     <section
-                                        className="font-bold capitalize  border-2 border-black mx-auto px-10 py-2 rounded-full">
+                                        className="font-bold capitalize  border-2 border-black mx-auto px-10 py-2 rounded-full max-sm:px-20">
                                         {productDetails.Ads_name}
                                     </section>
 
@@ -188,9 +188,9 @@ const User_dashboard = () => {
                                 {
                                     loader && <Loader />
                                 }
-                                <div className="mx-auto  w-1/2 flex flex-row justify-around mt-4">
+                                <div className="mx-auto  w-1/2 flex flex-row justify-around mt-4 max-sm:flex-col-reverse">
                                     <button
-                                        className="text-white capitalize bg-red-600   px-10 py-1 rounded-lg hover:font-bold "
+                                        className="text-white capitalize bg-red-600   px-10 py-1 rounded-lg hover:font-bold max-sm:my-2"
                                         onClick={() => setBuyDetails(false)}
                                     >
                                         Cancel
