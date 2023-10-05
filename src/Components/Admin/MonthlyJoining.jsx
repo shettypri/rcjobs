@@ -94,7 +94,7 @@ const MonthlyJoining = () => {
 
         // console.log("data of fiterDAta",joiningUser)
 
-        console.log("HKBJHGF",joiningUser.length)
+        // console.log("HKBJHGF",joiningUser.length)
         // console.log("withdrawal Data",withdrwalData)
 
     }

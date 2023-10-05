@@ -29,10 +29,10 @@ const Dashboard = () => {
 
     }
     getDataFunction()
-    console.log("Users left", numberUser);
+    // cons ole.log("Users left", numberUser);
     const {getProduct} = useSelector(state => state.ProductReducer)
     const {customerUser} = useSelector(state => state.CustomerReducers)
-    console.log(customerUser);
+    // console.log(customerUser);
     return (
         <>
             <div className="flex flex-col  items-center justify-center max-sm:mb-9 border-2 border-orange-500 sm:w-5/6 m-auto pb-10 ">

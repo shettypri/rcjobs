@@ -10,11 +10,7 @@ const New_user = (props) => {
     React to create a state variable called `showImage` and a function called `setShowImage` to
     update its value. The initial value of `showImage` is set to `false`. */
     const [showImage, setShowImage] = useState(false);
-    // const uss = async()=>{
-    //     console.log("function");
-    //     return await updateUserByReferCodeService("RCJOBS-U036D520V646A291")
-    // }
-    // uss()
+    
     return (
         <>
             <tr className=" font-bold uppercas1">
@@ -63,7 +59,7 @@ const New_user = (props) => {
                             <div className="flex justify-around my-2 py-2">
                                 <button className="border border-black px-10 py-2 uppercase underline font-extrabold rounded-lg text-white bg-green-600 "
                                         onClick={() => {
-                                            console.log(props.userData.id)
+                                            // console.log(props.userData.id)
                                             setShowImage(false)
                                             dispatch(acceptRequestReducers(props.userData.id))
                                             // console.log("user joing code",props.userData.joining_code)
