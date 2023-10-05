@@ -12,10 +12,10 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
     // const AffiliateLink = `http://172.16.20.44:5173/anonymous/${affricateCode}`
     // const AffiliateLink = `http://192.168.237.163:5173/anonymous/${affricateCode}`
     // const AffiliateLink = `http://192.168.0.139:5173/anonymous/${affricateCode}`
-    // const AffiliateLink = `http://192.168.237.163:5173/anonymous/${affricateCode}`
+    const AffiliateLink = `http://192.168.237.163:5173/anonymous/${affricateCode}`
 
 
-    const AffiliateLink = `https://earn.rcjobssms.com/anonymous/${affricateCode}`
+    // const AffiliateLink = `https://earn.rcjobssms.com/anonymous/${affricateCode}`
     
     copy(AffiliateLink)
     alert(`The link is copied to clipboard ${AffiliateLink}`)
@@ -24,7 +24,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
   }
   return (
     <button
-      className=" px-16 mt-0 py-3 rounded-xl 
+      className=" px-10 mt-0 py-3 rounded-xl 
    font-extrabold uppercase text-green-800 
    border-2 border-green-800
     hover:bg-green-800 hover:text-white
