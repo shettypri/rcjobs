@@ -54,7 +54,7 @@ const AnonymousAffiliate = () => {
         }
         else {
             //
-            console.log(anonymousUser);
+            // console.log(anonymousUser);
             setButtonDisplayOrder(true)
         }
 

@@ -18,7 +18,7 @@ const ProductPreview = () => {
   sessionStorage.setItem("affiliateLinkReward", userId)
 
   useEffect(() => {
-    console.log(adsId);
+    // console.log(adsId);
     dispatch(
       getAdsAnonymousReducers(adsId)
     )
@@ -28,7 +28,7 @@ const ProductPreview = () => {
   // console.log(userId);
   const { getAdsState } = useSelector(state => state.AnonymousReducer)
   const adsData = getAdsState.data
-  console.log(adsData);
+  // console.log(adsData);
   // console.log(getAdsState);
   const [showForm, setShowForm] = useState(false)
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AnonymousAffiliate from "./AnonymousAffiliate"
 import LoginAffliate from "./LoginAffliate"
-import AffliateBuy from "./AffliateBuy"
+
 
 
 
