@@ -118,7 +118,7 @@ const Register = () => {
      * field if it is empty or contains only numbers.
      */
     const accountNoValues = (event) => {
-        const re = /^[0-9]+$/;
+        const re =/^[a-zA-Z0-9]*$/;
         // const value
         if (event.target.value === "" || re.test(event.target.value)) {
             setUserDetails({
