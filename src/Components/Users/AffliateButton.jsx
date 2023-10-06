@@ -44,7 +44,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
             overflow-x-hidden overflow-y-auto fixed inset-0 
             z-50 outline-none focus:outline-none "
               >
-                <div className="relative w-full my-6 mx-auto max-w-3xl max-sm:w-full max-md:w-ful max-lg:w-full">
+                <div className="relative w-full my-6 mx-auto max-w-3xl max-sm:w-full max-md:w-full max-lg:w-full">
                   {/*content*/}
                   <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     {/*header*/}
@@ -64,7 +64,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
                     {/*body*/}
                     <div className="relative p-6 flex-col bg-none">
                       <p className="my-4 text-slate-500 text-lg leading-relaxed flex">
-                        <SocialMedia LinkToFollow={AffiliateLink} />
+                        <SocialMedia LinkToFollow={AffiliateLink} val="Affliate"/>
                       </p>
                     </div>
                     {/*footer*/}

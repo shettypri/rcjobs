@@ -36,7 +36,7 @@ const ShareLink = () => {
                             overflow-x-hidden overflow-y-auto fixed inset-0 
                             z-50 outline-none focus:outline-none "
                         >
-                            <div className="relative w-1/3 my-6 mx-auto max-w-3xl max-sm:w-full max-md:w-full max-lg:w-full">
+                            <div className="relative w-1/3 my-6 mx-auto max-w-3xl max-sm:w-full max-md:w-1/2 max-lg:w-1/2">
                                 {/*content*/}
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                     {/*header*/}
@@ -56,7 +56,7 @@ const ShareLink = () => {
                                     {/*body*/}
                                     <div className="relative p-6 flex-col bg-none">
                                         <p className="my-4 text-slate-500 text-lg leading-relaxed flex">
-                                           <SocialMedia LinkToFollow={SharedRefLink} />
+                                           <SocialMedia LinkToFollow={SharedRefLink} val="Share"/>
                                         </p>
                                     </div>
                                     {/*footer*/}
