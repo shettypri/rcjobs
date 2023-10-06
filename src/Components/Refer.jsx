@@ -47,7 +47,7 @@ const Refer = () => {
             ">
                             <label className="font-bold my-4 capitalize
 
-                ">Thank you for joining through referral program</label>
+                ">Thank you Register Now!</label>
                             <button onClick={goToLogin}
                                     className="border border-black px-0 rounded-full py-4 bg-gray-400 uppercase w-1/2 mx-24
                         font-bold hover:bg-gray-500 hover:text-white

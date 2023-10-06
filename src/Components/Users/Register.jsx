@@ -294,8 +294,8 @@ return (
                                             <label className="font-bold uppercase text-green-600 bg-gray-300 py-4 px-2
                                             border-2 border-gray-500 rounded-2xl
                                             ">
-                                                Thank you Join through Referral
-                                                program</label>
+                                                Thank you for Joining
+                                                </label>
                                         ) : (
                                             <>
 
