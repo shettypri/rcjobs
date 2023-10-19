@@ -1,17 +1,14 @@
 
 import { EmailIcon, EmailShareButton, FacebookIcon, FacebookMessengerIcon, FacebookMessengerShareButton, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TelegramIcon, TelegramShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton, } from "react-share"
 import copy from "copy-to-clipboard";
+import CopyClipboard from "../ClipBoard/CopyClipboard";
 
-const SocialMedia = ({ LinkToFollow,val }) => {
+const SocialMedia = ({ LinkToFollow,val,imageUrl }) => {
     const cssForIcons = "max-sm:w-8 max-md:w-8 max-lg:w-8 max-xl:w-10"
     const handleCopyClipboard = () => {
         copy(LinkToFollow)
         alert(`The link is copied to clipboard ${LinkToFollow}`)
     }
-    // const verifyLinks = LinkToFollow.split("/anonymous/")[0]
-    // console.log(verifyLinks);
-    
-    
 
 
     const sizeOfIcons = 62
@@ -23,10 +20,12 @@ const SocialMedia = ({ LinkToFollow,val }) => {
 
                     <FacebookShareButton size={sizeOfIcons}
                         url={`${LinkToFollow}`}
+                        media={imageUrl}
 
                     >
                         <FacebookIcon size={sizeOfIcons} round
                             className={cssForIcons}
+                            
                         />
                     </FacebookShareButton>
                 </section>
@@ -34,6 +33,7 @@ const SocialMedia = ({ LinkToFollow,val }) => {
                 <section>
                     <FacebookMessengerShareButton
                         url={LinkToFollow}
+                        media={imageUrl}
                     >
                         <FacebookMessengerIcon size={sizeOfIcons} round
                             className={cssForIcons}
@@ -42,17 +42,26 @@ const SocialMedia = ({ LinkToFollow,val }) => {
                 </section>
 
                 <section>
+                    
+                {/* <meta property="og:image" content={imageUrl} /> */}
                     < WhatsappShareButton
                         size={sizeOfIcons}
                         url={LinkToFollow}
+                        // url={genrateteLink()}
+                        media={imageUrl}
+                        // separator=""
+                        // title={imageUrl}
                     >
-                        <WhatsappIcon size={sizeOfIcons} round className={cssForIcons} />
+                        <WhatsappIcon size={sizeOfIcons} round className={cssForIcons} 
+                        
+                        />
                     </WhatsappShareButton>
                 </section>
 
                 <section>
                     <TwitterShareButton
                         url={LinkToFollow}
+                        media={imageUrl}
                     >
                         <TwitterIcon
                             className={cssForIcons}
@@ -62,7 +71,7 @@ const SocialMedia = ({ LinkToFollow,val }) => {
                 <section>
                     <TelegramShareButton
                         url={LinkToFollow}
-
+                        media={imageUrl}
                     >
                         <TelegramIcon
                             className={cssForIcons}
@@ -75,6 +84,7 @@ const SocialMedia = ({ LinkToFollow,val }) => {
                 <section>
                     <LinkedinShareButton
                         url={LinkToFollow}
+                        media={imageUrl}
                     >
                         <LinkedinIcon
                             className={cssForIcons}
@@ -85,6 +95,7 @@ const SocialMedia = ({ LinkToFollow,val }) => {
                 <section>
                     <EmailShareButton
                         url={LinkToFollow}
+                        media={imageUrl}
                     >
                         <EmailIcon
                             className={cssForIcons}
@@ -95,18 +106,8 @@ const SocialMedia = ({ LinkToFollow,val }) => {
             </div>
 
             <div className=" py-2 mx-0 flex flex-row ">
-                <section
-                    className={val === "Affliate"?"border border-gray-800 text-[4px] py-2 px-0 font font-extrabold max-sm:text-[12px] flex flex-row max-sm:-ml-4 max-sm:w-[481px] max-xl:w-[420px] max-xl:text-[10px]":
-                    "border border-gray-800 flex flex-row text-sm font-bold max-lg:text-[12px]"
-                }
-                    >
-                        <section>{ `${LinkToFollow}`}</section>
 
-                    <section className="text-2xl cursor-pointer max-md:text-xl"
-                        onClick={handleCopyClipboard}
-                    >&#128203;
-                    </section>
-                </section>
+                <CopyClipboard val={val} LinkToFollow={LinkToFollow} />
             </div>
         </div>
     )

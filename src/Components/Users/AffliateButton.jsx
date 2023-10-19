@@ -6,21 +6,20 @@ import SocialMedia from "../Global/Affliate/SocialMedia";
 const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
   const [showModal, setShowModal] = useState(false)
   const adsId = isAdsDetails.id
+  // console.log(isAdsDetails)
+  const imageUrl = isAdsDetails.imageURL
   const affricateCode = `${isUSerID}NICOZN${adsId}`
   // const AffiliateLink = `http://172.16.20.44:5173/anonymous/${affricateCode}`
   // const AffiliateLink = `http://192.168.237.163:5173/anonymous/${affricateCode}`
   // const AffiliateLink = `http://192.168.0.139:5173/anonymous/${affricateCode}`
   // const AffiliateLink = `http://192.168.237.163:5173/anonymous/${affricateCode}`
   const AffiliateLink = `https://earn.rcjobssms.com/anonymous/${affricateCode}`
-
+  // console.log(imageUrl)
   const generateLink = () => {
     setShowModal(true)
-
-    // copy(AffiliateLink)
-    // alert(`The link is copied to clipboard ${AffiliateLink}`)
-
-
+    
   }
+ 
   return (
     <>
     
@@ -64,7 +63,9 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
                     {/*body*/}
                     <div className="relative p-6 flex-col bg-none">
                       <p className="my-4 text-slate-500 text-lg leading-relaxed flex">
-                        <SocialMedia LinkToFollow={AffiliateLink} val="Affliate"/>
+                        <SocialMedia LinkToFollow={AffiliateLink} val="Affliate"
+                        imageUrl={imageUrl}
+                        />
                       </p>
                     </div>
                     {/*footer*/}

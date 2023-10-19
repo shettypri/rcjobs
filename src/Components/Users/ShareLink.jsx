@@ -2,14 +2,21 @@ import { useSelector } from "react-redux";
 import copy from "copy-to-clipboard";
 import { useState } from "react";
 import SocialMedia from "../Global/Affliate/SocialMedia";
+import imageIcon from "../../assets/Logo/RC-JOBS-FAVICON.png"
 
 const ShareLink = () => {
     const { data } = useSelector(state => state.userReducer)
     const refLink = data.Referral_Code
+   
+    const joingLink = imageIcon
     // const SharedRefLink= `http://172.16.20.80:5173/user/${refLink}` ;
     // const SharedRefLink= `https://rcjobs-e85b3.web.app/user/${refLink}` ;
-    // const SharedRefLink = `http://192.168.0.139:5173/user/${refLink}`;
+    
+    // const SharedRefLink = `http://192.168.254.163:5173/user/${refLink}`;
+    // const SharedRefLink = ` http://localhost:5173/user/${refLink}`;
+    
     const SharedRefLink= `https://earn.rcjobssms.com/user/${refLink}` ;
+    
     /**
      * The function `handleShareLink` copies a link to the clipboard and displays an alert message.
      */
@@ -56,7 +63,11 @@ const ShareLink = () => {
                                     {/*body*/}
                                     <div className="relative p-6 flex-col bg-none">
                                         <p className="my-4 text-slate-500 text-lg leading-relaxed flex">
-                                           <SocialMedia LinkToFollow={SharedRefLink} val="Share"/>
+                                           <SocialMedia 
+                                           LinkToFollow={SharedRefLink} 
+                                           val="Share"
+                                           imageUrl={imageIcon}
+                                           />
                                         </p>
                                     </div>
                                     {/*footer*/}

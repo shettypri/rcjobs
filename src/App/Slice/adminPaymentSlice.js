@@ -31,6 +31,7 @@ export const walletPaymentResponseReducers = createAsyncThunk(
                 withdrawalAmount: 0,
                 referred: 0,
                 currentAffiliateWallet:0,
+                Total_withdrawal:responseData.Total_withdrawal,
             })
             return `Accepted Sucessfully of ${responseData.id}`
         } catch (e) {

@@ -76,10 +76,10 @@ const Withdrawal = () => {
                         <div className="flex flex-row justify-around ">
                             <label className="px-2 py-2 mt-1 mx-auto uppercase
                     max-sm:text-[15px]
-                    ">No. of new Referred </label>
+                    ">No. of All Referred </label>
                             <label className="px-2 py-2 mt-1 mx-auto uppercase
                     max-sm:text-[15px]
-                    ">{walletData.data.referred}</label>
+                    ">{walletData.data.total_referred}</label>
                         </div>
 
 
@@ -157,13 +157,13 @@ const Withdrawal = () => {
                                                         (walletData.data.referred * 200 - walletData.data.wallet) : walletData.data.wallet
                                             } */}
                                             {
-                                                    walletData.data.referred > 0 ?
-                                                Math.abs(walletData.data.referred * 200 - walletData.data.wallet - walletData.data.currentAffiliateWallet)
-                                                :
-                                                Math.abs(walletData.data.wallet - walletData.data.currentAffiliateWallet)
+                                                walletData.data.referred > 0 ?
+                                                    Math.abs(walletData.data.referred * 200 - walletData.data.wallet - walletData.data.currentAffiliateWallet)
+                                                    :
+                                                    Math.abs(walletData.data.wallet - walletData.data.currentAffiliateWallet)
                                             }
                                         </label>
-                                        
+
                                     </div>
                                     <div className="flex flex-row justify-around  bg-blue-200">
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
@@ -174,7 +174,7 @@ const Withdrawal = () => {
                                 ">
                                             {walletData.data.currentAffiliateWallet}
                                         </label>
-                                        
+
                                     </div>
 
                                     <div className="flex flex-row justify-around  bg-blue-200">
@@ -264,13 +264,20 @@ const Withdrawal = () => {
                                                                         }
                                                                     />
                                                                 </div>
-                                                                {
-                                                                    (withdrawAmount > walletData.data.wallet) &&
+                                                                
+                                                                    {(withdrawAmount < 250) &&
                                                                     <div className="flex">
                                                                         <lable className="mx-auto font-bold text-red-600">
-                                                                            Entered Amount more than the wallet amount
+                                                                            Amount Should be more than 250
                                                                         </lable>
-                                                                    </div>
+                                                                    </div>}
+
+                                                                   {(withdrawAmount > walletData.data.wallet) &&
+                                                                <div className="flex">
+                                                                    <lable className="mx-auto font-bold text-red-600">
+                                                                        Entered Amount more than the wallet amount
+                                                                    </lable>
+                                                                </div>
                                                                 }
                                                                 <div>
                                                                     {
@@ -290,7 +297,8 @@ const Withdrawal = () => {
                                                                                         onClick={() => setShowWithDraWal(true)}>
                                                                                         cancel
                                                                                     </button>
-                                                                                    {(withdrawAmount <= walletData.data.wallet) &&
+                                                                                    {((withdrawAmount <= walletData.data.wallet))&&
+                                                                                    (withdrawAmount >= 250) &&
                                                                                         <button
                                                                                             className="bg-green-600 px-14 py-2 text-white font-bold rounded-lg  uppercase
                                                                                     max-sm:px-8 max-sm:py-2 max-sm:text-[15px]

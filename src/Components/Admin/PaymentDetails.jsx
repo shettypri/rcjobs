@@ -38,7 +38,9 @@ const PaymentDetails = () => {
             Total_withdrawal:(data.Total_withdrawal+
                 (data.withdrawalAmount - (data.withdrawalAmount / 100) * 10)
                 ),
+            
         }
+        console.log(paymentInfo);
         
         dispatch(walletPaymentResponseReducers(paymentInfo))
 
@@ -68,6 +70,8 @@ const PaymentDetails = () => {
         await transactionAmountService(data.id,data.transationAmount)
         setBtnClicked(true)
         setPaymentSucessResult(true)
+
+        
         // setTimeout(() => {
         //     navigate("/admin/paymentrequest")
         // }, 2000)
