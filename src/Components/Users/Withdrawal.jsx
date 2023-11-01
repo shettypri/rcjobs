@@ -68,32 +68,33 @@ const Withdrawal = () => {
                                         className="text-2xl text-white font-bold mx-auto drop-shadow-xl py-8 px-9  border-2 border-white rounded-full shadow shadow-white flex items-center justify-center
                             max-sm:px-4 max-sm:py-5
                             ">
-                                        {walletData.data.wallet}</label></div>
+                                        {walletData.data.wallet}</label>
+                                        </div>
 
                             </div>
                         </div>
 
-                        <div className="flex flex-row justify-around ">
-                            <label className="px-2 py-2 mt-1 mx-auto uppercase
+                        <div className="flex flex-row justify-around w-full">
+                            <label className="w-1/2 py-2 mt-1 mx-auto uppercase
                     max-sm:text-[15px]
                     ">No. of All Referred </label>
                             <label className="px-2 py-2 mt-1 mx-auto uppercase
-                    max-sm:text-[15px]
+                    max-sm:text-[15px] w-1/6
                     ">{walletData.data.total_referred}</label>
                         </div>
 
 
-                        <div className="flex flex-row justify-around ">
-                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">all Reference
+                        <div className="flex flex-row justify-around w-full">
+                            <label className=" py-2 mt-1 mx-auto uppercase max-sm:text-[15px] w-1/2">all Reference
                                 Amount</label>
-                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">
+                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px] w-1/6">
                                 {walletData.data.total_referred * 200}
                             </label>
                         </div>
-                        <div className="flex flex-row justify-around ">
-                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">all Earned
+                        <div className="flex flex-row justify-around w-full">
+                            <label className=" py-2 mt-1 mx-auto uppercase max-sm:text-[15px] w-1/2">all Earned
                                 Amount</label>
-                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px]">
+                            <label className="px-2 py-2 mt-1 mx-auto uppercase max-sm:text-[15px] w-1/6">
                                 {walletData.data.totalEarning}
                             </label>
                         </div>
@@ -104,21 +105,21 @@ const Withdrawal = () => {
                                 </label>
                             </div>
                             <div className="">
-                                <div className="flex flex-row justify-around my-2 ">
-                                    <label className="uppercase my-2">Current Affiliate Reward</label>
-                                    <label className="uppercase my-2">
+                                <div className="flex flex-row justify-around my-2 w-full">
+                                    <label className="uppercase my-2 w-1/2">Current Affiliate Reward</label>
+                                    <label className="uppercase my-2 w-1/6">
                                         {walletData.data.currentAffiliateWallet}
                                     </label>
                                 </div>
-                                <div className="flex flex-row justify-around my-2 ">
-                                    <label className="uppercase my-2">No. of Affiliate </label>
-                                    <label className="uppercase my-2">
+                                <div className="flex flex-row justify-around my-2 w-full">
+                                    <label className="uppercase my-2 w-1/2">No. of Affiliate </label>
+                                    <label className="uppercase my-2 w-1/6">
                                         {walletData.data.totalNumberOfAffiliate}
                                     </label>
                                 </div>
-                                <div className="flex flex-row justify-around my-2 ">
-                                    <label className="uppercase my-2">All previoius Affiliate Reward</label>
-                                    <label className="uppercase my-2">
+                                <div className="flex flex-row justify-around my-2 w-full">
+                                    <label className="uppercase my-2 w-1/2">All previoius Affiliate Reward</label>
+                                    <label className="uppercase my-2 w-1/6">
                                         {walletData.data.TotalAffiliateAmount}
                                     </label>
                                 </div>
@@ -144,12 +145,12 @@ const Withdrawal = () => {
                         {
                             showWithDraWal ? (
                                 <div className="py-2">
-                                    <div className="flex flex-row justify-around  bg-blue-200">
-                                        <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                    <div className="flex flex-row justify-around  bg-blue-200 w-full">
+                                        <label className=" py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px] w-1/2
                                 "> Ads Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                  max-sm:text-[15px] w-1/6
                                 ">
                                             {/* {
                                                 walletData.data.referred > 0 ?
@@ -165,36 +166,36 @@ const Withdrawal = () => {
                                         </label>
 
                                     </div>
-                                    <div className="flex flex-row justify-around  bg-blue-200">
-                                        <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                    <div className="flex flex-row justify-around  bg-blue-200 w-full">
+                                        <label className=" py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px] w-1/2
                                 "> Affilate current Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                  max-sm:text-[15px] w-1/6
                                 ">
                                             {walletData.data.currentAffiliateWallet}
                                         </label>
 
                                     </div>
 
-                                    <div className="flex flex-row justify-around  bg-blue-200">
-                                        <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                    <div className="flex flex-row justify-around  bg-blue-200 w-full">
+                                        <label className=" py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px] w-1/2
                                 "> Withdrawal Reference Amount Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                  max-sm:text-[15px] w-1/6
                                 ">
                                             {
                                                 walletData.data.referred * 200
                                             }
                                         </label>
-                                    </div>
-                                    <div className="flex flex-row justify-around  bg-blue-200">
-                                        <label className="ppx-2 py-2 mt-1 mx-auto uppercase
-                                  max-sm:text-[15px]
+                                    </div> 
+                                    <div className="flex flex-row justify-around  bg-blue-200 w-full">
+                                        <label className=" py-2 mt-1 mx-auto uppercase
+                                  max-sm:text-[15px] w-1/2
                                 "> Total Amount Wallet</label>
                                         <label className="px-2 py-2 mt-1 mx-auto uppercasee
-                                  max-sm:text-[15px]
+                                  max-sm:text-[15px] w-1/6
                                 ">
                                             {
                                                 walletData.data.wallet
@@ -205,7 +206,7 @@ const Withdrawal = () => {
                             ) : (
                                 <>
                                     <div className=" my-2 py-4">
-                                        <div className="flex flex-row justify-around ">
+                                        <div className="flex flex-row justify-around w-full">
                                             <label className="px-2 py-2 mt-1 mx-auto uppercase
                                       max-sm:text-[14px] max-sm:mt-0
                                     "> Total Amount Wallet</label>

@@ -161,7 +161,7 @@ const PaymentDetails = () => {
 
                         <tr className="bg-gray-200 rounded border-dashed border-2 border-t-black">
                             <td className="font-bold px-14 py-3 uppercase">Payment Amount</td>
-                            <td className="">{data.withdrawalAmount - (data.withdrawalAmount / 100) * 10}</td>
+                            <td className="">{Number(data.withdrawalAmount - (data.withdrawalAmount / 100) * 10).toFixed(2)}</td>
                         </tr>
 
                         <tr className="bg-gray-200 rounded">

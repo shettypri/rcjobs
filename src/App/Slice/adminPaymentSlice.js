@@ -26,7 +26,7 @@ export const walletPaymentResponseReducers = createAsyncThunk(
         const doctorCollection = doc(db, "users", responseData.id)
         try {
             await updateDoc(doctorCollection, {
-                wallet: responseData.wallet,
+                wallet: Number(responseData.wallet).toFixed(2),
                 isWithdrawing: responseData.isWithdrawing,
                 withdrawalAmount: 0,
                 referred: 0,

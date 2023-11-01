@@ -61,7 +61,7 @@ const AffiliateButton = ({ isUSerID, isAdsDetails }) => {
                       </button>
                     </div>
                     {/*body*/}
-                    <div className="relative p-6 flex-col bg-none">
+                    <div className="relative p-6 flex-col bg-none max-sm:flex-wrap ">
                       <p className="my-4 text-slate-500 text-lg leading-relaxed flex">
                         <SocialMedia LinkToFollow={AffiliateLink} val="Affliate"
                         imageUrl={imageUrl}
