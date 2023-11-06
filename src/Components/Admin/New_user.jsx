@@ -94,8 +94,8 @@ const mailToUser = (email) => {
     // const 
     const subject = "WELOCME TO RC-JOBS" // Replace with your desired subject
     const message = "We are thrilled to welcome you to our community! Your account has been successfully validated, and you are now a valued member of our platform. \n"+
-    "please vist the site and login to your account. \n"+
-    " Click here :https://earn.rcjobssms.com/\n"+
+    "please visit the site and login to your account. \n\n"+
+    " Click here \t\t:https://earn.rcjobssms.com/ \t \n\n"+
     "Thank you for joining us! "
 
 
