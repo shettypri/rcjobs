@@ -99,14 +99,24 @@ const Register = () => {
         }
     }
     const emailValues = (event) => {
-        const re =  /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+        // const re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
 
-        if (event.target.value === "" || re.test(event.target.value)) {
+        // if (event.target.value === "" || re.test(event.target.value)) {
             setUserDetails({
                 ...userDetails, [event.target.name]: event.target.value
             })
-        }
+        // }
     }
+
+const [emailError, setEmailError] = useState('');
+  const validateEmail = () => {
+    const isValid = /\S+@\S+\.\S+/.test(userDetails.email);
+    if (!isValid) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
     /**
      * The function `pinCodeValues` is used to update the `userDetails` object with the value of the pin
      * code input field, only if the value is empty or consists of only numeric characters.
@@ -154,7 +164,7 @@ const Register = () => {
      */
     const handlePersonalDetail = () => {
 
-        if (userDetails.name.length === 0 || userDetails.email.length==0 || userDetails.Address.length === 0 || userDetails.PinCode.length === 0 || userDetails.PinCode.length > 6) {
+        if (userDetails.name.length === 0 || userDetails.email.length === 0 || userDetails.Address.length === 0 || userDetails.PinCode.length === 0 || userDetails.PinCode.length > 6) {
             console.log("here");
             // console.log(!(referUserData.data === undefined || referUserData.data ===  "" || userDetails['joining_code']=== null));
             setPersonalDetailError(true)
@@ -259,10 +269,13 @@ const Register = () => {
                                         <input type="email" value={userDetails.email}
                                             className=" mt-1 border-2 border-black h-10 rounded font-bold
                     "
-                                            name={"email"} onChange={emailValues} />
+                                            name={"email"} onChange={emailValues}
+                                            onBlur={validateEmail} />
                                         {personalDetailError && userDetails.email.length === 0 &&
                                             (<label className={"text-red-800 italic font-bold"}>please enter valid email </label>)
                                         }
+                                        {emailError && <p className="text-red-800 italic font-bold">{emailError}</p>}
+
 
                                     </div>
 
