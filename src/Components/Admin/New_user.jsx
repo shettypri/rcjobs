@@ -93,7 +93,10 @@ export default New_user
 const mailToUser = (email) => {
     // const 
     const subject = "WELOCME TO RC-JOBS" // Replace with your desired subject
-    const message = "Next, on mobile, mailto will only work if the user has an email client installed on their device. If the user has multiple email clients installed, it will open the device default without giving the user an option to choose. Finally, some spammers use bots to search the web for mailto links and then use those bots to spam mail servers."// Replace with your desired message
+    const message = "We are thrilled to welcome you to our community! Your account has been successfully validated, and you are now a valued member of our platform. \n"+
+    "please vist the site and login to your account. \n"+
+    " Click here :https://earn.rcjobssms.com/\n"+
+    "Thank you for joining us! "
 
 
     const gmailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
