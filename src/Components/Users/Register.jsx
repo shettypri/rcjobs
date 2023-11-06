@@ -99,7 +99,7 @@ const Register = () => {
         }
     }
     const emailValues = (event) => {
-        const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
 
         if (event.target.value === "" || re.test(event.target.value)) {
             setUserDetails({
