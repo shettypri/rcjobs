@@ -256,7 +256,7 @@ const Register = () => {
                                     </div>
                                     <div className={" flex flex-col text-black p-4 px-0 "}>
                                         <label className={"font-bold"}>Enter Email</label>
-                                        <input type="text" value={userDetails.email}
+                                        <input type="email" value={userDetails.email}
                                             className=" mt-1 border-2 border-black h-10 rounded font-bold
                     "
                                             name={"email"} onChange={emailValues} />
